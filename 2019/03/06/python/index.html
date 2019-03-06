@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="pyecharts安装地图包">
+<meta name="keywords" content="python,Data analysis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python">
+<meta property="og:url" content="http://yoursite.com/2019/03/06/python/index.html">
+<meta property="og:site_name" content="吏部侍郎&#39;s Blog">
+<meta property="og:description" content="pyecharts安装地图包">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/08/21/P48u36.png">
+<meta property="og:updated_time" content="2019-03-06T07:34:18.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python">
+<meta name="twitter:description" content="pyecharts安装地图包">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/08/21/P48u36.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/06/python/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>python | 吏部侍郎's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">吏部侍郎's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">我见青山多妩媚，料青山见我应如是</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/06/python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="华子">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180820125425.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吏部侍郎's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-06 15:34:00 / 修改时间：15:34:18" itemprop="dateCreated datePublished" datetime="2019-03-06T15:34:00+08:00">2019-03-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2019/03/06/python/" class="leancloud_visitors" data-flag-title="python">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="pyecharts安装地图包"><a href="#pyecharts安装地图包" class="headerlink" title="pyecharts安装地图包"></a>pyecharts安装地图包</h3><a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install echarts-countries-pypkg</span><br></pre></td></tr></table></figure>
+<p>报错<code>Unknown or unsupported command &#39;install&#39;</code></p>
+<p>这可能是因为我最近装了很多的环境导致的冲突，比如php，java环境等等。</p>
+<p>解决方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip.exe install echarts-countries-pypkg</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://blog.csdn.net/qq_36854407/article/details/79314344" target="_blank" rel="noopener">pip命令提示unknow or unsupported command install解决方法</a></p>
+<h3 id="连接两个表"><a href="#连接两个表" class="headerlink" title="连接两个表"></a>连接两个表</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gg_commu_data = pd.merge(gg_data,way_commu_data,on = <span class="string">'call_id'</span>,how = <span class="string">'left'</span>)</span><br></pre></td></tr></table></figure>
+<p>报错</p>
+<p><code>ValueError: You are trying to merge on int64 and object columns. If you wish to proceed you should use pd.concat</code></p>
+<p>这是，主键数据类型不同，一个是int，一个是对象。解决方法，更改数据类型。</p>
+<h3 id="合并两个列为一列"><a href="#合并两个列为一列" class="headerlink" title="合并两个列为一列"></a>合并两个列为一列</h3><ol>
+<li><p><strong>两列数据类型一样</strong></p>
+<ol>
+<li>直接合并</li>
+</ol>
+<p><code>way_commu_data[&#39;new&#39;] = way_commu_data[&#39;business_name&#39;] + way_commu_data[&#39;inter_idx&#39;]</code></p>
+<ol start="2">
+<li>加符号</li>
+</ol>
+<p><code>way_commu_data[&#39;new&#39;] = way_commu_data[&#39;business_name&#39;] +&quot;|&quot; + way_commu_data[&#39;inter_idx&#39;].map(str)</code></p>
+</li>
+<li><p><strong>数据类型不同</strong></p>
+</li>
+</ol>
+<p><em>如果某一列是非str类型的数据，那么我们需要用到map(str)将那一列数据类型做转换 。</em></p>
+<p><code>dataframe[&quot;newColumn&quot;] = dataframe[&quot;age&quot;].map(str) + dataframe[&quot;phone&quot;] + dataframe[&quot;address”]</code></p>
+<ol start="3">
+<li><strong>在某一列中加入字符串。</strong></li>
+</ol>
+<p><a href="https://blog.csdn.net/sscc_learning/article/details/76993816" target="_blank" rel="noopener">这里采用格式化字符串的形式。</a></p>
+<p><img src="https://s1.ax1x.com/2018/08/21/P48u36.png" alt="方法"></p>
+<ol start="4">
+<li><strong>用一列的非空值填充另一列对应的空值</strong></li>
+</ol>
+<p><code>way_commu_data.loc[way_commu_data[&#39;business_name_new&#39;].isnull(),&#39;business_name_new&#39;]=way_commu_data[way_commu_data[&#39;business_name_new&#39;].isnull()][&#39;inter_idx&#39;]</code></p>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><h4 id="提取包含某些字符的字段报错"><a href="#提取包含某些字符的字段报错" class="headerlink" title="提取包含某些字符的字段报错"></a>提取包含某些字符的字段报错</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#找出target中包含字符1的列</span></span><br><span class="line">y = test[test[<span class="string">'target'</span>].str.contains(<span class="string">'1'</span>)]</span><br></pre></td></tr></table></figure>
+<p>报错：<code>ValueError: cannot index with vector containing NA / NaN values</code></p>
+<p> 解决方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#找出target中包含字符1的列</span></span><br><span class="line">y = test[test[<span class="string">'target'</span>].str.contains(<span class="string">'1'</span>, case=<span class="literal">False</span>, na=<span class="literal">False</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#If first line failed still is possible replace NaNs in condition in str.contains by parameter na=False:</span></span><br><span class="line"></span><br><span class="line">mask = dframe.Product.str.contains(word, case=<span class="literal">False</span>, na=<span class="literal">False</span>)</span><br><span class="line"><span class="comment">#Or try omit inplace=True and assign back:</span></span><br><span class="line">dframe[<span class="string">'Product'</span>] = dframe[<span class="string">'Product'</span>].fillna(<span class="string">''</span>)</span><br></pre></td></tr></table></figure>
+<p>参考：</p>
+<p>1.<a href="https://stackoverflow.com/questions/48862235/python-valueerror-cannot-index-with-vector-containing-na-nan-values" target="_blank" rel="noopener">stack</a></p>
+<p>2.<a href="https://blog.csdn.net/Guo_ya_nan/article/details/81021158" target="_blank" rel="noopener">csdn</a></p>
+<ol start="6">
+<li><a href="https://blog.csdn.net/htbeker/article/details/79645651" target="_blank" rel="noopener"><strong>pandas.DataFrame中删除包涵特定字符串所在的行</strong></a></li>
+<li><a href="https://blog.csdn.net/fontthrone/article/details/75212825" target="_blank" rel="noopener"><strong>Pandas to_json() 中文乱码,转化为json数组</strong></a></li>
+</ol>
+<h3 id="PPT动态图实现方案"><a href="#PPT动态图实现方案" class="headerlink" title="PPT动态图实现方案"></a>PPT动态图实现方案</h3><p>将pyecharts的图生成html文件。</p>
+<p>命令：<code>wordcloud.render()</code></p>
+<h3 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h3><h4 id="读取txt文件时，报错"><a href="#读取txt文件时，报错" class="headerlink" title="读取txt文件时，报错"></a>读取txt文件时，报错</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">filename3 = <span class="string">'C:/Users/admin/Desktop/commu_data3.txt'</span></span><br><span class="line"><span class="comment">#设置分隔符为','，第一行为列名（列索引），设定不使用第一列作为行索引</span></span><br><span class="line">commu3 = pd.DataFrame(pd.read_table(filename3,sep = <span class="string">','</span>,header = <span class="number">0</span>,index_col = <span class="literal">False</span>,encoding = <span class="string">'gbk'</span>))</span><br></pre></td></tr></table></figure>
+<p><code>ParserError: Error tokenizing data. C error: Expected 21 fields in line 3, saw 22</code></p>
+<p>看他的意思是，底层的C代码不能解析数据，<strong>采用以下方案，将解析引擎设置为python。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">filename3 = <span class="string">'C:/Users/admin/Desktop/commu_data3.txt'</span></span><br><span class="line"><span class="comment">#设置分隔符为','，第一行为列名（列索引），设定不使用第一列作为行索引</span></span><br><span class="line">commu3 = pd.DataFrame(pd.read_table(filename3,sep = <span class="string">','</span>,header = <span class="number">0</span>,index_col = <span class="literal">False</span>,encoding = <span class="string">'gbk'</span>,engine = <span class="string">'python'</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="文件夹批量读取glob"><a href="#文件夹批量读取glob" class="headerlink" title="文件夹批量读取glob"></a>文件夹批量读取glob</h4><p><a href="https://docs.python.org/3.5/library/glob.html#module-glob" target="_blank" rel="noopener">glob官方文档</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">path = <span class="string">r'F:\公司文档\项目文档\中国人寿\数据\7月份数据\call_data'</span></span><br><span class="line"></span><br><span class="line">filenames = glob.glob(path + <span class="string">"/*.txt"</span>)</span><br><span class="line">frame = pd.DataFrame()</span><br><span class="line">list_call_data = []</span><br><span class="line"></span><br><span class="line"><span class="comment">#用pandas读取所有数据，并连接到一个DataFrame中。</span></span><br><span class="line"><span class="keyword">for</span> file_name <span class="keyword">in</span> filenames:</span><br><span class="line">    filename =open(file_name) </span><br><span class="line">    df = pd.read_table(filename,sep = <span class="string">','</span>,header = <span class="number">0</span>,index_col = <span class="literal">False</span>,encoding = <span class="string">'gbk'</span>)</span><br><span class="line">    list_call_data.append(df)</span><br><span class="line">    </span><br><span class="line">frame = pd.concat(list_call_data)</span><br><span class="line"></span><br><span class="line">path = <span class="string">r'F:\公司文档\项目文档\中国人寿\数据\7月份数据\call_data'</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://dataquestion.com/question/3526" target="_blank" rel="noopener">参考1</a></p>
+<p><a href="https://blog.csdn.net/LZGS_4/article/details/50371030" target="_blank" rel="noopener">参考2</a></p>
+<p><a href="https://blog.csdn.net/Sunshine_in_Moon/article/details/50246773" target="_blank" rel="noopener">参考3</a></p>
+<h3 id="pandas输出文件"><a href="#pandas输出文件" class="headerlink" title="pandas输出文件"></a>pandas输出文件</h3><p><a href="http://pandas.pydata.org/pandas-docs/stable/io.html#writing-json" target="_blank" rel="noopener">pandas文档json写入</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/06/hexo-next/" rel="next" title="hexo-next">
+                <i class="fa fa-chevron-left"></i> hexo-next
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180820125425.jpg" alt="华子">
+            
+              <p class="site-author-name" itemprop="name">华子</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="http://www.cnblogs.com/sunshinewang/" title="博客园 &rarr; http://www.cnblogs.com/sunshinewang/" rel="noopener" target="_blank"><i class="fa fa-fw fa-cnblogs"></i>博客园</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.jianshu.com/u/31dd28cfd02a" title="简书 &rarr; https://www.jianshu.com/u/31dd28cfd02a" rel="noopener" target="_blank"><i class="fa fa-fw fa-jianshu"></i>简书</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#pyecharts安装地图包"><span class="nav-number">1.</span> <span class="nav-text">pyecharts安装地图包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接两个表"><span class="nav-number">2.</span> <span class="nav-text">连接两个表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并两个列为一列"><span class="nav-number">3.</span> <span class="nav-text">合并两个列为一列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报错"><span class="nav-number">4.</span> <span class="nav-text">报错</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提取包含某些字符的字段报错"><span class="nav-number">4.1.</span> <span class="nav-text">提取包含某些字符的字段报错</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PPT动态图实现方案"><span class="nav-number">5.</span> <span class="nav-text">PPT动态图实现方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件读取"><span class="nav-number">6.</span> <span class="nav-text">文件读取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#读取txt文件时，报错"><span class="nav-number">6.1.</span> <span class="nav-text">读取txt文件时，报错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件夹批量读取glob"><span class="nav-number">6.2.</span> <span class="nav-text">文件夹批量读取glob</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas输出文件"><span class="nav-number">7.</span> <span class="nav-text">pandas输出文件</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">华子</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共845字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'KN8npfKV8Ti7aPLceU50l6jx-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'KN8npfKV8Ti7aPLceU50l6jx-gzGzoHsz',
+                'X-LC-Key': 'IjrGEedkffX4qu6g1uhGc50H',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
