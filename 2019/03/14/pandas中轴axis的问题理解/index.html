@@ -105,49 +105,27 @@
 
 
 
-  <meta name="description" content="SQL的学习之路，主要参考资料是： SQL必知必会W3school的SQL简介">
-<meta name="keywords" content="Data analysis,SQL">
+  <meta name="description" content="在学习删除方法drop时，碰到了，也突然想明白了，轴是什么意思。">
+<meta name="keywords" content="Pandas,python,Data analysis,硕士期间">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL的学习">
-<meta property="og:url" content="http://wangshixiong.github.io/2019/03/06/SQL的学习/index.html">
+<meta property="og:title" content="pandas中轴axis的问题理解">
+<meta property="og:url" content="http://wangshixiong.github.io/2019/03/14/pandas中轴axis的问题理解/index.html">
 <meta property="og:site_name" content="吏部侍郎&#39;s Blog">
-<meta property="og:description" content="SQL的学习之路，主要参考资料是： SQL必知必会W3school的SQL简介">
+<meta property="og:description" content="在学习删除方法drop时，碰到了，也突然想明白了，轴是什么意思。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-99088ca1862965fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-222314eb1f925db6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-c1c028d7564d3da8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-c693e117d6abcc60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-51aeffe488410f0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-c270a132adb7e1d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-9e7cba4ab00b6321.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-b2f793a6d398268a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-f9ba72858e528097.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-74c41fb49ee70c67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-df74f29143b75438.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-a693680c78b33f85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-d014cba6ca420003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-90c8c6da8719925a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-f451dda80331d3da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-2f00deb32b8b47bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-8056401714986ffe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-322eef5f933e81f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-96aaf2720fa79e88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-45f6e82846597d13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-c9a8f39f57480ec5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-06833413f120003a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-3e42c57a43b77707.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-10T02:26:23.138Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-de17a1655283a433.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-14T10:00:42.197Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL的学习">
-<meta name="twitter:description" content="SQL的学习之路，主要参考资料是： SQL必知必会W3school的SQL简介">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2151277-99088ca1862965fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="pandas中轴axis的问题理解">
+<meta name="twitter:description" content="在学习删除方法drop时，碰到了，也突然想明白了，轴是什么意思。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2151277-de17a1655283a433.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
 
 
 
-  <link rel="canonical" href="http://wangshixiong.github.io/2019/03/06/SQL的学习/">
+  <link rel="canonical" href="http://wangshixiong.github.io/2019/03/14/pandas中轴axis的问题理解/">
 
 
 
@@ -157,7 +135,7 @@
   };
 </script>
 
-  <title>SQL的学习 | 吏部侍郎's Blog</title>
+  <title>pandas中轴axis的问题理解 | 吏部侍郎's Blog</title>
   
 
 
@@ -415,7 +393,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wangshixiong.github.io/2019/03/06/SQL的学习/">
+    <link itemprop="mainEntityOfPage" href="http://wangshixiong.github.io/2019/03/14/pandas中轴axis的问题理解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="华子">
@@ -432,7 +410,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SQL的学习
+          <h1 class="post-title" itemprop="name headline">pandas中轴axis的问题理解
 
               
             
@@ -458,24 +436,12 @@
                 
               
 
-              <time title="创建时间：2019-03-06 22:01:27" itemprop="dateCreated datePublished" datetime="2019-03-06T22:01:27+08:00">2019-03-06</time>
+              <time title="创建时间：2019-03-14 17:58:29 / 修改时间：18:00:42" itemprop="dateCreated datePublished" datetime="2019-03-14T17:58:29+08:00">2019-03-14</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-10 10:26:23" itemprop="dateModified" datetime="2019-03-10T10:26:23+08:00">2019-03-10</time>
               
             
           </span>
@@ -511,8 +477,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/06/SQL的学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/06/SQL的学习/" itemprop="commentCount"></span>
+                <a href="/2019/03/14/pandas中轴axis的问题理解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/14/pandas中轴axis的问题理解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -520,7 +486,7 @@
 
           
           
-            <span id="/2019/03/06/SQL的学习/" class="leancloud_visitors" data-flag-title="SQL的学习">
+            <span id="/2019/03/14/pandas中轴axis的问题理解/" class="leancloud_visitors" data-flag-title="pandas中轴axis的问题理解">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -547,7 +513,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4k</span>
+                <span title="本文字数">2.2k</span>
               
 
               
@@ -561,7 +527,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -581,159 +547,22 @@
       
 
       
-        <p><strong><em>SQL的学习之路，主要参考资料是：</em></strong></p>
-<p><a href="http://www.forta.com/books/" target="_blank" rel="noopener">SQL必知必会</a><br><a href="http://www.w3school.com.cn/sql/sql_intro.asp" target="_blank" rel="noopener">W3school的SQL简介</a></p>
+        <p>在学习删除方法<code>drop</code>时，碰到了，也突然想明白了，轴是什么意思。</p>
 <a id="more"></a>
-<hr>
-<p><em>右击，新标签页即可打开原图</em></p>
-<hr>
-<p>操作使用的数据库为Access及MySQL。</p>
-<p>数据采用的是<a href="http://www.forta.com/books/0672336073/" target="_blank" rel="noopener">SQL必知必会中的数据</a></p>
-<p>（最下方可以下载数据）。其有5个表，表的关系如下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2151277-99088ca1862965fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="表的关系"></p>
-<p>看不清的图片：右击新标签页打开即可。</p>
-<h2 id="SQL基础"><a href="#SQL基础" class="headerlink" title="SQL基础"></a>SQL基础</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-222314eb1f925db6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="基础"></strong></p>
-<h2 id="检索数据"><a href="#检索数据" class="headerlink" title="检索数据"></a>检索数据</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-c1c028d7564d3da8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="检索数据"></strong></p>
-<h2 id="排序检索数据"><a href="#排序检索数据" class="headerlink" title="排序检索数据"></a>排序检索数据</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-c693e117d6abcc60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="排序检索数据"></strong></p>
-<h2 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-51aeffe488410f0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="过滤数据"></strong></p>
-<h2 id="高级过滤"><a href="#高级过滤" class="headerlink" title="高级过滤"></a>高级过滤</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-c270a132adb7e1d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="高级过滤"></strong></p>
-<h2 id="通配符过滤"><a href="#通配符过滤" class="headerlink" title="通配符过滤"></a>通配符过滤</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-9e7cba4ab00b6321.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通配符过滤"></strong></p>
-<h2 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-b2f793a6d398268a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建计算字段"></strong></p>
-<h2 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-f9ba72858e528097.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="函数特性"></strong></p>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-74c41fb49ee70c67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="函数"></strong></p>
-<h2 id="汇总数据"><a href="#汇总数据" class="headerlink" title="汇总数据"></a>汇总数据</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-df74f29143b75438.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="汇总数据"></strong></p>
-<h2 id="分组数据"><a href="#分组数据" class="headerlink" title="分组数据"></a>分组数据</h2><p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-a693680c78b33f85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分组数据"></strong></p>
-<hr>
-<p><strong><em>以上测试均在Access数据库中进行，以下于MySQL中进行，通过workbench（版本6.3）操作。</em></strong></p>
-<hr>
-<h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><p><strong>这里说白了就是select语句嵌套，如<code>select * from （select cust_name from customers）</code></strong></p>
-<p><strong><img src="http://upload-images.jianshu.io/upload_images/2151277-d014cba6ca420003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="子查询"></strong></p>
-<h2 id="联结"><a href="#联结" class="headerlink" title="联结"></a>联结</h2><p><em><a href="https://zh.wikipedia.org/wiki/%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AF" target="_blank" rel="noopener">笛卡尔积</a></em></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2151277-90c8c6da8719925a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="联结"></p>
-<h2 id="高级联结"><a href="#高级联结" class="headerlink" title="高级联结"></a>高级联结</h2><p><img src="http://upload-images.jianshu.io/upload_images/2151277-f451dda80331d3da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="高级联结"></p>
-<p><strong><em>如果3个以上的表，那怎样联结？</em></strong></p>
-<ol>
-<li>3个</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">select</span> cust_name,cust_contact</span><br><span class="line"><span class="keyword">from</span> (customers </span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> orders</span><br><span class="line"><span class="keyword">on</span> customers.cust_id = orders.cust_id)</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> orderitems </span><br><span class="line"><span class="keyword">on</span> orderitems.order_num = orders.order_num;</span><br></pre></td></tr></table></figure>
-<p>语法可以概括为：</p>
-<p><strong><em><code>FROM (表1 INNER JOIN 表2 ON 表1.字段号=表2.字段号) INNER JOIN 表3 ON 表1.字段号=表3.字段号</code></em></strong></p>
-<ol start="2">
-<li>同理，4个表可以概括为：</li>
-</ol>
-<p><strong><em><code>FROM ((表1 INNER JOIN 表2 ON 表1.字段号=表2.字段号) INNER JOIN 表3 ON 表1.字段号=表3.字段号) INNER JOIN 表4 ON Member.字段号=表4.字段号</code></em></strong></p>
-<h2 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h2><p><img src="http://upload-images.jianshu.io/upload_images/2151277-2f00deb32b8b47bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="组合查询"></p>
-<hr>
-<p> <em>如果代码块阅读困难，可移步<a href="http://www.cnblogs.com/sunshinewang/p/6789419.html" target="_blank" rel="noopener">博客园</a></em></p>
-<hr>
-<p><strong><em>关于规则中列顺序，前后必须一致。</em></strong>否则会出现如下情况：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1 <span class="keyword">use</span> <span class="keyword">test</span>; </span><br><span class="line">2 <span class="keyword">select</span> cust_name ,cust_email,cust_contact</span><br><span class="line"><span class="number">3</span> <span class="keyword">from</span> customers</span><br><span class="line"><span class="number">4</span> <span class="keyword">where</span> cust_state <span class="keyword">in</span> (<span class="string">'IL'</span>,<span class="string">'IN'</span>,<span class="string">'MI'</span>)</span><br><span class="line"><span class="number">5</span> <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="number">6</span> <span class="keyword">select</span> cust_name,cust_contact,cust_email</span><br><span class="line"><span class="number">7</span> <span class="keyword">from</span> customers</span><br><span class="line"><span class="number">8</span> <span class="keyword">where</span> cust_name = <span class="string">'Fun4All'</span></span><br></pre></td></tr></table></figure>
-<p>返回结果为：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2151277-8056401714986ffe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="返回结果"></p>
-<p>列的顺序一致，才会返回正确结果</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1 <span class="keyword">use</span> <span class="keyword">test</span>;</span><br><span class="line">2 <span class="keyword">select</span> cust_name ,cust_email,cust_contact</span><br><span class="line"><span class="number">3</span> <span class="keyword">from</span> customers</span><br><span class="line"><span class="number">4</span> <span class="keyword">where</span> cust_state <span class="keyword">in</span> (<span class="string">'IL'</span>,<span class="string">'IN'</span>,<span class="string">'MI'</span>)</span><br><span class="line"><span class="number">5</span> <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="number">6</span> <span class="keyword">select</span> cust_name,cust_email,cust_contact</span><br><span class="line"><span class="number">7</span> <span class="keyword">from</span> customers8 <span class="keyword">where</span> cust_name = <span class="string">'Fun4All'</span></span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2151277-322eef5f933e81f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="返回结果"></p>
-<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p><strong><em>INSERT SELECT:</em></strong></p>
-<p>它可以将SELCET语句结果插入表中，在<strong><em>某种意义上可以完成表的复制</em></strong>。<br>如：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"> 1 <span class="keyword">USE</span> <span class="keyword">test</span>;<span class="comment">#使用数据库test </span></span><br><span class="line"> 2 <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> CustNew </span><br><span class="line"> <span class="number">3</span> ( </span><br><span class="line"> <span class="number">4</span> cust_id  <span class="built_in">char</span>(<span class="number">10</span>)   <span class="keyword">NOT</span> <span class="literal">NULL</span> ,</span><br><span class="line"> <span class="number">5</span> cust_name  <span class="built_in">char</span>(<span class="number">50</span>)   <span class="keyword">NOT</span> <span class="literal">NULL</span> ,</span><br><span class="line"> <span class="number">6</span> cust_address  <span class="built_in">char</span>(<span class="number">50</span>)  <span class="literal">NULL</span> , </span><br><span class="line"> <span class="number">7</span> cust_city  <span class="built_in">char</span>(<span class="number">50</span>)  <span class="literal">NULL</span> ,</span><br><span class="line"> <span class="number">8</span> cust_state  <span class="built_in">char</span>(<span class="number">5</span>)  <span class="literal">NULL</span> , </span><br><span class="line"> <span class="number">9</span> cust_zip  <span class="built_in">char</span>(<span class="number">10</span>)  <span class="literal">NULL</span> ,</span><br><span class="line"><span class="number">10</span> cust_country  <span class="built_in">char</span>(<span class="number">50</span>)  <span class="literal">NULL</span> ,</span><br><span class="line"><span class="number">11</span> cust_contact  <span class="built_in">char</span>(<span class="number">50</span>)  <span class="literal">NULL</span> ,</span><br><span class="line"><span class="number">12</span> cust_email  <span class="built_in">char</span>(<span class="number">255</span>)  <span class="literal">NULL</span> </span><br><span class="line"><span class="number">13</span> );<span class="comment">#创新新表 </span></span><br><span class="line">14 <span class="keyword">INSERT</span> <span class="keyword">INTO</span> CustNew</span><br><span class="line"><span class="number">15</span> (</span><br><span class="line"><span class="number">16</span> cust_id,</span><br><span class="line"><span class="number">17</span> cust_name,</span><br><span class="line"><span class="number">18</span> cust_address,</span><br><span class="line"><span class="number">19</span> cust_city,</span><br><span class="line"><span class="number">20</span> cust_state,</span><br><span class="line"><span class="number">21</span> cust_zip,</span><br><span class="line"><span class="number">22</span> cust_country,</span><br><span class="line"><span class="number">23</span> cust_contact,</span><br><span class="line"><span class="number">24</span> cust_email</span><br><span class="line"><span class="number">25</span> )</span><br><span class="line"><span class="number">26</span> <span class="keyword">SELECT</span> </span><br><span class="line"><span class="number">27</span> cust_id,</span><br><span class="line"><span class="number">28</span> cust_name,</span><br><span class="line"><span class="number">29</span> cust_address,</span><br><span class="line"><span class="number">30</span> cust_city,</span><br><span class="line"><span class="number">31</span> cust_state,</span><br><span class="line"><span class="number">32</span> cust_zip,</span><br><span class="line"><span class="number">33</span> cust_country,</span><br><span class="line"><span class="number">34</span> cust_contact,</span><br><span class="line"><span class="number">35</span> cust_email</span><br><span class="line"><span class="number">36</span> <span class="keyword">FROM</span> customers;<span class="comment">#将customers表的数据插入新表alter</span></span><br><span class="line">37 <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> CustNew;</span><br></pre></td></tr></table></figure>
-<p>返回结果如下：<br> <img src="http://upload-images.jianshu.io/upload_images/2151277-96aaf2720fa79e88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果"></p>
-<p> 而如果反过来用，大概就是：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span></span><br><span class="line">customers </span><br><span class="line">（列<span class="number">1</span>，列<span class="number">2</span>，......）</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">列<span class="number">1</span>，列<span class="number">2</span>，.....</span><br><span class="line"><span class="keyword">from</span> custnew</span><br></pre></td></tr></table></figure>
-<p>即可完成将表custnew中的数据全部插入customers，这也完成了一条insert插入多条数据。</p>
-<p><strong><em>通常，一条INSERT 语句，只能插入一行数据，要插入多行，就必须执行多个INSERT，但是， INSERT SELECT 是个例外。</em></strong></p>
-<p>以上方法的复制，实际上是重新在数据库中创建了一个新表。</p>
-<p><strong><em>SELECT INTO：</em></strong></p>
-<p>这种方法，可以在SQL语句运行中创建一个表，并将一个表复制到这个全新的表。</p>
-<p><strong><em>我们可以在实验新的SQL语句前，用其进行复制，这样就不影响到实际数据。</em></strong><br>如：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">test</span>;<span class="comment">#使用数据库</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Cucopy <span class="keyword">as</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> customers;<span class="comment">#复制</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Cucopy;</span><br></pre></td></tr></table></figure>
-<p> 返回结果，与上表一致。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2151277-45f6e82846597d13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="插入"></p>
-<h2 id="更新和删除"><a href="#更新和删除" class="headerlink" title="更新和删除"></a>更新和删除</h2><p><img src="http://upload-images.jianshu.io/upload_images/2151277-c9a8f39f57480ec5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="更新和删除"></p>
-<h2 id="创建和操纵表"><a href="#创建和操纵表" class="headerlink" title="创建和操纵表"></a>创建和操纵表</h2><p>这里中点说一下创建表时，指定默认值的问题。一般来说，创建表时，我们需要指定列的数据类型、是否NULL列。关于NULL值具体说明请看下图。</p>
-<p>默认值要是用的好，可以省却我们很多时间。</p>
-<p>因其经常用于指定默认日期，这里以日期为例。</p>
-<p>首先，在MySQL中内建的日期函数：</p>
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_now.asp" target="_blank" rel="noopener">NOW()</a></td>
-<td>返回当前的日期和时间</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_curdate.asp" target="_blank" rel="noopener">CURDATE()</a></td>
-<td>返回当前的日期</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_curtime.asp" target="_blank" rel="noopener">CURTIME()</a></td>
-<td>返回当前的时间</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_date.asp" target="_blank" rel="noopener">DATE()</a></td>
-<td>提取日期或日期/时间表达式的日期部分</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_extract.asp" target="_blank" rel="noopener">EXTRACT()</a></td>
-<td>返回日期/时间按的单独部分</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_date_add.asp" target="_blank" rel="noopener">DATE_ADD()</a></td>
-<td>给日期添加指定的时间间隔</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_date_sub.asp" target="_blank" rel="noopener">DATE_SUB()</a></td>
-<td>从日期减去指定的时间间隔</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_datediff_mysql.asp" target="_blank" rel="noopener">DATEDIFF()</a></td>
-<td>返回两个日期之间的天数</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_date_format.asp" target="_blank" rel="noopener">DATE_FORMAT()</a></td>
-<td>用不同的格式显示日期/时间</td>
-</tr>
-</tbody>
-</table>
-<p>创建数据库t2,插入表。如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> t2;</span><br><span class="line"><span class="keyword">USE</span> t2;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">test</span></span><br><span class="line">(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span>(<span class="number">5</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,noedate <span class="built_in">timestamp</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> </span><br><span class="line"><span class="keyword">current_timestamp</span>()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>调用如下：</p>
-<p>​<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> t2;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">test</span>(<span class="keyword">id</span>)<span class="keyword">values</span>(<span class="number">1</span>);</span><br><span class="line">SELET * FROM test;</span><br></pre></td></tr></table></figure></p>
-<p>返回结果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2151277-06833413f120003a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="返回结果"></p>
-<p>以下SQL不合法：</p>
+<p>引入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame<span class="comment">#导入包</span></span><br><span class="line">obj = Series(np.arange(<span class="number">5</span>),index = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>])<span class="comment">#创建Series  obj</span></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">2</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">new_obj = obj.drop(<span class="string">'c'</span>)<span class="comment">#删除'c'</span></span><br><span class="line">new_obj</span><br><span class="line">Out[<span class="number">5</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">6</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj.drop([<span class="string">'b'</span>,<span class="string">'d'</span>])<span class="comment">#删除'b','d'</span></span><br><span class="line">Out[<span class="number">7</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">data = DataFrame(np.arange(<span class="number">25</span>).reshape(<span class="number">5</span>,<span class="number">5</span>),index = [<span class="string">'bj'</span>,<span class="string">'tj'</span>,<span class="string">'heb'</span>,<span class="string">'sjz'</span>,<span class="string">'sh'</span>],columns=[<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>,<span class="string">'four'</span>,<span class="string">'five'</span>])<span class="comment">#创建DataFrame</span></span><br><span class="line">data</span><br><span class="line">Out[<span class="number">9</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">bj     <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop([<span class="string">'bj'</span>,<span class="string">'tj'</span>])<span class="comment">#删除某行</span></span><br><span class="line">Out[<span class="number">10</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop(<span class="string">'one'</span>,axis=<span class="number">1</span>)<span class="comment">#删除列</span></span><br><span class="line">Out[<span class="number">11</span>]: </span><br><span class="line">     two  three  four  five</span><br><span class="line">bj     <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br></pre></td></tr></table></figure>
+<p>可已注意到的是，在上方使用<code>drop</code>时，删除列特意指明了<code>axis=1</code>. 而在查看drop的文档时，发现默认参数是<code>axis =0</code>，这说明：</p>
 <ul>
-<li><code>time_d time NOT NULL DEFAULT CURTIME(),</code></li>
-<li><code>date_e date NOT NULL DEFAULT CURDATE(),</code></li>
-<li><code>datetime_f datetime NOT NULL DEFAULT NOW(),</code> </li>
+<li><code>axis = 0</code>代表的是行。</li>
+<li><code>axis = 1</code>代表的是列。<br>这样想就明白了。但是接着问题来了，</li>
 </ul>
-<ul>
-<li>DATETIME类型：NOW()函数以’YYYY-MM-DD HH:MM:SS’返回当前的日期时间，可以直接存到DATETIME字段中。不支持使用系统默认值。 </li>
-<li>DATE类型：CURDATE()以’YYYY-MM-DD’的格式返回今天的日期，可以直接存到DATE字段中。不支持使用系统默认值。 </li>
-<li>TIME类型：CURTIME()以’HH:MM:SS’的格式返回当前的时间，可以直接存到TIME字段中。不支持使用系统默认值。<br>常见错误：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dnt_forums</span><br><span class="line">(</span><br><span class="line"> aa <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> (<span class="string">''</span>), </span><br><span class="line"> bb <span class="built_in">date</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> (<span class="keyword">getdate</span>()), </span><br><span class="line"> cc <span class="built_in">char</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> (<span class="literal">null</span>) </span><br><span class="line">）；</span><br></pre></td></tr></table></figure>
-<ul>
-<li>aa 是 int 类型，默认值也得是整型，并且default后边不要（）括号 。</li>
-<li>bb date类型不支持使用系统默认值，改成timestamp，能过now()取系统时间 。</li>
-<li>cc 已经不允许为空（not null）所以不能默认为 null ，可以改成空字符串 。<br>修改：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dnt_forums</span><br><span class="line">(</span><br><span class="line"> aa <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">2</span>,</span><br><span class="line">bb <span class="built_in">timestamp</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">now</span>(),</span><br><span class="line">cc <span class="built_in">char</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>这个日期问题，依然有很多不太明白的地方，以后学习过程碰到继续解决。<br>主要参考：</p>
-<p><a href="http://www.jb51.net/article/33570.htm" target="_blank" rel="noopener">脚本之家</a>、<a href="http://blog.csdn.net/justdb/article/details/7965490" target="_blank" rel="noopener">博客</a></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2151277-3e42c57a43b77707.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建和操纵表"></p>
-<p>重命名表：</p>
-<p><code>RENAME TABLE cucopy1 TO hi;</code></p>
-<p> 删除表：</p>
-<p><code>DROP TABLE hi;</code></p>
-<blockquote>
-<p> <strong>待续</strong></p>
-</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">data</span><br><span class="line">Out[<span class="number">29</span>]: </span><br><span class="line">lie   one  two  three  four  five</span><br><span class="line">city                             </span><br><span class="line">bj      <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj      <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb    <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz    <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh     <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">0</span>)<span class="comment">#求列平均</span></span><br><span class="line">Out[<span class="number">30</span>]: </span><br><span class="line">lie</span><br><span class="line">one      <span class="number">10.0</span></span><br><span class="line">two      <span class="number">11.0</span></span><br><span class="line">three    <span class="number">12.0</span></span><br><span class="line">four     <span class="number">13.0</span></span><br><span class="line">five     <span class="number">14.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">1</span>)<span class="comment">#求行平均</span></span><br><span class="line">Out[<span class="number">31</span>]: </span><br><span class="line">city</span><br><span class="line">bj      <span class="number">2.0</span></span><br><span class="line">tj      <span class="number">7.0</span></span><br><span class="line">heb    <span class="number">12.0</span></span><br><span class="line">sjz    <span class="number">17.0</span></span><br><span class="line">sh     <span class="number">22.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>其实，我是有点蒙的，如果向上面那样理解的话。<br>发现问题了吗？<br>在<code>drop</code>中使用<code>axis=1</code>实际上是删掉了一列，而在<code>mean</code>中实际上是计算的行平均值，而不是列的平均值。<br>蒙了。嗯，看了Stackoverflow中的解释，大概是明白了。现记录如下。</p>
+<p><strong>实际上axis = 1，指的是沿着行求所有列的平均值，代表了横轴，那axis = 0，就是沿着列求所有行的平均值，代表了纵轴。</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2151277-de17a1655283a433.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="示意图"></p>
+<p>那这样的话，<code>drop</code>就是沿着<code>&#39;two&#39;</code>的方向删除对应的轴标签为<code>axis = 1</code>的值。</p>
+<p>又想到了numpy，pandas是以numpy为基础构造的库，因此，它保留了对于axis使用的方式。</p>
+<p>参考：<a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean" target="_blank" rel="noopener"><a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean" target="_blank" rel="noopener">What does axis in pandas mean?</a></a></p>
 
       
     </div>
@@ -797,7 +626,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://wangshixiong.github.io/2019/03/06/SQL的学习/" title="SQL的学习">http://wangshixiong.github.io/2019/03/06/SQL的学习/</a>
+    <a href="http://wangshixiong.github.io/2019/03/14/pandas中轴axis的问题理解/" title="pandas中轴axis的问题理解">http://wangshixiong.github.io/2019/03/14/pandas中轴axis的问题理解/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -810,9 +639,13 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Pandas/" rel="tag"><i class="fa fa-tag"></i>Pandas</a>
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i>python</a>
+          
             <a href="/tags/Data-analysis/" rel="tag"><i class="fa fa-tag"></i>Data analysis</a>
           
-            <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i>SQL</a>
+            <a href="/tags/硕士期间/" rel="tag"><i class="fa fa-tag"></i>硕士期间</a>
           
         </div>
       
@@ -825,8 +658,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/06/精益数据分析-笔记/" rel="next" title="精益数据分析-笔记">
-                <i class="fa fa-chevron-left"></i> 精益数据分析-笔记
+              <a href="/2019/03/14/统计学复习/" rel="next" title="统计学复习">
+                <i class="fa fa-chevron-left"></i> 统计学复习
               </a>
             
           </div>
@@ -834,10 +667,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/06/读书笔记/" rel="prev" title="读书笔记">
-                读书笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -885,17 +714,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1017,23 +837,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL基础"><span class="nav-number">1.</span> <span class="nav-text">SQL基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检索数据"><span class="nav-number">2.</span> <span class="nav-text">检索数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序检索数据"><span class="nav-number">3.</span> <span class="nav-text">排序检索数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过滤数据"><span class="nav-number">4.</span> <span class="nav-text">过滤数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级过滤"><span class="nav-number">5.</span> <span class="nav-text">高级过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符过滤"><span class="nav-number">6.</span> <span class="nav-text">通配符过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建计算字段"><span class="nav-number">7.</span> <span class="nav-text">创建计算字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数特性"><span class="nav-number">8.</span> <span class="nav-text">函数特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">9.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汇总数据"><span class="nav-number">10.</span> <span class="nav-text">汇总数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组数据"><span class="nav-number">11.</span> <span class="nav-text">分组数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询"><span class="nav-number">12.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联结"><span class="nav-number">13.</span> <span class="nav-text">联结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级联结"><span class="nav-number">14.</span> <span class="nav-text">高级联结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合查询"><span class="nav-number">15.</span> <span class="nav-text">组合查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入数据"><span class="nav-number">16.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新和删除"><span class="nav-number">17.</span> <span class="nav-text">更新和删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建和操纵表"><span class="nav-number">18.</span> <span class="nav-text">创建和操纵表</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
