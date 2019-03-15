@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[工作中遇到的概念]]></title>
     <url>%2F2019%2F03%2F15%2F%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E6%A6%82%E5%BF%B5%2F</url>
-    <content type="text"><![CDATA[POC测试，即Proof of Concept，属于概念验证。是业界流行的针对客户具体应用的验证性测试，根据用户对采用系统提出的性能要求和扩展需求的指标，在选用服务器上进行真实数据的运行，对承载用户数据量和运行时间进行实际测算，并根据用户未来业务扩展的需求加大数据量以验证系统和平台的承载能力和性能变化。 IVR(Interactive Voice Response)即互动式语音应答，您只须用电话即可进入服务中心，可以根据操作提示收听手机娱乐产品，也可以根据用户输入的内容播放有关的信息。 UAP：UAP是华为的自动排队机名称，是自动呼叫分配（Automatic Call Distribution，ACD）的一种，是现代呼叫中心的组成模块，也是其核心技术。 SEO（Search Engine Optimization）：汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。 ASR语音识别（Automatic Speech Recognition），将口述音频转换为文本，通过API调用识别不同音频源发来的实时音频，或识别音频文件。]]></content>
+    <content type="text"><![CDATA[本篇用于记录一些遇到的名词缩写及概念。 POC测试，即Proof of Concept，属于概念验证。是业界流行的针对客户具体应用的验证性测试，根据用户对采用系统提出的性能要求和扩展需求的指标，在选用服务器上进行真实数据的运行，对承载用户数据量和运行时间进行实际测算，并根据用户未来业务扩展的需求加大数据量以验证系统和平台的承载能力和性能变化。 IVR(Interactive Voice Response)即互动式语音应答，您只须用电话即可进入服务中心，可以根据操作提示收听手机娱乐产品，也可以根据用户输入的内容播放有关的信息。 UAP：UAP是华为的自动排队机名称，是自动呼叫分配（Automatic Call Distribution，ACD）的一种，是现代呼叫中心的组成模块，也是其核心技术。 SEO（Search Engine Optimization）：汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。 ASR语音识别（Automatic Speech Recognition），将口述音频转换为文本，通过API调用识别不同音频源发来的实时音频，或识别音频文件。]]></content>
       <categories>
         <category>Job</category>
       </categories>
@@ -19,9 +19,9 @@
         <category>数据分析</category>
       </categories>
       <tags>
+        <tag>Pandas</tag>
         <tag>python</tag>
         <tag>Data analysis</tag>
-        <tag>Pandas</tag>
         <tag>硕士期间</tag>
       </tags>
   </entry>
