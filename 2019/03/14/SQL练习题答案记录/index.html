@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="吏部侍郎&#39;s Blog">
 <meta property="og:description" content="这是关于在一个SQL学习网站的练习题答案记录：SQL教程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-14T09:46:16.503Z">
+<meta property="og:updated_time" content="2019-03-18T05:41:38.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqlzoo练习答案练习题答案记录">
 <meta name="twitter:description" content="这是关于在一个SQL学习网站的练习题答案记录：SQL教程">
@@ -438,12 +438,24 @@
                 
               
 
-              <time title="创建时间：2019-03-14 09:26:42 / 修改时间：17:46:16" itemprop="dateCreated datePublished" datetime="2019-03-14T09:26:42+08:00">2019-03-14</time>
+              <time title="创建时间：2019-03-14 09:26:42" itemprop="dateCreated datePublished" datetime="2019-03-14T09:26:42+08:00">2019-03-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-18 13:41:38" itemprop="dateModified" datetime="2019-03-18T13:41:38+08:00">2019-03-18</time>
               
             
           </span>
@@ -515,7 +527,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.8k</span>
+                <span title="本文字数">5.8k</span>
               
 
               
@@ -529,7 +541,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -861,6 +873,23 @@
 <blockquote>
 <p>继续使用round函数。因为留一位小数1，不留小数是0，-1就好比153不留3，直接四舍五入150，同样-2就是153，不留53，直接四舍五入200。</p>
 </blockquote>
+<ol start="10">
+<li><strong>对于以N开头的国家，请显示名称 - 但用澳大拉西亚代替大洋洲。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>, </span><br><span class="line">       <span class="keyword">CASE</span> <span class="keyword">WHEN</span> continent=<span class="string">'Oceania'</span> <span class="keyword">THEN</span> <span class="string">'Australasia'</span>  <span class="keyword">ELSE</span> continent <span class="keyword">END</span></span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">name</span> <span class="keyword">LIKE</span> <span class="string">'N%'</span></span><br></pre></td></tr></table></figure>
+<p>这里用到了<code>case</code>函数首先要注意<code>case</code>函数和<code>name</code>之间，需要有一个逗号。</p>
+<blockquote>
+<p><strong><a href="https://www.jianshu.com/p/cbb05073931f" target="_blank" rel="noopener">SQL Case when 的使用方法</a>:</strong></p>
+<p>Case具有两种格式：简单Case函数和Case搜索函数。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt; /*简单Case函数*/</span><br><span class="line">&gt; CASE sex</span><br><span class="line">&gt; WHEN '1' THEN '男'</span><br><span class="line">&gt; WHEN '2' THEN '女'</span><br><span class="line">&gt; ELSE '其他' END</span><br><span class="line">&gt; </span><br><span class="line">&gt; /*Case搜索函数*/</span><br><span class="line">&gt; CASE WHEN sex = '1' THEN '男'</span><br><span class="line">&gt; WHEN sex = '2' THEN '女'</span><br><span class="line">&gt; ELSE '其他' END</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>这两种方式，可以实现相同的功能。简单Case函数的写法相对比较简洁，但是和Case搜索函数相比，功能方面会有些限制，比如写判断式。<br>还有一个需要注意的问题，Case函数只返回第一个符合条件的值，剩下的Case部分将会被自动忽略。</p>
+</blockquote>
+<ol start="11">
+<li><strong>查找国家和大洲，但是用Eurasia代替Europe和Asia; 用America代替在 North America 或者South America或者Caribbean的国家. 且国家名字要以A或者B开头。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>,</span><br><span class="line">      <span class="keyword">CASE</span> <span class="keyword">WHEN</span> continent = <span class="string">'Europe'</span> <span class="keyword">THEN</span>  <span class="string">'Eurasia'</span>  </span><br><span class="line">           <span class="keyword">WHEN</span> continent = <span class="string">'Asia'</span> <span class="keyword">THEN</span>  <span class="string">'Eurasia'</span></span><br><span class="line">           <span class="keyword">WHEN</span>  continent <span class="keyword">in</span> (<span class="string">'North America'</span>,<span class="string">'South America'</span>,<span class="string">'Caribbean'</span>) <span class="keyword">THEN</span> <span class="string">'America'</span></span><br><span class="line">           <span class="keyword">ELSE</span> continent <span class="keyword">END</span></span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">name</span>  <span class="keyword">LIKE</span> <span class="string">'A%'</span>  <span class="keyword">OR</span>   <span class="keyword">name</span>  <span class="keyword">LIKE</span>  <span class="string">'B%'</span>;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1200,7 +1229,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">33k</span>
+    <span title="站点总字数">34k</span>
   
 
   
@@ -1216,7 +1245,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共12.5k字</span>
+  <span class="post-count">博客全站共12.9k字</span>
 </div>
         
 
