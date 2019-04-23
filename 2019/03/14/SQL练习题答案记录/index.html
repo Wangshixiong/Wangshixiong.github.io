@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="吏部侍郎&#39;s Blog">
 <meta property="og:description" content="这是关于在一个SQL学习网站的练习题答案记录：SQL教程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-18T05:41:38.394Z">
+<meta property="og:updated_time" content="2019-04-23T08:27:44.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqlzoo练习答案练习题答案记录">
 <meta name="twitter:description" content="这是关于在一个SQL学习网站的练习题答案记录：SQL教程">
@@ -455,7 +455,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-18 13:41:38" itemprop="dateModified" datetime="2019-03-18T13:41:38+08:00">2019-03-18</time>
+                <time title="修改时间：2019-04-23 16:27:44" itemprop="dateModified" datetime="2019-04-23T16:27:44+08:00">2019-04-23</time>
               
             
           </span>
@@ -527,7 +527,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.8k</span>
+                <span title="本文字数">7.1k</span>
               
 
               
@@ -541,7 +541,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -762,8 +762,8 @@
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>,capital</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> capital </span><br><span class="line"><span class="keyword">LIKE</span> <span class="keyword">concat</span>(<span class="keyword">name</span>,<span class="string">'%'</span>)  <span class="comment">--注意审题，国家名字的延伸，那么国家名字应该在最前面。</span></span><br><span class="line"><span class="keyword">AND</span> capital != <span class="keyword">name</span>;<span class="comment">--这里也可以用"&lt;&gt;"</span></span><br></pre></td></tr></table></figure>
 <ol start="15">
-<li><p><strong>“Monaco-Ville”是合併國家名字 “Monaco” 和延伸詞”-Ville”.</strong></p>
-<p><strong>顯示國家名字，及其延伸詞，如首都是國家名字的延伸。</strong></p>
+<li><p><strong>“Monaco-Ville”是合併国家名字 “Monaco” 和延伸詞”-Ville”.</strong></p>
+<p><strong>顯示国家名字，及其延伸詞，如首都是国家名字的延伸。</strong></p>
 <p><strong>你可以使用SQL函數 <a href="https://sqlzoo.net/wiki/REPLACE" target="_blank" rel="noopener">REPLACE</a> 或 MID。</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>,<span class="keyword">replace</span>(capital, <span class="keyword">name</span>, <span class="string">''</span>) </span><br><span class="line"><span class="keyword">FROM</span> world </span><br><span class="line"><span class="keyword">WHERE</span> capital </span><br><span class="line"><span class="keyword">LIKE</span> <span class="keyword">concat</span>(<span class="keyword">name</span>,<span class="string">'%_'</span>)</span><br><span class="line"><span class="comment">/*replace函数定义</span></span><br><span class="line"><span class="comment">replace(original-string，search-string，replace-string)</span></span><br><span class="line"><span class="comment">original-string： 被搜索的字符串。可为任意长度。</span></span><br><span class="line"><span class="comment">search-string： 要搜索并被 replace-string 替换的字符串。该字符串的长度不应超过 255 个字节。如果 search-string 是空字符串，则按原样返回原始字符串。</span></span><br><span class="line"><span class="comment">replace-string： 该字符串用于替换 search-string。可为任意长度。如果 replacement-string 是空字符串，则删除出现的所有 search-string。</span></span><br><span class="line"><span class="comment">说明</span></span><br><span class="line"><span class="comment">用字符串表达式3替换字符串表达式1中出现的所有字符串表达式2的匹配项。返回新的字符串。</span></span><br><span class="line"><span class="comment">如果有某个参数为 NULL，此函数返回 NULL。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -854,8 +854,8 @@
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>,population,area</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> area &gt; <span class="number">3000000</span> </span><br><span class="line"><span class="keyword">OR</span> population &gt; <span class="number">250000000</span>;</span><br></pre></td></tr></table></figure>
 <ol start="7">
-<li><p><strong>美国，印度，中国(USA, India, China)是人口又大，同时面积又大的國家。排除这些国家。</strong></p>
-<p><strong>顯示以人口或面积为大国的國家，但不能同时面积大且人口多的国家名称，人口，面积。</strong></p>
+<li><p><strong>美国，印度，中国(USA, India, China)是人口又大，同时面积又大的国家。排除这些国家。</strong></p>
+<p><strong>顯示以人口或面积为大国的国家，但不能同时面积大且人口多的国家名称，人口，面积。</strong></p>
 </li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>,population,area</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> (area &gt; <span class="number">3000000</span> <span class="keyword">AND</span> population &lt; <span class="number">250000000</span>)</span><br><span class="line"><span class="keyword">OR</span> (area &lt; <span class="number">3000000</span> <span class="keyword">AND</span> population &gt; <span class="number">250000000</span>);</span><br></pre></td></tr></table></figure>
@@ -890,6 +890,30 @@
 <li><strong>查找国家和大洲，但是用Eurasia代替Europe和Asia; 用America代替在 North America 或者South America或者Caribbean的国家. 且国家名字要以A或者B开头。</strong></li>
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>,</span><br><span class="line">      <span class="keyword">CASE</span> <span class="keyword">WHEN</span> continent = <span class="string">'Europe'</span> <span class="keyword">THEN</span>  <span class="string">'Eurasia'</span>  </span><br><span class="line">           <span class="keyword">WHEN</span> continent = <span class="string">'Asia'</span> <span class="keyword">THEN</span>  <span class="string">'Eurasia'</span></span><br><span class="line">           <span class="keyword">WHEN</span>  continent <span class="keyword">in</span> (<span class="string">'North America'</span>,<span class="string">'South America'</span>,<span class="string">'Caribbean'</span>) <span class="keyword">THEN</span> <span class="string">'America'</span></span><br><span class="line">           <span class="keyword">ELSE</span> continent <span class="keyword">END</span></span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">name</span>  <span class="keyword">LIKE</span> <span class="string">'A%'</span>  <span class="keyword">OR</span>   <span class="keyword">name</span>  <span class="keyword">LIKE</span>  <span class="string">'B%'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="子查询练习"><a href="#子查询练习" class="headerlink" title="子查询练习"></a>子查询练习</h2><ol>
+<li><strong>列出人口数量大于俄罗斯，的国家的国家名称。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	<span class="keyword">name</span> </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	world </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	population &gt; ( <span class="keyword">SELECT</span> population <span class="keyword">FROM</span> world <span class="keyword">WHERE</span> <span class="keyword">NAME</span> = <span class="string">'Russia'</span> )</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>列出人均GDP高于英国的欧洲国家的国家名称(仔细读题)。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	<span class="keyword">name</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	world </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	continent = <span class="string">'Europe'</span> </span><br><span class="line">	<span class="keyword">AND</span> ( ( gdp / population ) &gt; ( <span class="keyword">SELECT</span> gdp / population <span class="keyword">FROM</span> world <span class="keyword">WHERE</span> <span class="keyword">NAME</span> = <span class="string">'United Kingdom'</span> ) )</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>在阿根廷Argentina 及 澳大利亞Australia所在的洲份中，列出当中的国家名字</strong> <strong>name</strong> <strong>及洲分</strong> <strong>continent</strong> <strong>。按国字名字順序排序</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">name</span>,</span><br><span class="line">	continent </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	world </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	continent <span class="keyword">IN</span> ( <span class="keyword">SELECT</span> continent <span class="keyword">FROM</span> world <span class="keyword">WHERE</span> <span class="keyword">name</span> <span class="keyword">IN</span> ( <span class="string">'Argentina'</span>, <span class="string">'Australia'</span> ) ) <span class="comment">--注意括号补全</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">	<span class="keyword">name</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><strong>哪一個国家的人口比加拿大Canada的多，但比波兰Poland的少?列出国家名字name和人口population 。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">name</span>,</span><br><span class="line">	population </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	world </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	( population &gt; ( <span class="keyword">SELECT</span> population <span class="keyword">FROM</span> world <span class="keyword">WHERE</span> <span class="keyword">name</span> = <span class="string">'Canada'</span> ) ) </span><br><span class="line">	<span class="keyword">AND</span> ( population &lt; ( <span class="keyword">SELECT</span> population <span class="keyword">FROM</span> world <span class="keyword">WHERE</span> <span class="keyword">name</span> = <span class="string">'Poland'</span> ) )</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li><strong>显示欧洲的国家名称的名字和每个国家的人口群体。以德国的人口的百分比作人口显示。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	nam,</span><br><span class="line">	<span class="keyword">CONCAT</span>( <span class="keyword">ROUND</span>( population / ( <span class="keyword">SELECT</span> population <span class="keyword">FROM</span> world <span class="keyword">WHERE</span> nam = <span class="string">'Germany'</span> ) * <span class="number">100</span>, <span class="number">0</span> ), <span class="string">'%'</span> ) <span class="comment">--先×100，好保留位数，注意concat拼接的是字符串</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	world </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	continent = <span class="string">'Europe'</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li><strong>哪些国家的国内生产总值比欧洲欧洲的全部国家都要高呢？[只需列出名称。]（有些国家的记录中，GDP是NULL，没有填入资料的。）</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">name</span> </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	world </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	gdp &gt; <span class="keyword">ALL</span> ( <span class="keyword">SELECT</span> <span class="keyword">max</span>( gdp ) <span class="keyword">FROM</span> world <span class="keyword">WHERE</span> continent = <span class="string">'Europe'</span> )</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1195,7 +1219,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL基础"><span class="nav-number">1.</span> <span class="nav-text">SQL基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#由一些简单的查询开始"><span class="nav-number">1.1.</span> <span class="nav-text">由一些简单的查询开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELECT国家名字"><span class="nav-number">1.2.</span> <span class="nav-text">SELECT国家名字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLZOO练习题之SELECT-from-WORLD-Tutorial-zh"><span class="nav-number">1.3.</span> <span class="nav-text">SQLZOO练习题之SELECT from WORLD Tutorial/zh</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL基础"><span class="nav-number">1.</span> <span class="nav-text">SQL基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#由一些简单的查询开始"><span class="nav-number">1.1.</span> <span class="nav-text">由一些简单的查询开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELECT国家名字"><span class="nav-number">1.2.</span> <span class="nav-text">SELECT国家名字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLZOO练习题之SELECT-from-WORLD-Tutorial-zh"><span class="nav-number">1.3.</span> <span class="nav-text">SQLZOO练习题之SELECT from WORLD Tutorial/zh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询练习"><span class="nav-number">1.4.</span> <span class="nav-text">子查询练习</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1233,7 +1257,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">39k</span>
+    <span title="站点总字数">41k</span>
   
 
   
@@ -1249,7 +1273,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共17k字</span>
+  <span class="post-count">博客全站共17.4k字</span>
 </div>
         
 
