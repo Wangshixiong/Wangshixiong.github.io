@@ -27,11 +27,23 @@
 <meta property="og:site_name" content="吏部侍郎">
 <meta property="og:description" content="安装–美化–问题集锦 网上的教程多试7.0版本以下的，因为7.0版本已经继承了很多插件功能，因此我尝试按照别人的教程试一次，报错，而且还是查不到原因的报错，没办法了，只能自己阅读配置文件的注释，自行更改。在此，记录一下。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo.jpg">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo1.jpg">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo3.jpg">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%AF%84%E8%AE%BAhexo.jpg">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D1.jpg">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D2.jpg">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D3.jpg">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/github%E8%A7%A3%E6%9E%90.png">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/ssh3.jpg">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%9C%B0%E5%9D%80.jpg">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/CNME.jpg">
 <meta property="article:published_time" content="2019-03-06T07:25:35.000Z">
-<meta property="article:modified_time" content="2021-11-05T23:51:51.883Z">
+<meta property="article:modified_time" content="2021-11-06T07:15:29.895Z">
 <meta property="article:author" content="华子">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo.jpg">
 
 <link rel="canonical" href="http://example.com/2019/03/06/hexo-next/">
 
@@ -197,7 +209,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-06 07:51:51" itemprop="dateModified" datetime="2021-11-06T07:51:51+08:00">2021-11-06</time>
+                <time title="修改时间：2021-11-06 15:15:29" itemprop="dateModified" datetime="2021-11-06T15:15:29+08:00">2021-11-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,6 +266,9 @@
 <figure class="highlight plaintext"><figcaption><span>uninstall -g hexo-cli</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -g hexo-cli</span><br><span class="line"></span><br><span class="line">npm install hexo-cli</span><br></pre></td></tr></table></figure>
 
 <p>最后将<code>F:\Hexoblog\node_modules\.bin</code>加入环境变量，解决！</p>
+<h2 id="hexo-deploy时出现的警告：LF-will-be-replaced-by-CRLF"><a href="#hexo-deploy时出现的警告：LF-will-be-replaced-by-CRLF" class="headerlink" title="hexo deploy时出现的警告：LF will be replaced by CRLF"></a>hexo deploy时出现的警告：LF will be replaced by CRLF</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> core.autocrlf <span class="literal">false</span> <span class="comment">//禁用自动转换</span></span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/783f7736e77e">dev_winner</a></p>
 <h2 id="NexT-v6-0-背景动画Canvas-nest设置无效的解决方案"><a href="#NexT-v6-0-背景动画Canvas-nest设置无效的解决方案" class="headerlink" title="NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案"></a>NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39345384/article/details/80544660">NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案</a></p>
 <h2 id="hexo-g报错"><a href="#hexo-g报错" class="headerlink" title="hexo g报错"></a><code>hexo g</code>报错</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ERROR Process failed: _posts/hexo-next.md</span><br><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 4, column 1:</span><br></pre></td></tr></table></figure>
 
@@ -263,6 +278,14 @@
 
 <h2 id="实现Follow-me-on-GitHub"><a href="#实现Follow-me-on-GitHub" class="headerlink" title="实现Follow me on GitHub"></a>实现Follow me on GitHub</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#next主题配置文件</span><br><span class="line">github_banner:</span><br><span class="line">  enable: true</span><br><span class="line">  permalink: https://github.com/wangshixiong</span><br><span class="line">  title: Follow me on GitHub</span><br></pre></td></tr></table></figure>
 
+<h2 id="阅读次数统计"><a href="#阅读次数统计" class="headerlink" title="阅读次数统计"></a>阅读次数统计</h2><p>首先，注册<a target="_blank" rel="noopener" href="https://leancloud.cn/">LeanCloud</a>账号，注册方法如下：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo.jpg" alt="leancloud"></p>
+<p><strong>创建<code>class</code></strong></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo1.jpg" alt="创建class"></p>
+<p><strong>最后就可以拿到相关的ID和key；</strong></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo3.jpg" alt="ID"></p>
+<p><code>Valine</code>同时支持阅读次数统计和评论相关功能；打开，并将ID和key输入即可；</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%AF%84%E8%AE%BAhexo.jpg" alt="valine配置"></p>
 <h2 id="添加评论功能"><a href="#添加评论功能" class="headerlink" title="添加评论功能"></a>添加评论功能</h2><p>Next 支持多款评论系统：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://disqus.com/">Disqus</a>：欧美 UI 风格，支持 Tweet、Facebook 等国外社交软件的三方登陆和一键分享。 <a target="_blank" rel="noopener" href="https://blog.disqus.com/disqus-welcomes-the-spruce">Demo</a></li>
@@ -311,8 +334,31 @@
 <p>日期统计计算功能由 <a target="_blank" rel="noopener" href="https://momentjs.com/">moment</a> 和 <a target="_blank" rel="noopener" href="https://github.com/codebox/moment-precise-range">moment-precise-range</a> 提供，也可用原生 JS Date 对象来实现。</p>
 <h2 id="安装及卸载hexo插件"><a href="#安装及卸载hexo插件" class="headerlink" title="安装及卸载hexo插件"></a>安装及卸载hexo插件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo安装xxx插件</span><br><span class="line"></span><br><span class="line">npm install xxx –save</span><br><span class="line"></span><br><span class="line">hexo卸载xxx插件</span><br><span class="line"></span><br><span class="line">npm uninstall xxx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h1 id="部署至Github"><a href="#部署至Github" class="headerlink" title="部署至Github"></a>部署至Github</h1><h2 id="阿里云域名解析"><a href="#阿里云域名解析" class="headerlink" title="阿里云域名解析"></a>阿里云域名解析</h2><p>首先，需要添加两条域名解析，解析的地址是你在Github所创建的分支连接；</p>
+<p><strong>第一条：</strong></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D1.jpg" alt="解析1"></p>
+<p><strong>第二条：</strong></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D2.jpg" alt="解析2"></p>
+<p>最终生成两条：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D3.jpg" alt="解析3"></p>
+<h2 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h2><p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/github%E8%A7%A3%E6%9E%90.png" alt="github"></p>
+<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><p>在命令行（<code>Gitbash</code>）输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;Github上你注册的邮箱地址&quot;</span><br></pre></td></tr></table></figure>
 
-
+<p>冒号后边就输入空格，<code>y/n </code>输入<code>y </code></p>
+<p>输入共计三次回车，即可得到秘钥；</p>
+<p>一般而言，秘钥本地地址为：<code>C:\Users\admin\.ssh</code></p>
+<p>用文本编辑器打开，并复制所有内容，打开<code>GitHub 点击Setting  ---&gt; SSH and GPG keys  ---&gt; New SSHkey</code></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/ssh3.jpg"></p>
+<p><strong>保存即可；</strong></p>
+<h2 id="修改本地配置文件"><a href="#修改本地配置文件" class="headerlink" title="修改本地配置文件"></a>修改本地配置文件</h2><p>修改hexo配置文件**_config.yml**，在最后添加以下内容：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%9C%B0%E5%9D%80.jpg" alt="本地地址"></p>
+<p>最后在本地Hexo里的文件，找到source文件夹，在里面先创建个文本文档，输入你购买的域名，保存后重命名为CNAME，去掉后缀。</p>
+<p>内容为你的阿里云域名；</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/CNME.jpg" alt="CNAME"></p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cxyzjd.com/article/qq_38148394/79998012">使用github-hexo-域名绑定（阿里云）搭建个人博客_狍子的情书的博客-程序员宅基地</a></p>
+<p>[<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021979631">超级详细Hexo+GitHub+阿里云域名的博客搭建教程</a></p>
 <p><strong><a target="_blank" rel="noopener" href="http://yearito.cn/">重点参考博客</a>,在此，对博主进行崇高的敬意。</strong></p>
 
     </div>
@@ -398,7 +444,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A5%E9%94%99"><span class="nav-number">1.</span> <span class="nav-text">报错</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%E5%91%BD%E4%BB%A4%E6%8A%A5%E9%94%99"><span class="nav-number">1.1.</span> <span class="nav-text">hexo命令报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-v6-0-%E8%83%8C%E6%99%AF%E5%8A%A8%E7%94%BBCanvas-nest%E8%AE%BE%E7%BD%AE%E6%97%A0%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.</span> <span class="nav-text">NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-g%E6%8A%A5%E9%94%99"><span class="nav-number">1.3.</span> <span class="nav-text">hexo g报错</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BE%8E%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">美化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E6%9C%AB%E5%B0%BE%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E8%AF%B4%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text">文章末尾添加版权说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0Follow-me-on-GitHub"><span class="nav-number">2.2.</span> <span class="nav-text">实现Follow me on GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="nav-number">2.3.</span> <span class="nav-text">添加评论功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gitment"><span class="nav-number">2.3.1.</span> <span class="nav-text">gitment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valine"><span class="nav-number">2.3.2.</span> <span class="nav-text">Valine</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">2.4.</span> <span class="nav-text">代码高亮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">2.5.</span> <span class="nav-text">搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%99%E7%82%B9%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4"><span class="nav-number">2.6.</span> <span class="nav-text">站点运行时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8A%E5%8D%B8%E8%BD%BDhexo%E6%8F%92%E4%BB%B6"><span class="nav-number">2.7.</span> <span class="nav-text">安装及卸载hexo插件</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A5%E9%94%99"><span class="nav-number">1.</span> <span class="nav-text">报错</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo%E5%91%BD%E4%BB%A4%E6%8A%A5%E9%94%99"><span class="nav-number">1.1.</span> <span class="nav-text">hexo命令报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-deploy%E6%97%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E8%AD%A6%E5%91%8A%EF%BC%9ALF-will-be-replaced-by-CRLF"><span class="nav-number">1.2.</span> <span class="nav-text">hexo deploy时出现的警告：LF will be replaced by CRLF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-v6-0-%E8%83%8C%E6%99%AF%E5%8A%A8%E7%94%BBCanvas-nest%E8%AE%BE%E7%BD%AE%E6%97%A0%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.3.</span> <span class="nav-text">NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-g%E6%8A%A5%E9%94%99"><span class="nav-number">1.4.</span> <span class="nav-text">hexo g报错</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BE%8E%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">美化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E6%9C%AB%E5%B0%BE%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E8%AF%B4%E6%98%8E"><span class="nav-number">2.1.</span> <span class="nav-text">文章末尾添加版权说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0Follow-me-on-GitHub"><span class="nav-number">2.2.</span> <span class="nav-text">实现Follow me on GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="nav-number">2.3.</span> <span class="nav-text">阅读次数统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="nav-number">2.4.</span> <span class="nav-text">添加评论功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gitment"><span class="nav-number">2.4.1.</span> <span class="nav-text">gitment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valine"><span class="nav-number">2.4.2.</span> <span class="nav-text">Valine</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">2.5.</span> <span class="nav-text">代码高亮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">2.6.</span> <span class="nav-text">搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%99%E7%82%B9%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4"><span class="nav-number">2.7.</span> <span class="nav-text">站点运行时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8A%E5%8D%B8%E8%BD%BDhexo%E6%8F%92%E4%BB%B6"><span class="nav-number">2.8.</span> <span class="nav-text">安装及卸载hexo插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E8%87%B3Github"><span class="nav-number">3.</span> <span class="nav-text">部署至Github</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="nav-number">3.1.</span> <span class="nav-text">阿里云域名解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">github配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEssh"><span class="nav-number">3.3.</span> <span class="nav-text">配置ssh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">修改本地配置文件</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
