@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本篇博客写于研究生期间。 试着，做了一个拉勾网数据分析师职位的数据分析。 其实，虽然很想做数据分析师，但是是跨行，心里相当忐忑，做这个分析就相当于加深自己对数据分析这个行业的了解了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拉钩数据职位分析报告">
+<meta property="og:url" content="http://example.com/2019/03/14/%E6%8B%89%E9%92%A9%E6%95%B0%E6%8D%AE%E8%81%8C%E4%BD%8D%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:site_name" content="吏部侍郎">
+<meta property="og:description" content="本篇博客写于研究生期间。 试着，做了一个拉勾网数据分析师职位的数据分析。 其实，虽然很想做数据分析师，但是是跨行，心里相当忐忑，做这个分析就相当于加深自己对数据分析这个行业的了解了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-3fbcec7158a3daef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-de3081466164482f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-aa69c333d0c186f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-1fa103862ac9d642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-77115f85773a02a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-b5a4bd3c68c60003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-ea146df4f4158efa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-9ead4b973a1efd61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-2941966e7a94ac89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-94028fa0ed6c3972.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-4f750929d8dd9b42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-dcf17f437e25cba9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-29b4498a25253562.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-886d61b7112cce01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-b1a9d36585716fde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-dccdb90e3eb91448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-d84521d19bda273e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="article:published_time" content="2019-03-14T09:51:56.000Z">
+<meta property="article:modified_time" content="2019-03-18T13:34:56.404Z">
+<meta property="article:author" content="华子">
+<meta property="article:tag" content="Data analysis">
+<meta property="article:tag" content="硕士期间">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2151277-3fbcec7158a3daef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="canonical" href="http://example.com/2019/03/14/%E6%8B%89%E9%92%A9%E6%95%B0%E6%8D%AE%E8%81%8C%E4%BD%8D%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>拉钩数据职位分析报告 | 吏部侍郎</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">吏部侍郎</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">我见青山多妩媚，料青山见我应如是</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/14/%E6%8B%89%E9%92%A9%E6%95%B0%E6%8D%AE%E8%81%8C%E4%BD%8D%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="华子">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吏部侍郎">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          拉钩数据职位分析报告
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-14 17:51:56" itemprop="dateCreated datePublished" datetime="2019-03-14T17:51:56+08:00">2019-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-18 21:34:56" itemprop="dateModified" datetime="2019-03-18T21:34:56+08:00">2019-03-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/03/14/%E6%8B%89%E9%92%A9%E6%95%B0%E6%8D%AE%E8%81%8C%E4%BD%8D%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" class="post-meta-item leancloud_visitors" data-flag-title="拉钩数据职位分析报告" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/03/14/%E6%8B%89%E9%92%A9%E6%95%B0%E6%8D%AE%E8%81%8C%E4%BD%8D%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/14/%E6%8B%89%E9%92%A9%E6%95%B0%E6%8D%AE%E8%81%8C%E4%BD%8D%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>本篇博客写于研究生期间。</strong></p>
+<p>试着，做了一个拉勾网数据分析师职位的数据分析。</p>
+<p>其实，虽然很想做数据分析师，但是是跨行，心里相当忐忑，做这个分析就相当于加深自己对数据分析这个行业的了解了。</p>
+<span id="more"></span>
+
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p><img src="http://upload-images.jianshu.io/upload_images/2151277-3fbcec7158a3daef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="大致思路"></p>
+<h1 id="起始"><a href="#起始" class="headerlink" title="起始"></a>起始</h1><h2 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h2><p>本来是想自己写个爬虫的，可是学了好久，还是不能融会贯通，总会出一些bug，只能继续学习，争取早日修成爬神功。又想着，总不能还没开始，就结束了这次实验。最后无意中发现了一个爬虫工具–八爪鱼、、只需要点点点（其实，当时有种挫败感）。不过，总算数据总算有了。</p>
+<h3 id="数据的采集"><a href="#数据的采集" class="headerlink" title="数据的采集"></a>数据的采集</h3><p>数据的具体采集过程如下：</p>
+<ol>
+<li>下载安装八爪鱼采集器。</li>
+<li>创建任务，选择列表及详情。</li>
+<li>输入任务名称、备注。</li>
+<li>输入采集网址</li>
+<li>设置详情页链接，也就是点进具体的详情页。</li>
+<li>设置好翻页。</li>
+<li>点击需要采集的数据信息。</li>
+<li>开始采集。</li>
+<li>数据导出为excel。</li>
+</ol>
+<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><h2 id="数据的清洗与处理"><a href="#数据的清洗与处理" class="headerlink" title="数据的清洗与处理"></a>数据的清洗与处理</h2><p>这里试着用了两种工具，Excel + Python，也比较了一下二者的优点。与前人所述基本一致，纸上得来终觉浅啊。</p>
+<p>想说一下字段的命名，如果用了Python进行处理的话，最好还是把字段命名为英文，或者说字母。可以简化后期处理，会方便很多。</p>
+<p>当然，你如果全用Excel是用中文命名，也是没有问题的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2151277-de3081466164482f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="字段"></p>
+<h3 id="Excel的处理过程"><a href="#Excel的处理过程" class="headerlink" title="Excel的处理过程"></a>Excel的处理过程</h3><h4 id="预防万一"><a href="#预防万一" class="headerlink" title="预防万一"></a>预防万一</h4><p>所谓预防万一，就是将Excel另存一份源数据，以免后期发生不可预知错误。</p>
+<h4 id="清洗与处理"><a href="#清洗与处理" class="headerlink" title="清洗与处理"></a>清洗与处理</h4><h5 id="命名字段"><a href="#命名字段" class="headerlink" title="命名字段"></a>命名字段</h5><p><img src="http://upload-images.jianshu.io/upload_images/2151277-aa69c333d0c186f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h5 id="处理salary列"><a href="#处理salary列" class="headerlink" title="处理salary列"></a>处理salary列</h5><p>新建工作表，将salary字段复制过来。</p>
+<ol>
+<li>清除所有格式。</li>
+<li>数据-分列-固定符号-“-“</li>
+<li>查找替换 k。这里说明下，清除格式后，无论查找大写K还是小写k，均可。</li>
+<li>因为抓取的数据是一组区间值，无法直接使用，因此取薪资的中间值也就是平均值。使用函数 ‘MEDIAN’ ，它会返回一组数的中值，或者使用 ‘AVERAGE’ 也可。得到的值如下：<img src="http://upload-images.jianshu.io/upload_images/2151277-1fa103862ac9d642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></li>
+<li>再对这组值进行数据分析，数据-数据分析-描述统计，得到最大值，最小值，全距，再根据公式计算组数，组距，进行数据分组，再根据 ‘ FREQUENCY ‘函数计算每组频率。</li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/2151277-77115f85773a02a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>接下来，就可以绘制图表了。</p>
+<p>ps：或者直接在第5步，采用数据分析工具中的直方图，进行分析。</p>
+<h5 id="处理experience、city、education、property、scale列"><a href="#处理experience、city、education、property、scale列" class="headerlink" title="处理experience、city、education、property、scale列"></a>处理experience、city、education、property、scale列</h5><p>新建工作表，复制。</p>
+<ol>
+<li>清除所有格式。</li>
+<li>使用函数 ‘SUBSTITUTE’ 替换所有 “/“，或者直接查找替换。</li>
+<li>数据透视表统计，绘图。</li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/2151277-b5a4bd3c68c60003.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h5 id="处理field列"><a href="#处理field列" class="headerlink" title="处理field列"></a>处理field列</h5><p>新建工作表，复制。</p>
+<ol>
+<li>清除所有格式</li>
+<li>查找替换”、”,”,”为半角“，”。</li>
+<li>分列。</li>
+</ol>
+<p>这样，基本就处理完了。</p>
+<h2 id="数据展示"><a href="#数据展示" class="headerlink" title="数据展示"></a>数据展示</h2><h3 id="行业及职位数量"><a href="#行业及职位数量" class="headerlink" title="行业及职位数量"></a>行业及职位数量</h3><p><img src="http://upload-images.jianshu.io/upload_images/2151277-ea146df4f4158efa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>从图中可以看出，17个行业中，移动互联网对数据人才的需求量是最大的，其次是金融和电子商务，而生物服务、文化娱乐、旅游、分类信息、硬件等的需求量最少。我认为，这从一个侧面反映了移动互联网数据量的巨大，以及对人才的渴求。</p>
+<h3 id="城市与职位"><a href="#城市与职位" class="headerlink" title="城市与职位"></a>城市与职位</h3><p>首先看一下，职位主要分布的区域：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2151277-9ead4b973a1efd61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>从图中可以看到，招聘公司主要位于南方，东三省竟然没有。我认为，这个时代，对数据的重视程度从某种程度上说明了发展的质量，就这个样本数据来说，从某种程度上反映了东三省的发展速度较慢，不如南方。</p>
+<p>再看一下，城市与职位：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2151277-2941966e7a94ac89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>这里主要截取了前10个城市，毫无意外，北上广赫然在列，杭州也很多，排在广州前面。看来，我们这些想做数据分析师的人，都无法逃离北上广啊。嗯，你也可以去杭州，据在那儿生活了七八年的同学来说，他不想走了。</p>
+<h3 id="行业、城市与薪资"><a href="#行业、城市与薪资" class="headerlink" title="行业、城市与薪资"></a>行业、城市与薪资</h3><p>前面数据处理得到了每个职位的平均薪资，这里进一步处理得到了每个行业在每个城市的平均薪资。下图是招聘最多的几个行业在每个城市的平均薪资。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2151277-94028fa0ed6c3972.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>从图中可以知道，整体上相对来说，广州在这些行业中属于较低的。北京、上海差距不是太大。</p>
+<h3 id="招聘公司融资阶段"><a href="#招聘公司融资阶段" class="headerlink" title="招聘公司融资阶段"></a>招聘公司融资阶段</h3><p><img src="http://upload-images.jianshu.io/upload_images/2151277-4f750929d8dd9b42.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h3 id="招聘不同职称的数量"><a href="#招聘不同职称的数量" class="headerlink" title="招聘不同职称的数量"></a>招聘不同职称的数量</h3><p>这里借助python进行了统计：</p>
+<pre><code>python
+
+import pandas as pd
+data = pd.DataFrame(pd.read_csv(r&#39;C:\Users\sunshine\Desktop\2017.8.20.csv&#39;,encoding = &#39;gbk&#39;))
+
+data.columns
+positionName = []
+for i in range(len(data.position)):
+    if &quot;实习&quot; in data.position[i]:
+        positionName.append(&quot;实习&quot;)
+    elif &quot;助理&quot; in data.position[i]:
+        positionName.append(&quot;助理&quot;)
+    elif &quot;专员&quot; in data.position[i]:
+        positionName.append(&quot;专员&quot;)
+    elif &quot;主管&quot; in data.position[i]:
+        positionName.append(&quot;主管&quot;)
+    elif &quot;经理&quot; in data.position[i]:
+        positionName.append(&quot;经理&quot;)
+    elif &quot;工程师&quot; in data.position[i]:
+        positionName.append(&quot;工程师&quot;)
+    elif &quot;总监&quot; in data.position[i]:
+        positionName.append(&quot;总监&quot;)
+    elif &quot;科学家&quot; in data.position[i]:
+        positionName.append(&quot;科学家&quot;)
+    elif &quot;架构&quot; in data.position[i]:
+        positionName.append(&quot;架构师&quot;)
+    else:
+        positionName.append(&quot;其他&quot;)
+
+data[&quot;positionName1&quot;] = positionName
+
+data[&quot;positionName1&quot;].value_counts()
+</code></pre>
+<p><img src="http://upload-images.jianshu.io/upload_images/2151277-dcf17f437e25cba9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>这里没有用matplotlib画，借用了echarts。</p>
+<h3 id="招聘公司对个人能力的要求"><a href="#招聘公司对个人能力的要求" class="headerlink" title="招聘公司对个人能力的要求"></a>招聘公司对个人能力的要求</h3><h4 id="招聘公司对应聘者的学历要求"><a href="#招聘公司对应聘者的学历要求" class="headerlink" title="招聘公司对应聘者的学历要求"></a>招聘公司对应聘者的学历要求</h4><p><img src="http://upload-images.jianshu.io/upload_images/2151277-29b4498a25253562.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>从图中我们很明显可以得到，公司对应聘者的学历要求，本科以上占了绝大部分，这说明，90%以上的公司对应聘者的学历要求很高，我认为，这可能有以下原因：</p>
+<ol>
+<li>分析行业对应聘者的知识水平要求还是很高的，因为数据分析师不但要涉及很多高等数学，统计学，概率论，线性代数等数学知识，还要涉及很多行业知识。</li>
+<li>这个行业需要应对很多日新月异的信息，各种东西更新迭代非常快，因此对应聘者的自学能力提出了很高的要求。</li>
+</ol>
+<h4 id="招聘公司对应聘者经验的要求"><a href="#招聘公司对应聘者经验的要求" class="headerlink" title="招聘公司对应聘者经验的要求"></a>招聘公司对应聘者经验的要求</h4><p><img src="http://upload-images.jianshu.io/upload_images/2151277-886d61b7112cce01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>大部分公司招的都是1-5年的，1年之下和经验不限的很少，所以说，实习经验很重要，没有实习经历，太难入行了。我泪奔。公司需要的都是老鸟啊。</p>
+<h4 id="招聘公司对应聘者工具掌握的要求"><a href="#招聘公司对应聘者工具掌握的要求" class="headerlink" title="招聘公司对应聘者工具掌握的要求"></a>招聘公司对应聘者工具掌握的要求</h4><p>这里使用了python进行了正则匹配，和词云生成。</p>
+<pre><code>python
+
+import re
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import jieba as jb
+from wordcloud import WordCloud
+
+#转换数据格式
+word_str = &#39;&#39;.join(data[&#39;description&#39;])
+#对文本进行分词
+word_split = jb.cut(word_str)
+#使用|分割结果并转换格式
+word_split1 = &quot;| &quot;.join(word_split)
+#设置要匹配的关键词
+pattern=re.compile(&#39;sql|mysql|posgresql|python|excel|spss|matlab|ppt|powerpoint|sas|[\br\b]|hadoop|spark|hive|ga|java|perl|tableau|eviews|presto&#39;)
+#匹配所有文本字符
+word_w=pattern.findall(word_split1)
+
+word_s = str(word_w)
+
+my_wordcloud = WordCloud().generate(word_s)
+plt.imshow(my_wordcloud)
+plt.axis(&quot;off&quot;)
+plt.show()
+</code></pre>
+<p><img src="http://upload-images.jianshu.io/upload_images/2151277-b1a9d36585716fde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>有点丑…</p>
+<p>因此，换了个工具…..</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2151277-dccdb90e3eb91448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>好看点了，无论哪张图都说明，除了excel，如果，你懂R或者python，再加上SQL，和spss，喔，你是个香饽饽。</p>
+<h4 id="招聘公司对应聘者技能的要求"><a href="#招聘公司对应聘者技能的要求" class="headerlink" title="招聘公司对应聘者技能的要求"></a>招聘公司对应聘者技能的要求</h4><p><img src="http://upload-images.jianshu.io/upload_images/2151277-d84521d19bda273e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<p>可以看到，公司对应聘者的要求大部分在数据分析能力和产品、业务等方面。看来，数据分析师最重要的还是懂业务，这也是我想发展的方向。至于数据挖掘方向，对数学功底要求太高了，毕竟我不是科班出身。但是，我觉得平时在实验室做的实验，其实和业务是一个道理。只不过，是将实验换成了产品。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>对于数据分析岗，招聘公司主要位于南方，但是以北京公司最多。不需要融资，B轮和上市公司对于该岗位的需求较大。并且主要是移动互联网行业的公司。企业对于应聘者的工具掌握多是Excel，Spss，Python，R，SQl等，如果你全会，那基本就是个香饽饽。在技能方面，企业比较看重数据分析，以及对业务、运营的理解。而对于应聘者而言，本科生学历完全足够了。就薪资而言，广州多有行业较其他城市偏低，北京和上海在同等工作经历下，薪资要领先于其他城市。</p>
+<p>所有的图：<a target="_blank" rel="noopener" href="https://me.bdp.cn/api/su/SBEGK7Z8">https://me.bdp.cn/api/su/SBEGK7Z8</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Data-analysis/" rel="tag"># Data analysis</a>
+              <a href="/tags/%E7%A1%95%E5%A3%AB%E6%9C%9F%E9%97%B4/" rel="tag"># 硕士期间</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/14/Python%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" rel="prev" title="Python常见错误">
+      <i class="fa fa-chevron-left"></i> Python常见错误
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/14/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%A4%8D%E4%B9%A0/" rel="next" title="统计学复习">
+      统计学复习 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E5%A7%8B"><span class="nav-number">2.</span> <span class="nav-text">起始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><span class="nav-number">2.1.</span> <span class="nav-text">数据来源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E9%87%87%E9%9B%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">数据的采集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E6%B8%85%E6%B4%97%E4%B8%8E%E5%A4%84%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">数据的清洗与处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Excel%E7%9A%84%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">Excel的处理过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%84%E9%98%B2%E4%B8%87%E4%B8%80"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">预防万一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E6%B4%97%E4%B8%8E%E5%A4%84%E7%90%86"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">清洗与处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E5%AD%97%E6%AE%B5"><span class="nav-number">3.1.1.2.1.</span> <span class="nav-text">命名字段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86salary%E5%88%97"><span class="nav-number">3.1.1.2.2.</span> <span class="nav-text">处理salary列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86experience%E3%80%81city%E3%80%81education%E3%80%81property%E3%80%81scale%E5%88%97"><span class="nav-number">3.1.1.2.3.</span> <span class="nav-text">处理experience、city、education、property、scale列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%84%E7%90%86field%E5%88%97"><span class="nav-number">3.1.1.2.4.</span> <span class="nav-text">处理field列</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA"><span class="nav-number">3.2.</span> <span class="nav-text">数据展示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E4%B8%9A%E5%8F%8A%E8%81%8C%E4%BD%8D%E6%95%B0%E9%87%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">行业及职位数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%8E%E5%B8%82%E4%B8%8E%E8%81%8C%E4%BD%8D"><span class="nav-number">3.2.2.</span> <span class="nav-text">城市与职位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E4%B8%9A%E3%80%81%E5%9F%8E%E5%B8%82%E4%B8%8E%E8%96%AA%E8%B5%84"><span class="nav-number">3.2.3.</span> <span class="nav-text">行业、城市与薪资</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%9B%E8%81%98%E5%85%AC%E5%8F%B8%E8%9E%8D%E8%B5%84%E9%98%B6%E6%AE%B5"><span class="nav-number">3.2.4.</span> <span class="nav-text">招聘公司融资阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%9B%E8%81%98%E4%B8%8D%E5%90%8C%E8%81%8C%E7%A7%B0%E7%9A%84%E6%95%B0%E9%87%8F"><span class="nav-number">3.2.5.</span> <span class="nav-text">招聘不同职称的数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%9B%E8%81%98%E5%85%AC%E5%8F%B8%E5%AF%B9%E4%B8%AA%E4%BA%BA%E8%83%BD%E5%8A%9B%E7%9A%84%E8%A6%81%E6%B1%82"><span class="nav-number">3.2.6.</span> <span class="nav-text">招聘公司对个人能力的要求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%9B%E8%81%98%E5%85%AC%E5%8F%B8%E5%AF%B9%E5%BA%94%E8%81%98%E8%80%85%E7%9A%84%E5%AD%A6%E5%8E%86%E8%A6%81%E6%B1%82"><span class="nav-number">3.2.6.1.</span> <span class="nav-text">招聘公司对应聘者的学历要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%9B%E8%81%98%E5%85%AC%E5%8F%B8%E5%AF%B9%E5%BA%94%E8%81%98%E8%80%85%E7%BB%8F%E9%AA%8C%E7%9A%84%E8%A6%81%E6%B1%82"><span class="nav-number">3.2.6.2.</span> <span class="nav-text">招聘公司对应聘者经验的要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%9B%E8%81%98%E5%85%AC%E5%8F%B8%E5%AF%B9%E5%BA%94%E8%81%98%E8%80%85%E5%B7%A5%E5%85%B7%E6%8E%8C%E6%8F%A1%E7%9A%84%E8%A6%81%E6%B1%82"><span class="nav-number">3.2.6.3.</span> <span class="nav-text">招聘公司对应聘者工具掌握的要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%9B%E8%81%98%E5%85%AC%E5%8F%B8%E5%AF%B9%E5%BA%94%E8%81%98%E8%80%85%E6%8A%80%E8%83%BD%E7%9A%84%E8%A6%81%E6%B1%82"><span class="nav-number">3.2.6.4.</span> <span class="nav-text">招聘公司对应聘者技能的要求</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">华子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://www.cnblogs.com/sunshinewang/" title="博客园 → http:&#x2F;&#x2F;www.cnblogs.com&#x2F;sunshinewang&#x2F;" rel="noopener" target="_blank"><i class="cnblogs fa-fw"></i>博客园</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/31dd28cfd02a" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;31dd28cfd02a" rel="noopener" target="_blank"><i class="jianshu fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">华子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'WxBDBLPoSvMihNTnoWJXROpq-gzGzoHsz',
+      appKey     : 'n6Y96eiGJ8wAGJfv9t4uOEfd',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

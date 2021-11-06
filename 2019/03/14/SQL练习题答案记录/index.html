@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="这是关于在一个SQL学习网站的练习题答案记录：SQL教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqlzoo练习答案练习题答案记录">
+<meta property="og:url" content="http://example.com/2019/03/14/SQL%E7%BB%83%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="吏部侍郎">
+<meta property="og:description" content="这是关于在一个SQL学习网站的练习题答案记录：SQL教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-14T01:26:42.000Z">
+<meta property="article:modified_time" content="2019-03-19T13:28:37.196Z">
+<meta property="article:author" content="华子">
+<meta property="article:tag" content="Data analysis">
+<meta property="article:tag" content="SQL">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2019/03/14/SQL%E7%BB%83%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88%E8%AE%B0%E5%BD%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>sqlzoo练习答案练习题答案记录 | 吏部侍郎</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">吏部侍郎</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">我见青山多妩媚，料青山见我应如是</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/14/SQL%E7%BB%83%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="华子">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吏部侍郎">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          sqlzoo练习答案练习题答案记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-14 09:26:42" itemprop="dateCreated datePublished" datetime="2019-03-14T09:26:42+08:00">2019-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-19 21:28:37" itemprop="dateModified" datetime="2019-03-19T21:28:37+08:00">2019-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/03/14/SQL%E7%BB%83%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88%E8%AE%B0%E5%BD%95/" class="post-meta-item leancloud_visitors" data-flag-title="sqlzoo练习答案练习题答案记录" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/03/14/SQL%E7%BB%83%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88%E8%AE%B0%E5%BD%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/14/SQL%E7%BB%83%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这是关于在一个<strong>SQL学习网站的练习题答案记录：<a target="_blank" rel="noopener" href="https://sqlzoo.net/wiki/SQL_Tutorial/zh">SQL教程</a></strong></p>
+<span id="more"></span>
+
+<h1 id="SQL基础"><a href="#SQL基础" class="headerlink" title="SQL基础"></a>SQL基础</h1><h2 id="由一些简单的查询开始"><a href="#由一些简单的查询开始" class="headerlink" title="由一些简单的查询开始"></a>由一些简单的查询开始</h2><p>这里的默认表格为WORLD表格 。</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>continent</th>
+<th>area</th>
+<th>population</th>
+<th>gdp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>652230</td>
+<td>25500100</td>
+<td>20343000000</td>
+</tr>
+<tr>
+<td>Albania</td>
+<td>Europe</td>
+<td>28748</td>
+<td>2831741</td>
+<td>12960000000</td>
+</tr>
+<tr>
+<td>Algeria</td>
+<td>Africa</td>
+<td>2381741</td>
+<td>37100000</td>
+<td>188681000000</td>
+</tr>
+<tr>
+<td>Andorra</td>
+<td>Europe</td>
+<td>468</td>
+<td>78115</td>
+<td>3712000000</td>
+</tr>
+<tr>
+<td>Angola</td>
+<td>Africa</td>
+<td>1246700</td>
+<td>20609294</td>
+<td>100990000000</td>
+</tr>
+<tr>
+<td>….</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>name:国家名称   continent:大洲   area:面积    population:人口     gdp:国内生产总值</p>
+</blockquote>
+<hr>
+<p><strong>SQL对大小写不敏感。</strong></p>
+<ol>
+<li><strong>以显示德国德国的人口。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> population </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;Germany&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>查询面积为5,000,000以上平方公里的国家，对每个国家显示她的名字和人均国内生产总值。</strong>（<code>gdp/population</code>）</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, gdp<span class="operator">/</span>population </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> area <span class="operator">&gt;</span> <span class="number">5000000</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>查询“Ireland 爱尔兰”,“Iceland 冰岛”,“Denmark 丹麦”的国家名称和人口。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, population </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="keyword">IN</span> (<span class="string">&#x27;Ireland&#x27;</span>, <span class="string">&#x27;Iceland&#x27;</span>, <span class="string">&#x27;Denmark&#x27;</span>);<span class="comment">--IN 操作符允许我们在 WHERE 子句中规定多个值</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>面积为200,000及250,000之间的国家名称和该国面积。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, area </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> area </span><br><span class="line"><span class="keyword">BETWEEN</span> <span class="number">200000</span> <span class="keyword">AND</span> <span class="number">250000</span>;</span><br><span class="line"><span class="comment">--操作符 BETWEEN ... AND 会选取介于两个值之间的数据范围。这些值可以是数值、文本或者日期。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="SELECT国家名字"><a href="#SELECT国家名字" class="headerlink" title="SELECT国家名字"></a>SELECT国家名字</h2><table>
+<thead>
+<tr>
+<th>name</th>
+<th>continent</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Afghanistan</td>
+<td>Asia</td>
+</tr>
+<tr>
+<td>Albania</td>
+<td>Europe</td>
+</tr>
+<tr>
+<td>Algeria</td>
+<td>Africa</td>
+</tr>
+<tr>
+<td>Andorra</td>
+<td>Europe</td>
+</tr>
+<tr>
+<td>Angola</td>
+<td>Africa</td>
+</tr>
+<tr>
+<td>….</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>name:国家名称    continent:大洲</p>
+</blockquote>
+<hr>
+<p><strong>SQL 通配符</strong></p>
+<p>在搜索数据库中的数据时，SQL 通配符可以替代一个或多个字符。</p>
+<p>SQL 通配符必须与 LIKE 运算符一起使用。</p>
+<p>在 SQL 中，可使用以下通配符：</p>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%</td>
+<td>替代一个或多个字符</td>
+</tr>
+<tr>
+<td>_</td>
+<td>仅替代一个字符</td>
+</tr>
+<tr>
+<td>[charlist]</td>
+<td>字符列中的任何单一字符</td>
+</tr>
+<tr>
+<td>[^charlist]或者[!charlist]</td>
+<td>不在字符列中的任何单一字符</td>
+</tr>
+</tbody></table>
+<hr>
+<ol>
+<li><strong>找出以Y为开首的国家</strong>。</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;Y%&#x27;</span></span><br><span class="line"><span class="comment">--LIKE 操作符用于在 WHERE 子句中搜索列中的指定模式。</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>找出以Y为结尾的国家。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;%Y&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>找出包含字母x的所有国家。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name </span><br><span class="line"><span class="keyword">LIKE</span> <span class="string">&#x27;%x%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>找出名字以land结尾的所有国家。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name </span><br><span class="line"><span class="keyword">LIKE</span> <span class="string">&#x27;%land&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><strong>查找以C开头，ia结尾的所有国家。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name </span><br><span class="line"><span class="keyword">LIKE</span> <span class="string">&#x27;C%ia&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><strong>找出名字包含双oo的国家</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name </span><br><span class="line"><span class="keyword">LIKE</span> <span class="string">&#x27;%oo%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><strong>找出名字包含三个或三个以上a的国家</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name </span><br><span class="line"><span class="keyword">LIKE</span> <span class="string">&#x27;%a%a%a%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li><strong>找出名字第二个字母为t的国家</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name </span><br><span class="line"><span class="keyword">LIKE</span> <span class="string">&#x27;_t%&#x27;</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> name</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li><strong>找出所有国家,其名字都有两个字母 o,被另外两个字母相隔着。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name </span><br><span class="line"><span class="keyword">LIKE</span> <span class="string">&#x27;%o__o%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>10 . <strong>找出名字是4个字母的国家。</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name </span><br><span class="line"><span class="keyword">LIKE</span> <span class="string">&#x27;____&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li><strong>找出首都和国家名字相同的国家。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> capital; <span class="comment">--可以加空格</span></span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li><strong>“Mexico 墨西哥”的首都是”Mexico City”。找出所有国家名字,其首都是国家名字加上”City”。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> capital <span class="operator">=</span> concat(name,<span class="string">&#x27; City&#x27;</span>);<span class="comment">--注意City前面的空格</span></span><br></pre></td></tr></table></figure>
+
+<ol start="13">
+<li><strong>找出所有首都和其国家名字,而首都要有国家名字中出現。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> capital,name</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> capital </span><br><span class="line"><span class="keyword">LIKE</span> concat(<span class="string">&#x27;%&#x27;</span>,name,<span class="string">&#x27;%&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="14">
+<li><strong>找出所有首都和其国家名字,而首都是国家名字的延伸。</strong></li>
+</ol>
+<p>   <strong>你愿显示 Mexico City,因它比其国家名字 Mexico 長。</strong><br>   <strong>你不愿显示 Luxembourg,因它的首都和国家名相是相同的。</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,capital</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> capital </span><br><span class="line"><span class="keyword">LIKE</span> concat(name,<span class="string">&#x27;%&#x27;</span>)  <span class="comment">--注意审题，国家名字的延伸，那么国家名字应该在最前面。</span></span><br><span class="line"><span class="keyword">AND</span> capital <span class="operator">!=</span> name;<span class="comment">--这里也可以用&quot;&lt;&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="15">
+<li><p><strong>“Monaco-Ville”是合併國家名字 “Monaco” 和延伸詞”-Ville”.</strong></p>
+<p><strong>顯示國家名字，及其延伸詞，如首都是國家名字的延伸。</strong></p>
+<p><strong>你可以使用SQL函數 <a target="_blank" rel="noopener" href="https://sqlzoo.net/wiki/REPLACE">REPLACE</a> 或 MID。</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,replace(capital, name, <span class="string">&#x27;&#x27;</span>) </span><br><span class="line"><span class="keyword">FROM</span> world </span><br><span class="line"><span class="keyword">WHERE</span> capital </span><br><span class="line"><span class="keyword">LIKE</span> concat(name,<span class="string">&#x27;%_&#x27;</span>)</span><br><span class="line"><span class="comment">/*replace函数定义</span></span><br><span class="line"><span class="comment">replace(original-string，search-string，replace-string)</span></span><br><span class="line"><span class="comment">original-string： 被搜索的字符串。可为任意长度。</span></span><br><span class="line"><span class="comment">search-string： 要搜索并被 replace-string 替换的字符串。该字符串的长度不应超过 255 个字节。如果 search-string 是空字符串，则按原样返回原始字符串。</span></span><br><span class="line"><span class="comment">replace-string： 该字符串用于替换 search-string。可为任意长度。如果 replacement-string 是空字符串，则删除出现的所有 search-string。</span></span><br><span class="line"><span class="comment">说明</span></span><br><span class="line"><span class="comment">用字符串表达式3替换字符串表达式1中出现的所有字符串表达式2的匹配项。返回新的字符串。</span></span><br><span class="line"><span class="comment">如果有某个参数为 NULL，此函数返回 NULL。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="SQLZOO练习题之SELECT-from-WORLD-Tutorial-zh"><a href="#SQLZOO练习题之SELECT-from-WORLD-Tutorial-zh" class="headerlink" title="SQLZOO练习题之SELECT from WORLD Tutorial/zh"></a>SQLZOO练习题之SELECT from WORLD Tutorial/zh</h2><p><strong>查询世界</strong></p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>continent</th>
+<th>area</th>
+<th>population</th>
+<th>gdp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>652230</td>
+<td>25500100</td>
+<td>20343000000</td>
+</tr>
+<tr>
+<td>Albania</td>
+<td>Europe</td>
+<td>28748</td>
+<td>2831741</td>
+<td>12960000000</td>
+</tr>
+<tr>
+<td>Algeria</td>
+<td>Africa</td>
+<td>2381741</td>
+<td>37100000</td>
+<td>188681000000</td>
+</tr>
+<tr>
+<td>Andorra</td>
+<td>Europe</td>
+<td>468</td>
+<td>78115</td>
+<td>3712000000</td>
+</tr>
+<tr>
+<td>Angola</td>
+<td>Africa</td>
+<td>1246700</td>
+<td>20609294</td>
+<td>100990000000</td>
+</tr>
+<tr>
+<td>…</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>name:国家名称    continent:大洲    area:面积    population:人口    gdp:国内生产总值</p>
+<p>**<a target="_blank" rel="noopener" href="https://sqlzoo.net/wiki/Read_the_notes_about_this_table.">表格说明</a> **</p>
+</blockquote>
+<hr>
+<ol>
+<li>*<em>查询大于2亿人口的国家。</em></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name </span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> population<span class="operator">&gt;</span><span class="number">200000000</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>查询大于2亿人口的国家，及国内生产总值</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,gdp<span class="operator">/</span>population</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> population <span class="operator">&gt;</span> <span class="number">200000000</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>查询在South America南美洲的国际爱和以百万为单位的人口數</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,population <span class="operator">/</span> <span class="number">1000000</span></span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> continent <span class="operator">=</span> <span class="string">&#x27;South America&#x27;</span>;<span class="comment">--别忘记单引号，代表字符串</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>查询法国，德国，意大利(France, Germany, Italy)的国家名称和人口</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,population</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="keyword">in</span> (<span class="string">&#x27;France&#x27;</span>, <span class="string">&#x27;Germany&#x27;</span>, <span class="string">&#x27;Italy&#x27;</span>)<span class="comment">--别忘记单引号，代表字符串</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><strong>查询包含单词“United”的国家</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name</span><br><span class="line"><span class="keyword">LIKE</span> <span class="string">&#x27;%United%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><strong>查询大国（面积大于300万平方公里或者人口大于2.5亿）的名字，面积，人口</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,population,area</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> area <span class="operator">&gt;</span> <span class="number">3000000</span> </span><br><span class="line"><span class="keyword">OR</span> population <span class="operator">&gt;</span> <span class="number">250000000</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><p><strong>美国，印度，中国(USA, India, China)是人口又大，同时面积又大的國家。排除这些国家。</strong></p>
+<p><strong>顯示以人口或面积为大国的國家，但不能同时面积大且人口多的国家名称，人口，面积。</strong></p>
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,population,area</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> (area <span class="operator">&gt;</span> <span class="number">3000000</span> <span class="keyword">AND</span> population <span class="operator">&lt;</span> <span class="number">250000000</span>)</span><br><span class="line"><span class="keyword">OR</span> (area <span class="operator">&lt;</span> <span class="number">3000000</span> <span class="keyword">AND</span> population <span class="operator">&gt;</span> <span class="number">250000000</span>);</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li><strong>查询并显示南美洲国家以百万计人口和10亿计gdp（保留小数点2位）。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,ROUND(population<span class="operator">/</span><span class="number">1000000</span>,<span class="number">2</span>),ROUND(gdp<span class="operator">/</span><span class="number">1000000000</span>,<span class="number">2</span>)</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> continent <span class="operator">=</span> <span class="string">&#x27;South America&#x27;</span>;</span><br><span class="line"><span class="comment">/*ROUND 函数用于把数值字段舍入为指定的小数位数。</span></span><br><span class="line"><span class="comment">SELECT ROUND(column_name,要保留的位数) FROM table_name*/</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/sql/sql_func_round.asp"><strong>ROUND() 函数</strong></a></p>
+</blockquote>
+<ol start="9">
+<li><strong>查询万亿元国内生产总值国家的人均国内生产总值，四捨五入到最近的$ 1000。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,ROUND(gdp<span class="operator">/</span>population,<span class="number">-3</span>)</span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> gdp <span class="operator">&gt;</span> <span class="number">1000000000000</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>继续使用round函数。因为留一位小数1，不留小数是0，-1就好比153不留3，直接四舍五入150，同样-2就是153，不留53，直接四舍五入200。</p>
+</blockquote>
+<ol start="10">
+<li><strong>对于以N开头的国家，请显示名称 - 但用澳大拉西亚代替大洋洲。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, </span><br><span class="line">       <span class="keyword">CASE</span> <span class="keyword">WHEN</span> continent<span class="operator">=</span><span class="string">&#x27;Oceania&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;Australasia&#x27;</span>  <span class="keyword">ELSE</span> continent <span class="keyword">END</span></span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;N%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里用到了<code>case</code>函数首先要注意<code>case</code>函数和<code>name</code>之间，需要有一个逗号。</p>
+<blockquote>
+<p><strong><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cbb05073931f">SQL Case when 的使用方法</a>:</strong></p>
+<p>Case具有两种格式：简单Case函数和Case搜索函数。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*简单Case函数*/</span></span><br><span class="line"><span class="keyword">CASE</span> sex</span><br><span class="line"><span class="keyword">WHEN</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;男&#x27;</span></span><br><span class="line"><span class="keyword">WHEN</span> <span class="string">&#x27;2&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line"><span class="keyword">ELSE</span> <span class="string">&#x27;其他&#x27;</span> <span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*Case搜索函数*/</span></span><br><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;男&#x27;</span></span><br><span class="line"><span class="keyword">WHEN</span> sex <span class="operator">=</span> <span class="string">&#x27;2&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line"><span class="keyword">ELSE</span> <span class="string">&#x27;其他&#x27;</span> <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+
+<p>这两种方式，可以实现相同的功能。简单Case函数的写法相对比较简洁，但是和Case搜索函数相比，功能方面会有些限制，比如写判断式。<br>还有一个需要注意的问题，Case函数只返回第一个符合条件的值，剩下的Case部分将会被自动忽略。</p>
+</blockquote>
+<ol start="11">
+<li><strong>查找国家和大洲，但是用Eurasia代替Europe和Asia; 用America代替在 North America 或者South America或者Caribbean的国家. 且国家名字要以A或者B开头。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name,</span><br><span class="line">      <span class="keyword">CASE</span> <span class="keyword">WHEN</span> continent <span class="operator">=</span> <span class="string">&#x27;Europe&#x27;</span> <span class="keyword">THEN</span>  <span class="string">&#x27;Eurasia&#x27;</span>  </span><br><span class="line">           <span class="keyword">WHEN</span> continent <span class="operator">=</span> <span class="string">&#x27;Asia&#x27;</span> <span class="keyword">THEN</span>  <span class="string">&#x27;Eurasia&#x27;</span></span><br><span class="line">           <span class="keyword">WHEN</span>  continent <span class="keyword">in</span> (<span class="string">&#x27;North America&#x27;</span>,<span class="string">&#x27;South America&#x27;</span>,<span class="string">&#x27;Caribbean&#x27;</span>) <span class="keyword">THEN</span> <span class="string">&#x27;America&#x27;</span></span><br><span class="line">           <span class="keyword">ELSE</span> continent <span class="keyword">END</span></span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">WHERE</span> name  <span class="keyword">LIKE</span> <span class="string">&#x27;A%&#x27;</span>  <span class="keyword">OR</span>   name  <span class="keyword">LIKE</span>  <span class="string">&#x27;B%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li><p><strong>Put the continents right…</strong></p>
+<ul>
+<li><strong>Oceania becomes Australasia</strong></li>
+<li><strong>Countries in Eurasia and Turkey go to Europe/Asia</strong></li>
+<li><strong>Caribbean islands starting with ‘B’ go to North America, other Caribbean islands go to South America</strong></li>
+</ul>
+<p><strong>Show the name, the original continent and the new continent of all countries.</strong></p>
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, continent, </span><br><span class="line">		<span class="keyword">CASE</span> </span><br><span class="line">		<span class="keyword">WHEN</span> continent <span class="operator">=</span> <span class="string">&#x27;Oceania&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;Australasia&#x27;</span></span><br><span class="line">		<span class="keyword">WHEN</span> continent <span class="keyword">IN</span> (<span class="string">&#x27;Eurasia&#x27;</span>, <span class="string">&#x27;Turkey&#x27;</span>) <span class="keyword">THEN</span> <span class="string">&#x27;Europe/Asia&#x27;</span></span><br><span class="line">		<span class="keyword">WHEN</span> continent <span class="operator">=</span> <span class="string">&#x27;Caribbean&#x27;</span> <span class="keyword">AND</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;B%&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;North America&#x27;</span></span><br><span class="line">		<span class="keyword">WHEN</span> continent <span class="operator">=</span> <span class="string">&#x27;Caribbean&#x27;</span> <span class="keyword">THEN</span> <span class="string">&#x27;South America&#x27;</span></span><br><span class="line">		<span class="keyword">ELSE</span> continent <span class="keyword">END</span></span><br><span class="line"><span class="keyword">FROM</span> world</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="查询诺贝尔奖"><a href="#查询诺贝尔奖" class="headerlink" title="查询诺贝尔奖"></a>查询诺贝尔奖</h2><ol>
+<li><strong>查询1950年诺贝尔奖的所有资料。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> yr, subject, winner</span><br><span class="line"><span class="keyword">FROM</span> nobel</span><br><span class="line"><span class="keyword">WHERE</span> yr <span class="operator">=</span> <span class="number">1950</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>查询1962年谁获得了诺贝尔文学奖(Literature)。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> winner</span><br><span class="line"><span class="keyword">FROM</span> nobel</span><br><span class="line"><span class="keyword">WHERE</span> yr <span class="operator">=</span> <span class="number">1962</span>  <span class="keyword">AND</span> subject <span class="operator">=</span> <span class="string">&#x27;Literature&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>查询爱因斯坦”(‘Albert Einstein’) 的获奖年份和奖项</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> yr,subject</span><br><span class="line"><span class="keyword">FROM</span> nobel</span><br><span class="line"><span class="keyword">WHERE</span> winner <span class="operator">=</span> <span class="string">&#x27;Albert Einstein&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>查询2000年及以后的诺贝尔奖和平奖（Peace）获得者</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> winner</span><br><span class="line"><span class="keyword">FROM</span> nobel</span><br><span class="line"><span class="keyword">WHERE</span> yr <span class="operator">&gt;=</span> <span class="number">2000</span> <span class="keyword">AND</span> subject <span class="operator">=</span> <span class="string">&#x27;Peace&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><strong>查询1980到1989（包含首尾）的诺贝尔文学奖获得者的所有资料</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> yr,subject,winner</span><br><span class="line"><span class="keyword">FROM</span> nobel</span><br><span class="line"><span class="keyword">WHERE</span> (yr <span class="operator">&gt;=</span> <span class="number">1980</span> <span class="keyword">AND</span> yr <span class="operator">&lt;=</span><span class="number">1989</span>) <span class="keyword">AND</span> subject <span class="operator">=</span> <span class="string">&#x27;Literature&#x27;</span>;	</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><strong>查询总统获得者的所有细节–Theodore Roosevelt；Woodrow Wilson； Jimmy Carter；</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> nobel</span><br><span class="line"><span class="keyword">WHERE</span> winner <span class="keyword">IN</span> (<span class="string">&#x27;Theodore Roosevelt&#x27;</span>,</span><br><span class="line">                  <span class="string">&#x27;Woodrow Wilson&#x27;</span>,</span><br><span class="line">                  <span class="string">&#x27;Jimmy Carter&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><strong>顯示名字為John 的得獎者。 (注意:外國人名字(First name)在前，姓氏(Last name)在後)</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> winner</span><br><span class="line"><span class="keyword">FROM</span> nobel</span><br><span class="line"><span class="keyword">WHERE</span> winner <span class="keyword">LIKE</span> <span class="string">&#x27;John%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="8">
+<li><strong>顯示1980年物理學(physics)獲獎者，及1984年化學獎(chemistry)獲得者</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> nobel</span><br><span class="line"><span class="keyword">WHERE</span>   (yr <span class="operator">=</span> <span class="number">1980</span> <span class="keyword">AND</span> subject <span class="operator">=</span> <span class="string">&#x27;physics&#x27;</span>) </span><br><span class="line">		<span class="keyword">OR</span> </span><br><span class="line">		(yr <span class="operator">=</span> <span class="number">1984</span> <span class="keyword">AND</span> subject <span class="operator">=</span> <span class="string">&#x27;chemistry&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li><strong>查看1980年獲獎者，但不包括化學獎(Chemistry)和醫學獎(Medicine)</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> nobel</span><br><span class="line"><span class="keyword">WHERE</span>   yr <span class="operator">=</span> <span class="number">1980</span> </span><br><span class="line">		<span class="keyword">AND</span> </span><br><span class="line">		subject <span class="keyword">NOT</span> <span class="keyword">IN</span>  (<span class="string">&#x27;Chemistry&#x27;</span>,<span class="string">&#x27;Medicine&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SQL <strong>IN</strong>运算符的语法</td>
+<td>SELECT column_name1，column_name2等 FROM table_name  WHERE column_name1 IN（value1，value2，etc）;</td>
+</tr>
+<tr>
+<td>SQL <strong>NOT IN</strong>运算符的语法</td>
+<td>SELECT column_name1，column_name2等 FROM table_name  WHERE column_name1 NOT IN（value1，value2，etc）;</td>
+</tr>
+</tbody></table>
+<ol start="10">
+<li><strong>顯示早期的醫學獎(Medicine)得獎者（1910之前，不包括1910），及近年文學獎(Literature)得獎者（2004年以後，包括2004年）。</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> nobel</span><br><span class="line"><span class="keyword">WHERE</span> </span><br><span class="line">(yr <span class="operator">&lt;</span> <span class="number">1910</span> <span class="keyword">AND</span> subject <span class="operator">=</span> <span class="string">&#x27;Medicine&#x27;</span>)</span><br><span class="line"><span class="keyword">OR</span></span><br><span class="line">(yr <span class="operator">&gt;=</span> <span class="number">2004</span> <span class="keyword">AND</span> subject <span class="operator">=</span> <span class="string">&#x27;Literature&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Data-analysis/" rel="tag"># Data analysis</a>
+              <a href="/tags/SQL/" rel="tag"># SQL</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="prev" title="读书笔记">
+      <i class="fa fa-chevron-left"></i> 读书笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/14/Pandas%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%A4%A7%E5%9D%91/" rel="next" title="Pandas数据类型转换的大坑">
+      Pandas数据类型转换的大坑 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">SQL基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B1%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%BC%80%E5%A7%8B"><span class="nav-number">1.1.</span> <span class="nav-text">由一些简单的查询开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SELECT%E5%9B%BD%E5%AE%B6%E5%90%8D%E5%AD%97"><span class="nav-number">1.2.</span> <span class="nav-text">SELECT国家名字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLZOO%E7%BB%83%E4%B9%A0%E9%A2%98%E4%B9%8BSELECT-from-WORLD-Tutorial-zh"><span class="nav-number">1.3.</span> <span class="nav-text">SQLZOO练习题之SELECT from WORLD Tutorial&#x2F;zh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%AF%BA%E8%B4%9D%E5%B0%94%E5%A5%96"><span class="nav-number">1.4.</span> <span class="nav-text">查询诺贝尔奖</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">华子</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://www.cnblogs.com/sunshinewang/" title="博客园 → http:&#x2F;&#x2F;www.cnblogs.com&#x2F;sunshinewang&#x2F;" rel="noopener" target="_blank"><i class="cnblogs fa-fw"></i>博客园</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/31dd28cfd02a" title="简书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;31dd28cfd02a" rel="noopener" target="_blank"><i class="jianshu fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">华子</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'WxBDBLPoSvMihNTnoWJXROpq-gzGzoHsz',
+      appKey     : 'n6Y96eiGJ8wAGJfv9t4uOEfd',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
