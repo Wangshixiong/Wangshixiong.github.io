@@ -20,20 +20,32 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="有时，真是不能理解自己，所有的正统书籍都看不进去（当然不包括专业书籍，以及教学书），却对各种网文情有独钟，这么多年，玄幻文，历史文，穿越文，科技幻想，武侠等等，读了不知道多少。">
+  <meta name="description" content="1、安装安装就不细说了，网上一搜一大堆，但是教程推荐这个： wikihow 网站是wikiHOW，很有意思的网站，比百度经验强大很多。 2、输入密码闪退安装完成后，在开始菜单，打开  开始程序 界面如下：  密码 输入你安装的时候所设置的根密码，回车，本该进入程序，这时，你发现程序闪退。 这一般是由于服务没有开启。 如果你是win10 ，就喊一声“你好小娜，打开服务”，win7之类的就在开始菜单搜">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读书笔记">
-<meta property="og:url" content="http://example.com/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="MySQL安装、输入密码闪退、workbench使用">
+<meta property="og:url" content="http://example.com/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="吏部侍郎">
-<meta property="og:description" content="有时，真是不能理解自己，所有的正统书籍都看不进去（当然不包括专业书籍，以及教学书），却对各种网文情有独钟，这么多年，玄幻文，历史文，穿越文，科技幻想，武侠等等，读了不知道多少。">
+<meta property="og:description" content="1、安装安装就不细说了，网上一搜一大堆，但是教程推荐这个： wikihow 网站是wikiHOW，很有意思的网站，比百度经验强大很多。 2、输入密码闪退安装完成后，在开始菜单，打开  开始程序 界面如下：  密码 输入你安装的时候所设置的根密码，回车，本该进入程序，这时，你发现程序闪退。 这一般是由于服务没有开启。 如果你是win10 ，就喊一声“你好小娜，打开服务”，win7之类的就在开始菜单搜">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-03-06T14:05:47.000Z">
-<meta property="article:modified_time" content="2021-11-05T14:10:49.361Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-766c306dda5ee7e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-6033418f8c744f7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-5dd2de8341283e81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-22bf5aa49cf110c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-6059b9163600c133.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-c4fad3719f14d5bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-7b493b94e7773a3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-aeaf91135254852d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-edc7744d380f0905.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-763d2270b72c2201.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2151277-fa5ce1c978632fb9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="article:published_time" content="2021-11-07T14:39:56.000Z">
+<meta property="article:modified_time" content="2021-11-07T14:41:55.371Z">
 <meta property="article:author" content="华子">
-<meta property="article:tag" content="读书笔记">
+<meta property="article:tag" content="工具">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2151277-766c306dda5ee7e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
-<link rel="canonical" href="http://example.com/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="http://example.com/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/">
 
 
 <script id="page-configurations">
@@ -46,7 +58,7 @@
   };
 </script>
 
-  <title>读书笔记 | 吏部侍郎</title>
+  <title>MySQL安装、输入密码闪退、workbench使用 | 吏部侍郎</title>
   
 
 
@@ -167,7 +179,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -180,7 +192,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          读书笔记
+          MySQL安装、输入密码闪退、workbench使用
         </h1>
 
         <div class="post-meta">
@@ -189,28 +201,13 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-03-06 22:05:47" itemprop="dateCreated datePublished" datetime="2019-03-06T22:05:47+08:00">2019-03-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-05 22:10:49" itemprop="dateModified" datetime="2021-11-05T22:10:49+08:00">2021-11-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
-                </span>
+              <time title="创建时间：2021-11-07 22:39:56 / 修改时间：22:41:55" itemprop="dateCreated datePublished" datetime="2021-11-07T22:39:56+08:00">2021-11-07</time>
             </span>
 
           
-            <span id="/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="读书笔记" title="阅读次数">
+            <span id="/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="MySQL安装、输入密码闪退、workbench使用" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -225,8 +222,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -241,38 +238,49 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>有时，真是不能理解自己，所有的正统书籍都看不进去（当然不包括专业书籍，以及教学书），却对各种网文情有独钟，这么多年，玄幻文，历史文，穿越文，科技幻想，武侠等等，读了不知道多少。</p>
-<span id="more"></span>
-
-<p>总结下，最喜欢的作者是烽火戏诸侯，最喜欢的书是《雪中悍刀行》,有时间，定要再读。</p>
-<p>[TOC]</p>
-<h3 id="机破星河"><a href="#机破星河" class="headerlink" title="机破星河"></a>机破星河</h3><ol>
-<li>有一个人说过，在这个世界上，看到的永远是表象。越接触这个庞大的世界，才越知道自己的渺小。如果一路冒然的撞过去，很有可能会头破血流。”</li>
-<li>不敬强权，不畏死亡，心怀梦想，至死方休。</li>
-</ol>
-<h3 id="我的1979"><a href="#我的1979" class="headerlink" title="我的1979"></a>我的1979</h3><blockquote>
-<p>大多数人想要改造这个世界，但却罕有人想改造自我”。</p>
-</blockquote>
-<h3 id="侠行天下"><a href="#侠行天下" class="headerlink" title="侠行天下"></a>侠行天下</h3><blockquote>
-<p>我和你讲道理，你和我耍流氓，我和你耍流氓，你和我讲法律，我和你讲法律，你和我玩实力，我和你玩实力，你和我讲道理……就是这个意思，这个世界的公道终究是力量来决定，所谓的法律，永远是统治阶层为了更好统治而立下的秩序</p>
-</blockquote>
-<h3 id="大魏宫廷"><a href="#大魏宫廷" class="headerlink" title="大魏宫廷"></a>大魏宫廷</h3><blockquote>
-<p>注：一个冷知识，为何握手是用右手？因为古代普遍是右手拿兵器，摊开右手，表示手中没有兵器，这是向对方表达善意的举动，不是因为惯用手的缘故。同理，抱拳时左手压右手，左手为尊，压着右手，象征和平。<br>(经查证确实有这种说法)</p>
-</blockquote>
-<h3 id="大国医"><a href="#大国医" class="headerlink" title="大国医"></a>大国医</h3><ol>
-<li>步子大了容易扯着蛋。”</li>
-<li>寒不累时则霜不降，温不兼日则冰不释。</li>
-<li>面对谣言，事实有时候很乏力。因为很多人传播谣言并不是因为他相信，只是因为见不得别人的高大映射出自己的“小”来。如果能将那些高大的人拉到跟自己一样的高度，无疑会十分快意。</li>
-<li>任何一个睿智的人，都知道做人不能太功利。然而为什么世人都一副鼠目寸光、功利小人的姿态？很大一个原因是危机感。即便有了稳定的生活，还是会觉得人生苦短，譬如朝露。</li>
-<li>对于这些常人而言，他们根本没有时间去见识那么大的世界，没有胆量在无关乎生活的领域投入精力和时间。这种焦虑还会传染给他们的孩子，让他们“两耳不闻窗外事，一心只读圣贤书”，浑然不知道欣赏花朵绽放、倾听的虫鸣蛙唱的乐趣和意义。</li>
-<li>此生无余事，不负好时光。”</li>
-</ol>
-<h3 id="医师"><a href="#医师" class="headerlink" title="医师"></a>医师</h3><blockquote>
-<p>生孩子，是这个世界上最痛苦的事情之一！<br>电视上，电影上，经常都会有孕妇生孩子的镜头，而且无一例外，这些镜头上的产妇，都是披头散发，汗湿满面。尤其是生产的时候，撕心裂肺的叫声，还有那满脸的痛苦表情，让人不由得心生惧意。</p>
-</blockquote>
-<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><blockquote>
-<p>人间只道黄金贵，不问天公买少年；</p>
-</blockquote>
+        <h1 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h1><p>安装就不细说了，网上一搜一大堆，但是教程推荐这个：</p>
+<p><a target="_blank" rel="noopener" href="http://t.cn/RXmj4zF">wikihow</a></p>
+<p>网站是wikiHOW，很有意思的网站，比百度经验强大很多。</p>
+<h1 id="2、输入密码闪退"><a href="#2、输入密码闪退" class="headerlink" title="2、输入密码闪退"></a>2、输入密码闪退</h1><p>安装完成后，在开始菜单，打开</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-766c306dda5ee7e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>开始程序</p>
+<p>界面如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-6033418f8c744f7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>密码</p>
+<p>输入你安装的时候所设置的根密码，回车，本该进入程序，这时，你发现程序闪退。</p>
+<p>这一般是由于服务没有开启。</p>
+<p>如果你是win10 ，就喊一声“你好小娜，打开服务”，win7之类的就在开始菜单搜索服务。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-5dd2de8341283e81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>服务</p>
+<p>右击启动，或重新启动。</p>
+<p>如果是手动模式，你可以右击属性改为自动。</p>
+<p>再去打开<strong>MySQL Command line client</strong>，输入密码，界面如下，即已正常。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-22bf5aa49cf110c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>MySQL命令窗口</p>
+<h1 id="3、workbench"><a href="#3、workbench" class="headerlink" title="3、workbench"></a>3、workbench</h1><p>首先搜索，workbench，然后在官网下载安装即可。</p>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/workbench/">workbench</a></p>
+<p>这里有一个问题，如下图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-6059b9163600c133.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>workbench</p>
+<p>你必须保证安装之前电脑已安装了二者，如果没有安装，点击二者，转到微软官网，下载相应版本安装即可。这个安装很简单。</p>
+<p>安装后打开，界面如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-c4fad3719f14d5bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>欢迎界面</p>
+<p>单击加号创建新的连接，连接新的数据库。单击矩形框中，直接打开服务器，这里需要输入密码，即你的mysql密码。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-7b493b94e7773a3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>密码</p>
+<p>在这里有一个问题，如果总是出现improper name等信息，那可能跟上方的问题一样，你的MySQL服务没有开启，去开启，然后在输入密码即可。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-aeaf91135254852d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>界面</p>
+<p>箭头部分创建数据库，表等等。右侧输入查询指令，关于SQL的声明等。点击黄色闪电执行相应命令。</p>
+<p>当然，在查询之前需要制定数据库：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-edc7744d380f0905.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>databases</p>
+<p>比如，查看当前所有数据库：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-763d2270b72c2201.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>数据库</p>
+<p>我的公众号，基本是自己的学习日志，有些小工具。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2151277-fa5ce1c978632fb9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
 
     </div>
 
@@ -282,7 +290,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 读书笔记</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
           </div>
 
         
@@ -291,12 +299,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/03/06/SQL%E7%9A%84%E5%AD%A6%E4%B9%A0/" rel="prev" title="SQL的学习">
-      <i class="fa fa-chevron-left"></i> SQL的学习
+    <a href="/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/" rel="prev" title="工作的处理方式">
+      <i class="fa fa-chevron-left"></i> 工作的处理方式
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/03/14/SQL%E7%BB%83%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88%E8%AE%B0%E5%BD%95/" rel="next" title="sqlzoo练习答案练习题答案记录">
-      sqlzoo练习答案练习题答案记录 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/11/07/%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" rel="next" title="论文排版">
+      论文排版 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -357,7 +365,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E7%A0%B4%E6%98%9F%E6%B2%B3"><span class="nav-number">1.</span> <span class="nav-text">机破星河</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E7%9A%841979"><span class="nav-number">2.</span> <span class="nav-text">我的1979</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%A0%E8%A1%8C%E5%A4%A9%E4%B8%8B"><span class="nav-number">3.</span> <span class="nav-text">侠行天下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E9%AD%8F%E5%AE%AB%E5%BB%B7"><span class="nav-number">4.</span> <span class="nav-text">大魏宫廷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%9B%BD%E5%8C%BB"><span class="nav-number">5.</span> <span class="nav-text">大国医</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BB%E5%B8%88"><span class="nav-number">6.</span> <span class="nav-text">医师</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#other"><span class="nav-number"></span> <span class="nav-text">other</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">1、安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80"><span class="nav-number">2.</span> <span class="nav-text">2、输入密码闪退</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E3%80%81workbench"><span class="nav-number">3.</span> <span class="nav-text">3、workbench</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
