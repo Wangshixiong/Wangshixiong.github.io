@@ -20,22 +20,41 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="昨天，做的那个数据分析报告用到了jieba分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..">
+  <meta name="description" content="都是PPT截图，在来自于一位大佬的分享。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jieba分词">
-<meta property="og:url" content="http://example.com/2021/11/07/jieba%E5%88%86%E8%AF%8D/index.html">
+<meta property="og:title" content="滴滴中台之路">
+<meta property="og:url" content="http://example.com/2021/11/10/%E6%BB%B4%E6%BB%B4%E4%B8%AD%E5%8F%B0%E4%B9%8B%E8%B7%AF/index.html">
 <meta property="og:site_name" content="吏部侍郎">
-<meta property="og:description" content="昨天，做的那个数据分析报告用到了jieba分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..">
+<meta property="og:description" content="都是PPT截图，在来自于一位大佬的分享。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2151277-f320ac066ac50c81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="article:published_time" content="2021-11-07T14:45:02.000Z">
-<meta property="article:modified_time" content="2021-11-07T15:01:32.378Z">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220056857.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220137833.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220208374.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220245766.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220316283.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220336470.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220353398.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220435991.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220453347.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220610065.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220630038.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220719145.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220735659.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220756926.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220820284.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220907901.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220922903.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220938475.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220955242.png">
+<meta property="og:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110221036010.png">
+<meta property="article:published_time" content="2021-11-10T13:53:00.000Z">
+<meta property="article:modified_time" content="2021-11-10T14:12:17.996Z">
 <meta property="article:author" content="华子">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="经验">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2151277-f320ac066ac50c81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220056857.png">
 
-<link rel="canonical" href="http://example.com/2021/11/07/jieba%E5%88%86%E8%AF%8D/">
+<link rel="canonical" href="http://example.com/2021/11/10/%E6%BB%B4%E6%BB%B4%E4%B8%AD%E5%8F%B0%E4%B9%8B%E8%B7%AF/">
 
 
 <script id="page-configurations">
@@ -48,7 +67,7 @@
   };
 </script>
 
-  <title>jieba分词 | 吏部侍郎</title>
+  <title>滴滴中台之路 | 吏部侍郎</title>
   
 
 
@@ -169,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/07/jieba%E5%88%86%E8%AF%8D/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/10/%E6%BB%B4%E6%BB%B4%E4%B8%AD%E5%8F%B0%E4%B9%8B%E8%B7%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -182,7 +201,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          jieba分词
+          滴滴中台之路
         </h1>
 
         <div class="post-meta">
@@ -193,11 +212,20 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-11-07 22:45:02 / 修改时间：23:01:32" itemprop="dateCreated datePublished" datetime="2021-11-07T22:45:02+08:00">2021-11-07</time>
+              <time title="创建时间：2021-11-10 21:53:00 / 修改时间：22:12:17" itemprop="dateCreated datePublished" datetime="2021-11-10T21:53:00+08:00">2021-11-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Job/" itemprop="url" rel="index"><span itemprop="name">Job</span></a>
+                </span>
             </span>
 
           
-            <span id="/2021/11/07/jieba%E5%88%86%E8%AF%8D/" class="post-meta-item leancloud_visitors" data-flag-title="jieba分词" title="阅读次数">
+            <span id="/2021/11/10/%E6%BB%B4%E6%BB%B4%E4%B8%AD%E5%8F%B0%E4%B9%8B%E8%B7%AF/" class="post-meta-item leancloud_visitors" data-flag-title="滴滴中台之路" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -212,8 +240,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/11/07/jieba%E5%88%86%E8%AF%8D/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/07/jieba%E5%88%86%E8%AF%8D/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/11/10/%E6%BB%B4%E6%BB%B4%E4%B8%AD%E5%8F%B0%E4%B9%8B%E8%B7%AF/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/10/%E6%BB%B4%E6%BB%B4%E4%B8%AD%E5%8F%B0%E4%B9%8B%E8%B7%AF/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -228,26 +256,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>昨天，做的那个数据分析报告用到了jieba分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..</p>
+        <p>都是PPT截图，在来自于一位大佬的分享。</p>
 <span id="more"></span>
 
-<h1 id="jieba官网简介"><a href="#jieba官网简介" class="headerlink" title="jieba官网简介"></a>jieba官网简介</h1><p>“结巴”中文分词：做最好的 Python 中文分词组件</p>
-<p>“Jieba” (Chinese for “to stutter”) Chinese text segmentation: built to be the best Python Chinese word segmentation module.</p>
-<p>支持三种分词模式：</p>
-<p>精确模式，试图将句子最精确地切开，适合文本分析；<br>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；<br>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>支持繁体分词</p>
-<p>支持自定义词典</p>
-<p>MIT 授权协议</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
-<h1 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h1><p>jieba.cut 方法接受三个输入参数: 需要分词的字符串；cut_all 参数用来控制是否采用全模式；HMM 参数用来控制是否使用 HMM 模型<br>jieba.cut_for_search 方法接受两个参数：需要分词的字符串；是否使用 HMM 模型。该方法适合用于搜索引擎构建倒排索引的分词，粒度比较细<br>待分词的字符串可以是 unicode 或 UTF-8 字符串、GBK 字符串。注意：不建议直接输入 GBK 字符串，可能无法预料地错误解码成 UTF-8<br>jieba.cut 以及 jieba.cut_for_search 返回的结构都是一个可迭代的 generator，可以使用 for 循环来获得分词后得到的每一个词语(unicode)，或者用<br>jieba.lcut 以及 jieba.lcut_for_search 直接返回 list<br>jieba.Tokenizer(dictionary=DEFAULT_DICT) 新建自定义分词器，可用于同时使用不同词典。jieba.dt 为默认分词器，所有全局分词相关函数都是该分词器的映射。</p>
-<h1 id="官网实例"><a href="#官网实例" class="headerlink" title="官网实例"></a>官网实例</h1><p>所以大概明白了生成词云需要的cut方法的具体参数都代表什么。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">True</span>) <span class="comment"># 全模式</span></span><br><span class="line"><span class="built_in">print</span>(str_li)</span><br><span class="line">&lt;generator <span class="built_in">object</span> Tokenizer.cut at <span class="number">0x00000298C3987FC0</span>&gt; <span class="comment"># 可以看到返回了一个生成器。</span></span><br><span class="line"></span><br><span class="line">FullMode = <span class="string">&#x27;Full mode :&#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li) <span class="comment">#全模式（不能解决歧义）</span></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">False</span>) <span class="comment"># 精确模式</span></span><br><span class="line">AccMode = <span class="string">&#x27;AccurateMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"></span><br><span class="line">AccurateMode: 我/来到/北京/清华大学 <span class="comment">#精确模式（适用于文本分析）</span></span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>) <span class="comment">#默认</span></span><br><span class="line">DefMode = <span class="string">&#x27;DefaultMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"></span><br><span class="line">DefaultMode: 我/来到/北京/清华大学 <span class="comment"># 我们可以看到，默认是精确模式</span></span><br><span class="line"></span><br><span class="line">long_sen = jb.cut_for_search(<span class="string">&quot;小明硕士毕业于中国科学院计算所，后在日本京都大学深造&quot;</span>)<span class="comment"># 搜索引擎模式</span></span><br><span class="line">Long = <span class="string">&#x27;search:&#x27;</span>+<span class="string">&#x27;,&#x27;</span>.join(long_sen)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后统一对比一下：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">Full mode :我/来到/北京/清华/清华大学/华大/大学</span><br><span class="line">AccurateMode: 我/来到/北京/清华大学</span><br><span class="line">DefaultMode: 他/来到/了/网易/杭研/大厦</span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>对于基本的词云及词频分析来说已经足够了，词典什么的情感分析，下次研究。</p>
-<p>下面试着对以前…….（long long ago）喜欢的一本小说（极品公子）做个词云分析。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">text = <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\sunshine\Desktop\极品公子.txt&#x27;</span>,encoding = <span class="string">&#x27;utf-8&#x27;</span>).read()</span><br><span class="line">text_f = jb.cut(text)</span><br><span class="line"></span><br><span class="line">text_s = <span class="string">&quot; &quot;</span>.join(text_f)</span><br><span class="line">boy_cloud = WordCloud().generate(text_s)</span><br><span class="line">plt.imshow(boy_cloud)</span><br><span class="line">plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://upload-images.jianshu.io/upload_images/2151277-f320ac066ac50c81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="极品公子"><br>可以发现，毫无疑问，叶无道是主角。</p>
-<p>jeiba地址：<a target="_blank" rel="noopener" href="https://github.com/fxsjy/jieba">https://github.com/fxsjy/jieba</a></p>
+<h2 id="为什么要建业务中台"><a href="#为什么要建业务中台" class="headerlink" title="为什么要建业务中台"></a>为什么要建业务中台</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220056857.png" alt="image-20211110220056857"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220137833.png" alt="image-20211110220137833"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220208374.png" alt="image-20211110220208374"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220245766.png" alt="image-20211110220245766"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220316283.png" alt="image-20211110220316283"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220336470.png" alt="image-20211110220336470"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220353398.png" alt="image-20211110220353398"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220435991.png" alt="image-20211110220435991"></p>
+<h2 id="如何推进技术中台项目落地"><a href="#如何推进技术中台项目落地" class="headerlink" title="如何推进技术中台项目落地"></a>如何推进技术中台项目落地</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220453347.png" alt="image-20211110220453347"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220610065.png" alt="image-20211110220610065"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220630038.png" alt="image-20211110220630038"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220719145.png" alt="image-20211110220719145"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220735659.png" alt="image-20211110220735659"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220756926.png" alt="image-20211110220756926"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220820284.png" alt="image-20211110220820284"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220907901.png" alt="image-20211110220907901"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220922903.png" alt="image-20211110220922903"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220938475.png" alt="image-20211110220938475"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220955242.png" alt="image-20211110220955242"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110221036010.png" alt="image-20211110221036010"></p>
 
     </div>
 
@@ -257,7 +288,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag"># 经验</a>
           </div>
 
         
@@ -266,13 +297,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/11/07/%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" rel="prev" title="论文排版">
-      <i class="fa fa-chevron-left"></i> 论文排版
+    <a href="/2021/11/07/%E7%94%A8%E6%95%B0%E6%8D%AE%E8%AE%B2%E6%95%85%E4%BA%8B/" rel="prev" title="用数据讲故事">
+      <i class="fa fa-chevron-left"></i> 用数据讲故事
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/11/07/%E3%80%8A%E8%B0%81%E8%AF%B4%E8%8F%9C%E9%B8%9F%E4%B8%8D%E4%BC%9A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="next" title="《谁说菜鸟不会数据分析》读书笔记">
-      《谁说菜鸟不会数据分析》读书笔记 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -332,7 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jieba%E5%AE%98%E7%BD%91%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">jieba官网简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E8%AF%8D"><span class="nav-number">2.</span> <span class="nav-text">分词</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%98%E7%BD%91%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">官网实例</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%BB%BA%E4%B8%9A%E5%8A%A1%E4%B8%AD%E5%8F%B0"><span class="nav-number">1.</span> <span class="nav-text">为什么要建业务中台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%8E%A8%E8%BF%9B%E6%8A%80%E6%9C%AF%E4%B8%AD%E5%8F%B0%E9%A1%B9%E7%9B%AE%E8%90%BD%E5%9C%B0"><span class="nav-number">2.</span> <span class="nav-text">如何推进技术中台项目落地</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
