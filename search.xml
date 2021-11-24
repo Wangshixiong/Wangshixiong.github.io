@@ -1,61 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>MySQL安装、输入密码闪退、workbench使用</title>
-    <url>/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h1><p>安装就不细说了，网上一搜一大堆，但是教程推荐这个：</p>
-<p><a href="http://t.cn/RXmj4zF">wikihow</a></p>
-<p>网站是wikiHOW，很有意思的网站，比百度经验强大很多。</p>
-<span id="more"></span>
-
-
-
-<h1 id="2、输入密码闪退"><a href="#2、输入密码闪退" class="headerlink" title="2、输入密码闪退"></a>2、输入密码闪退</h1><p>安装完成后，在开始菜单，打开</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223927629.png" alt="image-20211110223927629"></p>
-<p>开始程序</p>
-<p>界面如下：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223939313.png" alt="image-20211110223939313"></p>
-<p>密码</p>
-<p>输入你安装的时候所设置的根密码，回车，本该进入程序，这时，你发现程序闪退。</p>
-<p>这一般是由于服务没有开启。</p>
-<p>如果你是win10 ，就喊一声“你好小娜，打开服务”，win7之类的就在开始菜单搜索服务。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223953144.png" alt="image-20211110223953144"></p>
-<p>服务</p>
-<p>右击启动，或重新启动。</p>
-<p>如果是手动模式，你可以右击属性改为自动。</p>
-<p>再去打开<strong>MySQL Command line client</strong>，输入密码，界面如下，即已正常。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224014054.png" alt="image-20211110224014054"></p>
-<p><strong>MySQL命令窗口</strong></p>
-<h1 id="3、workbench"><a href="#3、workbench" class="headerlink" title="3、workbench"></a>3、workbench</h1><p>首先搜索，workbench，然后在官网下载安装即可。</p>
-<p><a href="https://dev.mysql.com/downloads/workbench/">workbench</a></p>
-<p>这里有一个问题，如下图：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224031337.png" alt="image-20211110224031337"></p>
-<p>workbench</p>
-<p>你必须保证安装之前电脑已安装了二者，如果没有安装，点击二者，转到微软官网，下载相应版本安装即可。这个安装很简单。</p>
-<p>安装后打开，界面如下：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224047608.png" alt="image-20211110224047608"></p>
-<p><strong>欢迎界面</strong></p>
-<p>单击加号创建新的连接，连接新的数据库。单击矩形框中，直接打开服务器，这里需要输入密码，即你的mysql密码。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224109215.png" alt="image-20211110224109215"></p>
-<p><strong>密码</strong></p>
-<p>在这里有一个问题，如果总是出现improper name等信息，那可能跟上方的问题一样，你的MySQL服务没有开启，去开启，然后在输入密码即可。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224125888.png" alt="image-20211110224125888"></p>
-<p><strong>界面</strong></p>
-<p>箭头部分创建数据库，表等等。右侧输入查询指令，关于SQL的声明等。点击黄色闪电执行相应命令。</p>
-<p>当然，在查询之前需要制定数据库：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224144446.png" alt="image-20211110224144446"></p>
-<p><strong>databases</strong></p>
-<p>比如，查看当前所有数据库：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224201022.png" alt="image-20211110224201022"></p>
-<p>数据库</p>
-<p>我的公众号，基本是自己的学习日志，有些小工具。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224216854.png" alt="image-20211110224216854"></p>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2020年我的年终总结</title>
     <url>/2020/12/31/2020%E6%88%91%E7%9A%84%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h1 id="2020年12月31日"><a href="#2020年12月31日" class="headerlink" title="2020年12月31日"></a>2020年12月31日</h1><p>仔细想想，今年好像也没做几件让我印象很深的事情。</p>
@@ -122,6 +67,61 @@
       </categories>
       <tags>
         <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL安装、输入密码闪退、workbench使用</title>
+    <url>/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h1><p>安装就不细说了，网上一搜一大堆，但是教程推荐这个：</p>
+<p><a href="http://t.cn/RXmj4zF">wikihow</a></p>
+<p>网站是wikiHOW，很有意思的网站，比百度经验强大很多。</p>
+<span id="more"></span>
+
+
+
+<h1 id="2、输入密码闪退"><a href="#2、输入密码闪退" class="headerlink" title="2、输入密码闪退"></a>2、输入密码闪退</h1><p>安装完成后，在开始菜单，打开</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223927629.png" alt="image-20211110223927629"></p>
+<p>开始程序</p>
+<p>界面如下：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223939313.png" alt="image-20211110223939313"></p>
+<p>密码</p>
+<p>输入你安装的时候所设置的根密码，回车，本该进入程序，这时，你发现程序闪退。</p>
+<p>这一般是由于服务没有开启。</p>
+<p>如果你是win10 ，就喊一声“你好小娜，打开服务”，win7之类的就在开始菜单搜索服务。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223953144.png" alt="image-20211110223953144"></p>
+<p>服务</p>
+<p>右击启动，或重新启动。</p>
+<p>如果是手动模式，你可以右击属性改为自动。</p>
+<p>再去打开<strong>MySQL Command line client</strong>，输入密码，界面如下，即已正常。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224014054.png" alt="image-20211110224014054"></p>
+<p><strong>MySQL命令窗口</strong></p>
+<h1 id="3、workbench"><a href="#3、workbench" class="headerlink" title="3、workbench"></a>3、workbench</h1><p>首先搜索，workbench，然后在官网下载安装即可。</p>
+<p><a href="https://dev.mysql.com/downloads/workbench/">workbench</a></p>
+<p>这里有一个问题，如下图：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224031337.png" alt="image-20211110224031337"></p>
+<p>workbench</p>
+<p>你必须保证安装之前电脑已安装了二者，如果没有安装，点击二者，转到微软官网，下载相应版本安装即可。这个安装很简单。</p>
+<p>安装后打开，界面如下：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224047608.png" alt="image-20211110224047608"></p>
+<p><strong>欢迎界面</strong></p>
+<p>单击加号创建新的连接，连接新的数据库。单击矩形框中，直接打开服务器，这里需要输入密码，即你的mysql密码。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224109215.png" alt="image-20211110224109215"></p>
+<p><strong>密码</strong></p>
+<p>在这里有一个问题，如果总是出现improper name等信息，那可能跟上方的问题一样，你的MySQL服务没有开启，去开启，然后在输入密码即可。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224125888.png" alt="image-20211110224125888"></p>
+<p><strong>界面</strong></p>
+<p>箭头部分创建数据库，表等等。右侧输入查询指令，关于SQL的声明等。点击黄色闪电执行相应命令。</p>
+<p>当然，在查询之前需要制定数据库：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224144446.png" alt="image-20211110224144446"></p>
+<p><strong>databases</strong></p>
+<p>比如，查看当前所有数据库：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224201022.png" alt="image-20211110224201022"></p>
+<p>数据库</p>
+<p>我的公众号，基本是自己的学习日志，有些小工具。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224216854.png" alt="image-20211110224216854"></p>
+]]></content>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -353,6 +353,193 @@
       <tags>
         <tag>Data analysis</tag>
         <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo-next</title>
+    <url>/2021/06/06/hexo-next/</url>
+    <content><![CDATA[<p><strong>安装–美化–问题集锦</strong></p>
+<p>网上的教程多试7.0版本以下的，因为7.0版本已经继承了很多插件功能，因此我尝试按照别人的教程试一次，报错，而且还是查不到原因的报错，没办法了，只能自己阅读配置文件的注释，自行更改。在此，记录一下。</p>
+<span id="more"></span>
+
+<h1 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h1><h2 id="hexo命令报错"><a href="#hexo命令报错" class="headerlink" title="hexo命令报错"></a>hexo命令报错</h2><figure class="highlight plaintext"><figcaption><span>Cannot find module 'hexo' from 'F:\Hexoblog'</span></figcaption><table><tr><td class="code"><pre><span class="line">ERROR Cannot find module &#x27;hexo&#x27; from &#x27;F:\Hexoblog&#x27;</span><br><span class="line">ERROR Local hexo loading failed in F:\Hexoblog</span><br><span class="line">ERROR Try running: &#x27;rm -rf node_modules &amp;&amp; npm install --force&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>研究发现，是环境变量的问题，需要将hexo加入环境变量，其一般路径为</p>
+<p><code>F:\Hexoblog\node_modules\.bin</code>注意后面的.bin；</p>
+<p>开始我是全局安装，但是一直不知道那里出来问题，后来干脆全部卸载</p>
+<p>然后在f盘打开cmd，进行安装，</p>
+<figure class="highlight plaintext"><figcaption><span>uninstall -g hexo-cli</span></figcaption><table><tr><td class="code"><pre><span class="line">npm uninstall -g hexo-cli</span><br><span class="line"></span><br><span class="line">npm install hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>最后将<code>F:\Hexoblog\node_modules\.bin</code>加入环境变量，解决！</p>
+<h2 id="hexo-deploy时出现的警告：LF-will-be-replaced-by-CRLF"><a href="#hexo-deploy时出现的警告：LF-will-be-replaced-by-CRLF" class="headerlink" title="hexo deploy时出现的警告：LF will be replaced by CRLF"></a>hexo deploy时出现的警告：LF will be replaced by CRLF</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> core.autocrlf <span class="literal">false</span> <span class="comment">//禁用自动转换</span></span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://www.jianshu.com/p/783f7736e77e">dev_winner</a></p>
+<h2 id="NexT-v6-0-背景动画Canvas-nest设置无效的解决方案"><a href="#NexT-v6-0-背景动画Canvas-nest设置无效的解决方案" class="headerlink" title="NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案"></a>NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案</h2><p><a href="https://blog.csdn.net/weixin_39345384/article/details/80544660">NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案</a></p>
+<h2 id="hexo-g报错"><a href="#hexo-g报错" class="headerlink" title="hexo g报错"></a><code>hexo g</code>报错</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ERROR Process failed: _posts/hexo-next.md</span><br><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 4, column 1:</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方案：</strong><a href="https://segmentfault.com/q/1010000009341531">查看新建要上传地md文件，tags或者其他，与后面内容是不是有一个空格。</a> </p>
+<h1 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h1><h2 id="文章末尾添加版权说明"><a href="#文章末尾添加版权说明" class="headerlink" title="文章末尾添加版权说明"></a>文章末尾添加版权说明</h2><p>版权声明默认使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，可以根据自身需要修改 <code>licence</code> 字段变更协议。 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">creative_commons:</span><br><span class="line">  license: by-nc-sa</span><br><span class="line">  sidebar: false#此处改成true，会在侧边显示</span><br><span class="line">  post: true #文章底部显示</span><br><span class="line">  language: zh-CN#语言</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现Follow-me-on-GitHub"><a href="#实现Follow-me-on-GitHub" class="headerlink" title="实现Follow me on GitHub"></a>实现Follow me on GitHub</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#next主题配置文件</span><br><span class="line">github_banner:</span><br><span class="line">  enable: true</span><br><span class="line">  permalink: https://github.com/wangshixiong</span><br><span class="line">  title: Follow me on GitHub</span><br></pre></td></tr></table></figure>
+
+<h2 id="阅读次数统计"><a href="#阅读次数统计" class="headerlink" title="阅读次数统计"></a>阅读次数统计</h2><p>首先，注册<a href="https://leancloud.cn/">LeanCloud</a>账号，注册方法如下：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo.jpg" alt="leancloud"></p>
+<p><strong>创建<code>class</code></strong></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo1.jpg" alt="创建class"></p>
+<p><strong>最后就可以拿到相关的ID和key；</strong></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo3.jpg" alt="ID"></p>
+<p><code>Valine</code>同时支持阅读次数统计和评论相关功能；打开，并将ID和key输入即可；</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%AF%84%E8%AE%BAhexo.jpg" alt="valine配置"></p>
+<h2 id="添加评论功能"><a href="#添加评论功能" class="headerlink" title="添加评论功能"></a>添加评论功能</h2><p>Next 支持多款评论系统：</p>
+<ul>
+<li><a href="https://disqus.com/">Disqus</a>：欧美 UI 风格，支持 Tweet、Facebook 等国外社交软件的三方登陆和一键分享。 <a href="https://blog.disqus.com/disqus-welcomes-the-spruce">Demo</a></li>
+<li><a href="https://github.com/imsun/gitment">gitment</a>：必须用 github 账号登陆才能评论，支持 Markdown 语法，与 github issues 页面风格一致 <a href="https://imsun.github.io/gitment/">Demo</a></li>
+<li><a href="https://valine.js.org/">Valine</a>：支持匿名评论，支持 Markdown 语法，界面简洁美观</li>
+<li><a href="http://changyan.kuaizhan.com/">畅言</a>：国产评论系统，可区分热评和最新评论，论坛贴吧风</li>
+<li><a href="https://www.livere.com/">来必力</a>：支持插入图片和 GIF，支持国内外多种社交媒体的三方登陆 <a href="https://www.livere.com/city-demo">Demo</a></li>
+</ul>
+<p>博客的评论系统不需要太过复杂的功能，我的要求是一定要轻量级，足够简洁美观，并且支持 Markdown 语法，首选 Valine 和 gitment，这两个评论系统都是由国内个人开发的，在此向开发者致敬。</p>
+<h3 id="gitment"><a href="#gitment" class="headerlink" title="gitment"></a>gitment</h3><p><strong>记录在NexT主题中添加gitalk评论系统的步骤。</strong></p>
+<p>gitalk：一个基于 Github Issue 和 Preact 开发的评论插件<br>详情Demo可见：<a href="https://gitalk.github.io/">https://gitalk.github.io/</a></p>
+<p><strong>1. Register Application</strong></p>
+<p>在GitHub上注册新应用，<a href="https://github.com/settings/applications/new">链接</a></p>
+<p><strong>2. 参数说明：</strong><br><code>Application name： # 应用名称，随意</code><br><code>Homepage URL： # 网站URL，如</code><a href="https://asdfv1929.github.io/">https://asdfv1929.github.io</a><br><code>Application description</code> # 描述，随意<br><code>Authorization callback URL：# 网站URL，</code><a href="https://asdfv1929.github.io`/">https://asdfv1929.github.io`</a></p>
+<p><strong>3.<code>Client ID</code>和<code>Client Secret</code>在后面的配置中需要用到，到时复制粘贴即可。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  githubID: github帐号  # 例：asdfv1929   </span><br><span class="line">  repo: 仓库名称   # 例：asdfv1929.github.io</span><br><span class="line">  ClientID: Client ID</span><br><span class="line">  ClientSecret: Client Secret</span><br><span class="line">  adminUser: github帐号 #指定可初始化评论账户</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://asdfv1929.github.io/2018/01/20/gitalk/">Hexo NexT主题中集成gitalk评论系统</a></p>
+<p><a href="https://liujunzhou.top/2018/8/10/gitalk-error/#%E4%BD%BF%E7%94%A8Github%E8%B4%A6%E6%88%B7%E7%99%BB%E9%99%86%E8%AF%84%E8%AE%BA%E5%8C%BA%E6%97%B6%E4%BC%9A%E8%BF%94%E5%9B%9E%E9%A6%96%E9%A1%B5%E6%88%96%E8%80%85404%E6%8A%A5%E9%94%99">Hexo NexT使用Gitalk未找到相关的Issues进行评论Error:Validation Failed</a></p>
+<h3 id="Valine"><a href="#Valine" class="headerlink" title="Valine"></a>Valine</h3><p>Next 已经内置了 Valine 组件，在主题配置文件中开启评论功能即可，同时，由于 Valine 是基于 Leancloud 提供后端服务的，所以需要填写 LeanCloud 的 App ID 和 App Key。 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">themes\next\_config.yml</span><br><span class="line">valine:</span><br><span class="line">  enable: true</span><br><span class="line">  appid:  ***&lt;app_id***</span><br><span class="line">  appkey: ***&lt;app_key&gt;***</span><br><span class="line">  notify: false  # 收到新评论是否邮件通知</span><br><span class="line">  verify: false  # 是否开启验证码</span><br><span class="line">  placeholder:  # 默认填充文字</span><br><span class="line">  avatar: mm  # 设置默认评论列表</span><br><span class="line">  guest_info: nick,mail  # 评论区头部表单</span><br><span class="line">  pageSize: 10  # 每页评论数</span><br><span class="line">  visitor: true  # 同时开启文章阅读次数统计</span><br></pre></td></tr></table></figure>
+
+<p>详细参考文献：<a href="http://yearito.cn/posts/hexo-advanced-settings.html">yearito</a></p>
+<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#next配置文件</span><br><span class="line"># Code Highlight theme</span><br><span class="line"># Available values: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https://github.com/chriskempson/tomorrow-theme</span><br><span class="line">highlight_theme: normal#这里更改，共有5种。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>先安装插件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<p>然后在next配置文件中找到：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true#改为true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br></pre></td></tr></table></figure>
+
+<h2 id="站点运行时间"><a href="#站点运行时间" class="headerlink" title="站点运行时间"></a>站点运行时间</h2><p><strong>在站点底部显示站点已运行时间。</strong></p>
+<p>修改<code>thems\next\layout\_custom\custom.swig</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;# 页脚站点运行时间统计 #&#125;</span><br><span class="line">&#123;% if theme.footer.ages.enable %&#125;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function timer() &#123;</span><br><span class="line">      var ages = moment.preciseDiff(moment(),moment(&#123;&#123; theme.footer.ages.birthday &#125;&#125;,&quot;YYYYMMDD&quot;));</span><br><span class="line">      ages = ages.replace(/years?/, &quot;年&quot;);</span><br><span class="line">      ages = ages.replace(/months?/, &quot;月&quot;);</span><br><span class="line">      ages = ages.replace(/days?/, &quot;天&quot;);</span><br><span class="line">      ages = ages.replace(/hours?/, &quot;小时&quot;);</span><br><span class="line">      ages = ages.replace(/minutes?/, &quot;分&quot;);</span><br><span class="line">      ages = ages.replace(/seconds?/, &quot;秒&quot;);</span><br><span class="line">      ages = ages.replace(/\d+/g, &#x27;&lt;span style=&quot;color:&#123;&#123; theme.footer.ages.color &#125;&#125;&quot;&gt;$&amp;&lt;/span&gt;&#x27;);</span><br><span class="line">      div.innerHTML = `&#123;&#123; __(&#x27;footer.age&#x27;)&#125;&#125; $&#123;ages&#125;`;</span><br><span class="line">    &#125;</span><br><span class="line">    var div = document.createElement(&quot;div&quot;);</span><br><span class="line">    //插入到copyright之后</span><br><span class="line">    var copyright = document.querySelector(&quot;.copyright&quot;);</span><br><span class="line">    document.querySelector(&quot;.footer-inner&quot;).insertBefore(div, copyright.nextSibling);</span><br><span class="line">    timer();</span><br><span class="line">    setInterval(&quot;timer()&quot;,1000)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果 custom.swig 文件不存在，需要新建一个，并且需要手动新建并在布局页面中<code>themes\next\layout\_layout.swig</code>末尾引入：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">     ...</span><br><span class="line">      &#123;% include &#x27;_third-party/exturl.swig&#x27; %&#125;</span><br><span class="line">      &#123;% include &#x27;_third-party/bookmark.swig&#x27; %&#125;</span><br><span class="line">      &#123;% include &#x27;_third-party/copy-code.swig&#x27; %&#125;</span><br><span class="line"></span><br><span class="line">+     &#123;% include &#x27;_custom/custom.swig&#x27; %&#125;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">  &lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>修改主题配置文件<code>themes\next\_config.yml</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  footer:</span><br><span class="line">    ...</span><br><span class="line">+   ages:</span><br><span class="line">+     # site running time</span><br><span class="line">+     enable: true</span><br><span class="line">+     # birthday of your site</span><br><span class="line">+     birthday: 20181001#这里的birthday要根据你的时间自行更改。</span><br><span class="line">+     # color of number</span><br><span class="line">+     color: &quot;#1890ff&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后补全对应文案`themes\next\languages\zh-Hans.yml：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  footer:</span><br><span class="line">    powered: &quot;由 %s 强力驱动&quot;</span><br><span class="line">    theme: 主题</span><br><span class="line">+   age: 我已在此等候你</span><br></pre></td></tr></table></figure>
+
+<p>刷新浏览器即可生效。</p>
+<p>日期统计计算功能由 <a href="https://momentjs.com/">moment</a> 和 <a href="https://github.com/codebox/moment-precise-range">moment-precise-range</a> 提供，也可用原生 JS Date 对象来实现。</p>
+<h1 id="文章永久链接配置"><a href="#文章永久链接配置" class="headerlink" title="文章永久链接配置"></a>文章永久链接配置</h1><p>站点配置文件<code>_config.yml</code> 中修改为：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">url: http:<span class="comment">//www.wenhuateng.top/ #站点域名</span></span><br><span class="line">permalink: :year/:month/:day/:title/ </span><br><span class="line">permalink_defaults:</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: <span class="literal">true</span> # Set to <span class="literal">false</span> to remove trailing &#x27;index.html&#x27; from permalinks</span><br><span class="line">  trailing_html: <span class="literal">true</span> # Set to <span class="literal">false</span> to remove trailing &#x27;.html&#x27; from permalinks</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="安装及卸载hexo插件"><a href="#安装及卸载hexo插件" class="headerlink" title="安装及卸载hexo插件"></a>安装及卸载hexo插件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo安装xxx插件</span><br><span class="line"></span><br><span class="line">npm install xxx –save</span><br><span class="line"></span><br><span class="line">hexo卸载xxx插件</span><br><span class="line"></span><br><span class="line">npm uninstall xxx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="部署至Github"><a href="#部署至Github" class="headerlink" title="部署至Github"></a>部署至Github</h1><h2 id="阿里云域名解析"><a href="#阿里云域名解析" class="headerlink" title="阿里云域名解析"></a>阿里云域名解析</h2><p>首先，需要添加两条域名解析，解析的地址是你在Github所创建的分支连接；</p>
+<p><strong>第一条：</strong></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D1.jpg" alt="解析1"></p>
+<p><strong>第二条：</strong></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D2.jpg" alt="解析2"></p>
+<p>最终生成两条：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D3.jpg" alt="解析3"></p>
+<h2 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h2><p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/github%E8%A7%A3%E6%9E%90.png" alt="github"></p>
+<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><p>在命令行（<code>Gitbash</code>）输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;Github上你注册的邮箱地址&quot;</span><br></pre></td></tr></table></figure>
+
+<p>冒号后边就输入空格，<code>y/n </code>输入<code>y </code></p>
+<p>输入共计三次回车，即可得到秘钥；</p>
+<p>一般而言，秘钥本地地址为：<code>C:\Users\admin\.ssh</code></p>
+<p>用文本编辑器打开，并复制所有内容，打开<code>GitHub 点击Setting  ---&gt; SSH and GPG keys  ---&gt; New SSHkey</code></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/ssh3.jpg"></p>
+<p><strong>保存即可；</strong></p>
+<h2 id="修改本地配置文件"><a href="#修改本地配置文件" class="headerlink" title="修改本地配置文件"></a>修改本地配置文件</h2><p>修改hexo配置文件**_config.yml**，在最后添加以下内容：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%9C%B0%E5%9D%80.jpg" alt="本地地址"></p>
+<p>最后在本地Hexo里的文件，找到source文件夹，在里面先创建个文本文档，输入你购买的域名，保存后重命名为CNAME，去掉后缀。</p>
+<p>内容为你的阿里云域名；</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/CNME.jpg" alt="CNAME"></p>
+<p>参考：</p>
+<p><a href="https://www.cxyzjd.com/article/qq_38148394/79998012">使用github-hexo-域名绑定（阿里云）搭建个人博客_狍子的情书的博客-程序员宅基地</a></p>
+<p>[<a href="https://segmentfault.com/a/1190000021979631">超级详细Hexo+GitHub+阿里云域名的博客搭建教程</a></p>
+<h1 id="使用阿里云oss自动存储图片"><a href="#使用阿里云oss自动存储图片" class="headerlink" title="使用阿里云oss自动存储图片"></a>使用阿里云oss自动存储图片</h1><blockquote>
+<p><strong>本篇主要参考</strong></p>
+<p><a href="https://picgo.github.io/PicGo-Doc/zh/guide/#%E5%BA%94%E7%94%A8%E6%A6%82%E8%BF%B0">Picgo使用手册</a></p>
+<p><a href="https://dlonng.com/posts/ailyun-oss">阿里云 OSS + PicGo 博客图床超详细配置教程！</a></p>
+</blockquote>
+<h2 id="Picgo下载及安装"><a href="#Picgo下载及安装" class="headerlink" title="Picgo下载及安装"></a>Picgo下载及安装</h2><ol>
+<li><p>打开官网，点击此处：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211109224213319.png" alt="打开应用"></p>
+</li>
+<li><p>点击<code>latest</code></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211109224346499.png" alt="image-20211109224346499"></p>
+</li>
+<li><p>下拉页面，点击.exe文件开始下载；</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211109224512835.png" alt="image-20211109224512835"></p>
+</li>
+</ol>
+<h2 id="踩的坑"><a href="#踩的坑" class="headerlink" title="踩的坑"></a>踩的坑</h2><p>按照相关教程配置后一直报错，后发现是因为阿里云的存储地址配置错误导致；报错：<code>requesterror： getaddrinfo</code></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/%E5%AD%98%E5%82%A8%E8%B7%AF%E5%BE%84.png" alt="image-20211109225005210"></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;accessKeyId&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;accessKeySecret&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;bucket&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 存储空间名</span></span><br><span class="line">  <span class="attr">&quot;area&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 存储区域代号</span></span><br><span class="line">  <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 自定义存储路径</span></span><br><span class="line">  <span class="attr">&quot;customUrl&quot;</span>: <span class="string">&quot;&quot;</span> <span class="comment">// 自定义域名，注意要加http://或者https://</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211109225142860.png" alt="image-20211109225142860"></p>
+<p>点击你所创建的bucket，进入后，点击左侧概览：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211109225408298.png" alt="image-20211109225408298"></p>
+<p><strong><a href="http://yearito.cn/">重点参考博客</a>,在此，对博主进行崇高的敬意。</strong></p>
+<h3 id="报错-1"><a href="#报错-1" class="headerlink" title="报错"></a>报错</h3><p>使用过程经常报错，错误内容如下：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/picgo%E6%8A%A5%E9%94%99.jpg" alt="picgo报错"></p>
+<p>初步解决办法：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/picgo%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3.jpg" alt="picgo报错解决"></p>
+<p>打开CMD，win+R，输入<code>%appdata%</code>，</p>
+<p>找到<code>data.json</code></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211121123938990.png" alt="image-20211121123938990"></p>
+<p>删除。这个里面存储的是图床的相关信息。</p>
+<p>然后重新启动<code>picgo</code>即可。</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jieba分词</title>
+    <url>/2021/11/07/jieba%E5%88%86%E8%AF%8D/</url>
+    <content><![CDATA[<p>昨天，做的那个数据分析报告用到了<code>jieba</code>分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..</p>
+<span id="more"></span>
+
+<h1 id="jieba官网简介"><a href="#jieba官网简介" class="headerlink" title="jieba官网简介"></a>jieba官网简介</h1><p>“结巴”中文分词：做最好的 Python 中文分词组件</p>
+<p><code>&quot;Jieba&quot; (Chinese for &quot;to stutter&quot;) Chinese text segmentation: built to be the best Python Chinese word segmentation module.</code></p>
+<p>支持三种分词模式：</p>
+<p>精确模式，试图将句子最精确地切开，适合文本分析；<br>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；<br>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>支持繁体分词</p>
+<p>支持自定义词典</p>
+<p>MIT 授权协议</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
+<h1 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h1><p><code>jieba.cut</code> 方法接受三个输入参数: 需要分词的字符串；cut_all 参数用来控制是否采用全模式；HMM 参数用来控制是否使用 HMM 模型<br><code>jieba.cut_for_search</code> 方法接受两个参数：需要分词的字符串；是否使用 HMM 模型。该方法适合用于搜索引擎构建倒排索引的分词，粒度比较细</p>
+<p>待分词的字符串可以是 unicode 或 UTF-8 字符串、GBK 字符串。注意：不建议直接输入 GBK 字符串，可能无法预料地错误解码成 UTF-8<br><code>jieba.cut </code>以及<code>jieba.cut_for_search</code>返回的结构都是一个可迭代的 generator，可以使用 for 循环来获得分词后得到的每一个词语(unicode)，</p>
+<p>或者用<code>jieba.lcut</code> 以及<code>jieba.lcut_for_search</code>直接返回 list</p>
+<p><code>jieba.Tokenizer(dictionary=DEFAULT_DICT) </code>新建自定义分词器，可用于同时使用不同词典。jieba.dt 为默认分词器，所有全局分词相关函数都是该分词器的映射。</p>
+<h1 id="官网实例"><a href="#官网实例" class="headerlink" title="官网实例"></a>官网实例</h1><p>所以大概明白了生成词云需要的cut方法的具体参数都代表什么。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">True</span>) <span class="comment"># 全模式</span></span><br><span class="line"><span class="built_in">print</span>(str_li)</span><br><span class="line">&lt;generator <span class="built_in">object</span> Tokenizer.cut at <span class="number">0x00000298C3987FC0</span>&gt; <span class="comment"># 可以看到返回了一个生成器。</span></span><br><span class="line"></span><br><span class="line">FullMode = <span class="string">&#x27;Full mode :&#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li) <span class="comment">#全模式（不能解决歧义）</span></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">False</span>) <span class="comment"># 精确模式</span></span><br><span class="line">AccMode = <span class="string">&#x27;AccurateMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"></span><br><span class="line">AccurateMode: 我/来到/北京/清华大学 <span class="comment">#精确模式（适用于文本分析）</span></span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>) <span class="comment">#默认</span></span><br><span class="line">DefMode = <span class="string">&#x27;DefaultMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"></span><br><span class="line">DefaultMode: 我/来到/北京/清华大学 <span class="comment"># 我们可以看到，默认是精确模式</span></span><br><span class="line"></span><br><span class="line">long_sen = jb.cut_for_search(<span class="string">&quot;小明硕士毕业于中国科学院计算所，后在日本京都大学深造&quot;</span>)<span class="comment"># 搜索引擎模式</span></span><br><span class="line">Long = <span class="string">&#x27;search:&#x27;</span>+<span class="string">&#x27;,&#x27;</span>.join(long_sen)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后统一对比一下：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">Full mode :我/来到/北京/清华/清华大学/华大/大学</span><br><span class="line">AccurateMode: 我/来到/北京/清华大学</span><br><span class="line">DefaultMode: 他/来到/了/网易/杭研/大厦</span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>对于基本的词云及词频分析来说已经足够了，词典什么的情感分析，下次研究。</p>
+<p>下面试着对以前…….（long long ago）喜欢的一本小说（极品公子）做个词云分析。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">text = <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\sunshine\Desktop\极品公子.txt&#x27;</span>,encoding = <span class="string">&#x27;utf-8&#x27;</span>).read()</span><br><span class="line">text_f = jb.cut(text)</span><br><span class="line"></span><br><span class="line">text_s = <span class="string">&quot; &quot;</span>.join(text_f)</span><br><span class="line">boy_cloud = WordCloud().generate(text_s)</span><br><span class="line">plt.imshow(boy_cloud)</span><br><span class="line">plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224246094.png" alt="无间道"></p>
+<p>可以发现，毫无疑问，叶无道是主角。</p>
+<p><a href="https://github.com/fxsjy/jieba">jeiba地址</a></p>
+]]></content>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -799,193 +986,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo-next</title>
-    <url>/2021/06/06/hexo-next/</url>
-    <content><![CDATA[<p><strong>安装–美化–问题集锦</strong></p>
-<p>网上的教程多试7.0版本以下的，因为7.0版本已经继承了很多插件功能，因此我尝试按照别人的教程试一次，报错，而且还是查不到原因的报错，没办法了，只能自己阅读配置文件的注释，自行更改。在此，记录一下。</p>
-<span id="more"></span>
-
-<h1 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h1><h2 id="hexo命令报错"><a href="#hexo命令报错" class="headerlink" title="hexo命令报错"></a>hexo命令报错</h2><figure class="highlight plaintext"><figcaption><span>Cannot find module 'hexo' from 'F:\Hexoblog'</span></figcaption><table><tr><td class="code"><pre><span class="line">ERROR Cannot find module &#x27;hexo&#x27; from &#x27;F:\Hexoblog&#x27;</span><br><span class="line">ERROR Local hexo loading failed in F:\Hexoblog</span><br><span class="line">ERROR Try running: &#x27;rm -rf node_modules &amp;&amp; npm install --force&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>研究发现，是环境变量的问题，需要将hexo加入环境变量，其一般路径为</p>
-<p><code>F:\Hexoblog\node_modules\.bin</code>注意后面的.bin；</p>
-<p>开始我是全局安装，但是一直不知道那里出来问题，后来干脆全部卸载</p>
-<p>然后在f盘打开cmd，进行安装，</p>
-<figure class="highlight plaintext"><figcaption><span>uninstall -g hexo-cli</span></figcaption><table><tr><td class="code"><pre><span class="line">npm uninstall -g hexo-cli</span><br><span class="line"></span><br><span class="line">npm install hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>最后将<code>F:\Hexoblog\node_modules\.bin</code>加入环境变量，解决！</p>
-<h2 id="hexo-deploy时出现的警告：LF-will-be-replaced-by-CRLF"><a href="#hexo-deploy时出现的警告：LF-will-be-replaced-by-CRLF" class="headerlink" title="hexo deploy时出现的警告：LF will be replaced by CRLF"></a>hexo deploy时出现的警告：LF will be replaced by CRLF</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">git config --<span class="keyword">global</span> core.autocrlf <span class="literal">false</span> <span class="comment">//禁用自动转换</span></span><br></pre></td></tr></table></figure>
-
-<p>参考：<a href="https://www.jianshu.com/p/783f7736e77e">dev_winner</a></p>
-<h2 id="NexT-v6-0-背景动画Canvas-nest设置无效的解决方案"><a href="#NexT-v6-0-背景动画Canvas-nest设置无效的解决方案" class="headerlink" title="NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案"></a>NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案</h2><p><a href="https://blog.csdn.net/weixin_39345384/article/details/80544660">NexT v6.0+ 背景动画Canvas_nest设置无效的解决方案</a></p>
-<h2 id="hexo-g报错"><a href="#hexo-g报错" class="headerlink" title="hexo g报错"></a><code>hexo g</code>报错</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ERROR Process failed: _posts/hexo-next.md</span><br><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 4, column 1:</span><br></pre></td></tr></table></figure>
-
-<p><strong>解决方案：</strong><a href="https://segmentfault.com/q/1010000009341531">查看新建要上传地md文件，tags或者其他，与后面内容是不是有一个空格。</a> </p>
-<h1 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h1><h2 id="文章末尾添加版权说明"><a href="#文章末尾添加版权说明" class="headerlink" title="文章末尾添加版权说明"></a>文章末尾添加版权说明</h2><p>版权声明默认使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，可以根据自身需要修改 <code>licence</code> 字段变更协议。 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">creative_commons:</span><br><span class="line">  license: by-nc-sa</span><br><span class="line">  sidebar: false#此处改成true，会在侧边显示</span><br><span class="line">  post: true #文章底部显示</span><br><span class="line">  language: zh-CN#语言</span><br></pre></td></tr></table></figure>
-
-<h2 id="实现Follow-me-on-GitHub"><a href="#实现Follow-me-on-GitHub" class="headerlink" title="实现Follow me on GitHub"></a>实现Follow me on GitHub</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#next主题配置文件</span><br><span class="line">github_banner:</span><br><span class="line">  enable: true</span><br><span class="line">  permalink: https://github.com/wangshixiong</span><br><span class="line">  title: Follow me on GitHub</span><br></pre></td></tr></table></figure>
-
-<h2 id="阅读次数统计"><a href="#阅读次数统计" class="headerlink" title="阅读次数统计"></a>阅读次数统计</h2><p>首先，注册<a href="https://leancloud.cn/">LeanCloud</a>账号，注册方法如下：</p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo.jpg" alt="leancloud"></p>
-<p><strong>创建<code>class</code></strong></p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo1.jpg" alt="创建class"></p>
-<p><strong>最后就可以拿到相关的ID和key；</strong></p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/leanhexo3.jpg" alt="ID"></p>
-<p><code>Valine</code>同时支持阅读次数统计和评论相关功能；打开，并将ID和key输入即可；</p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%AF%84%E8%AE%BAhexo.jpg" alt="valine配置"></p>
-<h2 id="添加评论功能"><a href="#添加评论功能" class="headerlink" title="添加评论功能"></a>添加评论功能</h2><p>Next 支持多款评论系统：</p>
-<ul>
-<li><a href="https://disqus.com/">Disqus</a>：欧美 UI 风格，支持 Tweet、Facebook 等国外社交软件的三方登陆和一键分享。 <a href="https://blog.disqus.com/disqus-welcomes-the-spruce">Demo</a></li>
-<li><a href="https://github.com/imsun/gitment">gitment</a>：必须用 github 账号登陆才能评论，支持 Markdown 语法，与 github issues 页面风格一致 <a href="https://imsun.github.io/gitment/">Demo</a></li>
-<li><a href="https://valine.js.org/">Valine</a>：支持匿名评论，支持 Markdown 语法，界面简洁美观</li>
-<li><a href="http://changyan.kuaizhan.com/">畅言</a>：国产评论系统，可区分热评和最新评论，论坛贴吧风</li>
-<li><a href="https://www.livere.com/">来必力</a>：支持插入图片和 GIF，支持国内外多种社交媒体的三方登陆 <a href="https://www.livere.com/city-demo">Demo</a></li>
-</ul>
-<p>博客的评论系统不需要太过复杂的功能，我的要求是一定要轻量级，足够简洁美观，并且支持 Markdown 语法，首选 Valine 和 gitment，这两个评论系统都是由国内个人开发的，在此向开发者致敬。</p>
-<h3 id="gitment"><a href="#gitment" class="headerlink" title="gitment"></a>gitment</h3><p><strong>记录在NexT主题中添加gitalk评论系统的步骤。</strong></p>
-<p>gitalk：一个基于 Github Issue 和 Preact 开发的评论插件<br>详情Demo可见：<a href="https://gitalk.github.io/">https://gitalk.github.io/</a></p>
-<p><strong>1. Register Application</strong></p>
-<p>在GitHub上注册新应用，<a href="https://github.com/settings/applications/new">链接</a></p>
-<p><strong>2. 参数说明：</strong><br><code>Application name： # 应用名称，随意</code><br><code>Homepage URL： # 网站URL，如</code><a href="https://asdfv1929.github.io/">https://asdfv1929.github.io</a><br><code>Application description</code> # 描述，随意<br><code>Authorization callback URL：# 网站URL，</code><a href="https://asdfv1929.github.io`/">https://asdfv1929.github.io`</a></p>
-<p><strong>3.<code>Client ID</code>和<code>Client Secret</code>在后面的配置中需要用到，到时复制粘贴即可。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  githubID: github帐号  # 例：asdfv1929   </span><br><span class="line">  repo: 仓库名称   # 例：asdfv1929.github.io</span><br><span class="line">  ClientID: Client ID</span><br><span class="line">  ClientSecret: Client Secret</span><br><span class="line">  adminUser: github帐号 #指定可初始化评论账户</span><br><span class="line">  distractionFreeMode: true</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://asdfv1929.github.io/2018/01/20/gitalk/">Hexo NexT主题中集成gitalk评论系统</a></p>
-<p><a href="https://liujunzhou.top/2018/8/10/gitalk-error/#%E4%BD%BF%E7%94%A8Github%E8%B4%A6%E6%88%B7%E7%99%BB%E9%99%86%E8%AF%84%E8%AE%BA%E5%8C%BA%E6%97%B6%E4%BC%9A%E8%BF%94%E5%9B%9E%E9%A6%96%E9%A1%B5%E6%88%96%E8%80%85404%E6%8A%A5%E9%94%99">Hexo NexT使用Gitalk未找到相关的Issues进行评论Error:Validation Failed</a></p>
-<h3 id="Valine"><a href="#Valine" class="headerlink" title="Valine"></a>Valine</h3><p>Next 已经内置了 Valine 组件，在主题配置文件中开启评论功能即可，同时，由于 Valine 是基于 Leancloud 提供后端服务的，所以需要填写 LeanCloud 的 App ID 和 App Key。 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">themes\next\_config.yml</span><br><span class="line">valine:</span><br><span class="line">  enable: true</span><br><span class="line">  appid:  ***&lt;app_id***</span><br><span class="line">  appkey: ***&lt;app_key&gt;***</span><br><span class="line">  notify: false  # 收到新评论是否邮件通知</span><br><span class="line">  verify: false  # 是否开启验证码</span><br><span class="line">  placeholder:  # 默认填充文字</span><br><span class="line">  avatar: mm  # 设置默认评论列表</span><br><span class="line">  guest_info: nick,mail  # 评论区头部表单</span><br><span class="line">  pageSize: 10  # 每页评论数</span><br><span class="line">  visitor: true  # 同时开启文章阅读次数统计</span><br></pre></td></tr></table></figure>
-
-<p>详细参考文献：<a href="http://yearito.cn/posts/hexo-advanced-settings.html">yearito</a></p>
-<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#next配置文件</span><br><span class="line"># Code Highlight theme</span><br><span class="line"># Available values: normal | night | night eighties | night blue | night bright</span><br><span class="line"># https://github.com/chriskempson/tomorrow-theme</span><br><span class="line">highlight_theme: normal#这里更改，共有5种。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>先安装插件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-
-<p>然后在next配置文件中找到：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true#改为true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br></pre></td></tr></table></figure>
-
-<h2 id="站点运行时间"><a href="#站点运行时间" class="headerlink" title="站点运行时间"></a>站点运行时间</h2><p><strong>在站点底部显示站点已运行时间。</strong></p>
-<p>修改<code>thems\next\layout\_custom\custom.swig</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;# 页脚站点运行时间统计 #&#125;</span><br><span class="line">&#123;% if theme.footer.ages.enable %&#125;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function timer() &#123;</span><br><span class="line">      var ages = moment.preciseDiff(moment(),moment(&#123;&#123; theme.footer.ages.birthday &#125;&#125;,&quot;YYYYMMDD&quot;));</span><br><span class="line">      ages = ages.replace(/years?/, &quot;年&quot;);</span><br><span class="line">      ages = ages.replace(/months?/, &quot;月&quot;);</span><br><span class="line">      ages = ages.replace(/days?/, &quot;天&quot;);</span><br><span class="line">      ages = ages.replace(/hours?/, &quot;小时&quot;);</span><br><span class="line">      ages = ages.replace(/minutes?/, &quot;分&quot;);</span><br><span class="line">      ages = ages.replace(/seconds?/, &quot;秒&quot;);</span><br><span class="line">      ages = ages.replace(/\d+/g, &#x27;&lt;span style=&quot;color:&#123;&#123; theme.footer.ages.color &#125;&#125;&quot;&gt;$&amp;&lt;/span&gt;&#x27;);</span><br><span class="line">      div.innerHTML = `&#123;&#123; __(&#x27;footer.age&#x27;)&#125;&#125; $&#123;ages&#125;`;</span><br><span class="line">    &#125;</span><br><span class="line">    var div = document.createElement(&quot;div&quot;);</span><br><span class="line">    //插入到copyright之后</span><br><span class="line">    var copyright = document.querySelector(&quot;.copyright&quot;);</span><br><span class="line">    document.querySelector(&quot;.footer-inner&quot;).insertBefore(div, copyright.nextSibling);</span><br><span class="line">    timer();</span><br><span class="line">    setInterval(&quot;timer()&quot;,1000)</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果 custom.swig 文件不存在，需要新建一个，并且需要手动新建并在布局页面中<code>themes\next\layout\_layout.swig</code>末尾引入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">     ...</span><br><span class="line">      &#123;% include &#x27;_third-party/exturl.swig&#x27; %&#125;</span><br><span class="line">      &#123;% include &#x27;_third-party/bookmark.swig&#x27; %&#125;</span><br><span class="line">      &#123;% include &#x27;_third-party/copy-code.swig&#x27; %&#125;</span><br><span class="line"></span><br><span class="line">+     &#123;% include &#x27;_custom/custom.swig&#x27; %&#125;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">  &lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>修改主题配置文件<code>themes\next\_config.yml</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  footer:</span><br><span class="line">    ...</span><br><span class="line">+   ages:</span><br><span class="line">+     # site running time</span><br><span class="line">+     enable: true</span><br><span class="line">+     # birthday of your site</span><br><span class="line">+     birthday: 20181001#这里的birthday要根据你的时间自行更改。</span><br><span class="line">+     # color of number</span><br><span class="line">+     color: &quot;#1890ff&quot;</span><br></pre></td></tr></table></figure>
-
-<p>然后补全对应文案`themes\next\languages\zh-Hans.yml：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  footer:</span><br><span class="line">    powered: &quot;由 %s 强力驱动&quot;</span><br><span class="line">    theme: 主题</span><br><span class="line">+   age: 我已在此等候你</span><br></pre></td></tr></table></figure>
-
-<p>刷新浏览器即可生效。</p>
-<p>日期统计计算功能由 <a href="https://momentjs.com/">moment</a> 和 <a href="https://github.com/codebox/moment-precise-range">moment-precise-range</a> 提供，也可用原生 JS Date 对象来实现。</p>
-<h1 id="文章永久链接配置"><a href="#文章永久链接配置" class="headerlink" title="文章永久链接配置"></a>文章永久链接配置</h1><p>站点配置文件<code>_config.yml</code> 中修改为：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">url: http:<span class="comment">//www.wenhuateng.top/ #站点域名</span></span><br><span class="line">permalink: :year/:month/:day/:title/ </span><br><span class="line">permalink_defaults:</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: <span class="literal">true</span> # Set to <span class="literal">false</span> to remove trailing &#x27;index.html&#x27; from permalinks</span><br><span class="line">  trailing_html: <span class="literal">true</span> # Set to <span class="literal">false</span> to remove trailing &#x27;.html&#x27; from permalinks</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="安装及卸载hexo插件"><a href="#安装及卸载hexo插件" class="headerlink" title="安装及卸载hexo插件"></a>安装及卸载hexo插件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo安装xxx插件</span><br><span class="line"></span><br><span class="line">npm install xxx –save</span><br><span class="line"></span><br><span class="line">hexo卸载xxx插件</span><br><span class="line"></span><br><span class="line">npm uninstall xxx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="部署至Github"><a href="#部署至Github" class="headerlink" title="部署至Github"></a>部署至Github</h1><h2 id="阿里云域名解析"><a href="#阿里云域名解析" class="headerlink" title="阿里云域名解析"></a>阿里云域名解析</h2><p>首先，需要添加两条域名解析，解析的地址是你在Github所创建的分支连接；</p>
-<p><strong>第一条：</strong></p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D1.jpg" alt="解析1"></p>
-<p><strong>第二条：</strong></p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D2.jpg" alt="解析2"></p>
-<p>最终生成两条：</p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D3.jpg" alt="解析3"></p>
-<h2 id="github配置"><a href="#github配置" class="headerlink" title="github配置"></a>github配置</h2><p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/github%E8%A7%A3%E6%9E%90.png" alt="github"></p>
-<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><p>在命令行（<code>Gitbash</code>）输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;Github上你注册的邮箱地址&quot;</span><br></pre></td></tr></table></figure>
-
-<p>冒号后边就输入空格，<code>y/n </code>输入<code>y </code></p>
-<p>输入共计三次回车，即可得到秘钥；</p>
-<p>一般而言，秘钥本地地址为：<code>C:\Users\admin\.ssh</code></p>
-<p>用文本编辑器打开，并复制所有内容，打开<code>GitHub 点击Setting  ---&gt; SSH and GPG keys  ---&gt; New SSHkey</code></p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/ssh3.jpg"></p>
-<p><strong>保存即可；</strong></p>
-<h2 id="修改本地配置文件"><a href="#修改本地配置文件" class="headerlink" title="修改本地配置文件"></a>修改本地配置文件</h2><p>修改hexo配置文件**_config.yml**，在最后添加以下内容：</p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%9C%B0%E5%9D%80.jpg" alt="本地地址"></p>
-<p>最后在本地Hexo里的文件，找到source文件夹，在里面先创建个文本文档，输入你购买的域名，保存后重命名为CNAME，去掉后缀。</p>
-<p>内容为你的阿里云域名；</p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/CNME.jpg" alt="CNAME"></p>
-<p>参考：</p>
-<p><a href="https://www.cxyzjd.com/article/qq_38148394/79998012">使用github-hexo-域名绑定（阿里云）搭建个人博客_狍子的情书的博客-程序员宅基地</a></p>
-<p>[<a href="https://segmentfault.com/a/1190000021979631">超级详细Hexo+GitHub+阿里云域名的博客搭建教程</a></p>
-<h1 id="使用阿里云oss自动存储图片"><a href="#使用阿里云oss自动存储图片" class="headerlink" title="使用阿里云oss自动存储图片"></a>使用阿里云oss自动存储图片</h1><blockquote>
-<p><strong>本篇主要参考</strong></p>
-<p><a href="https://picgo.github.io/PicGo-Doc/zh/guide/#%E5%BA%94%E7%94%A8%E6%A6%82%E8%BF%B0">Picgo使用手册</a></p>
-<p><a href="https://dlonng.com/posts/ailyun-oss">阿里云 OSS + PicGo 博客图床超详细配置教程！</a></p>
-</blockquote>
-<h2 id="Picgo下载及安装"><a href="#Picgo下载及安装" class="headerlink" title="Picgo下载及安装"></a>Picgo下载及安装</h2><ol>
-<li><p>打开官网，点击此处：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211109224213319.png" alt="打开应用"></p>
-</li>
-<li><p>点击<code>latest</code></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211109224346499.png" alt="image-20211109224346499"></p>
-</li>
-<li><p>下拉页面，点击.exe文件开始下载；</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211109224512835.png" alt="image-20211109224512835"></p>
-</li>
-</ol>
-<h2 id="踩的坑"><a href="#踩的坑" class="headerlink" title="踩的坑"></a>踩的坑</h2><p>按照相关教程配置后一直报错，后发现是因为阿里云的存储地址配置错误导致；报错：<code>requesterror： getaddrinfo</code></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/%E5%AD%98%E5%82%A8%E8%B7%AF%E5%BE%84.png" alt="image-20211109225005210"></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;accessKeyId&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;accessKeySecret&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;bucket&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 存储空间名</span></span><br><span class="line">  <span class="attr">&quot;area&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 存储区域代号</span></span><br><span class="line">  <span class="attr">&quot;path&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 自定义存储路径</span></span><br><span class="line">  <span class="attr">&quot;customUrl&quot;</span>: <span class="string">&quot;&quot;</span> <span class="comment">// 自定义域名，注意要加http://或者https://</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211109225142860.png" alt="image-20211109225142860"></p>
-<p>点击你所创建的bucket，进入后，点击左侧概览：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211109225408298.png" alt="image-20211109225408298"></p>
-<p><strong><a href="http://yearito.cn/">重点参考博客</a>,在此，对博主进行崇高的敬意。</strong></p>
-<h3 id="报错-1"><a href="#报错-1" class="headerlink" title="报错"></a>报错</h3><p>使用过程经常报错，错误内容如下：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/picgo%E6%8A%A5%E9%94%99.jpg" alt="picgo报错"></p>
-<p>初步解决办法：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/picgo%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3.jpg" alt="picgo报错解决"></p>
-<p>打开CMD，win+R，输入<code>%appdata%</code>，</p>
-<p>找到<code>data.json</code></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211121123938990.png" alt="image-20211121123938990"></p>
-<p>删除。这个里面存储的是图床的相关信息。</p>
-<p>然后重新启动<code>picgo</code>即可。</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jieba分词</title>
-    <url>/2021/11/07/jieba%E5%88%86%E8%AF%8D/</url>
-    <content><![CDATA[<p>昨天，做的那个数据分析报告用到了<code>jieba</code>分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..</p>
-<span id="more"></span>
-
-<h1 id="jieba官网简介"><a href="#jieba官网简介" class="headerlink" title="jieba官网简介"></a>jieba官网简介</h1><p>“结巴”中文分词：做最好的 Python 中文分词组件</p>
-<p><code>&quot;Jieba&quot; (Chinese for &quot;to stutter&quot;) Chinese text segmentation: built to be the best Python Chinese word segmentation module.</code></p>
-<p>支持三种分词模式：</p>
-<p>精确模式，试图将句子最精确地切开，适合文本分析；<br>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；<br>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>支持繁体分词</p>
-<p>支持自定义词典</p>
-<p>MIT 授权协议</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
-<h1 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h1><p><code>jieba.cut</code> 方法接受三个输入参数: 需要分词的字符串；cut_all 参数用来控制是否采用全模式；HMM 参数用来控制是否使用 HMM 模型<br><code>jieba.cut_for_search</code> 方法接受两个参数：需要分词的字符串；是否使用 HMM 模型。该方法适合用于搜索引擎构建倒排索引的分词，粒度比较细</p>
-<p>待分词的字符串可以是 unicode 或 UTF-8 字符串、GBK 字符串。注意：不建议直接输入 GBK 字符串，可能无法预料地错误解码成 UTF-8<br><code>jieba.cut </code>以及<code>jieba.cut_for_search</code>返回的结构都是一个可迭代的 generator，可以使用 for 循环来获得分词后得到的每一个词语(unicode)，</p>
-<p>或者用<code>jieba.lcut</code> 以及<code>jieba.lcut_for_search</code>直接返回 list</p>
-<p><code>jieba.Tokenizer(dictionary=DEFAULT_DICT) </code>新建自定义分词器，可用于同时使用不同词典。jieba.dt 为默认分词器，所有全局分词相关函数都是该分词器的映射。</p>
-<h1 id="官网实例"><a href="#官网实例" class="headerlink" title="官网实例"></a>官网实例</h1><p>所以大概明白了生成词云需要的cut方法的具体参数都代表什么。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">True</span>) <span class="comment"># 全模式</span></span><br><span class="line"><span class="built_in">print</span>(str_li)</span><br><span class="line">&lt;generator <span class="built_in">object</span> Tokenizer.cut at <span class="number">0x00000298C3987FC0</span>&gt; <span class="comment"># 可以看到返回了一个生成器。</span></span><br><span class="line"></span><br><span class="line">FullMode = <span class="string">&#x27;Full mode :&#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li) <span class="comment">#全模式（不能解决歧义）</span></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">False</span>) <span class="comment"># 精确模式</span></span><br><span class="line">AccMode = <span class="string">&#x27;AccurateMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"></span><br><span class="line">AccurateMode: 我/来到/北京/清华大学 <span class="comment">#精确模式（适用于文本分析）</span></span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>) <span class="comment">#默认</span></span><br><span class="line">DefMode = <span class="string">&#x27;DefaultMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"></span><br><span class="line">DefaultMode: 我/来到/北京/清华大学 <span class="comment"># 我们可以看到，默认是精确模式</span></span><br><span class="line"></span><br><span class="line">long_sen = jb.cut_for_search(<span class="string">&quot;小明硕士毕业于中国科学院计算所，后在日本京都大学深造&quot;</span>)<span class="comment"># 搜索引擎模式</span></span><br><span class="line">Long = <span class="string">&#x27;search:&#x27;</span>+<span class="string">&#x27;,&#x27;</span>.join(long_sen)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后统一对比一下：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">Full mode :我/来到/北京/清华/清华大学/华大/大学</span><br><span class="line">AccurateMode: 我/来到/北京/清华大学</span><br><span class="line">DefaultMode: 他/来到/了/网易/杭研/大厦</span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>对于基本的词云及词频分析来说已经足够了，词典什么的情感分析，下次研究。</p>
-<p>下面试着对以前…….（long long ago）喜欢的一本小说（极品公子）做个词云分析。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">text = <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\sunshine\Desktop\极品公子.txt&#x27;</span>,encoding = <span class="string">&#x27;utf-8&#x27;</span>).read()</span><br><span class="line">text_f = jb.cut(text)</span><br><span class="line"></span><br><span class="line">text_s = <span class="string">&quot; &quot;</span>.join(text_f)</span><br><span class="line">boy_cloud = WordCloud().generate(text_s)</span><br><span class="line">plt.imshow(boy_cloud)</span><br><span class="line">plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224246094.png" alt="无间道"></p>
-<p>可以发现，毫无疑问，叶无道是主角。</p>
-<p><a href="https://github.com/fxsjy/jieba">jeiba地址</a></p>
-]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>numpy统计函数和布尔型数组</title>
     <url>/2019/03/05/numpy%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0%E5%92%8C%E5%B8%83%E5%B0%94%E5%9E%8B%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h2 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h2><p><strong>可以通过numpy的统计函数对整个数组或者某个轴向的数据进项统计计算。</strong></p>
@@ -1031,6 +1031,52 @@
       </tags>
   </entry>
   <entry>
+    <title>《谁说菜鸟不会数据分析》读书笔记</title>
+    <url>/2021/11/07/%E3%80%8A%E8%B0%81%E8%AF%B4%E8%8F%9C%E9%B8%9F%E4%B8%8D%E4%BC%9A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>花了一段时间学习了下菜鸟读书笔记，最大的感慨是这本书，纯粹是入门级。本书以Excel为主要操作软件，只要稍微有点Excel基础，绝对可以看懂，看完后，觉得对我用处最大的是数据分析的思想，而一些手段，反而是次要的。</p>
+<span id="more"></span>
+
+
+
+<p>以下是在读的过程中的一些学习总结，不足之处，诸君见谅。</p>
+<h2 id="1-数据分析内容"><a href="#1-数据分析内容" class="headerlink" title="1.数据分析内容"></a>1.数据分析内容</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-117cd864b4606df8.png" alt="img"></p>
+<p>数据分析</p>
+<p>这一部分，主要介绍了什么数据分析，数据分析步骤，以及作为一个合格的数据分析所需要具备的品质。</p>
+<p>总体来说，要进行数据分析，我们首先要知道自己的目的是什么，以及我们所要分析的内容，然后我们需要确定我们采用的数据分析方法，这需要我们知道一些营销或管理模型，从而根据内容确定分析方向。</p>
+<h2 id="2-数据分析方法论"><a href="#2-数据分析方法论" class="headerlink" title="2.数据分析方法论"></a>2.数据分析方法论</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-8b915c7975ecb4bc.png" alt="img"></p>
+<p>数据分析方法论</p>
+<p>以前只是知道这些营销理论或者管理理论，现在才隐约知道该怎样使用他们。实践出真知。</p>
+<h2 id="3-数据收集"><a href="#3-数据收集" class="headerlink" title="3.数据收集"></a>3.数据收集</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a77faea71422aab7.png" alt="img"></p>
+<p>数据收集</p>
+<p>这部分是最重要的部分之一，主要介绍了数据收集的一些方法，重点介绍了调查问卷的正确使用方式，并向我们介绍了表的概念，表与SQL语言练习紧密，因为我们现在多数的数据都存储在关系型数据库中，如MySql等，同时，说了一些Excel的小技巧，以前学习了Excel的很多内容，看完这部分才对怎样运用Excel对数据处理有了大概的认识，及方向。</p>
+<h2 id="4-数据处理"><a href="#4-数据处理" class="headerlink" title="4.数据处理"></a>4.数据处理</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f81d9d44fc784e9b.png" alt="img"></p>
+<h2 id="5-数据清洗"><a href="#5-数据清洗" class="headerlink" title="5.数据清洗"></a>5.数据清洗</h2><p>这部分是最为繁琐的步骤之一，其首先主要介绍了数据处理包括的四大部分内容：数据清洗、数据转化、数据提取、数据计算等。然后说明了清洗时，使用的一些Excel的技巧，其中，重复数据还可通过数据透视表进行辨别去除。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a0020ed9dc65f908.png" alt="img"></p>
+<p>数据加工</p>
+<p>主要还是使用Excel怎么实现数据的加工，及加工所需要做的事情。不得不说一句VLOOUP很神奇。最后多句嘴，建议大家学习并使用Excel2013/2016，其***快速填充功能***，简直强大的无敌。</p>
+<h2 id="6-数据分析工具"><a href="#6-数据分析工具" class="headerlink" title="6.数据分析工具"></a>6.数据分析工具</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-927dd467c9ffbfa6.png" alt="img"></p>
+<p>数据透视表</p>
+<p>数据分工具还有SPSS，SQL等等，因为书主要以Excel为例，因此这部分主要介绍了数据透视表的使用。建议去我要自学网学习曾贤志老师的数据透视表教程，详细而生动。数据透视表可以结合SQL使用，你知道吗？</p>
+<h2 id="7-数据分析方法"><a href="#7-数据分析方法" class="headerlink" title="7.数据分析方法"></a>7.数据分析方法</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f14cca613c2423da.png" alt="img"></p>
+<p>数据分析方法</p>
+<p>这一部分主要介绍了一些比较常见且基础的数据分析方法，如对比分析，分组分析等。以及他们的应用场合。</p>
+<h2 id="8-数据展现"><a href="#8-数据展现" class="headerlink" title="8.数据展现"></a>8.数据展现</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-6ac6a74cc438a1e0.png" alt="img"></p>
+<h2 id="9-数据展现"><a href="#9-数据展现" class="headerlink" title="9.数据展现"></a>9.数据展现</h2><p>此部分主要说明了图表的作用，以及图表的应用场合，和他们的制作方法（在Excel中）。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-4d118010db6ddffb.png" alt="img"></p>
+<p>图表专业化</p>
+<p>此部分主要说明了数据分析图表制作的目的，意义，以及需要注意的事项、小技巧等。</p>
+<h2 id="10-8-数据分析报告"><a href="#10-8-数据分析报告" class="headerlink" title="10.8.数据分析报告"></a>10.8.数据分析报告</h2><p>这是最后一步了，也是相对来说比较重要的一步，因为前面所有的工作，都是为了这一步做准备的，我们的目的是让决策者看懂，为他们提供决策支持，决策依据。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-30bc008b0acbd855.png" alt="img"></p>
+<p>数据分析报告</p>
+<p>此部分的重点在于介绍数据分析报告及其制作原则。最后菜鸟以一个一般性的模板进行了总结分析。</p>
+<p>数据分析学习任重而道远，继续努力。</p>
+<p>以上。</p>
+]]></content>
+      <tags>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>pandas中轴axis的问题理解</title>
     <url>/2019/03/14/pandas%E4%B8%AD%E8%BD%B4axis%E7%9A%84%E9%97%AE%E9%A2%98%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>在学习删除方法<code>drop</code>时，碰到了，也突然想明白了，轴是什么意思。</p>
@@ -1059,6 +1105,38 @@
         <tag>python</tag>
         <tag>Data analysis</tag>
         <tag>硕士期间</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工作中遇到的概念</title>
+    <url>/2019/03/15/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<p>本篇用于记录一些遇到的名词缩写及概念。</p>
+<span id="more"></span>
+
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Proof_of_concept">POC测试</a>，即Proof of Concept，属于概念验证。是业界流行的针对客户具体应用的验证性测试，根据用户对采用系统提出的性能要求和扩展需求的指标，在选用服务器上进行真实数据的运行，对承载用户数据量和运行时间进行实际测算，并根据用户未来业务扩展的需求加大数据量以验证系统和平台的承载能力和性能变化。</p>
+</blockquote>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/ivr">IVR</a>(Interactive Voice Response)即互动式语音应答，您只须用电话即可进入服务中心，可以根据操作提示收听手机娱乐产品，也可以根据用户输入的内容播放有关的信息。</p>
+</blockquote>
+<blockquote>
+<p>UAP：UAP是华为的自动排队机名称，是自动呼叫分配（Automatic Call Distribution，ACD）的一种，是现代呼叫中心的组成模块，也是其核心技术。</p>
+</blockquote>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/3132?fromtitle=SEO&fromid=102990">SEO</a>（Search Engine Optimization）：汉译为<a href="https://baike.baidu.com/item/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E">搜索引擎</a>优化。是一种方式：利用<a href="https://baike.baidu.com/item/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/104812">搜索引擎</a>的规则提高<a href="https://baike.baidu.com/item/%E7%BD%91%E7%AB%99/155722">网站</a>在有关搜索引擎内的<a href="https://baike.baidu.com/item/%E8%87%AA%E7%84%B6%E6%8E%92%E5%90%8D/2092669">自然排名</a>。</p>
+</blockquote>
+<blockquote>
+<p>ASR语音识别（Automatic Speech Recognition），将口述音频转换为文本，通过API调用识别不同音频源发来的实时音频，或识别音频文件。</p>
+</blockquote>
+<blockquote>
+<p><a href="https://baike.baidu.com/item/OA%E7%B3%BB%E7%BB%9F/10677850">OA系统</a>的英文全称是：Office Automation System ，意为办公自动化系统。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Job</category>
+      </categories>
+      <tags>
+        <tag>概念</tag>
       </tags>
   </entry>
   <entry>
@@ -1138,84 +1216,6 @@
       </tags>
   </entry>
   <entry>
-    <title>工作中遇到的概念</title>
-    <url>/2019/03/15/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<p>本篇用于记录一些遇到的名词缩写及概念。</p>
-<span id="more"></span>
-
-<blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Proof_of_concept">POC测试</a>，即Proof of Concept，属于概念验证。是业界流行的针对客户具体应用的验证性测试，根据用户对采用系统提出的性能要求和扩展需求的指标，在选用服务器上进行真实数据的运行，对承载用户数据量和运行时间进行实际测算，并根据用户未来业务扩展的需求加大数据量以验证系统和平台的承载能力和性能变化。</p>
-</blockquote>
-<blockquote>
-<p><a href="https://baike.baidu.com/item/ivr">IVR</a>(Interactive Voice Response)即互动式语音应答，您只须用电话即可进入服务中心，可以根据操作提示收听手机娱乐产品，也可以根据用户输入的内容播放有关的信息。</p>
-</blockquote>
-<blockquote>
-<p>UAP：UAP是华为的自动排队机名称，是自动呼叫分配（Automatic Call Distribution，ACD）的一种，是现代呼叫中心的组成模块，也是其核心技术。</p>
-</blockquote>
-<blockquote>
-<p><a href="https://baike.baidu.com/item/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E4%BC%98%E5%8C%96/3132?fromtitle=SEO&fromid=102990">SEO</a>（Search Engine Optimization）：汉译为<a href="https://baike.baidu.com/item/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E">搜索引擎</a>优化。是一种方式：利用<a href="https://baike.baidu.com/item/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/104812">搜索引擎</a>的规则提高<a href="https://baike.baidu.com/item/%E7%BD%91%E7%AB%99/155722">网站</a>在有关搜索引擎内的<a href="https://baike.baidu.com/item/%E8%87%AA%E7%84%B6%E6%8E%92%E5%90%8D/2092669">自然排名</a>。</p>
-</blockquote>
-<blockquote>
-<p>ASR语音识别（Automatic Speech Recognition），将口述音频转换为文本，通过API调用识别不同音频源发来的实时音频，或识别音频文件。</p>
-</blockquote>
-<blockquote>
-<p><a href="https://baike.baidu.com/item/OA%E7%B3%BB%E7%BB%9F/10677850">OA系统</a>的英文全称是：Office Automation System ，意为办公自动化系统。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Job</category>
-      </categories>
-      <tags>
-        <tag>概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《谁说菜鸟不会数据分析》读书笔记</title>
-    <url>/2021/11/07/%E3%80%8A%E8%B0%81%E8%AF%B4%E8%8F%9C%E9%B8%9F%E4%B8%8D%E4%BC%9A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>花了一段时间学习了下菜鸟读书笔记，最大的感慨是这本书，纯粹是入门级。本书以Excel为主要操作软件，只要稍微有点Excel基础，绝对可以看懂，看完后，觉得对我用处最大的是数据分析的思想，而一些手段，反而是次要的。</p>
-<span id="more"></span>
-
-
-
-<p>以下是在读的过程中的一些学习总结，不足之处，诸君见谅。</p>
-<h2 id="1-数据分析内容"><a href="#1-数据分析内容" class="headerlink" title="1.数据分析内容"></a>1.数据分析内容</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-117cd864b4606df8.png" alt="img"></p>
-<p>数据分析</p>
-<p>这一部分，主要介绍了什么数据分析，数据分析步骤，以及作为一个合格的数据分析所需要具备的品质。</p>
-<p>总体来说，要进行数据分析，我们首先要知道自己的目的是什么，以及我们所要分析的内容，然后我们需要确定我们采用的数据分析方法，这需要我们知道一些营销或管理模型，从而根据内容确定分析方向。</p>
-<h2 id="2-数据分析方法论"><a href="#2-数据分析方法论" class="headerlink" title="2.数据分析方法论"></a>2.数据分析方法论</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-8b915c7975ecb4bc.png" alt="img"></p>
-<p>数据分析方法论</p>
-<p>以前只是知道这些营销理论或者管理理论，现在才隐约知道该怎样使用他们。实践出真知。</p>
-<h2 id="3-数据收集"><a href="#3-数据收集" class="headerlink" title="3.数据收集"></a>3.数据收集</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a77faea71422aab7.png" alt="img"></p>
-<p>数据收集</p>
-<p>这部分是最重要的部分之一，主要介绍了数据收集的一些方法，重点介绍了调查问卷的正确使用方式，并向我们介绍了表的概念，表与SQL语言练习紧密，因为我们现在多数的数据都存储在关系型数据库中，如MySql等，同时，说了一些Excel的小技巧，以前学习了Excel的很多内容，看完这部分才对怎样运用Excel对数据处理有了大概的认识，及方向。</p>
-<h2 id="4-数据处理"><a href="#4-数据处理" class="headerlink" title="4.数据处理"></a>4.数据处理</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f81d9d44fc784e9b.png" alt="img"></p>
-<h2 id="5-数据清洗"><a href="#5-数据清洗" class="headerlink" title="5.数据清洗"></a>5.数据清洗</h2><p>这部分是最为繁琐的步骤之一，其首先主要介绍了数据处理包括的四大部分内容：数据清洗、数据转化、数据提取、数据计算等。然后说明了清洗时，使用的一些Excel的技巧，其中，重复数据还可通过数据透视表进行辨别去除。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a0020ed9dc65f908.png" alt="img"></p>
-<p>数据加工</p>
-<p>主要还是使用Excel怎么实现数据的加工，及加工所需要做的事情。不得不说一句VLOOUP很神奇。最后多句嘴，建议大家学习并使用Excel2013/2016，其***快速填充功能***，简直强大的无敌。</p>
-<h2 id="6-数据分析工具"><a href="#6-数据分析工具" class="headerlink" title="6.数据分析工具"></a>6.数据分析工具</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-927dd467c9ffbfa6.png" alt="img"></p>
-<p>数据透视表</p>
-<p>数据分工具还有SPSS，SQL等等，因为书主要以Excel为例，因此这部分主要介绍了数据透视表的使用。建议去我要自学网学习曾贤志老师的数据透视表教程，详细而生动。数据透视表可以结合SQL使用，你知道吗？</p>
-<h2 id="7-数据分析方法"><a href="#7-数据分析方法" class="headerlink" title="7.数据分析方法"></a>7.数据分析方法</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f14cca613c2423da.png" alt="img"></p>
-<p>数据分析方法</p>
-<p>这一部分主要介绍了一些比较常见且基础的数据分析方法，如对比分析，分组分析等。以及他们的应用场合。</p>
-<h2 id="8-数据展现"><a href="#8-数据展现" class="headerlink" title="8.数据展现"></a>8.数据展现</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-6ac6a74cc438a1e0.png" alt="img"></p>
-<h2 id="9-数据展现"><a href="#9-数据展现" class="headerlink" title="9.数据展现"></a>9.数据展现</h2><p>此部分主要说明了图表的作用，以及图表的应用场合，和他们的制作方法（在Excel中）。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-4d118010db6ddffb.png" alt="img"></p>
-<p>图表专业化</p>
-<p>此部分主要说明了数据分析图表制作的目的，意义，以及需要注意的事项、小技巧等。</p>
-<h2 id="10-8-数据分析报告"><a href="#10-8-数据分析报告" class="headerlink" title="10.8.数据分析报告"></a>10.8.数据分析报告</h2><p>这是最后一步了，也是相对来说比较重要的一步，因为前面所有的工作，都是为了这一步做准备的，我们的目的是让决策者看懂，为他们提供决策支持，决策依据。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-30bc008b0acbd855.png" alt="img"></p>
-<p>数据分析报告</p>
-<p>此部分的重点在于介绍数据分析报告及其制作原则。最后菜鸟以一个一般性的模板进行了总结分析。</p>
-<p>数据分析学习任重而道远，继续努力。</p>
-<p>以上。</p>
-]]></content>
-      <tags>
-        <tag>数据分析</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>工作的处理方式</title>
     <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
@@ -1239,40 +1239,6 @@
       </categories>
       <tags>
         <tag>经验</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>智能座舱</title>
-    <url>/2021/11/17/%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1/</url>
-    <content><![CDATA[<p><strong>汽车智能座舱</strong>是指配备智能化和网联化车载产品的汽车座舱，汽车智能座舱由智能座舱内饰及座舱电子构成。汽车智能座舱通过智能座舱内饰和座舱电子的联动，实现人、路、车的智能交互，是重新定义人车关系的智能车载产品。</p>
-<span id="more"></span>
-
-<p>可以看B站的相关内容：<a href="https://search.bilibili.com/all?keyword=%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1&from_source=webtop_search&spm_id_from=333.999">智能座舱</a></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234124657.png" alt="image-20211117234124657"></p>
-<h3 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h3><ul>
-<li>**V2X:**V2X( Vehicle to Everything)，V2X是支持车辆与周围交通系统进行通信的技术，可实现车与万物互联的技术，包括 Vehicle- to Vehicle(车与车)， vehicle-to<br>infrastructure(车与基础设施)， vehicle-to- network(车与网络)和 vehicle-to- pedestrian(车与人)。</li>
-<li>**云计算:**一种资源交付和使用模式，用户可通过互联网以自助服务的形式获取自身所需要的IT资源。</li>
-<li><strong>SaaS：</strong> Software as a service，软件即服务，位于云架构上层，是一种软件交付模式。SaaS服务商将软件统一部署在自身服务上，客户可根据自己实际需求通过互联网向SaaS服务商采购所需的软件服务。</li>
-<li><strong>Paas:</strong> Platform as a service，平台即服务，位于云架构中间层，是一种将软件开发平台作为服务提供给用户使用的云计算基础设施服务。</li>
-<li><strong>Iaas:</strong> Infrastructure as a service，基础设施即服务，位于云架构底层，把IT基础设施作为一种服务通过网络对外提供，并根据用户对资源的实际使用量或占用量进行计费的一种服务模式。</li>
-<li><strong>智能汽车：</strong>通过搭载自主探测设备，具备单车环境感知能力，能够进行自主决策并安全行驶至目的地的汽车。</li>
-<li><strong>车联网：</strong>涵盖车内网、车际网和车云网，以特定通信协议和数据交互标准，实现车与车、人、路、平台之间信息交换的通信网络。</li>
-<li><strong>5G：</strong>5 th generation mobile networks，第五代移动通信技术，一种具有高数据速率、低延迟、高吞吐量特征的数字蜂窝移动通信技术。</li>
-<li><strong>ADAS:</strong> Advanced Driving Assistant Systen，高级驾驶辅助系统，通过传感器收集环境信息并分析决策，提醒驾驶员潜在危险的主动安全技术。</li>
-<li><strong>环境感知：</strong>通过传感器或自组织网络，对道路、车辆、行人、交通标志等进行检测和识别的技术，目前多用于先进驾驶辅助系统。</li>
-<li><strong>智能决策：</strong>对获取到的信息进行融合、分析判断车辆应该做出的最优决策</li>
-<li><strong>AliOS：</strong>由阿里巴巴发布的面向汽车、loT终端、loT芯片和工业领域的物联网操作系统。</li>
-<li><strong>IOT:</strong> The Internet of Things，物联网，通过各种信息传感器、射频识别技术、全球定位系统、红外感应器、激光扫描器等各种装置与技术，实时采集任何需要监控、连接、互动的物体或过程，采集其声、光、热、电、力学、化学、生物、位置等各种需要的信息，通过各类可能的网络接入，实现物与物、物与人的泛在连接，实现对物品和过程的智能化感知、识别和管理。</li>
-<li><strong>HUD:</strong> Head Up Display，抬头显示器，一种利用光学反射原理将影像和信息投射到玻璃上的装置。</li>
-<li><strong>OBD：</strong>On- borad diagnostics，随车诊断系统，汽车检测仪器访问汽车电脑EC∪的接口</li>
-<li><strong>ECU:</strong> Electronic Control unit，电子控制器单元，是利用各种传感器、总线的数据采集与交换，来判断车辆状态以及司机的意图并通过执行器来操控汽车</li>
-<li><strong>Ⅳl：</strong>in- Vehicle Infotainment，车载信息娱乐系统，是采用车载专用中央处理器，基于车身总线系统和互联网服务，形成的车载综合信息处理系统。</li>
-<li><strong>流媒体后视镜：</strong>可实时观察后方路况的后视镜，通过髙淸的外置后视摄像头对车辆后方环境进行拍摄，并把图像呈现到后视镜上。</li>
-</ul>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234142829.png" alt="image-20211117234142829"></p>
-]]></content>
-      <tags>
-        <tag>学习</tag>
       </tags>
   </entry>
   <entry>
@@ -1437,9 +1403,78 @@ plt.show()
       </tags>
   </entry>
   <entry>
+    <title>滴滴中台之路</title>
+    <url>/2021/11/10/%E6%BB%B4%E6%BB%B4%E4%B8%AD%E5%8F%B0%E4%B9%8B%E8%B7%AF/</url>
+    <content><![CDATA[<p>都是PPT截图，在来自于一位大佬的分享。</p>
+<span id="more"></span>
+
+<h2 id="为什么要建业务中台"><a href="#为什么要建业务中台" class="headerlink" title="为什么要建业务中台"></a>为什么要建业务中台</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220056857.png" alt="image-20211110220056857"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220137833.png" alt="image-20211110220137833"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220208374.png" alt="image-20211110220208374"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220245766.png" alt="image-20211110220245766"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220316283.png" alt="image-20211110220316283"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220336470.png" alt="image-20211110220336470"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220353398.png" alt="image-20211110220353398"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220435991.png" alt="image-20211110220435991"></p>
+<h2 id="如何推进技术中台项目落地"><a href="#如何推进技术中台项目落地" class="headerlink" title="如何推进技术中台项目落地"></a>如何推进技术中台项目落地</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220453347.png" alt="image-20211110220453347"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220610065.png" alt="image-20211110220610065"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220630038.png" alt="image-20211110220630038"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220719145.png" alt="image-20211110220719145"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220735659.png" alt="image-20211110220735659"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220756926.png" alt="image-20211110220756926"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220820284.png" alt="image-20211110220820284"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220907901.png" alt="image-20211110220907901"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220922903.png" alt="image-20211110220922903"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220938475.png" alt="image-20211110220938475"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220955242.png" alt="image-20211110220955242"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110221036010.png" alt="image-20211110221036010"></p>
+]]></content>
+      <categories>
+        <category>Job</category>
+      </categories>
+      <tags>
+        <tag>经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>智能座舱</title>
+    <url>/2021/11/17/%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1/</url>
+    <content><![CDATA[<p><strong>汽车智能座舱</strong>是指配备智能化和网联化车载产品的汽车座舱，汽车智能座舱由智能座舱内饰及座舱电子构成。汽车智能座舱通过智能座舱内饰和座舱电子的联动，实现人、路、车的智能交互，是重新定义人车关系的智能车载产品。</p>
+<span id="more"></span>
+
+<p>可以看B站的相关内容：<a href="https://search.bilibili.com/all?keyword=%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1&from_source=webtop_search&spm_id_from=333.999">智能座舱</a></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234124657.png" alt="image-20211117234124657"></p>
+<h3 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h3><ul>
+<li><strong>V2X:</strong>   V2X( Vehicle to Everything)，V2X是支持车辆与周围交通系统进行通信的技术，可实现车与万物互联的技术，包括 Vehicle- to Vehicle(车与车)， vehicle-to<br>infrastructure(车与基础设施)， vehicle-to- network(车与网络)和 vehicle-to- pedestrian(车与人)。</li>
+<li><strong>云计算:</strong>  一种资源交付和使用模式，用户可通过互联网以自助服务的形式获取自身所需要的IT资源。</li>
+<li><strong>SaaS：</strong> Software as a service，软件即服务，位于云架构上层，是一种软件交付模式。SaaS服务商将软件统一部署在自身服务上，客户可根据自己实际需求通过互联网向SaaS服务商采购所需的软件服务。</li>
+<li><strong>Paas:</strong> Platform as a service，平台即服务，位于云架构中间层，是一种将软件开发平台作为服务提供给用户使用的云计算基础设施服务。</li>
+<li><strong>Iaas:</strong> Infrastructure as a service，基础设施即服务，位于云架构底层，把IT基础设施作为一种服务通过网络对外提供，并根据用户对资源的实际使用量或占用量进行计费的一种服务模式。</li>
+<li><strong>智能汽车：</strong>通过搭载自主探测设备，具备单车环境感知能力，能够进行自主决策并安全行驶至目的地的汽车。</li>
+<li><strong>车联网：</strong>涵盖车内网、车际网和车云网，以特定通信协议和数据交互标准，实现车与车、人、路、平台之间信息交换的通信网络。</li>
+<li><strong>5G：</strong>5 th generation mobile networks，第五代移动通信技术，一种具有高数据速率、低延迟、高吞吐量特征的数字蜂窝移动通信技术。</li>
+<li><strong>ADAS:</strong> Advanced Driving Assistant Systen，高级驾驶辅助系统，通过传感器收集环境信息并分析决策，提醒驾驶员潜在危险的主动安全技术。</li>
+<li><strong>环境感知：</strong>通过传感器或自组织网络，对道路、车辆、行人、交通标志等进行检测和识别的技术，目前多用于先进驾驶辅助系统。</li>
+<li><strong>智能决策：</strong>对获取到的信息进行融合、分析判断车辆应该做出的最优决策</li>
+<li><strong>AliOS：</strong>由阿里巴巴发布的面向汽车、loT终端、loT芯片和工业领域的物联网操作系统。</li>
+<li><strong>IOT:</strong> The Internet of Things，物联网，通过各种信息传感器、射频识别技术、全球定位系统、红外感应器、激光扫描器等各种装置与技术，实时采集任何需要监控、连接、互动的物体或过程，采集其声、光、热、电、力学、化学、生物、位置等各种需要的信息，通过各类可能的网络接入，实现物与物、物与人的泛在连接，实现对物品和过程的智能化感知、识别和管理。</li>
+<li><strong>HUD:</strong> Head Up Display，抬头显示器，一种利用光学反射原理将影像和信息投射到玻璃上的装置。</li>
+<li><strong>OBD：</strong>On- borad diagnostics，随车诊断系统，汽车检测仪器访问汽车电脑EC∪的接口</li>
+<li><strong>ECU:</strong> Electronic Control unit，电子控制器单元，是利用各种传感器、总线的数据采集与交换，来判断车辆状态以及司机的意图并通过执行器来操控汽车</li>
+<li><strong>Ⅳl：</strong>in- Vehicle Infotainment，车载信息娱乐系统，是采用车载专用中央处理器，基于车身总线系统和互联网服务，形成的车载综合信息处理系统。</li>
+<li><strong>流媒体后视镜：</strong>可实时观察后方路况的后视镜，通过髙淸的外置后视摄像头对车辆后方环境进行拍摄，并把图像呈现到后视镜上。</li>
+</ul>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234142829.png" alt="image-20211117234142829"></p>
+]]></content>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>理财知识</title>
     <url>/2021/11/24/%E7%90%86%E8%B4%A2%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<h1 id="什么是财务自由"><a href="#什么是财务自由" class="headerlink" title="什么是财务自由"></a>什么是财务自由</h1><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211124204704872.png" alt="image-20211124204704872"></p>
+<p><strong>投资是认知的变现。</strong></p>
 <blockquote>
 <p>康德（Immanuel Kant）对于自由的解读：</p>
 <p><strong>自由不是你想干什么就干什么，而是你不想干什么就不干什么</strong>。</p>
@@ -1454,6 +1489,39 @@ plt.show()
 </blockquote>
 <p>对于我们普通人来说，本金、收益率、开支，这三个数字，是影响财务自由的关键。<code>本金*收益率=被动收入</code></p>
 <p>被动收入-开支&gt;0，的时候，可以说，我们在某种意义上实现了财务自由。</p>
+<h1 id="ETF拯救世界语录"><a href="#ETF拯救世界语录" class="headerlink" title="ETF拯救世界语录"></a>ETF拯救世界语录</h1><h2 id="投资是一场赌博"><a href="#投资是一场赌博" class="headerlink" title="投资是一场赌博"></a>投资是一场赌博</h2><ol>
+<li><p>投资是一场赌博，不管你用什么方法做投资，都是一个可以通过努力取得大概率胜利的赌博游戏。</p>
+</li>
+<li><p>投资要遵守的理念：</p>
+<ul>
+<li>做大概率会胜利的投资；</li>
+<li>在错误的时候，尽量将损失最小化；</li>
+<li>在正确的时候，尽量将利润最大化。</li>
+</ul>
+<p>其实，为什么是ETF拯救世界，因为只要一个品种不会死，ETF早晚都会回来的。</p>
+</li>
+<li><p>估值投资指数基金这件事，理性的做法就是：随着估值越来越低，投入的资本越来越大，尽量将成本做到最低，但不奢望所有本金全部买在最低位。</p>
+</li>
+<li><p><strong>计算胜率，分配资源，等待收获。</strong></p>
+</li>
+<li><p><strong>我们投资，不是因为手里突然有钱了，或者别人都开始炒了，又或者多了一个可投资品种。而是因为：那个品种值得投资了。</strong></p>
+</li>
+<li><p>如果一个人没有经历没有学习没有经验，那么他99%的可能就是去送钱。这不是这个人的智商不行，而是这个赌场的规矩就是如此，想要动动鼠标就赚100%的事情，以前没有，现在没有，将来也不会有。———其实，<strong>E大就是在说，投资是认知的变现。</strong></p>
+</li>
+<li><p>金融投资想不被骗，有几个关键原则：</p>
+<ul>
+<li>第一，正规。法律允许的，政府保护的。</li>
+<li>第二，你要知道整个产品的原理，如何募资，资金投向，资金监管。</li>
+<li>第三，承诺收益过高，直接放弃。</li>
+</ul>
+</li>
+</ol>
+<h2 id="变富是一个慢慢的过程"><a href="#变富是一个慢慢的过程" class="headerlink" title="变富是一个慢慢的过程"></a>变富是一个慢慢的过程</h2><ol>
+<li><strong>现金在我手里并不是一个每年只产品3%收益的垃圾，它是一种全力，一种真真正正的，大机会的现金选择权。</strong>投资是一场游戏，是一场只要本金还在，就有无数爆发机会的伟大游戏。</li>
+<li>其实在实践中，<strong>是有办法让你的后悔最小化的。那就是投资组合。</strong>在牛市中空仓，和在熊市中满仓，一样会让你痛苦不堪，那么你可以通过配置不同的资产，来达到合理的收益，让自己的心态平稳。</li>
+<li><strong>保护自己，不要损失本金，这是最重要的。</strong></li>
+<li>投资最重要的事情就是控制风险。动辄满仓，动辄空仓，其实是投资体系很不成熟的一种表现。活下去，然后利润自然会到来。很多事情不必争论，谁对谁错，交给时间。</li>
+</ol>
 ]]></content>
       <categories>
         <category>学习</category>
@@ -1516,40 +1584,6 @@ plt.show()
       </tags>
   </entry>
   <entry>
-    <title>滴滴中台之路</title>
-    <url>/2021/11/10/%E6%BB%B4%E6%BB%B4%E4%B8%AD%E5%8F%B0%E4%B9%8B%E8%B7%AF/</url>
-    <content><![CDATA[<p>都是PPT截图，在来自于一位大佬的分享。</p>
-<span id="more"></span>
-
-<h2 id="为什么要建业务中台"><a href="#为什么要建业务中台" class="headerlink" title="为什么要建业务中台"></a>为什么要建业务中台</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220056857.png" alt="image-20211110220056857"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220137833.png" alt="image-20211110220137833"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220208374.png" alt="image-20211110220208374"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220245766.png" alt="image-20211110220245766"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220316283.png" alt="image-20211110220316283"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220336470.png" alt="image-20211110220336470"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220353398.png" alt="image-20211110220353398"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220435991.png" alt="image-20211110220435991"></p>
-<h2 id="如何推进技术中台项目落地"><a href="#如何推进技术中台项目落地" class="headerlink" title="如何推进技术中台项目落地"></a>如何推进技术中台项目落地</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220453347.png" alt="image-20211110220453347"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220610065.png" alt="image-20211110220610065"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220630038.png" alt="image-20211110220630038"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220719145.png" alt="image-20211110220719145"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220735659.png" alt="image-20211110220735659"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220756926.png" alt="image-20211110220756926"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220820284.png" alt="image-20211110220820284"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220907901.png" alt="image-20211110220907901"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220922903.png" alt="image-20211110220922903"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220938475.png" alt="image-20211110220938475"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220955242.png" alt="image-20211110220955242"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110221036010.png" alt="image-20211110221036010"></p>
-]]></content>
-      <categories>
-        <category>Job</category>
-      </categories>
-      <tags>
-        <tag>经验</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>精益数据分析-笔记</title>
     <url>/2019/03/06/%E7%B2%BE%E7%9B%8A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h4 id="市场细分"><a href="#市场细分" class="headerlink" title="市场细分"></a><a href="http://wiki.mbalib.com/wiki/%E5%B8%82%E5%9C%BA%E7%BB%86%E5%88%86">市场细分</a></h4><p>市场细分（market segmentation）是指<a href="http://wiki.mbalib.com/wiki/%E8%90%A5%E9%94%80%E8%80%85">营销者</a>通过<a href="http://wiki.mbalib.com/wiki/%E5%B8%82%E5%9C%BA%E8%B0%83%E7%A0%94">市场调研</a>，依据<a href="http://wiki.mbalib.com/wiki/%E6%B6%88%E8%B4%B9%E8%80%85">消费者</a>的需要和欲望、<a href="http://wiki.mbalib.com/wiki/%E8%B4%AD%E4%B9%B0%E8%A1%8C%E4%B8%BA">购买行为</a>和<a href="http://wiki.mbalib.com/wiki/%E8%B4%AD%E4%B9%B0%E4%B9%A0%E6%83%AF">购买习惯</a>等方面的差异，把某一<a href="http://wiki.mbalib.com/wiki/%E4%BA%A7%E5%93%81">产品</a>的市场整体划分为若干消费者群的市场分类过程。<span id="more"></span>每一个消费者群就是一个细分市场，每一个细分市场都是具有类似<a href="http://wiki.mbalib.com/wiki/%E9%9C%80%E6%B1%82">需求</a>倾向的消费者构成的<a href="http://wiki.mbalib.com/wiki/%E7%BE%A4%E4%BD%93">群体</a>。 </p>
@@ -1606,49 +1640,6 @@ plt.show()
       <tags>
         <tag>Data analysis</tag>
         <tag>硕士期间</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>读书笔记</title>
-    <url>/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>有时，真是不能理解自己，所有的正统书籍都看不进去（当然不包括专业书籍，以及教学书），却对各种网文情有独钟，这么多年，玄幻文，历史文，穿越文，科技幻想，武侠等等，读了不知道多少。</p>
-<span id="more"></span>
-
-<p>总结下，最喜欢的作者是烽火戏诸侯，最喜欢的书是《雪中悍刀行》,有时间，定要再读。</p>
-<p>[TOC]</p>
-<h3 id="机破星河"><a href="#机破星河" class="headerlink" title="机破星河"></a>机破星河</h3><ol>
-<li>有一个人说过，在这个世界上，看到的永远是表象。越接触这个庞大的世界，才越知道自己的渺小。如果一路冒然的撞过去，很有可能会头破血流。”</li>
-<li>不敬强权，不畏死亡，心怀梦想，至死方休。</li>
-</ol>
-<h3 id="我的1979"><a href="#我的1979" class="headerlink" title="我的1979"></a>我的1979</h3><blockquote>
-<p>大多数人想要改造这个世界，但却罕有人想改造自我”。</p>
-</blockquote>
-<h3 id="侠行天下"><a href="#侠行天下" class="headerlink" title="侠行天下"></a>侠行天下</h3><blockquote>
-<p>我和你讲道理，你和我耍流氓，我和你耍流氓，你和我讲法律，我和你讲法律，你和我玩实力，我和你玩实力，你和我讲道理……就是这个意思，这个世界的公道终究是力量来决定，所谓的法律，永远是统治阶层为了更好统治而立下的秩序</p>
-</blockquote>
-<h3 id="大魏宫廷"><a href="#大魏宫廷" class="headerlink" title="大魏宫廷"></a>大魏宫廷</h3><blockquote>
-<p>注：一个冷知识，为何握手是用右手？因为古代普遍是右手拿兵器，摊开右手，表示手中没有兵器，这是向对方表达善意的举动，不是因为惯用手的缘故。同理，抱拳时左手压右手，左手为尊，压着右手，象征和平。<br>(经查证确实有这种说法)</p>
-</blockquote>
-<h3 id="大国医"><a href="#大国医" class="headerlink" title="大国医"></a>大国医</h3><ol>
-<li>步子大了容易扯着蛋。”</li>
-<li>寒不累时则霜不降，温不兼日则冰不释。</li>
-<li>面对谣言，事实有时候很乏力。因为很多人传播谣言并不是因为他相信，只是因为见不得别人的高大映射出自己的“小”来。如果能将那些高大的人拉到跟自己一样的高度，无疑会十分快意。</li>
-<li>任何一个睿智的人，都知道做人不能太功利。然而为什么世人都一副鼠目寸光、功利小人的姿态？很大一个原因是危机感。即便有了稳定的生活，还是会觉得人生苦短，譬如朝露。</li>
-<li>对于这些常人而言，他们根本没有时间去见识那么大的世界，没有胆量在无关乎生活的领域投入精力和时间。这种焦虑还会传染给他们的孩子，让他们“两耳不闻窗外事，一心只读圣贤书”，浑然不知道欣赏花朵绽放、倾听的虫鸣蛙唱的乐趣和意义。</li>
-<li>此生无余事，不负好时光。”</li>
-</ol>
-<h3 id="医师"><a href="#医师" class="headerlink" title="医师"></a>医师</h3><blockquote>
-<p>生孩子，是这个世界上最痛苦的事情之一！<br>电视上，电影上，经常都会有孕妇生孩子的镜头，而且无一例外，这些镜头上的产妇，都是披头散发，汗湿满面。尤其是生产的时候，撕心裂肺的叫声，还有那满脸的痛苦表情，让人不由得心生惧意。</p>
-</blockquote>
-<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><blockquote>
-<p>人间只道黄金贵，不问天公买少年；</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1720,6 +1711,49 @@ plt.show()
 ]]></content>
       <tags>
         <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>读书笔记</title>
+    <url>/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>有时，真是不能理解自己，所有的正统书籍都看不进去（当然不包括专业书籍，以及教学书），却对各种网文情有独钟，这么多年，玄幻文，历史文，穿越文，科技幻想，武侠等等，读了不知道多少。</p>
+<span id="more"></span>
+
+<p>总结下，最喜欢的作者是烽火戏诸侯，最喜欢的书是《雪中悍刀行》,有时间，定要再读。</p>
+<p>[TOC]</p>
+<h3 id="机破星河"><a href="#机破星河" class="headerlink" title="机破星河"></a>机破星河</h3><ol>
+<li>有一个人说过，在这个世界上，看到的永远是表象。越接触这个庞大的世界，才越知道自己的渺小。如果一路冒然的撞过去，很有可能会头破血流。”</li>
+<li>不敬强权，不畏死亡，心怀梦想，至死方休。</li>
+</ol>
+<h3 id="我的1979"><a href="#我的1979" class="headerlink" title="我的1979"></a>我的1979</h3><blockquote>
+<p>大多数人想要改造这个世界，但却罕有人想改造自我”。</p>
+</blockquote>
+<h3 id="侠行天下"><a href="#侠行天下" class="headerlink" title="侠行天下"></a>侠行天下</h3><blockquote>
+<p>我和你讲道理，你和我耍流氓，我和你耍流氓，你和我讲法律，我和你讲法律，你和我玩实力，我和你玩实力，你和我讲道理……就是这个意思，这个世界的公道终究是力量来决定，所谓的法律，永远是统治阶层为了更好统治而立下的秩序</p>
+</blockquote>
+<h3 id="大魏宫廷"><a href="#大魏宫廷" class="headerlink" title="大魏宫廷"></a>大魏宫廷</h3><blockquote>
+<p>注：一个冷知识，为何握手是用右手？因为古代普遍是右手拿兵器，摊开右手，表示手中没有兵器，这是向对方表达善意的举动，不是因为惯用手的缘故。同理，抱拳时左手压右手，左手为尊，压着右手，象征和平。<br>(经查证确实有这种说法)</p>
+</blockquote>
+<h3 id="大国医"><a href="#大国医" class="headerlink" title="大国医"></a>大国医</h3><ol>
+<li>步子大了容易扯着蛋。”</li>
+<li>寒不累时则霜不降，温不兼日则冰不释。</li>
+<li>面对谣言，事实有时候很乏力。因为很多人传播谣言并不是因为他相信，只是因为见不得别人的高大映射出自己的“小”来。如果能将那些高大的人拉到跟自己一样的高度，无疑会十分快意。</li>
+<li>任何一个睿智的人，都知道做人不能太功利。然而为什么世人都一副鼠目寸光、功利小人的姿态？很大一个原因是危机感。即便有了稳定的生活，还是会觉得人生苦短，譬如朝露。</li>
+<li>对于这些常人而言，他们根本没有时间去见识那么大的世界，没有胆量在无关乎生活的领域投入精力和时间。这种焦虑还会传染给他们的孩子，让他们“两耳不闻窗外事，一心只读圣贤书”，浑然不知道欣赏花朵绽放、倾听的虫鸣蛙唱的乐趣和意义。</li>
+<li>此生无余事，不负好时光。”</li>
+</ol>
+<h3 id="医师"><a href="#医师" class="headerlink" title="医师"></a>医师</h3><blockquote>
+<p>生孩子，是这个世界上最痛苦的事情之一！<br>电视上，电影上，经常都会有孕妇生孩子的镜头，而且无一例外，这些镜头上的产妇，都是披头散发，汗湿满面。尤其是生产的时候，撕心裂肺的叫声，还有那满脸的痛苦表情，让人不由得心生惧意。</p>
+</blockquote>
+<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><blockquote>
+<p>人间只道黄金贵，不问天公买少年；</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
 </search>
