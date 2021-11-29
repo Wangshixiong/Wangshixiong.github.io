@@ -183,35 +183,176 @@
       </tags>
   </entry>
   <entry>
-    <title>jieba分词</title>
-    <url>/2021/11/07/jieba%E5%88%86%E8%AF%8D/</url>
-    <content><![CDATA[<p>昨天，做的那个数据分析报告用到了<code>jieba</code>分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..</p>
+    <title>SQL的学习</title>
+    <url>/2019/03/06/SQL%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p><em><strong>SQL的学习之路，主要参考资料是：</strong></em></p>
+<p><a href="http://www.forta.com/books/">SQL必知必会</a><br><a href="http://www.w3school.com.cn/sql/sql_intro.asp">W3school的SQL简介</a></p>
 <span id="more"></span>
 
-<h1 id="jieba官网简介"><a href="#jieba官网简介" class="headerlink" title="jieba官网简介"></a>jieba官网简介</h1><p>“结巴”中文分词：做最好的 Python 中文分词组件</p>
-<p><code>&quot;Jieba&quot; (Chinese for &quot;to stutter&quot;) Chinese text segmentation: built to be the best Python Chinese word segmentation module.</code></p>
-<p>支持三种分词模式：</p>
-<p>精确模式，试图将句子最精确地切开，适合文本分析；<br>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；<br>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>支持繁体分词</p>
-<p>支持自定义词典</p>
-<p>MIT 授权协议</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
-<h1 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h1><p><code>jieba.cut</code> 方法接受三个输入参数: 需要分词的字符串；cut_all 参数用来控制是否采用全模式；HMM 参数用来控制是否使用 HMM 模型<br><code>jieba.cut_for_search</code> 方法接受两个参数：需要分词的字符串；是否使用 HMM 模型。该方法适合用于搜索引擎构建倒排索引的分词，粒度比较细</p>
-<p>待分词的字符串可以是 unicode 或 UTF-8 字符串、GBK 字符串。注意：不建议直接输入 GBK 字符串，可能无法预料地错误解码成 UTF-8<br><code>jieba.cut </code>以及<code>jieba.cut_for_search</code>返回的结构都是一个可迭代的 generator，可以使用 for 循环来获得分词后得到的每一个词语(unicode)，</p>
-<p>或者用<code>jieba.lcut</code> 以及<code>jieba.lcut_for_search</code>直接返回 list</p>
-<p><code>jieba.Tokenizer(dictionary=DEFAULT_DICT) </code>新建自定义分词器，可用于同时使用不同词典。jieba.dt 为默认分词器，所有全局分词相关函数都是该分词器的映射。</p>
-<h1 id="官网实例"><a href="#官网实例" class="headerlink" title="官网实例"></a>官网实例</h1><p>所以大概明白了生成词云需要的cut方法的具体参数都代表什么。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">True</span>) <span class="comment"># 全模式</span></span><br><span class="line"><span class="built_in">print</span>(str_li)</span><br><span class="line">&lt;generator <span class="built_in">object</span> Tokenizer.cut at <span class="number">0x00000298C3987FC0</span>&gt; <span class="comment"># 可以看到返回了一个生成器。</span></span><br><span class="line"></span><br><span class="line">FullMode = <span class="string">&#x27;Full mode :&#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li) <span class="comment">#全模式（不能解决歧义）</span></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">False</span>) <span class="comment"># 精确模式</span></span><br><span class="line">AccMode = <span class="string">&#x27;AccurateMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"></span><br><span class="line">AccurateMode: 我/来到/北京/清华大学 <span class="comment">#精确模式（适用于文本分析）</span></span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>) <span class="comment">#默认</span></span><br><span class="line">DefMode = <span class="string">&#x27;DefaultMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"></span><br><span class="line">DefaultMode: 我/来到/北京/清华大学 <span class="comment"># 我们可以看到，默认是精确模式</span></span><br><span class="line"></span><br><span class="line">long_sen = jb.cut_for_search(<span class="string">&quot;小明硕士毕业于中国科学院计算所，后在日本京都大学深造&quot;</span>)<span class="comment"># 搜索引擎模式</span></span><br><span class="line">Long = <span class="string">&#x27;search:&#x27;</span>+<span class="string">&#x27;,&#x27;</span>.join(long_sen)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后统一对比一下：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">Full mode :我/来到/北京/清华/清华大学/华大/大学</span><br><span class="line">AccurateMode: 我/来到/北京/清华大学</span><br><span class="line">DefaultMode: 他/来到/了/网易/杭研/大厦</span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<p><em>右击，新标签页即可打开原图</em></p>
+<hr>
+<p>操作使用的数据库为Access及MySQL。</p>
+<p>数据采用的是<a href="http://www.forta.com/books/0672336073/">SQL必知必会中的数据</a></p>
+<p>（最下方可以下载数据）。其有5个表，表的关系如下：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-99088ca1862965fb.png" alt="表的关系"></p>
+<p>看不清的图片：右击新标签页打开即可。</p>
+<h2 id="SQL基础"><a href="#SQL基础" class="headerlink" title="SQL基础"></a>SQL基础</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-222314eb1f925db6.png" alt="基础"></strong></p>
+<h2 id="检索数据"><a href="#检索数据" class="headerlink" title="检索数据"></a>检索数据</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-c1c028d7564d3da8.png" alt="检索数据"></strong></p>
+<h2 id="排序检索数据"><a href="#排序检索数据" class="headerlink" title="排序检索数据"></a>排序检索数据</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-c693e117d6abcc60.png" alt="排序检索数据"></strong></p>
+<h2 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-51aeffe488410f0a.png" alt="过滤数据"></strong></p>
+<h2 id="高级过滤"><a href="#高级过滤" class="headerlink" title="高级过滤"></a>高级过滤</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-c270a132adb7e1d8.png" alt="高级过滤"></strong></p>
+<h2 id="通配符过滤"><a href="#通配符过滤" class="headerlink" title="通配符过滤"></a>通配符过滤</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-9e7cba4ab00b6321.png" alt="通配符过滤"></strong></p>
+<h2 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-b2f793a6d398268a.png" alt="创建计算字段"></strong></p>
+<h2 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f9ba72858e528097.png" alt="函数特性"></strong></p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-74c41fb49ee70c67.png" alt="函数"></strong></p>
+<h2 id="汇总数据"><a href="#汇总数据" class="headerlink" title="汇总数据"></a>汇总数据</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-df74f29143b75438.png" alt="汇总数据"></strong></p>
+<h2 id="分组数据"><a href="#分组数据" class="headerlink" title="分组数据"></a>分组数据</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a693680c78b33f85.png" alt="分组数据"></strong></p>
+<hr>
+<p><em><strong>以上测试均在Access数据库中进行，以下于MySQL中进行，通过workbench（版本6.3）操作。</strong></em></p>
+<hr>
+<h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><p><strong>这里说白了就是select语句嵌套，如<code>select * from （select cust_name from customers）</code></strong></p>
+<p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-d014cba6ca420003.png" alt="子查询"></strong></p>
+<h2 id="联结"><a href="#联结" class="headerlink" title="联结"></a>联结</h2><p><em><a href="https://zh.wikipedia.org/wiki/%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AF">笛卡尔积</a></em></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-90c8c6da8719925a.png" alt="联结"></p>
+<h2 id="高级联结"><a href="#高级联结" class="headerlink" title="高级联结"></a>高级联结</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f451dda80331d3da.png" alt="高级联结"></p>
+<p><em><strong>如果3个以上的表，那怎样联结？</strong></em></p>
+<ol>
+<li>3个</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">use test;</span><br><span class="line"><span class="keyword">select</span> cust_name,cust_contact</span><br><span class="line"><span class="keyword">from</span> (customers </span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> orders</span><br><span class="line"><span class="keyword">on</span> customers.cust_id <span class="operator">=</span> orders.cust_id)</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> orderitems </span><br><span class="line"><span class="keyword">on</span> orderitems.order_num <span class="operator">=</span> orders.order_num;</span><br></pre></td></tr></table></figure>
 
-<p>对于基本的词云及词频分析来说已经足够了，词典什么的情感分析，下次研究。</p>
-<p>下面试着对以前…….（long long ago）喜欢的一本小说（极品公子）做个词云分析。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">text = <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\sunshine\Desktop\极品公子.txt&#x27;</span>,encoding = <span class="string">&#x27;utf-8&#x27;</span>).read()</span><br><span class="line">text_f = jb.cut(text)</span><br><span class="line"></span><br><span class="line">text_s = <span class="string">&quot; &quot;</span>.join(text_f)</span><br><span class="line">boy_cloud = WordCloud().generate(text_s)</span><br><span class="line">plt.imshow(boy_cloud)</span><br><span class="line">plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>语法可以概括为：</p>
+<p><em><strong><code>FROM (表1 INNER JOIN 表2 ON 表1.字段号=表2.字段号) INNER JOIN 表3 ON 表1.字段号=表3.字段号</code></strong></em></p>
+<ol start="2">
+<li>同理，4个表可以概括为：</li>
+</ol>
+<p><em><strong><code>FROM ((表1 INNER JOIN 表2 ON 表1.字段号=表2.字段号) INNER JOIN 表3 ON 表1.字段号=表3.字段号) INNER JOIN 表4 ON Member.字段号=表4.字段号</code></strong></em></p>
+<h2 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-2f00deb32b8b47bb.png" alt="组合查询"></p>
+<hr>
+<p> <em>如果代码块阅读困难，可移步<a href="http://www.cnblogs.com/sunshinewang/p/6789419.html">博客园</a></em></p>
+<hr>
+<p><em><strong>关于规则中列顺序，前后必须一致。</strong></em>否则会出现如下情况：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> use test; </span><br><span class="line"><span class="number">2</span> <span class="keyword">select</span> cust_name ,cust_email,cust_contact</span><br><span class="line"><span class="number">3</span> <span class="keyword">from</span> customers</span><br><span class="line"><span class="number">4</span> <span class="keyword">where</span> cust_state <span class="keyword">in</span> (<span class="string">&#x27;IL&#x27;</span>,<span class="string">&#x27;IN&#x27;</span>,<span class="string">&#x27;MI&#x27;</span>)</span><br><span class="line"><span class="number">5</span> <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="number">6</span> <span class="keyword">select</span> cust_name,cust_contact,cust_email</span><br><span class="line"><span class="number">7</span> <span class="keyword">from</span> customers</span><br><span class="line"><span class="number">8</span> <span class="keyword">where</span> cust_name <span class="operator">=</span> <span class="string">&#x27;Fun4All&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224246094.png" alt="无间道"></p>
-<p>可以发现，毫无疑问，叶无道是主角。</p>
-<p><a href="https://github.com/fxsjy/jieba">jeiba地址</a></p>
+<p>返回结果为：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-8056401714986ffe.png" alt="返回结果"></p>
+<p>列的顺序一致，才会返回正确结果</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> use test;</span><br><span class="line"><span class="number">2</span> <span class="keyword">select</span> cust_name ,cust_email,cust_contact</span><br><span class="line"><span class="number">3</span> <span class="keyword">from</span> customers</span><br><span class="line"><span class="number">4</span> <span class="keyword">where</span> cust_state <span class="keyword">in</span> (<span class="string">&#x27;IL&#x27;</span>,<span class="string">&#x27;IN&#x27;</span>,<span class="string">&#x27;MI&#x27;</span>)</span><br><span class="line"><span class="number">5</span> <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="number">6</span> <span class="keyword">select</span> cust_name,cust_email,cust_contact</span><br><span class="line"><span class="number">7</span> <span class="keyword">from</span> customers8 <span class="keyword">where</span> cust_name <span class="operator">=</span> <span class="string">&#x27;Fun4All&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>结果：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-322eef5f933e81f2.png" alt="返回结果"></p>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p><em><strong>INSERT SELECT:</strong></em></p>
+<p>它可以将SELCET语句结果插入表中，在<em><strong>某种意义上可以完成表的复制</strong></em>。<br>如：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> USE test;#使用数据库test </span><br><span class="line"> <span class="number">2</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> CustNew </span><br><span class="line"> <span class="number">3</span> ( </span><br><span class="line"> <span class="number">4</span> cust_id  <span class="type">char</span>(<span class="number">10</span>)   <span class="keyword">NOT</span> <span class="keyword">NULL</span> ,</span><br><span class="line"> <span class="number">5</span> cust_name  <span class="type">char</span>(<span class="number">50</span>)   <span class="keyword">NOT</span> <span class="keyword">NULL</span> ,</span><br><span class="line"> <span class="number">6</span> cust_address  <span class="type">char</span>(<span class="number">50</span>)  <span class="keyword">NULL</span> , </span><br><span class="line"> <span class="number">7</span> cust_city  <span class="type">char</span>(<span class="number">50</span>)  <span class="keyword">NULL</span> ,</span><br><span class="line"> <span class="number">8</span> cust_state  <span class="type">char</span>(<span class="number">5</span>)  <span class="keyword">NULL</span> , </span><br><span class="line"> <span class="number">9</span> cust_zip  <span class="type">char</span>(<span class="number">10</span>)  <span class="keyword">NULL</span> ,</span><br><span class="line"><span class="number">10</span> cust_country  <span class="type">char</span>(<span class="number">50</span>)  <span class="keyword">NULL</span> ,</span><br><span class="line"><span class="number">11</span> cust_contact  <span class="type">char</span>(<span class="number">50</span>)  <span class="keyword">NULL</span> ,</span><br><span class="line"><span class="number">12</span> cust_email  <span class="type">char</span>(<span class="number">255</span>)  <span class="keyword">NULL</span> </span><br><span class="line"><span class="number">13</span> );#创新新表 </span><br><span class="line"><span class="number">14</span> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> CustNew</span><br><span class="line"><span class="number">15</span> (</span><br><span class="line"><span class="number">16</span> cust_id,</span><br><span class="line"><span class="number">17</span> cust_name,</span><br><span class="line"><span class="number">18</span> cust_address,</span><br><span class="line"><span class="number">19</span> cust_city,</span><br><span class="line"><span class="number">20</span> cust_state,</span><br><span class="line"><span class="number">21</span> cust_zip,</span><br><span class="line"><span class="number">22</span> cust_country,</span><br><span class="line"><span class="number">23</span> cust_contact,</span><br><span class="line"><span class="number">24</span> cust_email</span><br><span class="line"><span class="number">25</span> )</span><br><span class="line"><span class="number">26</span> <span class="keyword">SELECT</span> </span><br><span class="line"><span class="number">27</span> cust_id,</span><br><span class="line"><span class="number">28</span> cust_name,</span><br><span class="line"><span class="number">29</span> cust_address,</span><br><span class="line"><span class="number">30</span> cust_city,</span><br><span class="line"><span class="number">31</span> cust_state,</span><br><span class="line"><span class="number">32</span> cust_zip,</span><br><span class="line"><span class="number">33</span> cust_country,</span><br><span class="line"><span class="number">34</span> cust_contact,</span><br><span class="line"><span class="number">35</span> cust_email</span><br><span class="line"><span class="number">36</span> <span class="keyword">FROM</span> customers;#将customers表的数据插入新表<span class="keyword">alter</span></span><br><span class="line"><span class="number">37</span> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> CustNew;</span><br></pre></td></tr></table></figure>
+
+<p>返回结果如下：<br> <img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-96aaf2720fa79e88.png" alt="结果"></p>
+<p> 而如果反过来用，大概就是：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span></span><br><span class="line">customers </span><br><span class="line">（列<span class="number">1</span>，列<span class="number">2</span>，......）</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">列<span class="number">1</span>，列<span class="number">2</span>，.....</span><br><span class="line"><span class="keyword">from</span> custnew</span><br></pre></td></tr></table></figure>
+
+<p>即可完成将表custnew中的数据全部插入customers，这也完成了一条insert插入多条数据。</p>
+<p><em><strong>通常，一条INSERT 语句，只能插入一行数据，要插入多行，就必须执行多个INSERT，但是， INSERT SELECT 是个例外。</strong></em></p>
+<p>以上方法的复制，实际上是重新在数据库中创建了一个新表。</p>
+<p><em><strong>SELECT INTO：</strong></em></p>
+<p>这种方法，可以在SQL语句运行中创建一个表，并将一个表复制到这个全新的表。</p>
+<p><em><strong>我们可以在实验新的SQL语句前，用其进行复制，这样就不影响到实际数据。</strong></em><br>如：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">USE test;#使用数据库</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Cucopy <span class="keyword">as</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers;#复制</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Cucopy;</span><br></pre></td></tr></table></figure>
+
+<p> 返回结果，与上表一致。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-45f6e82846597d13.png" alt="插入"></p>
+<h2 id="更新和删除"><a href="#更新和删除" class="headerlink" title="更新和删除"></a>更新和删除</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-c9a8f39f57480ec5.png" alt="更新和删除"></p>
+<h2 id="创建和操纵表"><a href="#创建和操纵表" class="headerlink" title="创建和操纵表"></a>创建和操纵表</h2><p>这里中点说一下创建表时，指定默认值的问题。一般来说，创建表时，我们需要指定列的数据类型、是否NULL列。关于NULL值具体说明请看下图。</p>
+<p>默认值要是用的好，可以省却我们很多时间。</p>
+<p>因其经常用于指定默认日期，这里以日期为例。</p>
+<p>首先，在MySQL中内建的日期函数：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="http://www.w3school.com.cn/sql/func_now.asp">NOW()</a></td>
+<td>返回当前的日期和时间</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/sql/func_curdate.asp">CURDATE()</a></td>
+<td>返回当前的日期</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/sql/func_curtime.asp">CURTIME()</a></td>
+<td>返回当前的时间</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/sql/func_date.asp">DATE()</a></td>
+<td>提取日期或日期/时间表达式的日期部分</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/sql/func_extract.asp">EXTRACT()</a></td>
+<td>返回日期/时间按的单独部分</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/sql/func_date_add.asp">DATE_ADD()</a></td>
+<td>给日期添加指定的时间间隔</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/sql/func_date_sub.asp">DATE_SUB()</a></td>
+<td>从日期减去指定的时间间隔</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/sql/func_datediff_mysql.asp">DATEDIFF()</a></td>
+<td>返回两个日期之间的天数</td>
+</tr>
+<tr>
+<td><a href="http://www.w3school.com.cn/sql/func_date_format.asp">DATE_FORMAT()</a></td>
+<td>用不同的格式显示日期/时间</td>
+</tr>
+</tbody></table>
+<p>创建数据库t2,插入表。如下：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">CREATE</span> DATABASE t2;</span><br><span class="line"> USE t2;</span><br><span class="line"> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> test</span><br><span class="line"> (</span><br><span class="line"> id <span class="type">int</span>(<span class="number">5</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,noedate <span class="type">timestamp</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> </span><br><span class="line"> <span class="built_in">current_timestamp</span>()</span><br><span class="line"> );```</span><br><span class="line"></span><br><span class="line">调用如下：</span><br><span class="line"></span><br><span class="line">​```<span class="keyword">SQL</span></span><br><span class="line"> USE t2;</span><br><span class="line"> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> test(id)<span class="keyword">values</span>(<span class="number">1</span>);</span><br><span class="line"> SELET <span class="operator">*</span> <span class="keyword">FROM</span> test;</span><br></pre></td></tr></table></figure>
+
+<p>返回结果：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-06833413f120003a.png" alt="返回结果"></p>
+<p>以下SQL不合法：</p>
+<ul>
+<li><code>time_d time NOT NULL DEFAULT CURTIME(), </code></li>
+<li><code>date_e date NOT NULL DEFAULT CURDATE(),</code></li>
+<li><code>datetime_f datetime NOT NULL DEFAULT NOW(),</code> </li>
+</ul>
+<ul>
+<li>DATETIME类型：NOW()函数以’YYYY-MM-DD HH:MM:SS’返回当前的日期时间，可以直接存到DATETIME字段中。不支持使用系统默认值。 </li>
+<li>DATE类型：CURDATE()以’YYYY-MM-DD’的格式返回今天的日期，可以直接存到DATE字段中。不支持使用系统默认值。 </li>
+<li>TIME类型：CURTIME()以’HH:MM:SS’的格式返回当前的时间，可以直接存到TIME字段中。不支持使用系统默认值。<br>常见错误：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dnt_forums</span><br><span class="line">(</span><br><span class="line"> aa <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> (<span class="string">&#x27;&#x27;</span>), </span><br><span class="line"> bb <span class="type">date</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> (getdate()), </span><br><span class="line"> cc <span class="type">char</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> (<span class="keyword">null</span>) </span><br><span class="line">）；</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>aa 是 int 类型，默认值也得是整型，并且default后边不要（）括号 。</li>
+<li>bb date类型不支持使用系统默认值，改成timestamp，能过now()取系统时间 。</li>
+<li>cc 已经不允许为空（not null）所以不能默认为 null ，可以改成空字符串 。<br>修改：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dnt_forums</span><br><span class="line">(</span><br><span class="line"> aa <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">2</span>,</span><br><span class="line">bb <span class="type">timestamp</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> now(),</span><br><span class="line">cc <span class="type">char</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">); </span><br></pre></td></tr></table></figure>
+
+<p>这个日期问题，依然有很多不太明白的地方，以后学习过程碰到继续解决。<br>主要参考：</p>
+<p><a href="http://www.jb51.net/article/33570.htm">脚本之家</a>、<a href="http://blog.csdn.net/justdb/article/details/7965490">博客</a></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-3e42c57a43b77707.png" alt="创建和操纵表"></p>
+<p>重命名表：</p>
+<p><code>RENAME TABLE cucopy1 TO hi;</code></p>
+<p> 删除表：</p>
+<p><code>DROP TABLE hi;</code></p>
+<blockquote>
+<p> <strong>待续</strong></p>
+</blockquote>
 ]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
       <tags>
-        <tag>python</tag>
+        <tag>Data analysis</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -813,207 +954,35 @@
       </tags>
   </entry>
   <entry>
-    <title>pandas中轴axis的问题理解</title>
-    <url>/2019/03/14/pandas%E4%B8%AD%E8%BD%B4axis%E7%9A%84%E9%97%AE%E9%A2%98%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>在学习删除方法<code>drop</code>时，碰到了，也突然想明白了，轴是什么意思。</p>
+    <title>jieba分词</title>
+    <url>/2021/11/07/jieba%E5%88%86%E8%AF%8D/</url>
+    <content><![CDATA[<p>昨天，做的那个数据分析报告用到了<code>jieba</code>分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..</p>
 <span id="more"></span>
 
-<p>引入：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame<span class="comment">#导入包</span></span><br><span class="line">obj = Series(np.arange(<span class="number">5</span>),index = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>])<span class="comment">#创建Series  obj</span></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">2</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">new_obj = obj.drop(<span class="string">&#x27;c&#x27;</span>)<span class="comment">#删除&#x27;c&#x27;</span></span><br><span class="line">new_obj</span><br><span class="line">Out[<span class="number">5</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">6</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj.drop([<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])<span class="comment">#删除&#x27;b&#x27;,&#x27;d&#x27;</span></span><br><span class="line">Out[<span class="number">7</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">data = DataFrame(np.arange(<span class="number">25</span>).reshape(<span class="number">5</span>,<span class="number">5</span>),index = [<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>,<span class="string">&#x27;heb&#x27;</span>,<span class="string">&#x27;sjz&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>],columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>,<span class="string">&#x27;four&#x27;</span>,<span class="string">&#x27;five&#x27;</span>])<span class="comment">#创建DataFrame</span></span><br><span class="line">data</span><br><span class="line">Out[<span class="number">9</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">bj     <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop([<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>])<span class="comment">#删除某行</span></span><br><span class="line">Out[<span class="number">10</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop(<span class="string">&#x27;one&#x27;</span>,axis=<span class="number">1</span>)<span class="comment">#删除列</span></span><br><span class="line">Out[<span class="number">11</span>]: </span><br><span class="line">     two  three  four  five</span><br><span class="line">bj     <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br></pre></td></tr></table></figure>
-<p>可已注意到的是，在上方使用<code>drop</code>时，删除列特意指明了<code>axis=1</code>. 而在查看drop的文档时，发现默认参数是<code>axis =0 </code>，这说明：</p>
-<ul>
-<li><code>axis = 0</code>代表的是行。</li>
-<li><code>axis = 1</code>代表的是列。<br>这样想就明白了。但是接着问题来了，</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data</span><br><span class="line">Out[<span class="number">29</span>]: </span><br><span class="line">lie   one  two  three  four  five</span><br><span class="line">city                             </span><br><span class="line">bj      <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj      <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb    <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz    <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh     <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">0</span>)<span class="comment">#求列平均</span></span><br><span class="line">Out[<span class="number">30</span>]: </span><br><span class="line">lie</span><br><span class="line">one      <span class="number">10.0</span></span><br><span class="line">two      <span class="number">11.0</span></span><br><span class="line">three    <span class="number">12.0</span></span><br><span class="line">four     <span class="number">13.0</span></span><br><span class="line">five     <span class="number">14.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">1</span>)<span class="comment">#求行平均</span></span><br><span class="line">Out[<span class="number">31</span>]: </span><br><span class="line">city</span><br><span class="line">bj      <span class="number">2.0</span></span><br><span class="line">tj      <span class="number">7.0</span></span><br><span class="line">heb    <span class="number">12.0</span></span><br><span class="line">sjz    <span class="number">17.0</span></span><br><span class="line">sh     <span class="number">22.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
-<p>其实，我是有点蒙的，如果向上面那样理解的话。<br>发现问题了吗？<br>在<code>drop</code>中使用<code>axis=1</code>实际上是删掉了一列，而在<code>mean</code>中实际上是计算的行平均值，而不是列的平均值。<br>蒙了。嗯，看了Stackoverflow中的解释，大概是明白了。现记录如下。</p>
-<p><strong>实际上axis = 1，指的是沿着行求所有列的平均值，代表了横轴，那axis = 0，就是沿着列求所有行的平均值，代表了纵轴。</strong></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-de17a1655283a433.png" alt="示意图"></p>
-<p>那这样的话，<code>drop</code>就是沿着<code>&#39;two&#39;</code>的方向删除对应的轴标签为<code>axis = 1</code>的值。</p>
-<p>又想到了numpy，pandas是以numpy为基础构造的库，因此，它保留了对于axis使用的方式。</p>
-<p>参考：<a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean"><a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean">What does axis in pandas mean?</a></a></p>
+<h1 id="jieba官网简介"><a href="#jieba官网简介" class="headerlink" title="jieba官网简介"></a>jieba官网简介</h1><p>“结巴”中文分词：做最好的 Python 中文分词组件</p>
+<p><code>&quot;Jieba&quot; (Chinese for &quot;to stutter&quot;) Chinese text segmentation: built to be the best Python Chinese word segmentation module.</code></p>
+<p>支持三种分词模式：</p>
+<p>精确模式，试图将句子最精确地切开，适合文本分析；<br>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；<br>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>支持繁体分词</p>
+<p>支持自定义词典</p>
+<p>MIT 授权协议</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
+<h1 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h1><p><code>jieba.cut</code> 方法接受三个输入参数: 需要分词的字符串；cut_all 参数用来控制是否采用全模式；HMM 参数用来控制是否使用 HMM 模型<br><code>jieba.cut_for_search</code> 方法接受两个参数：需要分词的字符串；是否使用 HMM 模型。该方法适合用于搜索引擎构建倒排索引的分词，粒度比较细</p>
+<p>待分词的字符串可以是 unicode 或 UTF-8 字符串、GBK 字符串。注意：不建议直接输入 GBK 字符串，可能无法预料地错误解码成 UTF-8<br><code>jieba.cut </code>以及<code>jieba.cut_for_search</code>返回的结构都是一个可迭代的 generator，可以使用 for 循环来获得分词后得到的每一个词语(unicode)，</p>
+<p>或者用<code>jieba.lcut</code> 以及<code>jieba.lcut_for_search</code>直接返回 list</p>
+<p><code>jieba.Tokenizer(dictionary=DEFAULT_DICT) </code>新建自定义分词器，可用于同时使用不同词典。jieba.dt 为默认分词器，所有全局分词相关函数都是该分词器的映射。</p>
+<h1 id="官网实例"><a href="#官网实例" class="headerlink" title="官网实例"></a>官网实例</h1><p>所以大概明白了生成词云需要的cut方法的具体参数都代表什么。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">True</span>) <span class="comment"># 全模式</span></span><br><span class="line"><span class="built_in">print</span>(str_li)</span><br><span class="line">&lt;generator <span class="built_in">object</span> Tokenizer.cut at <span class="number">0x00000298C3987FC0</span>&gt; <span class="comment"># 可以看到返回了一个生成器。</span></span><br><span class="line"></span><br><span class="line">FullMode = <span class="string">&#x27;Full mode :&#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li) <span class="comment">#全模式（不能解决歧义）</span></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">False</span>) <span class="comment"># 精确模式</span></span><br><span class="line">AccMode = <span class="string">&#x27;AccurateMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"></span><br><span class="line">AccurateMode: 我/来到/北京/清华大学 <span class="comment">#精确模式（适用于文本分析）</span></span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>) <span class="comment">#默认</span></span><br><span class="line">DefMode = <span class="string">&#x27;DefaultMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"></span><br><span class="line">DefaultMode: 我/来到/北京/清华大学 <span class="comment"># 我们可以看到，默认是精确模式</span></span><br><span class="line"></span><br><span class="line">long_sen = jb.cut_for_search(<span class="string">&quot;小明硕士毕业于中国科学院计算所，后在日本京都大学深造&quot;</span>)<span class="comment"># 搜索引擎模式</span></span><br><span class="line">Long = <span class="string">&#x27;search:&#x27;</span>+<span class="string">&#x27;,&#x27;</span>.join(long_sen)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后统一对比一下：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">Full mode :我/来到/北京/清华/清华大学/华大/大学</span><br><span class="line">AccurateMode: 我/来到/北京/清华大学</span><br><span class="line">DefaultMode: 他/来到/了/网易/杭研/大厦</span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>对于基本的词云及词频分析来说已经足够了，词典什么的情感分析，下次研究。</p>
+<p>下面试着对以前…….（long long ago）喜欢的一本小说（极品公子）做个词云分析。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">text = <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\sunshine\Desktop\极品公子.txt&#x27;</span>,encoding = <span class="string">&#x27;utf-8&#x27;</span>).read()</span><br><span class="line">text_f = jb.cut(text)</span><br><span class="line"></span><br><span class="line">text_s = <span class="string">&quot; &quot;</span>.join(text_f)</span><br><span class="line">boy_cloud = WordCloud().generate(text_s)</span><br><span class="line">plt.imshow(boy_cloud)</span><br><span class="line">plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224246094.png" alt="无间道"></p>
+<p>可以发现，毫无疑问，叶无道是主角。</p>
+<p><a href="https://github.com/fxsjy/jieba">jeiba地址</a></p>
 ]]></content>
-      <categories>
-        <category>数据分析</category>
-      </categories>
       <tags>
-        <tag>Pandas</tag>
         <tag>python</tag>
-        <tag>Data analysis</tag>
-        <tag>硕士期间</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL的学习</title>
-    <url>/2019/03/06/SQL%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p><em><strong>SQL的学习之路，主要参考资料是：</strong></em></p>
-<p><a href="http://www.forta.com/books/">SQL必知必会</a><br><a href="http://www.w3school.com.cn/sql/sql_intro.asp">W3school的SQL简介</a></p>
-<span id="more"></span>
-
-<hr>
-<p><em>右击，新标签页即可打开原图</em></p>
-<hr>
-<p>操作使用的数据库为Access及MySQL。</p>
-<p>数据采用的是<a href="http://www.forta.com/books/0672336073/">SQL必知必会中的数据</a></p>
-<p>（最下方可以下载数据）。其有5个表，表的关系如下：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-99088ca1862965fb.png" alt="表的关系"></p>
-<p>看不清的图片：右击新标签页打开即可。</p>
-<h2 id="SQL基础"><a href="#SQL基础" class="headerlink" title="SQL基础"></a>SQL基础</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-222314eb1f925db6.png" alt="基础"></strong></p>
-<h2 id="检索数据"><a href="#检索数据" class="headerlink" title="检索数据"></a>检索数据</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-c1c028d7564d3da8.png" alt="检索数据"></strong></p>
-<h2 id="排序检索数据"><a href="#排序检索数据" class="headerlink" title="排序检索数据"></a>排序检索数据</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-c693e117d6abcc60.png" alt="排序检索数据"></strong></p>
-<h2 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-51aeffe488410f0a.png" alt="过滤数据"></strong></p>
-<h2 id="高级过滤"><a href="#高级过滤" class="headerlink" title="高级过滤"></a>高级过滤</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-c270a132adb7e1d8.png" alt="高级过滤"></strong></p>
-<h2 id="通配符过滤"><a href="#通配符过滤" class="headerlink" title="通配符过滤"></a>通配符过滤</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-9e7cba4ab00b6321.png" alt="通配符过滤"></strong></p>
-<h2 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-b2f793a6d398268a.png" alt="创建计算字段"></strong></p>
-<h2 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f9ba72858e528097.png" alt="函数特性"></strong></p>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-74c41fb49ee70c67.png" alt="函数"></strong></p>
-<h2 id="汇总数据"><a href="#汇总数据" class="headerlink" title="汇总数据"></a>汇总数据</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-df74f29143b75438.png" alt="汇总数据"></strong></p>
-<h2 id="分组数据"><a href="#分组数据" class="headerlink" title="分组数据"></a>分组数据</h2><p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a693680c78b33f85.png" alt="分组数据"></strong></p>
-<hr>
-<p><em><strong>以上测试均在Access数据库中进行，以下于MySQL中进行，通过workbench（版本6.3）操作。</strong></em></p>
-<hr>
-<h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><p><strong>这里说白了就是select语句嵌套，如<code>select * from （select cust_name from customers）</code></strong></p>
-<p><strong><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-d014cba6ca420003.png" alt="子查询"></strong></p>
-<h2 id="联结"><a href="#联结" class="headerlink" title="联结"></a>联结</h2><p><em><a href="https://zh.wikipedia.org/wiki/%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AF">笛卡尔积</a></em></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-90c8c6da8719925a.png" alt="联结"></p>
-<h2 id="高级联结"><a href="#高级联结" class="headerlink" title="高级联结"></a>高级联结</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f451dda80331d3da.png" alt="高级联结"></p>
-<p><em><strong>如果3个以上的表，那怎样联结？</strong></em></p>
-<ol>
-<li>3个</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">use test;</span><br><span class="line"><span class="keyword">select</span> cust_name,cust_contact</span><br><span class="line"><span class="keyword">from</span> (customers </span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> orders</span><br><span class="line"><span class="keyword">on</span> customers.cust_id <span class="operator">=</span> orders.cust_id)</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> orderitems </span><br><span class="line"><span class="keyword">on</span> orderitems.order_num <span class="operator">=</span> orders.order_num;</span><br></pre></td></tr></table></figure>
-
-<p>语法可以概括为：</p>
-<p><em><strong><code>FROM (表1 INNER JOIN 表2 ON 表1.字段号=表2.字段号) INNER JOIN 表3 ON 表1.字段号=表3.字段号</code></strong></em></p>
-<ol start="2">
-<li>同理，4个表可以概括为：</li>
-</ol>
-<p><em><strong><code>FROM ((表1 INNER JOIN 表2 ON 表1.字段号=表2.字段号) INNER JOIN 表3 ON 表1.字段号=表3.字段号) INNER JOIN 表4 ON Member.字段号=表4.字段号</code></strong></em></p>
-<h2 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-2f00deb32b8b47bb.png" alt="组合查询"></p>
-<hr>
-<p> <em>如果代码块阅读困难，可移步<a href="http://www.cnblogs.com/sunshinewang/p/6789419.html">博客园</a></em></p>
-<hr>
-<p><em><strong>关于规则中列顺序，前后必须一致。</strong></em>否则会出现如下情况：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> use test; </span><br><span class="line"><span class="number">2</span> <span class="keyword">select</span> cust_name ,cust_email,cust_contact</span><br><span class="line"><span class="number">3</span> <span class="keyword">from</span> customers</span><br><span class="line"><span class="number">4</span> <span class="keyword">where</span> cust_state <span class="keyword">in</span> (<span class="string">&#x27;IL&#x27;</span>,<span class="string">&#x27;IN&#x27;</span>,<span class="string">&#x27;MI&#x27;</span>)</span><br><span class="line"><span class="number">5</span> <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="number">6</span> <span class="keyword">select</span> cust_name,cust_contact,cust_email</span><br><span class="line"><span class="number">7</span> <span class="keyword">from</span> customers</span><br><span class="line"><span class="number">8</span> <span class="keyword">where</span> cust_name <span class="operator">=</span> <span class="string">&#x27;Fun4All&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>返回结果为：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-8056401714986ffe.png" alt="返回结果"></p>
-<p>列的顺序一致，才会返回正确结果</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> use test;</span><br><span class="line"><span class="number">2</span> <span class="keyword">select</span> cust_name ,cust_email,cust_contact</span><br><span class="line"><span class="number">3</span> <span class="keyword">from</span> customers</span><br><span class="line"><span class="number">4</span> <span class="keyword">where</span> cust_state <span class="keyword">in</span> (<span class="string">&#x27;IL&#x27;</span>,<span class="string">&#x27;IN&#x27;</span>,<span class="string">&#x27;MI&#x27;</span>)</span><br><span class="line"><span class="number">5</span> <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="number">6</span> <span class="keyword">select</span> cust_name,cust_email,cust_contact</span><br><span class="line"><span class="number">7</span> <span class="keyword">from</span> customers8 <span class="keyword">where</span> cust_name <span class="operator">=</span> <span class="string">&#x27;Fun4All&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-<p>结果：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-322eef5f933e81f2.png" alt="返回结果"></p>
-<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p><em><strong>INSERT SELECT:</strong></em></p>
-<p>它可以将SELCET语句结果插入表中，在<em><strong>某种意义上可以完成表的复制</strong></em>。<br>如：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"> <span class="number">1</span> USE test;#使用数据库test </span><br><span class="line"> <span class="number">2</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> CustNew </span><br><span class="line"> <span class="number">3</span> ( </span><br><span class="line"> <span class="number">4</span> cust_id  <span class="type">char</span>(<span class="number">10</span>)   <span class="keyword">NOT</span> <span class="keyword">NULL</span> ,</span><br><span class="line"> <span class="number">5</span> cust_name  <span class="type">char</span>(<span class="number">50</span>)   <span class="keyword">NOT</span> <span class="keyword">NULL</span> ,</span><br><span class="line"> <span class="number">6</span> cust_address  <span class="type">char</span>(<span class="number">50</span>)  <span class="keyword">NULL</span> , </span><br><span class="line"> <span class="number">7</span> cust_city  <span class="type">char</span>(<span class="number">50</span>)  <span class="keyword">NULL</span> ,</span><br><span class="line"> <span class="number">8</span> cust_state  <span class="type">char</span>(<span class="number">5</span>)  <span class="keyword">NULL</span> , </span><br><span class="line"> <span class="number">9</span> cust_zip  <span class="type">char</span>(<span class="number">10</span>)  <span class="keyword">NULL</span> ,</span><br><span class="line"><span class="number">10</span> cust_country  <span class="type">char</span>(<span class="number">50</span>)  <span class="keyword">NULL</span> ,</span><br><span class="line"><span class="number">11</span> cust_contact  <span class="type">char</span>(<span class="number">50</span>)  <span class="keyword">NULL</span> ,</span><br><span class="line"><span class="number">12</span> cust_email  <span class="type">char</span>(<span class="number">255</span>)  <span class="keyword">NULL</span> </span><br><span class="line"><span class="number">13</span> );#创新新表 </span><br><span class="line"><span class="number">14</span> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> CustNew</span><br><span class="line"><span class="number">15</span> (</span><br><span class="line"><span class="number">16</span> cust_id,</span><br><span class="line"><span class="number">17</span> cust_name,</span><br><span class="line"><span class="number">18</span> cust_address,</span><br><span class="line"><span class="number">19</span> cust_city,</span><br><span class="line"><span class="number">20</span> cust_state,</span><br><span class="line"><span class="number">21</span> cust_zip,</span><br><span class="line"><span class="number">22</span> cust_country,</span><br><span class="line"><span class="number">23</span> cust_contact,</span><br><span class="line"><span class="number">24</span> cust_email</span><br><span class="line"><span class="number">25</span> )</span><br><span class="line"><span class="number">26</span> <span class="keyword">SELECT</span> </span><br><span class="line"><span class="number">27</span> cust_id,</span><br><span class="line"><span class="number">28</span> cust_name,</span><br><span class="line"><span class="number">29</span> cust_address,</span><br><span class="line"><span class="number">30</span> cust_city,</span><br><span class="line"><span class="number">31</span> cust_state,</span><br><span class="line"><span class="number">32</span> cust_zip,</span><br><span class="line"><span class="number">33</span> cust_country,</span><br><span class="line"><span class="number">34</span> cust_contact,</span><br><span class="line"><span class="number">35</span> cust_email</span><br><span class="line"><span class="number">36</span> <span class="keyword">FROM</span> customers;#将customers表的数据插入新表<span class="keyword">alter</span></span><br><span class="line"><span class="number">37</span> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> CustNew;</span><br></pre></td></tr></table></figure>
-
-<p>返回结果如下：<br> <img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-96aaf2720fa79e88.png" alt="结果"></p>
-<p> 而如果反过来用，大概就是：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span></span><br><span class="line">customers </span><br><span class="line">（列<span class="number">1</span>，列<span class="number">2</span>，......）</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">列<span class="number">1</span>，列<span class="number">2</span>，.....</span><br><span class="line"><span class="keyword">from</span> custnew</span><br></pre></td></tr></table></figure>
-
-<p>即可完成将表custnew中的数据全部插入customers，这也完成了一条insert插入多条数据。</p>
-<p><em><strong>通常，一条INSERT 语句，只能插入一行数据，要插入多行，就必须执行多个INSERT，但是， INSERT SELECT 是个例外。</strong></em></p>
-<p>以上方法的复制，实际上是重新在数据库中创建了一个新表。</p>
-<p><em><strong>SELECT INTO：</strong></em></p>
-<p>这种方法，可以在SQL语句运行中创建一个表，并将一个表复制到这个全新的表。</p>
-<p><em><strong>我们可以在实验新的SQL语句前，用其进行复制，这样就不影响到实际数据。</strong></em><br>如：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">USE test;#使用数据库</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Cucopy <span class="keyword">as</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers;#复制</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Cucopy;</span><br></pre></td></tr></table></figure>
-
-<p> 返回结果，与上表一致。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-45f6e82846597d13.png" alt="插入"></p>
-<h2 id="更新和删除"><a href="#更新和删除" class="headerlink" title="更新和删除"></a>更新和删除</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-c9a8f39f57480ec5.png" alt="更新和删除"></p>
-<h2 id="创建和操纵表"><a href="#创建和操纵表" class="headerlink" title="创建和操纵表"></a>创建和操纵表</h2><p>这里中点说一下创建表时，指定默认值的问题。一般来说，创建表时，我们需要指定列的数据类型、是否NULL列。关于NULL值具体说明请看下图。</p>
-<p>默认值要是用的好，可以省却我们很多时间。</p>
-<p>因其经常用于指定默认日期，这里以日期为例。</p>
-<p>首先，在MySQL中内建的日期函数：</p>
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="http://www.w3school.com.cn/sql/func_now.asp">NOW()</a></td>
-<td>返回当前的日期和时间</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_curdate.asp">CURDATE()</a></td>
-<td>返回当前的日期</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_curtime.asp">CURTIME()</a></td>
-<td>返回当前的时间</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_date.asp">DATE()</a></td>
-<td>提取日期或日期/时间表达式的日期部分</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_extract.asp">EXTRACT()</a></td>
-<td>返回日期/时间按的单独部分</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_date_add.asp">DATE_ADD()</a></td>
-<td>给日期添加指定的时间间隔</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_date_sub.asp">DATE_SUB()</a></td>
-<td>从日期减去指定的时间间隔</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_datediff_mysql.asp">DATEDIFF()</a></td>
-<td>返回两个日期之间的天数</td>
-</tr>
-<tr>
-<td><a href="http://www.w3school.com.cn/sql/func_date_format.asp">DATE_FORMAT()</a></td>
-<td>用不同的格式显示日期/时间</td>
-</tr>
-</tbody></table>
-<p>创建数据库t2,插入表。如下：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">CREATE</span> DATABASE t2;</span><br><span class="line"> USE t2;</span><br><span class="line"> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> test</span><br><span class="line"> (</span><br><span class="line"> id <span class="type">int</span>(<span class="number">5</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,noedate <span class="type">timestamp</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> </span><br><span class="line"> <span class="built_in">current_timestamp</span>()</span><br><span class="line"> );```</span><br><span class="line"></span><br><span class="line">调用如下：</span><br><span class="line"></span><br><span class="line">​```<span class="keyword">SQL</span></span><br><span class="line"> USE t2;</span><br><span class="line"> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> test(id)<span class="keyword">values</span>(<span class="number">1</span>);</span><br><span class="line"> SELET <span class="operator">*</span> <span class="keyword">FROM</span> test;</span><br></pre></td></tr></table></figure>
-
-<p>返回结果：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-06833413f120003a.png" alt="返回结果"></p>
-<p>以下SQL不合法：</p>
-<ul>
-<li><code>time_d time NOT NULL DEFAULT CURTIME(), </code></li>
-<li><code>date_e date NOT NULL DEFAULT CURDATE(),</code></li>
-<li><code>datetime_f datetime NOT NULL DEFAULT NOW(),</code> </li>
-</ul>
-<ul>
-<li>DATETIME类型：NOW()函数以’YYYY-MM-DD HH:MM:SS’返回当前的日期时间，可以直接存到DATETIME字段中。不支持使用系统默认值。 </li>
-<li>DATE类型：CURDATE()以’YYYY-MM-DD’的格式返回今天的日期，可以直接存到DATE字段中。不支持使用系统默认值。 </li>
-<li>TIME类型：CURTIME()以’HH:MM:SS’的格式返回当前的时间，可以直接存到TIME字段中。不支持使用系统默认值。<br>常见错误：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dnt_forums</span><br><span class="line">(</span><br><span class="line"> aa <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> (<span class="string">&#x27;&#x27;</span>), </span><br><span class="line"> bb <span class="type">date</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> (getdate()), </span><br><span class="line"> cc <span class="type">char</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> (<span class="keyword">null</span>) </span><br><span class="line">）；</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>aa 是 int 类型，默认值也得是整型，并且default后边不要（）括号 。</li>
-<li>bb date类型不支持使用系统默认值，改成timestamp，能过now()取系统时间 。</li>
-<li>cc 已经不允许为空（not null）所以不能默认为 null ，可以改成空字符串 。<br>修改：</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dnt_forums</span><br><span class="line">(</span><br><span class="line"> aa <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">2</span>,</span><br><span class="line">bb <span class="type">timestamp</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> now(),</span><br><span class="line">cc <span class="type">char</span>(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">); </span><br></pre></td></tr></table></figure>
-
-<p>这个日期问题，依然有很多不太明白的地方，以后学习过程碰到继续解决。<br>主要参考：</p>
-<p><a href="http://www.jb51.net/article/33570.htm">脚本之家</a>、<a href="http://blog.csdn.net/justdb/article/details/7965490">博客</a></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-3e42c57a43b77707.png" alt="创建和操纵表"></p>
-<p>重命名表：</p>
-<p><code>RENAME TABLE cucopy1 TO hi;</code></p>
-<p> 删除表：</p>
-<p><code>DROP TABLE hi;</code></p>
-<blockquote>
-<p> <strong>待续</strong></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>数据分析</category>
-      </categories>
-      <tags>
-        <tag>Data analysis</tag>
-        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1059,6 +1028,159 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">41</span>]: arr = np.random.randn(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">42</span>]: arr</span><br><span class="line">Out[<span class="number">42</span>]:</span><br><span class="line">array([-<span class="number">0.77695399</span>, -<span class="number">1.04211228</span>,  <span class="number">0.85516427</span>, -<span class="number">0.04749936</span>, -<span class="number">1.32314252</span>,</span><br><span class="line">       -<span class="number">0.59968117</span>,  <span class="number">1.93582735</span>,  <span class="number">0.08567928</span>, -<span class="number">1.10820476</span>,  <span class="number">1.2410364</span> ])</span><br><span class="line"></span><br><span class="line">In [<span class="number">43</span>]: arr1 = arr&gt;<span class="number">0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">44</span>]: arr1</span><br><span class="line">Out[<span class="number">44</span>]: array([<span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>,  <span class="literal">True</span>, <span class="literal">False</span>,  <span class="literal">True</span>], dtype=<span class="built_in">bool</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">45</span>]: arr1.<span class="built_in">any</span>()</span><br><span class="line">Out[<span class="number">45</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">46</span>]: arr1.<span class="built_in">all</span>()</span><br><span class="line">Out[<span class="number">46</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pandas中轴axis的问题理解</title>
+    <url>/2019/03/14/pandas%E4%B8%AD%E8%BD%B4axis%E7%9A%84%E9%97%AE%E9%A2%98%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>在学习删除方法<code>drop</code>时，碰到了，也突然想明白了，轴是什么意思。</p>
+<span id="more"></span>
+
+<p>引入：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame<span class="comment">#导入包</span></span><br><span class="line">obj = Series(np.arange(<span class="number">5</span>),index = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>])<span class="comment">#创建Series  obj</span></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">2</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">new_obj = obj.drop(<span class="string">&#x27;c&#x27;</span>)<span class="comment">#删除&#x27;c&#x27;</span></span><br><span class="line">new_obj</span><br><span class="line">Out[<span class="number">5</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">6</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj.drop([<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])<span class="comment">#删除&#x27;b&#x27;,&#x27;d&#x27;</span></span><br><span class="line">Out[<span class="number">7</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">data = DataFrame(np.arange(<span class="number">25</span>).reshape(<span class="number">5</span>,<span class="number">5</span>),index = [<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>,<span class="string">&#x27;heb&#x27;</span>,<span class="string">&#x27;sjz&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>],columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>,<span class="string">&#x27;four&#x27;</span>,<span class="string">&#x27;five&#x27;</span>])<span class="comment">#创建DataFrame</span></span><br><span class="line">data</span><br><span class="line">Out[<span class="number">9</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">bj     <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop([<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>])<span class="comment">#删除某行</span></span><br><span class="line">Out[<span class="number">10</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop(<span class="string">&#x27;one&#x27;</span>,axis=<span class="number">1</span>)<span class="comment">#删除列</span></span><br><span class="line">Out[<span class="number">11</span>]: </span><br><span class="line">     two  three  four  five</span><br><span class="line">bj     <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br></pre></td></tr></table></figure>
+<p>可已注意到的是，在上方使用<code>drop</code>时，删除列特意指明了<code>axis=1</code>. 而在查看drop的文档时，发现默认参数是<code>axis =0 </code>，这说明：</p>
+<ul>
+<li><code>axis = 0</code>代表的是行。</li>
+<li><code>axis = 1</code>代表的是列。<br>这样想就明白了。但是接着问题来了，</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data</span><br><span class="line">Out[<span class="number">29</span>]: </span><br><span class="line">lie   one  two  three  four  five</span><br><span class="line">city                             </span><br><span class="line">bj      <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj      <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb    <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz    <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh     <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">0</span>)<span class="comment">#求列平均</span></span><br><span class="line">Out[<span class="number">30</span>]: </span><br><span class="line">lie</span><br><span class="line">one      <span class="number">10.0</span></span><br><span class="line">two      <span class="number">11.0</span></span><br><span class="line">three    <span class="number">12.0</span></span><br><span class="line">four     <span class="number">13.0</span></span><br><span class="line">five     <span class="number">14.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">1</span>)<span class="comment">#求行平均</span></span><br><span class="line">Out[<span class="number">31</span>]: </span><br><span class="line">city</span><br><span class="line">bj      <span class="number">2.0</span></span><br><span class="line">tj      <span class="number">7.0</span></span><br><span class="line">heb    <span class="number">12.0</span></span><br><span class="line">sjz    <span class="number">17.0</span></span><br><span class="line">sh     <span class="number">22.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>其实，我是有点蒙的，如果向上面那样理解的话。<br>发现问题了吗？<br>在<code>drop</code>中使用<code>axis=1</code>实际上是删掉了一列，而在<code>mean</code>中实际上是计算的行平均值，而不是列的平均值。<br>蒙了。嗯，看了Stackoverflow中的解释，大概是明白了。现记录如下。</p>
+<p><strong>实际上axis = 1，指的是沿着行求所有列的平均值，代表了横轴，那axis = 0，就是沿着列求所有行的平均值，代表了纵轴。</strong></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-de17a1655283a433.png" alt="示意图"></p>
+<p>那这样的话，<code>drop</code>就是沿着<code>&#39;two&#39;</code>的方向删除对应的轴标签为<code>axis = 1</code>的值。</p>
+<p>又想到了numpy，pandas是以numpy为基础构造的库，因此，它保留了对于axis使用的方式。</p>
+<p>参考：<a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean"><a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean">What does axis in pandas mean?</a></a></p>
+]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>Pandas</tag>
+        <tag>python</tag>
+        <tag>Data analysis</tag>
+        <tag>硕士期间</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python</title>
+    <url>/2019/03/06/python/</url>
+    <content><![CDATA[<h3 id="pyecharts安装地图包"><a href="#pyecharts安装地图包" class="headerlink" title="pyecharts安装地图包"></a>pyecharts安装地图包</h3><span id="more"></span>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install echarts-countries-pypkg</span><br></pre></td></tr></table></figure>
+
+<p>报错<code>Unknown or unsupported command &#39;install&#39;</code></p>
+<p>这可能是因为我最近装了很多的环境导致的冲突，比如php，java环境等等。</p>
+<p>解决方法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip.exe install echarts-countries-pypkg</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://blog.csdn.net/qq_36854407/article/details/79314344">pip命令提示unknow or unsupported command install解决方法</a></p>
+<h3 id="连接两个表"><a href="#连接两个表" class="headerlink" title="连接两个表"></a>连接两个表</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gg_commu_data = pd.merge(gg_data,way_commu_data,on = <span class="string">&#x27;call_id&#x27;</span>,how = <span class="string">&#x27;left&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>报错</p>
+<p><code>ValueError: You are trying to merge on int64 and object columns. If you wish to proceed you should use pd.concat</code></p>
+<p>这是，主键数据类型不同，一个是int，一个是对象。解决方法，更改数据类型。</p>
+<h3 id="合并两个列为一列"><a href="#合并两个列为一列" class="headerlink" title="合并两个列为一列"></a>合并两个列为一列</h3><ol>
+<li><p><strong>两列数据类型一样</strong></p>
+<ol>
+<li>直接合并</li>
+</ol>
+<p><code>way_commu_data[&#39;new&#39;] = way_commu_data[&#39;business_name&#39;] + way_commu_data[&#39;inter_idx&#39;]</code></p>
+<ol start="2">
+<li>加符号</li>
+</ol>
+<p><code>way_commu_data[&#39;new&#39;] = way_commu_data[&#39;business_name&#39;] +&quot;|&quot; + way_commu_data[&#39;inter_idx&#39;].map(str)</code></p>
+</li>
+<li><p><strong>数据类型不同</strong></p>
+</li>
+</ol>
+<p><em>如果某一列是非str类型的数据，那么我们需要用到map(str)将那一列数据类型做转换 。</em></p>
+<p><code>dataframe[&quot;newColumn&quot;] = dataframe[&quot;age&quot;].map(str) + dataframe[&quot;phone&quot;] + dataframe[&quot;address”] </code></p>
+<ol start="3">
+<li><strong>在某一列中加入字符串。</strong></li>
+</ol>
+<p><a href="https://blog.csdn.net/sscc_learning/article/details/76993816">这里采用格式化字符串的形式。</a></p>
+<p><img src="https://s1.ax1x.com/2018/08/21/P48u36.png" alt="方法"></p>
+<ol start="4">
+<li><strong>用一列的非空值填充另一列对应的空值</strong></li>
+</ol>
+<p><code>way_commu_data.loc[way_commu_data[&#39;business_name_new&#39;].isnull(),&#39;business_name_new&#39;]=way_commu_data[way_commu_data[&#39;business_name_new&#39;].isnull()][&#39;inter_idx&#39;]</code></p>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><h4 id="提取包含某些字符的字段报错"><a href="#提取包含某些字符的字段报错" class="headerlink" title="提取包含某些字符的字段报错"></a>提取包含某些字符的字段报错</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#找出target中包含字符1的列</span></span><br><span class="line">y = test[test[<span class="string">&#x27;target&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;1&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>报错：<code>ValueError: cannot index with vector containing NA / NaN values</code></p>
+<p> 解决方法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#找出target中包含字符1的列</span></span><br><span class="line">y = test[test[<span class="string">&#x27;target&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;1&#x27;</span>, case=<span class="literal">False</span>, na=<span class="literal">False</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#If first line failed still is possible replace NaNs in condition in str.contains by parameter na=False:</span></span><br><span class="line"></span><br><span class="line">mask = dframe.Product.<span class="built_in">str</span>.contains(word, case=<span class="literal">False</span>, na=<span class="literal">False</span>)</span><br><span class="line"><span class="comment">#Or try omit inplace=True and assign back:</span></span><br><span class="line">dframe[<span class="string">&#x27;Product&#x27;</span>] = dframe[<span class="string">&#x27;Product&#x27;</span>].fillna(<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>参考：</p>
+<p>1.<a href="https://stackoverflow.com/questions/48862235/python-valueerror-cannot-index-with-vector-containing-na-nan-values">stack</a></p>
+<p>2.<a href="https://blog.csdn.net/Guo_ya_nan/article/details/81021158">csdn</a></p>
+<ol start="6">
+<li><a href="https://blog.csdn.net/htbeker/article/details/79645651"><strong>pandas.DataFrame中删除包涵特定字符串所在的行</strong></a></li>
+<li><a href="https://blog.csdn.net/fontthrone/article/details/75212825"><strong>Pandas to_json() 中文乱码,转化为json数组</strong></a></li>
+</ol>
+<h3 id="PPT动态图实现方案"><a href="#PPT动态图实现方案" class="headerlink" title="PPT动态图实现方案"></a>PPT动态图实现方案</h3><p>将pyecharts的图生成html文件。</p>
+<p>命令：<code>wordcloud.render()</code></p>
+<h3 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h3><h4 id="读取txt文件时，报错"><a href="#读取txt文件时，报错" class="headerlink" title="读取txt文件时，报错"></a>读取txt文件时，报错</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filename3 = <span class="string">&#x27;C:/Users/admin/Desktop/commu_data3.txt&#x27;</span></span><br><span class="line"><span class="comment">#设置分隔符为&#x27;,&#x27;，第一行为列名（列索引），设定不使用第一列作为行索引</span></span><br><span class="line">commu3 = pd.DataFrame(pd.read_table(filename3,sep = <span class="string">&#x27;,&#x27;</span>,header = <span class="number">0</span>,index_col = <span class="literal">False</span>,encoding = <span class="string">&#x27;gbk&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p><code>ParserError: Error tokenizing data. C error: Expected 21 fields in line 3, saw 22</code></p>
+<p>看他的意思是，底层的C代码不能解析数据，<strong>采用以下方案，将解析引擎设置为python。</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filename3 = <span class="string">&#x27;C:/Users/admin/Desktop/commu_data3.txt&#x27;</span></span><br><span class="line"><span class="comment">#设置分隔符为&#x27;,&#x27;，第一行为列名（列索引），设定不使用第一列作为行索引</span></span><br><span class="line">commu3 = pd.DataFrame(pd.read_table(filename3,sep = <span class="string">&#x27;,&#x27;</span>,header = <span class="number">0</span>,index_col = <span class="literal">False</span>,encoding = <span class="string">&#x27;gbk&#x27;</span>,engine = <span class="string">&#x27;python&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件夹批量读取glob"><a href="#文件夹批量读取glob" class="headerlink" title="文件夹批量读取glob"></a>文件夹批量读取glob</h4><p><a href="https://docs.python.org/3.5/library/glob.html#module-glob">glob官方文档</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">path = <span class="string">r&#x27;F:\公司文档\项目文档\中国人寿\数据\7月份数据\call_data&#x27;</span></span><br><span class="line"></span><br><span class="line">filenames = glob.glob(path + <span class="string">&quot;/*.txt&quot;</span>)</span><br><span class="line">frame = pd.DataFrame()</span><br><span class="line">list_call_data = []</span><br><span class="line"></span><br><span class="line"><span class="comment">#用pandas读取所有数据，并连接到一个DataFrame中。</span></span><br><span class="line"><span class="keyword">for</span> file_name <span class="keyword">in</span> filenames:</span><br><span class="line">    filename =<span class="built_in">open</span>(file_name) </span><br><span class="line">    df = pd.read_table(filename,sep = <span class="string">&#x27;,&#x27;</span>,header = <span class="number">0</span>,index_col = <span class="literal">False</span>,encoding = <span class="string">&#x27;gbk&#x27;</span>)</span><br><span class="line">    list_call_data.append(df)</span><br><span class="line">    </span><br><span class="line">frame = pd.concat(list_call_data)</span><br><span class="line"></span><br><span class="line">path = <span class="string">r&#x27;F:\公司文档\项目文档\中国人寿\数据\7月份数据\call_data&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://dataquestion.com/question/3526">参考1</a></p>
+<p><a href="https://blog.csdn.net/LZGS_4/article/details/50371030">参考2</a></p>
+<p><a href="https://blog.csdn.net/Sunshine_in_Moon/article/details/50246773">参考3</a></p>
+<h3 id="pandas输出文件"><a href="#pandas输出文件" class="headerlink" title="pandas输出文件"></a>pandas输出文件</h3><p><a href="http://pandas.pydata.org/pandas-docs/stable/io.html#writing-json">pandas文档json写入</a></p>
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《谁说菜鸟不会数据分析》读书笔记</title>
+    <url>/2021/11/07/%E3%80%8A%E8%B0%81%E8%AF%B4%E8%8F%9C%E9%B8%9F%E4%B8%8D%E4%BC%9A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>花了一段时间学习了下菜鸟读书笔记，最大的感慨是这本书，纯粹是入门级。本书以Excel为主要操作软件，只要稍微有点Excel基础，绝对可以看懂，看完后，觉得对我用处最大的是数据分析的思想，而一些手段，反而是次要的。</p>
+<span id="more"></span>
+
+
+
+<p>以下是在读的过程中的一些学习总结，不足之处，诸君见谅。</p>
+<h2 id="1-数据分析内容"><a href="#1-数据分析内容" class="headerlink" title="1.数据分析内容"></a>1.数据分析内容</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-117cd864b4606df8.png" alt="img"></p>
+<p>数据分析</p>
+<p>这一部分，主要介绍了什么数据分析，数据分析步骤，以及作为一个合格的数据分析所需要具备的品质。</p>
+<p>总体来说，要进行数据分析，我们首先要知道自己的目的是什么，以及我们所要分析的内容，然后我们需要确定我们采用的数据分析方法，这需要我们知道一些营销或管理模型，从而根据内容确定分析方向。</p>
+<h2 id="2-数据分析方法论"><a href="#2-数据分析方法论" class="headerlink" title="2.数据分析方法论"></a>2.数据分析方法论</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-8b915c7975ecb4bc.png" alt="img"></p>
+<p>数据分析方法论</p>
+<p>以前只是知道这些营销理论或者管理理论，现在才隐约知道该怎样使用他们。实践出真知。</p>
+<h2 id="3-数据收集"><a href="#3-数据收集" class="headerlink" title="3.数据收集"></a>3.数据收集</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a77faea71422aab7.png" alt="img"></p>
+<p>数据收集</p>
+<p>这部分是最重要的部分之一，主要介绍了数据收集的一些方法，重点介绍了调查问卷的正确使用方式，并向我们介绍了表的概念，表与SQL语言练习紧密，因为我们现在多数的数据都存储在关系型数据库中，如MySql等，同时，说了一些Excel的小技巧，以前学习了Excel的很多内容，看完这部分才对怎样运用Excel对数据处理有了大概的认识，及方向。</p>
+<h2 id="4-数据处理"><a href="#4-数据处理" class="headerlink" title="4.数据处理"></a>4.数据处理</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f81d9d44fc784e9b.png" alt="img"></p>
+<h2 id="5-数据清洗"><a href="#5-数据清洗" class="headerlink" title="5.数据清洗"></a>5.数据清洗</h2><p>这部分是最为繁琐的步骤之一，其首先主要介绍了数据处理包括的四大部分内容：数据清洗、数据转化、数据提取、数据计算等。然后说明了清洗时，使用的一些Excel的技巧，其中，重复数据还可通过数据透视表进行辨别去除。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a0020ed9dc65f908.png" alt="img"></p>
+<p>数据加工</p>
+<p>主要还是使用Excel怎么实现数据的加工，及加工所需要做的事情。不得不说一句VLOOUP很神奇。最后多句嘴，建议大家学习并使用Excel2013/2016，其***快速填充功能***，简直强大的无敌。</p>
+<h2 id="6-数据分析工具"><a href="#6-数据分析工具" class="headerlink" title="6.数据分析工具"></a>6.数据分析工具</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-927dd467c9ffbfa6.png" alt="img"></p>
+<p>数据透视表</p>
+<p>数据分工具还有SPSS，SQL等等，因为书主要以Excel为例，因此这部分主要介绍了数据透视表的使用。建议去我要自学网学习曾贤志老师的数据透视表教程，详细而生动。数据透视表可以结合SQL使用，你知道吗？</p>
+<h2 id="7-数据分析方法"><a href="#7-数据分析方法" class="headerlink" title="7.数据分析方法"></a>7.数据分析方法</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f14cca613c2423da.png" alt="img"></p>
+<p>数据分析方法</p>
+<p>这一部分主要介绍了一些比较常见且基础的数据分析方法，如对比分析，分组分析等。以及他们的应用场合。</p>
+<h2 id="8-数据展现"><a href="#8-数据展现" class="headerlink" title="8.数据展现"></a>8.数据展现</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-6ac6a74cc438a1e0.png" alt="img"></p>
+<h2 id="9-数据展现"><a href="#9-数据展现" class="headerlink" title="9.数据展现"></a>9.数据展现</h2><p>此部分主要说明了图表的作用，以及图表的应用场合，和他们的制作方法（在Excel中）。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-4d118010db6ddffb.png" alt="img"></p>
+<p>图表专业化</p>
+<p>此部分主要说明了数据分析图表制作的目的，意义，以及需要注意的事项、小技巧等。</p>
+<h2 id="10-8-数据分析报告"><a href="#10-8-数据分析报告" class="headerlink" title="10.8.数据分析报告"></a>10.8.数据分析报告</h2><p>这是最后一步了，也是相对来说比较重要的一步，因为前面所有的工作，都是为了这一步做准备的，我们的目的是让决策者看懂，为他们提供决策支持，决策依据。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-30bc008b0acbd855.png" alt="img"></p>
+<p>数据分析报告</p>
+<p>此部分的重点在于介绍数据分析报告及其制作原则。最后菜鸟以一个一般性的模板进行了总结分析。</p>
+<p>数据分析学习任重而道远，继续努力。</p>
+<p>以上。</p>
+]]></content>
+      <tags>
+        <tag>数据分析</tag>
       </tags>
   </entry>
   <entry>
@@ -1139,125 +1261,157 @@
       </tags>
   </entry>
   <entry>
-    <title>《谁说菜鸟不会数据分析》读书笔记</title>
-    <url>/2021/11/07/%E3%80%8A%E8%B0%81%E8%AF%B4%E8%8F%9C%E9%B8%9F%E4%B8%8D%E4%BC%9A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>花了一段时间学习了下菜鸟读书笔记，最大的感慨是这本书，纯粹是入门级。本书以Excel为主要操作软件，只要稍微有点Excel基础，绝对可以看懂，看完后，觉得对我用处最大的是数据分析的思想，而一些手段，反而是次要的。</p>
+    <title>公司大佬的分享</title>
+    <url>/2021/11/10/%E5%85%AC%E5%8F%B8%E5%A4%A7%E4%BD%AC%E7%9A%84%E5%88%86%E4%BA%AB/</url>
+    <content><![CDATA[<h1 id="滴滴中台之路"><a href="#滴滴中台之路" class="headerlink" title="滴滴中台之路"></a>滴滴中台之路</h1><p>都是PPT截图，在来自于一位大佬的分享。</p>
 <span id="more"></span>
 
-
-
-<p>以下是在读的过程中的一些学习总结，不足之处，诸君见谅。</p>
-<h2 id="1-数据分析内容"><a href="#1-数据分析内容" class="headerlink" title="1.数据分析内容"></a>1.数据分析内容</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-117cd864b4606df8.png" alt="img"></p>
-<p>数据分析</p>
-<p>这一部分，主要介绍了什么数据分析，数据分析步骤，以及作为一个合格的数据分析所需要具备的品质。</p>
-<p>总体来说，要进行数据分析，我们首先要知道自己的目的是什么，以及我们所要分析的内容，然后我们需要确定我们采用的数据分析方法，这需要我们知道一些营销或管理模型，从而根据内容确定分析方向。</p>
-<h2 id="2-数据分析方法论"><a href="#2-数据分析方法论" class="headerlink" title="2.数据分析方法论"></a>2.数据分析方法论</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-8b915c7975ecb4bc.png" alt="img"></p>
-<p>数据分析方法论</p>
-<p>以前只是知道这些营销理论或者管理理论，现在才隐约知道该怎样使用他们。实践出真知。</p>
-<h2 id="3-数据收集"><a href="#3-数据收集" class="headerlink" title="3.数据收集"></a>3.数据收集</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a77faea71422aab7.png" alt="img"></p>
-<p>数据收集</p>
-<p>这部分是最重要的部分之一，主要介绍了数据收集的一些方法，重点介绍了调查问卷的正确使用方式，并向我们介绍了表的概念，表与SQL语言练习紧密，因为我们现在多数的数据都存储在关系型数据库中，如MySql等，同时，说了一些Excel的小技巧，以前学习了Excel的很多内容，看完这部分才对怎样运用Excel对数据处理有了大概的认识，及方向。</p>
-<h2 id="4-数据处理"><a href="#4-数据处理" class="headerlink" title="4.数据处理"></a>4.数据处理</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f81d9d44fc784e9b.png" alt="img"></p>
-<h2 id="5-数据清洗"><a href="#5-数据清洗" class="headerlink" title="5.数据清洗"></a>5.数据清洗</h2><p>这部分是最为繁琐的步骤之一，其首先主要介绍了数据处理包括的四大部分内容：数据清洗、数据转化、数据提取、数据计算等。然后说明了清洗时，使用的一些Excel的技巧，其中，重复数据还可通过数据透视表进行辨别去除。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a0020ed9dc65f908.png" alt="img"></p>
-<p>数据加工</p>
-<p>主要还是使用Excel怎么实现数据的加工，及加工所需要做的事情。不得不说一句VLOOUP很神奇。最后多句嘴，建议大家学习并使用Excel2013/2016，其***快速填充功能***，简直强大的无敌。</p>
-<h2 id="6-数据分析工具"><a href="#6-数据分析工具" class="headerlink" title="6.数据分析工具"></a>6.数据分析工具</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-927dd467c9ffbfa6.png" alt="img"></p>
-<p>数据透视表</p>
-<p>数据分工具还有SPSS，SQL等等，因为书主要以Excel为例，因此这部分主要介绍了数据透视表的使用。建议去我要自学网学习曾贤志老师的数据透视表教程，详细而生动。数据透视表可以结合SQL使用，你知道吗？</p>
-<h2 id="7-数据分析方法"><a href="#7-数据分析方法" class="headerlink" title="7.数据分析方法"></a>7.数据分析方法</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f14cca613c2423da.png" alt="img"></p>
-<p>数据分析方法</p>
-<p>这一部分主要介绍了一些比较常见且基础的数据分析方法，如对比分析，分组分析等。以及他们的应用场合。</p>
-<h2 id="8-数据展现"><a href="#8-数据展现" class="headerlink" title="8.数据展现"></a>8.数据展现</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-6ac6a74cc438a1e0.png" alt="img"></p>
-<h2 id="9-数据展现"><a href="#9-数据展现" class="headerlink" title="9.数据展现"></a>9.数据展现</h2><p>此部分主要说明了图表的作用，以及图表的应用场合，和他们的制作方法（在Excel中）。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-4d118010db6ddffb.png" alt="img"></p>
-<p>图表专业化</p>
-<p>此部分主要说明了数据分析图表制作的目的，意义，以及需要注意的事项、小技巧等。</p>
-<h2 id="10-8-数据分析报告"><a href="#10-8-数据分析报告" class="headerlink" title="10.8.数据分析报告"></a>10.8.数据分析报告</h2><p>这是最后一步了，也是相对来说比较重要的一步，因为前面所有的工作，都是为了这一步做准备的，我们的目的是让决策者看懂，为他们提供决策支持，决策依据。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-30bc008b0acbd855.png" alt="img"></p>
-<p>数据分析报告</p>
-<p>此部分的重点在于介绍数据分析报告及其制作原则。最后菜鸟以一个一般性的模板进行了总结分析。</p>
-<p>数据分析学习任重而道远，继续努力。</p>
-<p>以上。</p>
+<h2 id="为什么要建业务中台"><a href="#为什么要建业务中台" class="headerlink" title="为什么要建业务中台"></a>为什么要建业务中台</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220056857.png" alt="image-20211110220056857"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220137833.png" alt="image-20211110220137833"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220208374.png" alt="image-20211110220208374"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220245766.png" alt="image-20211110220245766"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220316283.png" alt="image-20211110220316283"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220336470.png" alt="image-20211110220336470"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220353398.png" alt="image-20211110220353398"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220435991.png" alt="image-20211110220435991"></p>
+<h2 id="如何推进技术中台项目落地"><a href="#如何推进技术中台项目落地" class="headerlink" title="如何推进技术中台项目落地"></a>如何推进技术中台项目落地</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220453347.png" alt="image-20211110220453347"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220610065.png" alt="image-20211110220610065"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220630038.png" alt="image-20211110220630038"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220719145.png" alt="image-20211110220719145"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220735659.png" alt="image-20211110220735659"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220756926.png" alt="image-20211110220756926"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220820284.png" alt="image-20211110220820284"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220907901.png" alt="image-20211110220907901"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220922903.png" alt="image-20211110220922903"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220938475.png" alt="image-20211110220938475"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220955242.png" alt="image-20211110220955242"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110221036010.png" alt="image-20211110221036010"></p>
+<h1 id="研发人员团队管理"><a href="#研发人员团队管理" class="headerlink" title="研发人员团队管理"></a>研发人员团队管理</h1><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002123384.png" alt="image-20211130002123384"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002154135.png" alt="image-20211130002154135"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002246841.png" alt="image-20211130002246841"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002304899.png" alt="image-20211130002304899"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002326364.png" alt="image-20211130002326364"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002428851.png" alt="image-20211130002428851"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002453384.png" alt="image-20211130002453384"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002510821.png" alt="image-20211130002510821"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002529079.png" alt="image-20211130002529079"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002549700.png" alt="image-20211130002549700"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002608935.png" alt="image-20211130002608935"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002626413.png" alt="image-20211130002626413"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002642282.png" alt="image-20211130002642282"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002720423.png" alt="image-20211130002720423"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002739529.png" alt="image-20211130002739529"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002752970.png" alt="image-20211130002752970"></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002805379.png" alt="image-20211130002805379"></p>
 ]]></content>
+      <categories>
+        <category>Job</category>
+      </categories>
       <tags>
-        <tag>数据分析</tag>
+        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
-    <title>python</title>
-    <url>/2019/03/06/python/</url>
-    <content><![CDATA[<h3 id="pyecharts安装地图包"><a href="#pyecharts安装地图包" class="headerlink" title="pyecharts安装地图包"></a>pyecharts安装地图包</h3><span id="more"></span>
+    <title>工作的处理方式</title>
+    <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
+<p>做项目，不管是哪个岗位，包括我，现在是运营岗位，与客户对接是最多的。</p>
+<span id="more"></span>
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install echarts-countries-pypkg</span><br></pre></td></tr></table></figure>
-
-<p>报错<code>Unknown or unsupported command &#39;install&#39;</code></p>
-<p>这可能是因为我最近装了很多的环境导致的冲突，比如php，java环境等等。</p>
-<p>解决方法：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip.exe install echarts-countries-pypkg</span><br></pre></td></tr></table></figure>
-
-<p>参考：<a href="https://blog.csdn.net/qq_36854407/article/details/79314344">pip命令提示unknow or unsupported command install解决方法</a></p>
-<h3 id="连接两个表"><a href="#连接两个表" class="headerlink" title="连接两个表"></a>连接两个表</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gg_commu_data = pd.merge(gg_data,way_commu_data,on = <span class="string">&#x27;call_id&#x27;</span>,how = <span class="string">&#x27;left&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>报错</p>
-<p><code>ValueError: You are trying to merge on int64 and object columns. If you wish to proceed you should use pd.concat</code></p>
-<p>这是，主键数据类型不同，一个是int，一个是对象。解决方法，更改数据类型。</p>
-<h3 id="合并两个列为一列"><a href="#合并两个列为一列" class="headerlink" title="合并两个列为一列"></a>合并两个列为一列</h3><ol>
-<li><p><strong>两列数据类型一样</strong></p>
-<ol>
-<li>直接合并</li>
-</ol>
-<p><code>way_commu_data[&#39;new&#39;] = way_commu_data[&#39;business_name&#39;] + way_commu_data[&#39;inter_idx&#39;]</code></p>
-<ol start="2">
-<li>加符号</li>
-</ol>
-<p><code>way_commu_data[&#39;new&#39;] = way_commu_data[&#39;business_name&#39;] +&quot;|&quot; + way_commu_data[&#39;inter_idx&#39;].map(str)</code></p>
-</li>
-<li><p><strong>数据类型不同</strong></p>
-</li>
-</ol>
-<p><em>如果某一列是非str类型的数据，那么我们需要用到map(str)将那一列数据类型做转换 。</em></p>
-<p><code>dataframe[&quot;newColumn&quot;] = dataframe[&quot;age&quot;].map(str) + dataframe[&quot;phone&quot;] + dataframe[&quot;address”] </code></p>
-<ol start="3">
-<li><strong>在某一列中加入字符串。</strong></li>
-</ol>
-<p><a href="https://blog.csdn.net/sscc_learning/article/details/76993816">这里采用格式化字符串的形式。</a></p>
-<p><img src="https://s1.ax1x.com/2018/08/21/P48u36.png" alt="方法"></p>
-<ol start="4">
-<li><strong>用一列的非空值填充另一列对应的空值</strong></li>
-</ol>
-<p><code>way_commu_data.loc[way_commu_data[&#39;business_name_new&#39;].isnull(),&#39;business_name_new&#39;]=way_commu_data[way_commu_data[&#39;business_name_new&#39;].isnull()][&#39;inter_idx&#39;]</code></p>
-<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><h4 id="提取包含某些字符的字段报错"><a href="#提取包含某些字符的字段报错" class="headerlink" title="提取包含某些字符的字段报错"></a>提取包含某些字符的字段报错</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#找出target中包含字符1的列</span></span><br><span class="line">y = test[test[<span class="string">&#x27;target&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;1&#x27;</span>)]</span><br></pre></td></tr></table></figure>
-
-<p>报错：<code>ValueError: cannot index with vector containing NA / NaN values</code></p>
-<p> 解决方法：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#找出target中包含字符1的列</span></span><br><span class="line">y = test[test[<span class="string">&#x27;target&#x27;</span>].<span class="built_in">str</span>.contains(<span class="string">&#x27;1&#x27;</span>, case=<span class="literal">False</span>, na=<span class="literal">False</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#If first line failed still is possible replace NaNs in condition in str.contains by parameter na=False:</span></span><br><span class="line"></span><br><span class="line">mask = dframe.Product.<span class="built_in">str</span>.contains(word, case=<span class="literal">False</span>, na=<span class="literal">False</span>)</span><br><span class="line"><span class="comment">#Or try omit inplace=True and assign back:</span></span><br><span class="line">dframe[<span class="string">&#x27;Product&#x27;</span>] = dframe[<span class="string">&#x27;Product&#x27;</span>].fillna(<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>参考：</p>
-<p>1.<a href="https://stackoverflow.com/questions/48862235/python-valueerror-cannot-index-with-vector-containing-na-nan-values">stack</a></p>
-<p>2.<a href="https://blog.csdn.net/Guo_ya_nan/article/details/81021158">csdn</a></p>
-<ol start="6">
-<li><a href="https://blog.csdn.net/htbeker/article/details/79645651"><strong>pandas.DataFrame中删除包涵特定字符串所在的行</strong></a></li>
-<li><a href="https://blog.csdn.net/fontthrone/article/details/75212825"><strong>Pandas to_json() 中文乱码,转化为json数组</strong></a></li>
-</ol>
-<h3 id="PPT动态图实现方案"><a href="#PPT动态图实现方案" class="headerlink" title="PPT动态图实现方案"></a>PPT动态图实现方案</h3><p>将pyecharts的图生成html文件。</p>
-<p>命令：<code>wordcloud.render()</code></p>
-<h3 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h3><h4 id="读取txt文件时，报错"><a href="#读取txt文件时，报错" class="headerlink" title="读取txt文件时，报错"></a>读取txt文件时，报错</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filename3 = <span class="string">&#x27;C:/Users/admin/Desktop/commu_data3.txt&#x27;</span></span><br><span class="line"><span class="comment">#设置分隔符为&#x27;,&#x27;，第一行为列名（列索引），设定不使用第一列作为行索引</span></span><br><span class="line">commu3 = pd.DataFrame(pd.read_table(filename3,sep = <span class="string">&#x27;,&#x27;</span>,header = <span class="number">0</span>,index_col = <span class="literal">False</span>,encoding = <span class="string">&#x27;gbk&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-<p><code>ParserError: Error tokenizing data. C error: Expected 21 fields in line 3, saw 22</code></p>
-<p>看他的意思是，底层的C代码不能解析数据，<strong>采用以下方案，将解析引擎设置为python。</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">filename3 = <span class="string">&#x27;C:/Users/admin/Desktop/commu_data3.txt&#x27;</span></span><br><span class="line"><span class="comment">#设置分隔符为&#x27;,&#x27;，第一行为列名（列索引），设定不使用第一列作为行索引</span></span><br><span class="line">commu3 = pd.DataFrame(pd.read_table(filename3,sep = <span class="string">&#x27;,&#x27;</span>,header = <span class="number">0</span>,index_col = <span class="literal">False</span>,encoding = <span class="string">&#x27;gbk&#x27;</span>,engine = <span class="string">&#x27;python&#x27;</span>))</span><br></pre></td></tr></table></figure>
-
-<h4 id="文件夹批量读取glob"><a href="#文件夹批量读取glob" class="headerlink" title="文件夹批量读取glob"></a>文件夹批量读取glob</h4><p><a href="https://docs.python.org/3.5/library/glob.html#module-glob">glob官方文档</a></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"></span><br><span class="line">path = <span class="string">r&#x27;F:\公司文档\项目文档\中国人寿\数据\7月份数据\call_data&#x27;</span></span><br><span class="line"></span><br><span class="line">filenames = glob.glob(path + <span class="string">&quot;/*.txt&quot;</span>)</span><br><span class="line">frame = pd.DataFrame()</span><br><span class="line">list_call_data = []</span><br><span class="line"></span><br><span class="line"><span class="comment">#用pandas读取所有数据，并连接到一个DataFrame中。</span></span><br><span class="line"><span class="keyword">for</span> file_name <span class="keyword">in</span> filenames:</span><br><span class="line">    filename =<span class="built_in">open</span>(file_name) </span><br><span class="line">    df = pd.read_table(filename,sep = <span class="string">&#x27;,&#x27;</span>,header = <span class="number">0</span>,index_col = <span class="literal">False</span>,encoding = <span class="string">&#x27;gbk&#x27;</span>)</span><br><span class="line">    list_call_data.append(df)</span><br><span class="line">    </span><br><span class="line">frame = pd.concat(list_call_data)</span><br><span class="line"></span><br><span class="line">path = <span class="string">r&#x27;F:\公司文档\项目文档\中国人寿\数据\7月份数据\call_data&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="https://dataquestion.com/question/3526">参考1</a></p>
-<p><a href="https://blog.csdn.net/LZGS_4/article/details/50371030">参考2</a></p>
-<p><a href="https://blog.csdn.net/Sunshine_in_Moon/article/details/50246773">参考3</a></p>
-<h3 id="pandas输出文件"><a href="#pandas输出文件" class="headerlink" title="pandas输出文件"></a>pandas输出文件</h3><p><a href="http://pandas.pydata.org/pandas-docs/stable/io.html#writing-json">pandas文档json写入</a></p>
+<p>客户在使用我们的产品的时候，<strong>疯狂吐槽我们某一个功能</strong>，这就是风险，比如吐槽你的语义，吐槽你的NLP，这就是风险。<strong>我们需要领导意识到这个风险。</strong></p>
+<p>因为接下来，如果客户与我们合作有二期项目，接下来可能二期的合同还会用到我们的语义。</p>
+<p>而这个时候，一期用户对我们的语义印象极差，二期客户可能就不和我们签语义的合同，公司就会有损失。</p>
+<p>这就是很大的风险。</p>
+<p>我们应该反馈给项目经理，项目经理没有意识到我们就应该<strong>越级反馈</strong>，被领导骂了又怎样。<strong>直到达到应有的效果。</strong></p>
+<p><strong>碰到事儿不能怕事儿，要去解决它！</strong></p>
+</blockquote>
+<h2 id="工作习惯"><a href="#工作习惯" class="headerlink" title="工作习惯"></a>工作习惯</h2><blockquote>
+<p><strong>数据是在你身边的，我们要注意到，要注意数据的价值。</strong>会议上客户说的数据，我们要注意收集，整理！</p>
+<p>这在市场分析的时候，市场的盘子有多大，很有可能会用到。</p>
+</blockquote>
 ]]></content>
+      <categories>
+        <category>Job</category>
+      </categories>
       <tags>
-        <tag>python</tag>
+        <tag>经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>理财知识</title>
+    <url>/2021/11/24/%E7%90%86%E8%B4%A2%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h1 id="什么是财务自由"><a href="#什么是财务自由" class="headerlink" title="什么是财务自由"></a>什么是财务自由</h1><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211124204704872.png" alt="image-20211124204704872"></p>
+<p><strong>投资是认知的变现。</strong></p>
+<blockquote>
+<p>康德（Immanuel Kant）对于自由的解读：</p>
+<p><strong>自由不是你想干什么就干什么，而是你不想干什么就不干什么</strong>。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>我也非常认同这句话，在我看来，就是你可以有拒绝一件事情的底气。当你能做到这一点的时候，你在某种意义上就自由了。</p>
+<p>我的理解看来，如果我的被动收入，能让我没了工作生活品质不下降，其实我就自由了。被动收入的方式有很多种，可能是理财、房租、专利费，等等，于我而言，其实最现实的是理财了。</p>
+<blockquote>
+<p>《也谈钱》</p>
+<p>如果我们跳出财务自由是要得到什么的固有思维，认为它是面对不想要的生活时可以说不，那么财务自由并没有那么遥不可及。只要能够通过被动收入维持我们的日常生活，不再为了养家糊口被迫在工作上妥协，也就有了说不的勇气。</p>
+</blockquote>
+<p>对于我们普通人来说，本金、收益率、开支，这三个数字，是影响财务自由的关键。<code>本金*收益率=被动收入</code></p>
+<p>被动收入-开支&gt;0，的时候，可以说，我们在某种意义上实现了财务自由。</p>
+<h1 id="ETF拯救世界语录"><a href="#ETF拯救世界语录" class="headerlink" title="ETF拯救世界语录"></a>ETF拯救世界语录</h1><h2 id="投资是一场赌博"><a href="#投资是一场赌博" class="headerlink" title="投资是一场赌博"></a>投资是一场赌博</h2><ol>
+<li><p>投资是一场赌博，不管你用什么方法做投资，都是一个可以通过努力取得大概率胜利的赌博游戏。</p>
+</li>
+<li><p>投资要遵守的理念：</p>
+<ul>
+<li>做大概率会胜利的投资；</li>
+<li>在错误的时候，尽量将损失最小化；</li>
+<li>在正确的时候，尽量将利润最大化。</li>
+</ul>
+<p>其实，为什么是ETF拯救世界，因为只要一个品种不会死，ETF早晚都会回来的。</p>
+</li>
+<li><p>估值投资指数基金这件事，理性的做法就是：随着估值越来越低，投入的资本越来越大，尽量将成本做到最低，但不奢望所有本金全部买在最低位。</p>
+</li>
+<li><p><strong>计算胜率，分配资源，等待收获。</strong></p>
+</li>
+<li><p><strong>我们投资，不是因为手里突然有钱了，或者别人都开始炒了，又或者多了一个可投资品种。而是因为：那个品种值得投资了。</strong></p>
+</li>
+<li><p>如果一个人没有经历没有学习没有经验，那么他99%的可能就是去送钱。这不是这个人的智商不行，而是这个赌场的规矩就是如此，想要动动鼠标就赚100%的事情，以前没有，现在没有，将来也不会有。———其实，<strong>E大就是在说，投资是认知的变现。</strong></p>
+</li>
+<li><p>金融投资想不被骗，有几个关键原则：</p>
+<ul>
+<li>第一，正规。法律允许的，政府保护的。</li>
+<li>第二，你要知道整个产品的原理，如何募资，资金投向，资金监管。</li>
+<li>第三，承诺收益过高，直接放弃。</li>
+</ul>
+</li>
+</ol>
+<h2 id="变富是一个慢慢的过程"><a href="#变富是一个慢慢的过程" class="headerlink" title="变富是一个慢慢的过程"></a>变富是一个慢慢的过程</h2><ol>
+<li><strong>现金在我手里并不是一个每年只产品3%收益的垃圾，它是一种全力，一种真真正正的，大机会的现金选择权。</strong>投资是一场游戏，是一场只要本金还在，就有无数爆发机会的伟大游戏。</li>
+<li>其实在实践中，<strong>是有办法让你的后悔最小化的。那就是投资组合。</strong>在牛市中空仓，和在熊市中满仓，一样会让你痛苦不堪，那么你可以通过配置不同的资产，来达到合理的收益，让自己的心态平稳。</li>
+<li><strong>保护自己，不要损失本金，这是最重要的。</strong></li>
+<li>投资最重要的事情就是控制风险。动辄满仓，动辄空仓，其实是投资体系很不成熟的一种表现。活下去，然后利润自然会到来。很多事情不必争论，谁对谁错，交给时间。</li>
+</ol>
+<h2 id="应对策略"><a href="#应对策略" class="headerlink" title="应对策略"></a>应对策略</h2><ol>
+<li><p>面对资本市场的危机，我的建议： </p>
+<ul>
+<li><p>第一首先不要慌。</p>
+</li>
+<li><p> 第二，冷静的看自己手里的东西。有没有可能死的，有没有特别贵的。如果有，找机会处理掉。 </p>
+</li>
+<li><p><strong>第三，保命。</strong> </p>
+</li>
+<li><p><strong>第四，找机会进场捡漏。如果没有能力识别，就不捡，保命。</strong> </p>
+</li>
+<li><p>第五，坚持不慌。一开始不慌，最惨的时候更不慌。再次审视手里的东西。跌得很惨，但是会不会死。不会就不用慌。</p>
+<p>尝试捡漏。 很久没买了，手里钱很多，不用慌。<strong>你有钱，你是甲方，市场是乙方。你是话事人。</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>理财</tag>
       </tags>
   </entry>
   <entry>
@@ -1456,126 +1610,6 @@ plt.show()
       </tags>
   </entry>
   <entry>
-    <title>工作的处理方式</title>
-    <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
-<p>做项目，不管是哪个岗位，包括我，现在是运营岗位，与客户对接是最多的。</p>
-<span id="more"></span>
-
-<p>客户在使用我们的产品的时候，<strong>疯狂吐槽我们某一个功能</strong>，这就是风险，比如吐槽你的语义，吐槽你的NLP，这就是风险。<strong>我们需要领导意识到这个风险。</strong></p>
-<p>因为接下来，如果客户与我们合作有二期项目，接下来可能二期的合同还会用到我们的语义。</p>
-<p>而这个时候，一期用户对我们的语义印象极差，二期客户可能就不和我们签语义的合同，公司就会有损失。</p>
-<p>这就是很大的风险。</p>
-<p>我们应该反馈给项目经理，项目经理没有意识到我们就应该<strong>越级反馈</strong>，被领导骂了又怎样。<strong>直到达到应有的效果。</strong></p>
-<p><strong>碰到事儿不能怕事儿，要去解决它！</strong></p>
-</blockquote>
-<h2 id="工作习惯"><a href="#工作习惯" class="headerlink" title="工作习惯"></a>工作习惯</h2><blockquote>
-<p><strong>数据是在你身边的，我们要注意到，要注意数据的价值。</strong>会议上客户说的数据，我们要注意收集，整理！</p>
-<p>这在市场分析的时候，市场的盘子有多大，很有可能会用到。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Job</category>
-      </categories>
-      <tags>
-        <tag>经验</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>理财知识</title>
-    <url>/2021/11/24/%E7%90%86%E8%B4%A2%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h1 id="什么是财务自由"><a href="#什么是财务自由" class="headerlink" title="什么是财务自由"></a>什么是财务自由</h1><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211124204704872.png" alt="image-20211124204704872"></p>
-<p><strong>投资是认知的变现。</strong></p>
-<blockquote>
-<p>康德（Immanuel Kant）对于自由的解读：</p>
-<p><strong>自由不是你想干什么就干什么，而是你不想干什么就不干什么</strong>。</p>
-</blockquote>
-<span id="more"></span>
-
-<p>我也非常认同这句话，在我看来，就是你可以有拒绝一件事情的底气。当你能做到这一点的时候，你在某种意义上就自由了。</p>
-<p>我的理解看来，如果我的被动收入，能让我没了工作生活品质不下降，其实我就自由了。被动收入的方式有很多种，可能是理财、房租、专利费，等等，于我而言，其实最现实的是理财了。</p>
-<blockquote>
-<p>《也谈钱》</p>
-<p>如果我们跳出财务自由是要得到什么的固有思维，认为它是面对不想要的生活时可以说不，那么财务自由并没有那么遥不可及。只要能够通过被动收入维持我们的日常生活，不再为了养家糊口被迫在工作上妥协，也就有了说不的勇气。</p>
-</blockquote>
-<p>对于我们普通人来说，本金、收益率、开支，这三个数字，是影响财务自由的关键。<code>本金*收益率=被动收入</code></p>
-<p>被动收入-开支&gt;0，的时候，可以说，我们在某种意义上实现了财务自由。</p>
-<h1 id="ETF拯救世界语录"><a href="#ETF拯救世界语录" class="headerlink" title="ETF拯救世界语录"></a>ETF拯救世界语录</h1><h2 id="投资是一场赌博"><a href="#投资是一场赌博" class="headerlink" title="投资是一场赌博"></a>投资是一场赌博</h2><ol>
-<li><p>投资是一场赌博，不管你用什么方法做投资，都是一个可以通过努力取得大概率胜利的赌博游戏。</p>
-</li>
-<li><p>投资要遵守的理念：</p>
-<ul>
-<li>做大概率会胜利的投资；</li>
-<li>在错误的时候，尽量将损失最小化；</li>
-<li>在正确的时候，尽量将利润最大化。</li>
-</ul>
-<p>其实，为什么是ETF拯救世界，因为只要一个品种不会死，ETF早晚都会回来的。</p>
-</li>
-<li><p>估值投资指数基金这件事，理性的做法就是：随着估值越来越低，投入的资本越来越大，尽量将成本做到最低，但不奢望所有本金全部买在最低位。</p>
-</li>
-<li><p><strong>计算胜率，分配资源，等待收获。</strong></p>
-</li>
-<li><p><strong>我们投资，不是因为手里突然有钱了，或者别人都开始炒了，又或者多了一个可投资品种。而是因为：那个品种值得投资了。</strong></p>
-</li>
-<li><p>如果一个人没有经历没有学习没有经验，那么他99%的可能就是去送钱。这不是这个人的智商不行，而是这个赌场的规矩就是如此，想要动动鼠标就赚100%的事情，以前没有，现在没有，将来也不会有。———其实，<strong>E大就是在说，投资是认知的变现。</strong></p>
-</li>
-<li><p>金融投资想不被骗，有几个关键原则：</p>
-<ul>
-<li>第一，正规。法律允许的，政府保护的。</li>
-<li>第二，你要知道整个产品的原理，如何募资，资金投向，资金监管。</li>
-<li>第三，承诺收益过高，直接放弃。</li>
-</ul>
-</li>
-</ol>
-<h2 id="变富是一个慢慢的过程"><a href="#变富是一个慢慢的过程" class="headerlink" title="变富是一个慢慢的过程"></a>变富是一个慢慢的过程</h2><ol>
-<li><strong>现金在我手里并不是一个每年只产品3%收益的垃圾，它是一种全力，一种真真正正的，大机会的现金选择权。</strong>投资是一场游戏，是一场只要本金还在，就有无数爆发机会的伟大游戏。</li>
-<li>其实在实践中，<strong>是有办法让你的后悔最小化的。那就是投资组合。</strong>在牛市中空仓，和在熊市中满仓，一样会让你痛苦不堪，那么你可以通过配置不同的资产，来达到合理的收益，让自己的心态平稳。</li>
-<li><strong>保护自己，不要损失本金，这是最重要的。</strong></li>
-<li>投资最重要的事情就是控制风险。动辄满仓，动辄空仓，其实是投资体系很不成熟的一种表现。活下去，然后利润自然会到来。很多事情不必争论，谁对谁错，交给时间。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>理财</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>滴滴中台之路</title>
-    <url>/2021/11/10/%E6%BB%B4%E6%BB%B4%E4%B8%AD%E5%8F%B0%E4%B9%8B%E8%B7%AF/</url>
-    <content><![CDATA[<p>都是PPT截图，在来自于一位大佬的分享。</p>
-<span id="more"></span>
-
-<h2 id="为什么要建业务中台"><a href="#为什么要建业务中台" class="headerlink" title="为什么要建业务中台"></a>为什么要建业务中台</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220056857.png" alt="image-20211110220056857"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220137833.png" alt="image-20211110220137833"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220208374.png" alt="image-20211110220208374"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220245766.png" alt="image-20211110220245766"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220316283.png" alt="image-20211110220316283"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220336470.png" alt="image-20211110220336470"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220353398.png" alt="image-20211110220353398"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220435991.png" alt="image-20211110220435991"></p>
-<h2 id="如何推进技术中台项目落地"><a href="#如何推进技术中台项目落地" class="headerlink" title="如何推进技术中台项目落地"></a>如何推进技术中台项目落地</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220453347.png" alt="image-20211110220453347"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220610065.png" alt="image-20211110220610065"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220630038.png" alt="image-20211110220630038"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220719145.png" alt="image-20211110220719145"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220735659.png" alt="image-20211110220735659"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220756926.png" alt="image-20211110220756926"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220820284.png" alt="image-20211110220820284"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220907901.png" alt="image-20211110220907901"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220922903.png" alt="image-20211110220922903"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220938475.png" alt="image-20211110220938475"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110220955242.png" alt="image-20211110220955242"></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110221036010.png" alt="image-20211110221036010"></p>
-]]></content>
-      <categories>
-        <category>Job</category>
-      </categories>
-      <tags>
-        <tag>经验</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>用数据讲故事</title>
     <url>/2021/11/07/%E7%94%A8%E6%95%B0%E6%8D%AE%E8%AE%B2%E6%95%85%E4%BA%8B/</url>
     <content><![CDATA[<h1 id="讲好一个故事的开始"><a href="#讲好一个故事的开始" class="headerlink" title="讲好一个故事的开始"></a>讲好一个故事的开始</h1><p>我们必须按照以下的顺序进行，这样才能做好数据的分析，讲好一个数据故事。</p>
@@ -1629,25 +1663,6 @@ plt.show()
       </tags>
   </entry>
   <entry>
-    <title>精益数据分析-笔记</title>
-    <url>/2019/03/06/%E7%B2%BE%E7%9B%8A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="市场细分"><a href="#市场细分" class="headerlink" title="市场细分"></a><a href="http://wiki.mbalib.com/wiki/%E5%B8%82%E5%9C%BA%E7%BB%86%E5%88%86">市场细分</a></h4><p>市场细分（market segmentation）是指<a href="http://wiki.mbalib.com/wiki/%E8%90%A5%E9%94%80%E8%80%85">营销者</a>通过<a href="http://wiki.mbalib.com/wiki/%E5%B8%82%E5%9C%BA%E8%B0%83%E7%A0%94">市场调研</a>，依据<a href="http://wiki.mbalib.com/wiki/%E6%B6%88%E8%B4%B9%E8%80%85">消费者</a>的需要和欲望、<a href="http://wiki.mbalib.com/wiki/%E8%B4%AD%E4%B9%B0%E8%A1%8C%E4%B8%BA">购买行为</a>和<a href="http://wiki.mbalib.com/wiki/%E8%B4%AD%E4%B9%B0%E4%B9%A0%E6%83%AF">购买习惯</a>等方面的差异，把某一<a href="http://wiki.mbalib.com/wiki/%E4%BA%A7%E5%93%81">产品</a>的市场整体划分为若干消费者群的市场分类过程。<span id="more"></span>每一个消费者群就是一个细分市场，每一个细分市场都是具有类似<a href="http://wiki.mbalib.com/wiki/%E9%9C%80%E6%B1%82">需求</a>倾向的消费者构成的<a href="http://wiki.mbalib.com/wiki/%E7%BE%A4%E4%BD%93">群体</a>。 </p>
-<h4 id="同期群分析"><a href="#同期群分析" class="headerlink" title="同期群分析"></a><a href="http://www.woshipm.com/data-analysis/849738.html">同期群分析</a></h4><p><strong>同期群分析</strong>(Cohort Analysis，亦称群组分析)的主要目的是分析相似群体随时间的变化（比如用户的回访）。 </p>
-<h4 id="A-B测试"><a href="#A-B测试" class="headerlink" title="A/B测试"></a><a href="https://www.zhihu.com/question/20045543">A/B测试</a></h4><p>A/B 测试，简单来说，就是为同一个目标制定两个方案（比如两个页面），让一部分用户使用 A 方案，另一部分用户使用 B 方案，记录下用户的使用情况，看哪个方案更符合设计。 </p>
-<h4 id="多变量测试"><a href="#多变量测试" class="headerlink" title="多变量测试"></a><a href="http://www.woshipm.com/pd/1419.html">多变量测试</a></h4><p>我认为，多变量测试，其实就是类似于做实验的时候的多因素实验。你不知道哪个因素对结果（指标）的影响是最大的，类似于通过方差分析等手段来判断。只不过，多变量测试的结果，可能更加直观。</p>
-<p>好久没发过，东西了。这段时间，毕业、入职，也断了学习。</p>
-<p>进入公司，虽然没了自由，但是所幸，总算可以静下心来，沉淀一下。</p>
-<p>无论什么时候，坚持学习，才能不断进步。</p>
-<p>星空大海的未来三十多年，从今年开始。</p>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>读书笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>统计学复习</title>
     <url>/2019/03/14/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%A4%8D%E4%B9%A0/</url>
     <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ol>
@@ -1685,6 +1700,68 @@ plt.show()
       <tags>
         <tag>Data analysis</tag>
         <tag>硕士期间</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>精益数据分析-笔记</title>
+    <url>/2019/03/06/%E7%B2%BE%E7%9B%8A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="市场细分"><a href="#市场细分" class="headerlink" title="市场细分"></a><a href="http://wiki.mbalib.com/wiki/%E5%B8%82%E5%9C%BA%E7%BB%86%E5%88%86">市场细分</a></h4><p>市场细分（market segmentation）是指<a href="http://wiki.mbalib.com/wiki/%E8%90%A5%E9%94%80%E8%80%85">营销者</a>通过<a href="http://wiki.mbalib.com/wiki/%E5%B8%82%E5%9C%BA%E8%B0%83%E7%A0%94">市场调研</a>，依据<a href="http://wiki.mbalib.com/wiki/%E6%B6%88%E8%B4%B9%E8%80%85">消费者</a>的需要和欲望、<a href="http://wiki.mbalib.com/wiki/%E8%B4%AD%E4%B9%B0%E8%A1%8C%E4%B8%BA">购买行为</a>和<a href="http://wiki.mbalib.com/wiki/%E8%B4%AD%E4%B9%B0%E4%B9%A0%E6%83%AF">购买习惯</a>等方面的差异，把某一<a href="http://wiki.mbalib.com/wiki/%E4%BA%A7%E5%93%81">产品</a>的市场整体划分为若干消费者群的市场分类过程。<span id="more"></span>每一个消费者群就是一个细分市场，每一个细分市场都是具有类似<a href="http://wiki.mbalib.com/wiki/%E9%9C%80%E6%B1%82">需求</a>倾向的消费者构成的<a href="http://wiki.mbalib.com/wiki/%E7%BE%A4%E4%BD%93">群体</a>。 </p>
+<h4 id="同期群分析"><a href="#同期群分析" class="headerlink" title="同期群分析"></a><a href="http://www.woshipm.com/data-analysis/849738.html">同期群分析</a></h4><p><strong>同期群分析</strong>(Cohort Analysis，亦称群组分析)的主要目的是分析相似群体随时间的变化（比如用户的回访）。 </p>
+<h4 id="A-B测试"><a href="#A-B测试" class="headerlink" title="A/B测试"></a><a href="https://www.zhihu.com/question/20045543">A/B测试</a></h4><p>A/B 测试，简单来说，就是为同一个目标制定两个方案（比如两个页面），让一部分用户使用 A 方案，另一部分用户使用 B 方案，记录下用户的使用情况，看哪个方案更符合设计。 </p>
+<h4 id="多变量测试"><a href="#多变量测试" class="headerlink" title="多变量测试"></a><a href="http://www.woshipm.com/pd/1419.html">多变量测试</a></h4><p>我认为，多变量测试，其实就是类似于做实验的时候的多因素实验。你不知道哪个因素对结果（指标）的影响是最大的，类似于通过方差分析等手段来判断。只不过，多变量测试的结果，可能更加直观。</p>
+<p>好久没发过，东西了。这段时间，毕业、入职，也断了学习。</p>
+<p>进入公司，虽然没了自由，但是所幸，总算可以静下心来，沉淀一下。</p>
+<p>无论什么时候，坚持学习，才能不断进步。</p>
+<p>星空大海的未来三十多年，从今年开始。</p>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>读书笔记</title>
+    <url>/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>有时，真是不能理解自己，所有的正统书籍都看不进去（当然不包括专业书籍，以及教学书），却对各种网文情有独钟，这么多年，玄幻文，历史文，穿越文，科技幻想，武侠等等，读了不知道多少。</p>
+<span id="more"></span>
+
+<p>总结下，最喜欢的作者是烽火戏诸侯，最喜欢的书是《雪中悍刀行》,有时间，定要再读。</p>
+<p>[TOC]</p>
+<h3 id="机破星河"><a href="#机破星河" class="headerlink" title="机破星河"></a>机破星河</h3><ol>
+<li>有一个人说过，在这个世界上，看到的永远是表象。越接触这个庞大的世界，才越知道自己的渺小。如果一路冒然的撞过去，很有可能会头破血流。”</li>
+<li>不敬强权，不畏死亡，心怀梦想，至死方休。</li>
+</ol>
+<h3 id="我的1979"><a href="#我的1979" class="headerlink" title="我的1979"></a>我的1979</h3><blockquote>
+<p>大多数人想要改造这个世界，但却罕有人想改造自我”。</p>
+</blockquote>
+<h3 id="侠行天下"><a href="#侠行天下" class="headerlink" title="侠行天下"></a>侠行天下</h3><blockquote>
+<p>我和你讲道理，你和我耍流氓，我和你耍流氓，你和我讲法律，我和你讲法律，你和我玩实力，我和你玩实力，你和我讲道理……就是这个意思，这个世界的公道终究是力量来决定，所谓的法律，永远是统治阶层为了更好统治而立下的秩序</p>
+</blockquote>
+<h3 id="大魏宫廷"><a href="#大魏宫廷" class="headerlink" title="大魏宫廷"></a>大魏宫廷</h3><blockquote>
+<p>注：一个冷知识，为何握手是用右手？因为古代普遍是右手拿兵器，摊开右手，表示手中没有兵器，这是向对方表达善意的举动，不是因为惯用手的缘故。同理，抱拳时左手压右手，左手为尊，压着右手，象征和平。<br>(经查证确实有这种说法)</p>
+</blockquote>
+<h3 id="大国医"><a href="#大国医" class="headerlink" title="大国医"></a>大国医</h3><ol>
+<li>步子大了容易扯着蛋。”</li>
+<li>寒不累时则霜不降，温不兼日则冰不释。</li>
+<li>面对谣言，事实有时候很乏力。因为很多人传播谣言并不是因为他相信，只是因为见不得别人的高大映射出自己的“小”来。如果能将那些高大的人拉到跟自己一样的高度，无疑会十分快意。</li>
+<li>任何一个睿智的人，都知道做人不能太功利。然而为什么世人都一副鼠目寸光、功利小人的姿态？很大一个原因是危机感。即便有了稳定的生活，还是会觉得人生苦短，譬如朝露。</li>
+<li>对于这些常人而言，他们根本没有时间去见识那么大的世界，没有胆量在无关乎生活的领域投入精力和时间。这种焦虑还会传染给他们的孩子，让他们“两耳不闻窗外事，一心只读圣贤书”，浑然不知道欣赏花朵绽放、倾听的虫鸣蛙唱的乐趣和意义。</li>
+<li>此生无余事，不负好时光。”</li>
+</ol>
+<h3 id="医师"><a href="#医师" class="headerlink" title="医师"></a>医师</h3><blockquote>
+<p>生孩子，是这个世界上最痛苦的事情之一！<br>电视上，电影上，经常都会有孕妇生孩子的镜头，而且无一例外，这些镜头上的产妇，都是披头散发，汗湿满面。尤其是生产的时候，撕心裂肺的叫声，还有那满脸的痛苦表情，让人不由得心生惧意。</p>
+</blockquote>
+<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><blockquote>
+<p>人间只道黄金贵，不问天公买少年；</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1756,49 +1833,6 @@ plt.show()
 ]]></content>
       <tags>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>读书笔记</title>
-    <url>/2019/03/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>有时，真是不能理解自己，所有的正统书籍都看不进去（当然不包括专业书籍，以及教学书），却对各种网文情有独钟，这么多年，玄幻文，历史文，穿越文，科技幻想，武侠等等，读了不知道多少。</p>
-<span id="more"></span>
-
-<p>总结下，最喜欢的作者是烽火戏诸侯，最喜欢的书是《雪中悍刀行》,有时间，定要再读。</p>
-<p>[TOC]</p>
-<h3 id="机破星河"><a href="#机破星河" class="headerlink" title="机破星河"></a>机破星河</h3><ol>
-<li>有一个人说过，在这个世界上，看到的永远是表象。越接触这个庞大的世界，才越知道自己的渺小。如果一路冒然的撞过去，很有可能会头破血流。”</li>
-<li>不敬强权，不畏死亡，心怀梦想，至死方休。</li>
-</ol>
-<h3 id="我的1979"><a href="#我的1979" class="headerlink" title="我的1979"></a>我的1979</h3><blockquote>
-<p>大多数人想要改造这个世界，但却罕有人想改造自我”。</p>
-</blockquote>
-<h3 id="侠行天下"><a href="#侠行天下" class="headerlink" title="侠行天下"></a>侠行天下</h3><blockquote>
-<p>我和你讲道理，你和我耍流氓，我和你耍流氓，你和我讲法律，我和你讲法律，你和我玩实力，我和你玩实力，你和我讲道理……就是这个意思，这个世界的公道终究是力量来决定，所谓的法律，永远是统治阶层为了更好统治而立下的秩序</p>
-</blockquote>
-<h3 id="大魏宫廷"><a href="#大魏宫廷" class="headerlink" title="大魏宫廷"></a>大魏宫廷</h3><blockquote>
-<p>注：一个冷知识，为何握手是用右手？因为古代普遍是右手拿兵器，摊开右手，表示手中没有兵器，这是向对方表达善意的举动，不是因为惯用手的缘故。同理，抱拳时左手压右手，左手为尊，压着右手，象征和平。<br>(经查证确实有这种说法)</p>
-</blockquote>
-<h3 id="大国医"><a href="#大国医" class="headerlink" title="大国医"></a>大国医</h3><ol>
-<li>步子大了容易扯着蛋。”</li>
-<li>寒不累时则霜不降，温不兼日则冰不释。</li>
-<li>面对谣言，事实有时候很乏力。因为很多人传播谣言并不是因为他相信，只是因为见不得别人的高大映射出自己的“小”来。如果能将那些高大的人拉到跟自己一样的高度，无疑会十分快意。</li>
-<li>任何一个睿智的人，都知道做人不能太功利。然而为什么世人都一副鼠目寸光、功利小人的姿态？很大一个原因是危机感。即便有了稳定的生活，还是会觉得人生苦短，譬如朝露。</li>
-<li>对于这些常人而言，他们根本没有时间去见识那么大的世界，没有胆量在无关乎生活的领域投入精力和时间。这种焦虑还会传染给他们的孩子，让他们“两耳不闻窗外事，一心只读圣贤书”，浑然不知道欣赏花朵绽放、倾听的虫鸣蛙唱的乐趣和意义。</li>
-<li>此生无余事，不负好时光。”</li>
-</ol>
-<h3 id="医师"><a href="#医师" class="headerlink" title="医师"></a>医师</h3><blockquote>
-<p>生孩子，是这个世界上最痛苦的事情之一！<br>电视上，电影上，经常都会有孕妇生孩子的镜头，而且无一例外，这些镜头上的产妇，都是披头散发，汗湿满面。尤其是生产的时候，撕心裂肺的叫声，还有那满脸的痛苦表情，让人不由得心生惧意。</p>
-</blockquote>
-<h2 id="other"><a href="#other" class="headerlink" title="other"></a>other</h2><blockquote>
-<p>人间只道黄金贵，不问天公买少年；</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>读书笔记</tag>
       </tags>
   </entry>
 </search>
