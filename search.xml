@@ -799,38 +799,6 @@
       </tags>
   </entry>
   <entry>
-    <title>jieba分词</title>
-    <url>/2021/11/07/jieba%E5%88%86%E8%AF%8D/</url>
-    <content><![CDATA[<p>昨天，做的那个数据分析报告用到了<code>jieba</code>分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..</p>
-<span id="more"></span>
-
-<h1 id="jieba官网简介"><a href="#jieba官网简介" class="headerlink" title="jieba官网简介"></a>jieba官网简介</h1><p>“结巴”中文分词：做最好的 Python 中文分词组件</p>
-<p><code>&quot;Jieba&quot; (Chinese for &quot;to stutter&quot;) Chinese text segmentation: built to be the best Python Chinese word segmentation module.</code></p>
-<p>支持三种分词模式：</p>
-<p>精确模式，试图将句子最精确地切开，适合文本分析；<br>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；<br>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>支持繁体分词</p>
-<p>支持自定义词典</p>
-<p>MIT 授权协议</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
-<h1 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h1><p><code>jieba.cut</code> 方法接受三个输入参数: 需要分词的字符串；cut_all 参数用来控制是否采用全模式；HMM 参数用来控制是否使用 HMM 模型<br><code>jieba.cut_for_search</code> 方法接受两个参数：需要分词的字符串；是否使用 HMM 模型。该方法适合用于搜索引擎构建倒排索引的分词，粒度比较细</p>
-<p>待分词的字符串可以是 unicode 或 UTF-8 字符串、GBK 字符串。注意：不建议直接输入 GBK 字符串，可能无法预料地错误解码成 UTF-8<br><code>jieba.cut </code>以及<code>jieba.cut_for_search</code>返回的结构都是一个可迭代的 generator，可以使用 for 循环来获得分词后得到的每一个词语(unicode)，</p>
-<p>或者用<code>jieba.lcut</code> 以及<code>jieba.lcut_for_search</code>直接返回 list</p>
-<p><code>jieba.Tokenizer(dictionary=DEFAULT_DICT) </code>新建自定义分词器，可用于同时使用不同词典。jieba.dt 为默认分词器，所有全局分词相关函数都是该分词器的映射。</p>
-<h1 id="官网实例"><a href="#官网实例" class="headerlink" title="官网实例"></a>官网实例</h1><p>所以大概明白了生成词云需要的cut方法的具体参数都代表什么。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">True</span>) <span class="comment"># 全模式</span></span><br><span class="line"><span class="built_in">print</span>(str_li)</span><br><span class="line">&lt;generator <span class="built_in">object</span> Tokenizer.cut at <span class="number">0x00000298C3987FC0</span>&gt; <span class="comment"># 可以看到返回了一个生成器。</span></span><br><span class="line"></span><br><span class="line">FullMode = <span class="string">&#x27;Full mode :&#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li) <span class="comment">#全模式（不能解决歧义）</span></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">False</span>) <span class="comment"># 精确模式</span></span><br><span class="line">AccMode = <span class="string">&#x27;AccurateMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"></span><br><span class="line">AccurateMode: 我/来到/北京/清华大学 <span class="comment">#精确模式（适用于文本分析）</span></span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>) <span class="comment">#默认</span></span><br><span class="line">DefMode = <span class="string">&#x27;DefaultMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"></span><br><span class="line">DefaultMode: 我/来到/北京/清华大学 <span class="comment"># 我们可以看到，默认是精确模式</span></span><br><span class="line"></span><br><span class="line">long_sen = jb.cut_for_search(<span class="string">&quot;小明硕士毕业于中国科学院计算所，后在日本京都大学深造&quot;</span>)<span class="comment"># 搜索引擎模式</span></span><br><span class="line">Long = <span class="string">&#x27;search:&#x27;</span>+<span class="string">&#x27;,&#x27;</span>.join(long_sen)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后统一对比一下：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">Full mode :我/来到/北京/清华/清华大学/华大/大学</span><br><span class="line">AccurateMode: 我/来到/北京/清华大学</span><br><span class="line">DefaultMode: 他/来到/了/网易/杭研/大厦</span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>对于基本的词云及词频分析来说已经足够了，词典什么的情感分析，下次研究。</p>
-<p>下面试着对以前…….（long long ago）喜欢的一本小说（极品公子）做个词云分析。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">text = <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\sunshine\Desktop\极品公子.txt&#x27;</span>,encoding = <span class="string">&#x27;utf-8&#x27;</span>).read()</span><br><span class="line">text_f = jb.cut(text)</span><br><span class="line"></span><br><span class="line">text_s = <span class="string">&quot; &quot;</span>.join(text_f)</span><br><span class="line">boy_cloud = WordCloud().generate(text_s)</span><br><span class="line">plt.imshow(boy_cloud)</span><br><span class="line">plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224246094.png" alt="无间道"></p>
-<p>可以发现，毫无疑问，叶无道是主角。</p>
-<p><a href="https://github.com/fxsjy/jieba">jeiba地址</a></p>
-]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo-next</title>
     <url>/2021/06/06/hexo-next/</url>
     <content><![CDATA[<p><strong>安装–美化–问题集锦</strong></p>
@@ -986,6 +954,69 @@
       </tags>
   </entry>
   <entry>
+    <title>jieba分词</title>
+    <url>/2021/11/07/jieba%E5%88%86%E8%AF%8D/</url>
+    <content><![CDATA[<p>昨天，做的那个数据分析报告用到了<code>jieba</code>分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..</p>
+<span id="more"></span>
+
+<h1 id="jieba官网简介"><a href="#jieba官网简介" class="headerlink" title="jieba官网简介"></a>jieba官网简介</h1><p>“结巴”中文分词：做最好的 Python 中文分词组件</p>
+<p><code>&quot;Jieba&quot; (Chinese for &quot;to stutter&quot;) Chinese text segmentation: built to be the best Python Chinese word segmentation module.</code></p>
+<p>支持三种分词模式：</p>
+<p>精确模式，试图将句子最精确地切开，适合文本分析；<br>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；<br>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>支持繁体分词</p>
+<p>支持自定义词典</p>
+<p>MIT 授权协议</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
+<h1 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h1><p><code>jieba.cut</code> 方法接受三个输入参数: 需要分词的字符串；cut_all 参数用来控制是否采用全模式；HMM 参数用来控制是否使用 HMM 模型<br><code>jieba.cut_for_search</code> 方法接受两个参数：需要分词的字符串；是否使用 HMM 模型。该方法适合用于搜索引擎构建倒排索引的分词，粒度比较细</p>
+<p>待分词的字符串可以是 unicode 或 UTF-8 字符串、GBK 字符串。注意：不建议直接输入 GBK 字符串，可能无法预料地错误解码成 UTF-8<br><code>jieba.cut </code>以及<code>jieba.cut_for_search</code>返回的结构都是一个可迭代的 generator，可以使用 for 循环来获得分词后得到的每一个词语(unicode)，</p>
+<p>或者用<code>jieba.lcut</code> 以及<code>jieba.lcut_for_search</code>直接返回 list</p>
+<p><code>jieba.Tokenizer(dictionary=DEFAULT_DICT) </code>新建自定义分词器，可用于同时使用不同词典。jieba.dt 为默认分词器，所有全局分词相关函数都是该分词器的映射。</p>
+<h1 id="官网实例"><a href="#官网实例" class="headerlink" title="官网实例"></a>官网实例</h1><p>所以大概明白了生成词云需要的cut方法的具体参数都代表什么。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">True</span>) <span class="comment"># 全模式</span></span><br><span class="line"><span class="built_in">print</span>(str_li)</span><br><span class="line">&lt;generator <span class="built_in">object</span> Tokenizer.cut at <span class="number">0x00000298C3987FC0</span>&gt; <span class="comment"># 可以看到返回了一个生成器。</span></span><br><span class="line"></span><br><span class="line">FullMode = <span class="string">&#x27;Full mode :&#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li) <span class="comment">#全模式（不能解决歧义）</span></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">False</span>) <span class="comment"># 精确模式</span></span><br><span class="line">AccMode = <span class="string">&#x27;AccurateMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"></span><br><span class="line">AccurateMode: 我/来到/北京/清华大学 <span class="comment">#精确模式（适用于文本分析）</span></span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>) <span class="comment">#默认</span></span><br><span class="line">DefMode = <span class="string">&#x27;DefaultMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"></span><br><span class="line">DefaultMode: 我/来到/北京/清华大学 <span class="comment"># 我们可以看到，默认是精确模式</span></span><br><span class="line"></span><br><span class="line">long_sen = jb.cut_for_search(<span class="string">&quot;小明硕士毕业于中国科学院计算所，后在日本京都大学深造&quot;</span>)<span class="comment"># 搜索引擎模式</span></span><br><span class="line">Long = <span class="string">&#x27;search:&#x27;</span>+<span class="string">&#x27;,&#x27;</span>.join(long_sen)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后统一对比一下：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">Full mode :我/来到/北京/清华/清华大学/华大/大学</span><br><span class="line">AccurateMode: 我/来到/北京/清华大学</span><br><span class="line">DefaultMode: 他/来到/了/网易/杭研/大厦</span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>对于基本的词云及词频分析来说已经足够了，词典什么的情感分析，下次研究。</p>
+<p>下面试着对以前…….（long long ago）喜欢的一本小说（极品公子）做个词云分析。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">text = <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\sunshine\Desktop\极品公子.txt&#x27;</span>,encoding = <span class="string">&#x27;utf-8&#x27;</span>).read()</span><br><span class="line">text_f = jb.cut(text)</span><br><span class="line"></span><br><span class="line">text_s = <span class="string">&quot; &quot;</span>.join(text_f)</span><br><span class="line">boy_cloud = WordCloud().generate(text_s)</span><br><span class="line">plt.imshow(boy_cloud)</span><br><span class="line">plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224246094.png" alt="无间道"></p>
+<p>可以发现，毫无疑问，叶无道是主角。</p>
+<p><a href="https://github.com/fxsjy/jieba">jeiba地址</a></p>
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pandas中轴axis的问题理解</title>
+    <url>/2019/03/14/pandas%E4%B8%AD%E8%BD%B4axis%E7%9A%84%E9%97%AE%E9%A2%98%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>在学习删除方法<code>drop</code>时，碰到了，也突然想明白了，轴是什么意思。</p>
+<span id="more"></span>
+
+<p>引入：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame<span class="comment">#导入包</span></span><br><span class="line">obj = Series(np.arange(<span class="number">5</span>),index = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>])<span class="comment">#创建Series  obj</span></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">2</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">new_obj = obj.drop(<span class="string">&#x27;c&#x27;</span>)<span class="comment">#删除&#x27;c&#x27;</span></span><br><span class="line">new_obj</span><br><span class="line">Out[<span class="number">5</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">6</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj.drop([<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])<span class="comment">#删除&#x27;b&#x27;,&#x27;d&#x27;</span></span><br><span class="line">Out[<span class="number">7</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">data = DataFrame(np.arange(<span class="number">25</span>).reshape(<span class="number">5</span>,<span class="number">5</span>),index = [<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>,<span class="string">&#x27;heb&#x27;</span>,<span class="string">&#x27;sjz&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>],columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>,<span class="string">&#x27;four&#x27;</span>,<span class="string">&#x27;five&#x27;</span>])<span class="comment">#创建DataFrame</span></span><br><span class="line">data</span><br><span class="line">Out[<span class="number">9</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">bj     <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop([<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>])<span class="comment">#删除某行</span></span><br><span class="line">Out[<span class="number">10</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop(<span class="string">&#x27;one&#x27;</span>,axis=<span class="number">1</span>)<span class="comment">#删除列</span></span><br><span class="line">Out[<span class="number">11</span>]: </span><br><span class="line">     two  three  four  five</span><br><span class="line">bj     <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br></pre></td></tr></table></figure>
+<p>可已注意到的是，在上方使用<code>drop</code>时，删除列特意指明了<code>axis=1</code>. 而在查看drop的文档时，发现默认参数是<code>axis =0 </code>，这说明：</p>
+<ul>
+<li><code>axis = 0</code>代表的是行。</li>
+<li><code>axis = 1</code>代表的是列。<br>这样想就明白了。但是接着问题来了，</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data</span><br><span class="line">Out[<span class="number">29</span>]: </span><br><span class="line">lie   one  two  three  four  five</span><br><span class="line">city                             </span><br><span class="line">bj      <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj      <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb    <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz    <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh     <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">0</span>)<span class="comment">#求列平均</span></span><br><span class="line">Out[<span class="number">30</span>]: </span><br><span class="line">lie</span><br><span class="line">one      <span class="number">10.0</span></span><br><span class="line">two      <span class="number">11.0</span></span><br><span class="line">three    <span class="number">12.0</span></span><br><span class="line">four     <span class="number">13.0</span></span><br><span class="line">five     <span class="number">14.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">1</span>)<span class="comment">#求行平均</span></span><br><span class="line">Out[<span class="number">31</span>]: </span><br><span class="line">city</span><br><span class="line">bj      <span class="number">2.0</span></span><br><span class="line">tj      <span class="number">7.0</span></span><br><span class="line">heb    <span class="number">12.0</span></span><br><span class="line">sjz    <span class="number">17.0</span></span><br><span class="line">sh     <span class="number">22.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>其实，我是有点蒙的，如果向上面那样理解的话。<br>发现问题了吗？<br>在<code>drop</code>中使用<code>axis=1</code>实际上是删掉了一列，而在<code>mean</code>中实际上是计算的行平均值，而不是列的平均值。<br>蒙了。嗯，看了Stackoverflow中的解释，大概是明白了。现记录如下。</p>
+<p><strong>实际上axis = 1，指的是沿着行求所有列的平均值，代表了横轴，那axis = 0，就是沿着列求所有行的平均值，代表了纵轴。</strong></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-de17a1655283a433.png" alt="示意图"></p>
+<p>那这样的话，<code>drop</code>就是沿着<code>&#39;two&#39;</code>的方向删除对应的轴标签为<code>axis = 1</code>的值。</p>
+<p>又想到了numpy，pandas是以numpy为基础构造的库，因此，它保留了对于axis使用的方式。</p>
+<p>参考：<a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean"><a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean">What does axis in pandas mean?</a></a></p>
+]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>Pandas</tag>
+        <tag>python</tag>
+        <tag>Data analysis</tag>
+        <tag>硕士期间</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>numpy统计函数和布尔型数组</title>
     <url>/2019/03/05/numpy%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0%E5%92%8C%E5%B8%83%E5%B0%94%E5%9E%8B%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h2 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h2><p><strong>可以通过numpy的统计函数对整个数组或者某个轴向的数据进项统计计算。</strong></p>
@@ -1028,37 +1059,6 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">41</span>]: arr = np.random.randn(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">42</span>]: arr</span><br><span class="line">Out[<span class="number">42</span>]:</span><br><span class="line">array([-<span class="number">0.77695399</span>, -<span class="number">1.04211228</span>,  <span class="number">0.85516427</span>, -<span class="number">0.04749936</span>, -<span class="number">1.32314252</span>,</span><br><span class="line">       -<span class="number">0.59968117</span>,  <span class="number">1.93582735</span>,  <span class="number">0.08567928</span>, -<span class="number">1.10820476</span>,  <span class="number">1.2410364</span> ])</span><br><span class="line"></span><br><span class="line">In [<span class="number">43</span>]: arr1 = arr&gt;<span class="number">0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">44</span>]: arr1</span><br><span class="line">Out[<span class="number">44</span>]: array([<span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>,  <span class="literal">True</span>, <span class="literal">False</span>,  <span class="literal">True</span>], dtype=<span class="built_in">bool</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">45</span>]: arr1.<span class="built_in">any</span>()</span><br><span class="line">Out[<span class="number">45</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">46</span>]: arr1.<span class="built_in">all</span>()</span><br><span class="line">Out[<span class="number">46</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pandas中轴axis的问题理解</title>
-    <url>/2019/03/14/pandas%E4%B8%AD%E8%BD%B4axis%E7%9A%84%E9%97%AE%E9%A2%98%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>在学习删除方法<code>drop</code>时，碰到了，也突然想明白了，轴是什么意思。</p>
-<span id="more"></span>
-
-<p>引入：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame<span class="comment">#导入包</span></span><br><span class="line">obj = Series(np.arange(<span class="number">5</span>),index = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>])<span class="comment">#创建Series  obj</span></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">2</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">new_obj = obj.drop(<span class="string">&#x27;c&#x27;</span>)<span class="comment">#删除&#x27;c&#x27;</span></span><br><span class="line">new_obj</span><br><span class="line">Out[<span class="number">5</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">6</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj.drop([<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])<span class="comment">#删除&#x27;b&#x27;,&#x27;d&#x27;</span></span><br><span class="line">Out[<span class="number">7</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">data = DataFrame(np.arange(<span class="number">25</span>).reshape(<span class="number">5</span>,<span class="number">5</span>),index = [<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>,<span class="string">&#x27;heb&#x27;</span>,<span class="string">&#x27;sjz&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>],columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>,<span class="string">&#x27;four&#x27;</span>,<span class="string">&#x27;five&#x27;</span>])<span class="comment">#创建DataFrame</span></span><br><span class="line">data</span><br><span class="line">Out[<span class="number">9</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">bj     <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop([<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>])<span class="comment">#删除某行</span></span><br><span class="line">Out[<span class="number">10</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop(<span class="string">&#x27;one&#x27;</span>,axis=<span class="number">1</span>)<span class="comment">#删除列</span></span><br><span class="line">Out[<span class="number">11</span>]: </span><br><span class="line">     two  three  four  five</span><br><span class="line">bj     <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br></pre></td></tr></table></figure>
-<p>可已注意到的是，在上方使用<code>drop</code>时，删除列特意指明了<code>axis=1</code>. 而在查看drop的文档时，发现默认参数是<code>axis =0 </code>，这说明：</p>
-<ul>
-<li><code>axis = 0</code>代表的是行。</li>
-<li><code>axis = 1</code>代表的是列。<br>这样想就明白了。但是接着问题来了，</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data</span><br><span class="line">Out[<span class="number">29</span>]: </span><br><span class="line">lie   one  two  three  four  five</span><br><span class="line">city                             </span><br><span class="line">bj      <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj      <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb    <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz    <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh     <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">0</span>)<span class="comment">#求列平均</span></span><br><span class="line">Out[<span class="number">30</span>]: </span><br><span class="line">lie</span><br><span class="line">one      <span class="number">10.0</span></span><br><span class="line">two      <span class="number">11.0</span></span><br><span class="line">three    <span class="number">12.0</span></span><br><span class="line">four     <span class="number">13.0</span></span><br><span class="line">five     <span class="number">14.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">1</span>)<span class="comment">#求行平均</span></span><br><span class="line">Out[<span class="number">31</span>]: </span><br><span class="line">city</span><br><span class="line">bj      <span class="number">2.0</span></span><br><span class="line">tj      <span class="number">7.0</span></span><br><span class="line">heb    <span class="number">12.0</span></span><br><span class="line">sjz    <span class="number">17.0</span></span><br><span class="line">sh     <span class="number">22.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
-<p>其实，我是有点蒙的，如果向上面那样理解的话。<br>发现问题了吗？<br>在<code>drop</code>中使用<code>axis=1</code>实际上是删掉了一列，而在<code>mean</code>中实际上是计算的行平均值，而不是列的平均值。<br>蒙了。嗯，看了Stackoverflow中的解释，大概是明白了。现记录如下。</p>
-<p><strong>实际上axis = 1，指的是沿着行求所有列的平均值，代表了横轴，那axis = 0，就是沿着列求所有行的平均值，代表了纵轴。</strong></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-de17a1655283a433.png" alt="示意图"></p>
-<p>那这样的话，<code>drop</code>就是沿着<code>&#39;two&#39;</code>的方向删除对应的轴标签为<code>axis = 1</code>的值。</p>
-<p>又想到了numpy，pandas是以numpy为基础构造的库，因此，它保留了对于axis使用的方式。</p>
-<p>参考：<a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean"><a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean">What does axis in pandas mean?</a></a></p>
-]]></content>
-      <categories>
-        <category>数据分析</category>
-      </categories>
-      <tags>
-        <tag>Pandas</tag>
-        <tag>python</tag>
-        <tag>Data analysis</tag>
-        <tag>硕士期间</tag>
       </tags>
   </entry>
   <entry>
@@ -1235,32 +1235,6 @@
       </tags>
   </entry>
   <entry>
-    <title>工作的处理方式</title>
-    <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
-<p>做项目，不管是哪个岗位，包括我，现在是运营岗位，与客户对接是最多的。</p>
-<span id="more"></span>
-
-<p>客户在使用我们的产品的时候，<strong>疯狂吐槽我们某一个功能</strong>，这就是风险，比如吐槽你的语义，吐槽你的NLP，这就是风险。<strong>我们需要领导意识到这个风险。</strong></p>
-<p>因为接下来，如果客户与我们合作有二期项目，接下来可能二期的合同还会用到我们的语义。</p>
-<p>而这个时候，一期用户对我们的语义印象极差，二期客户可能就不和我们签语义的合同，公司就会有损失。</p>
-<p>这就是很大的风险。</p>
-<p>我们应该反馈给项目经理，项目经理没有意识到我们就应该<strong>越级反馈</strong>，被领导骂了又怎样。<strong>直到达到应有的效果。</strong></p>
-<p><strong>碰到事儿不能怕事儿，要去解决它！</strong></p>
-</blockquote>
-<h2 id="工作习惯"><a href="#工作习惯" class="headerlink" title="工作习惯"></a>工作习惯</h2><blockquote>
-<p><strong>数据是在你身边的，我们要注意到，要注意数据的价值。</strong>会议上客户说的数据，我们要注意收集，整理！</p>
-<p>这在市场分析的时候，市场的盘子有多大，很有可能会用到。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Job</category>
-      </categories>
-      <tags>
-        <tag>经验</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>工作知识记录</title>
     <url>/2020/03/15/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<h1 id="工作中遇到的概念"><a href="#工作中遇到的概念" class="headerlink" title="工作中遇到的概念"></a>工作中遇到的概念</h1><p>记录一些工作中遇到的名词缩写及概念&amp;硬件知识&amp;软件知识。</p>
@@ -1335,6 +1309,32 @@
       </categories>
       <tags>
         <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工作的处理方式</title>
+    <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
+<p>做项目，不管是哪个岗位，包括我，现在是运营岗位，与客户对接是最多的。</p>
+<span id="more"></span>
+
+<p>客户在使用我们的产品的时候，<strong>疯狂吐槽我们某一个功能</strong>，这就是风险，比如吐槽你的语义，吐槽你的NLP，这就是风险。<strong>我们需要领导意识到这个风险。</strong></p>
+<p>因为接下来，如果客户与我们合作有二期项目，接下来可能二期的合同还会用到我们的语义。</p>
+<p>而这个时候，一期用户对我们的语义印象极差，二期客户可能就不和我们签语义的合同，公司就会有损失。</p>
+<p>这就是很大的风险。</p>
+<p>我们应该反馈给项目经理，项目经理没有意识到我们就应该<strong>越级反馈</strong>，被领导骂了又怎样。<strong>直到达到应有的效果。</strong></p>
+<p><strong>碰到事儿不能怕事儿，要去解决它！</strong></p>
+</blockquote>
+<h2 id="工作习惯"><a href="#工作习惯" class="headerlink" title="工作习惯"></a>工作习惯</h2><blockquote>
+<p><strong>数据是在你身边的，我们要注意到，要注意数据的价值。</strong>会议上客户说的数据，我们要注意收集，整理！</p>
+<p>这在市场分析的时候，市场的盘子有多大，很有可能会用到。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Job</category>
+      </categories>
+      <tags>
+        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
@@ -1551,7 +1551,7 @@ plt.show()
 </blockquote>
 <p>对于我们普通人来说，本金、收益率、开支，这三个数字，是影响财务自由的关键。<code>本金*收益率=被动收入</code></p>
 <p>被动收入-开支&gt;0，的时候，可以说，我们在某种意义上实现了财务自由。</p>
-<h1 id="ETF拯救世界语录"><a href="#ETF拯救世界语录" class="headerlink" title="ETF拯救世界语录"></a>ETF拯救世界语录</h1><h2 id="投资是一场赌博"><a href="#投资是一场赌博" class="headerlink" title="投资是一场赌博"></a>投资是一场赌博</h2><ol>
+<h1 id="ETF拯救世界语录-长赢"><a href="#ETF拯救世界语录-长赢" class="headerlink" title="ETF拯救世界语录(长赢)"></a>ETF拯救世界语录(长赢)</h1><h2 id="投资是一场赌博"><a href="#投资是一场赌博" class="headerlink" title="投资是一场赌博"></a>投资是一场赌博</h2><ol>
 <li><p>投资是一场赌博，不管你用什么方法做投资，都是一个可以通过努力取得大概率胜利的赌博游戏。</p>
 </li>
 <li><p>投资要遵守的理念：</p>
@@ -1601,8 +1601,7 @@ plt.show()
 </ul>
 </li>
 </ol>
-<h2 id="财富数学"><a href="#财富数学" class="headerlink" title="财富数学"></a>财富数学</h2><p><strong>大起大落注定平庸，甚至消灭财富。</strong></p>
-<p>如果上帝让你选择一种场景作为你未来的投资收益率，你会选择哪个？</p>
+<h2 id="财富数学"><a href="#财富数学" class="headerlink" title="财富数学"></a>财富数学</h2><h3 id="第一道题"><a href="#第一道题" class="headerlink" title="第一道题"></a>第一道题</h3><h4 id="大起大落注定平庸，甚至消灭财富。"><a href="#大起大落注定平庸，甚至消灭财富。" class="headerlink" title="大起大落注定平庸，甚至消灭财富。"></a>大起大落注定平庸，甚至消灭财富。</h4><p>如果上帝让你选择一种场景作为你未来的投资收益率，你会选择哪个？</p>
 <ol>
 <li>第一年赚80%，第二年赔40%，第三年赚80%，第四年赔40%……….</li>
 <li>每年赚5%。</li>
@@ -1719,6 +1718,41 @@ plt.show()
 <td>12</td>
 </tr>
 </tbody></table>
+<h3 id="第二道题"><a href="#第二道题" class="headerlink" title="第二道题"></a>第二道题</h3><h4 id="80-50≠30"><a href="#80-50≠30" class="headerlink" title="80-50≠30"></a>80-50≠30</h4><p><strong>根据7080定律，如果一个不会死的品种极限跌幅在80%，那么，你在腰斩，也就是下跌50%的地方买入，到了跌幅80%的地方，你的亏损幅度是多少？</strong></p>
+<p><strong>答案：并非你认为的80%-50%=30%，而是60%。</strong></p>
+<p><em><strong>假设原价1元/份，50%就是0.5，80%就是0.2，所以你的亏损幅度是60%</strong></em><br>$$<br>（0.2-0.5)/0.5*100%<br>$$<br>同理，你在同样品种已经下跌60%的地方买入，到了下跌80%的时候并非浮亏20%，而是50%。在已经下跌了70%的地方买入，到了下跌80%的时候并非浮亏10%，而是33.33%。</p>
+<p><strong>永远永远不要用想象去计算数学题。</strong></p>
+<p>这道题的本质，就是告诉你当一个品种下跌，从0到-10%的距离，与 -70%到-80% 的距离完全不同。</p>
+<p>这也是为什么熊市越到后来越惨烈的原因。那个时候财富的缩水远超一般人的承受能力，即使账面只变动了几个百分点。在熊市的末期，大多数一路抄底的人都会彻底崩溃。</p>
+<p>因为他们的损失只比站在山顶上的人小一点而已。</p>
+<p>你，还会疯狂的抄底吗。</p>
+<h3 id="第三道数学题"><a href="#第三道数学题" class="headerlink" title="第三道数学题"></a>第三道数学题</h3><h4 id="不死品种浮亏后获利的最终奥义：补仓"><a href="#不死品种浮亏后获利的最终奥义：补仓" class="headerlink" title="不死品种浮亏后获利的最终奥义：补仓"></a>不死品种浮亏后获利的最终奥义：补仓</h4><p><strong>2块钱的价格买入1000元某指数基金。跌到1块钱的时候再买1000元，这时候你的成本是多少？</strong></p>
+<p><strong>答案：并不是你以为的<code>1.5</code>元，而是<code>1.33</code>元。</strong><br>$$<br>1000/2+1000/1=1500份<br>$$</p>
+<p>$$<br>(1000+1000)/1500=1.33元<br>$$</p>
+<p><strong>当这只指数基金涨回<code>2</code>元起点的时候，你获利<code>50%</code>。</strong>（2-1.3）/1.3=0.5</p>
+<p>很好，我们继续这场刺激的巨额浮亏之旅。</p>
+<p>如果价格从<code>2</code>元跌到<code>1</code>元的时候，你买入的不是<code>1000</code>元，而是省吃俭用忍痛买入了<code>2000</code>元，那么你的成本将从<code>1.33</code>直降到<code>1.2</code>。不要小看这<code>0.13</code>元的成本下降，它将你回到起点的盈利幅度从<code>50%</code>提升到<code>66.67%</code>。而你的获利也从<code>1000</code>元上升到了<code>2000</code>元，绝对获利金额增加了<code>100%</code>。</p>
+<p>如果从回本的角度讲，第一种方式在1元的时候要涨33%回本，第二种方式只要涨20%就回本。</p>
+<p>那么，这道题告诉我们什么呢？</p>
+<p>它给我的启示是，<strong>首先要弄清楚一个品种在这个时候买入还有可能跌多少。如果大概率还要继续跌，那么我买入多少后，未来大幅下跌后我是否还有能力补仓，降低成本，将一个“不成功”的投资做成反败为胜。</strong></p>
+<p>对了，还有一点没跟你说，如果你觉得2元买入是有价值的，而后面的下跌50%真的是错杀，那么最后这个品种涨了50%，到了3元，那么你用后一种补仓方式将盈利：</p>
+<p>150%。</p>
+<p><strong>你真的那么害怕下跌吗？拜托，下跌才是暴利的源泉好吗。</strong></p>
+<h3 id="语录"><a href="#语录" class="headerlink" title="语录"></a>语录</h3><blockquote>
+<p>很好，理性让我们的命还在，那么接下来依然要理性。就如同不用恐惧一样，不要狂热，要保持冷静。永远永远的保持冷静，保持理性，保持思考，独立的思考。</p>
+<p>对，事情没那么可怕，中国互联网巨头不会全都死掉。但未来也可能面临我们意想不到的坎坷。在理性买入的同时，请一定一定对最坏的预期有一个明确的判断，时刻保持清醒，保证自己在最坏事情发生不会崩溃的前提下，理性低买，理性抄底。</p>
+<p><strong>空间、时间，至少要取其一。</strong></p>
+<p>节奏，注意节奏。我们家里都没矿，我们都不可能无限买入。所以请一定规划好资金，制定好交易计划。底部少买点不会有什么大损失，然而一旦高估了自己的承受力，最终在底部情绪崩溃一键清仓，那才是人间惨剧，没个五年十年缓不过来的人间惨剧。</p>
+<p>所以，朋友们。这次，在这个地方，不再有钻石坑的“左牵黄，右擎苍，锦帽貂裘，千骑卷平冈”，也不再有“会挽雕弓如满月，西北望，射天狼”，有的只是成熟后的淡定。</p>
+<p>但有一样东西始终没变，就是面对这浮躁、疯狂、极为不理性的市场和人群，我们的那份坚定。</p>
+<p>没那么好，也没那么坏。不断冷静的做我们该做的事，不要让投资这件事搞乱你的生活，搞乱你的情绪。</p>
+<p><strong>投资啊，应该是带给你快乐的一件事。</strong></p>
+</blockquote>
+<p><a href="https://mp.weixin.qq.com/s/uxkJqpym95XoJ7b9Z53xmw">2021年12月ETF计划（一）：S卖出一份&amp;第一道数学题</a></p>
+<p><a href="https://mp.weixin.qq.com/s/blbcvoeK0Ed-sOlIEvebuw">第二、第三道投资数学题；应用题——中概</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzIwMTIzNDMwNA==&mid=2653409137&idx=1&sn=102ad8c1bf0fc5996652a6fb5ce25e1b&chksm=8d226d9eba55e4886fd2c73aab4c9c27cc117acfb1cc426aa4af0e59a0ea16feac3f9708589d&scene=21#wechat_redirect">波段策略.网格之一：写在前面、体系以及策略</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzIwMTIzNDMwNA==&mid=2653409144&idx=1&sn=1df1af38ae67d645252a375f65b8c36b&chksm=8d226d97ba55e4815fec8c84281e84cbcc514ec3f6227109b81008059da44f344812ed5bc93a&scene=21#wechat_redirect">波段策略.网格之二：网格策略基础/1.0版</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzIwMTIzNDMwNA==&mid=2653409191&idx=1&sn=5c305c5cf5237e8d2c8d8f7bf0320654&chksm=8d226d48ba55e45e96029083b5656d0c494a10c9c39cff79032ec0667157f36165d47be65957&scene=21#wechat_redirect">波段策略.网格之三：网格策略进阶/2.0版</a></p>
 ]]></content>
       <categories>
         <category>学习</category>
@@ -1800,6 +1834,46 @@ plt.show()
       </tags>
   </entry>
   <entry>
+    <title>统计学复习</title>
+    <url>/2019/03/14/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ol>
+<li>统计学是一门独立的学科。</li>
+<li>统计学研究的是随机现象，而数学研究的是确定性的规律。</li>
+<li>统计学的应用性很强，许多概念和原理来自于实际需要。</li>
+<li>数学在统计学中很重要。</li>
+</ol>
+<span id="more"></span>
+
+<h3 id="什么是统计学？"><a href="#什么是统计学？" class="headerlink" title="什么是统计学？"></a>什么是统计学？</h3><p>简单来说，<strong>统计学是一门教会我们如何同数据打交道，从中获取有用信息，并得出结论的学科。</strong></p>
+<blockquote>
+<p><strong>统计学定义；</strong><br><strong>统计学是用来收集和分析数据的一门学科和艺术。</strong>《大不列颠百科全书》<br><strong>统计学，具体来说，就是一门关于数据收集、整理、描述和分析的学科。</strong></p>
+</blockquote>
+<p>试验设计是统计学的分支。</p>
+<h3 id="几个统计学概念"><a href="#几个统计学概念" class="headerlink" title="几个统计学概念"></a>几个统计学概念</h3><p>1.总体、总体容量（总体量）<br>2.个体<br>4.样本、样本容量（样本量）<br>5.变量（研究对象的特征或属性）、变量值<br>6.随机变量</p>
+<h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><h4 id="数据的收集与描述"><a href="#数据的收集与描述" class="headerlink" title="数据的收集与描述"></a>数据的收集与描述</h4><h5 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h5><p>1.文献资料<br>2.观测<br>3.试验（自然科学研究，工业，好的试验设计的重要性）<br>4.问卷调查（社会科学，心理学，市场调研）<br>5.互联网（爬虫，电商）<br>6.物联网技术（会员卡，条形码）</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/%E7%BB%9F%E8%AE%A1%E5%AD%A6/%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"></p>
+<h4 id="数据的描述性分析"><a href="#数据的描述性分析" class="headerlink" title="数据的描述性分析"></a>数据的描述性分析</h4><p>这里主要介绍一些基本概念，包括算数平均数，加权平均数，几何平均数，调和平均数，极差，四分位差，平均差，方差，标准差，离散系数，峰度等。还复习了下数据的标准化，及是非标志的平均数和标准差。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/%E7%BB%9F%E8%AE%A1%E5%AD%A6/%E7%BB%9F%E8%AE%A1%E5%AD%A61.png" alt="数据的描述性分析.png"></p>
+<h4 id="统计抽样推断"><a href="#统计抽样推断" class="headerlink" title="统计抽样推断"></a>统计抽样推断</h4><p>统计抽样推断主要包括参数估计和假设检验。</p>
+<h5 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h5><p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/%E7%BB%9F%E8%AE%A1%E5%AD%A6/%E7%BB%9F%E8%AE%A1%E6%8A%BD%E6%A0%B7%E6%8E%A8%E6%96%AD" alt="统计抽样推断.png"></p>
+<h4 id="假设检验（显著性检验）"><a href="#假设检验（显著性检验）" class="headerlink" title="假设检验（显著性检验）"></a>假设检验（显著性检验）</h4><p>所谓假设检验就是对一个总体参数或总体分布形式的假设，利用样本资料来检验其真或伪的可能性。</p>
+<p>假设检验的过程，可以用法庭的审理来说明。先想像现在法庭上有一名被告，假设该被告是清白的，而检察官必须要提出足够的证据去证明被告的确有罪。 在证明被告有罪前，被告是被假设为清白的。</p>
+<ol>
+<li>假设被告清白的假设，就相当于零假设（null hypothesis）。</li>
+<li>假设被告有罪的假设，则是备择假设（alternative hypothesis）。</li>
+</ol>
+<p>而检察官提出的证据，是否足以确定该被告有罪，则要经过检验。 这样子的检验过程就相当于用T检验或Z检验去检视研究者所搜集到的统计资料。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/%E7%BB%9F%E8%AE%A1%E5%AD%A6/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C" alt="假设检验"><br>…..待续……</p>
+]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>Data analysis</tag>
+        <tag>硕士期间</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>论文排版</title>
     <url>/2021/11/07/%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/</url>
     <content><![CDATA[<p>王国维先生说，人生有三种境界，论文也是一样。我下面说的方法，主要是因为我受够了论文排版的折磨。然后自己想偷懒，从网上学习，加上自己总结，得出的一个方法。</p>
@@ -1868,46 +1942,6 @@ plt.show()
 ]]></content>
       <tags>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>统计学复习</title>
-    <url>/2019/03/14/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E5%A4%8D%E4%B9%A0/</url>
-    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ol>
-<li>统计学是一门独立的学科。</li>
-<li>统计学研究的是随机现象，而数学研究的是确定性的规律。</li>
-<li>统计学的应用性很强，许多概念和原理来自于实际需要。</li>
-<li>数学在统计学中很重要。</li>
-</ol>
-<span id="more"></span>
-
-<h3 id="什么是统计学？"><a href="#什么是统计学？" class="headerlink" title="什么是统计学？"></a>什么是统计学？</h3><p>简单来说，<strong>统计学是一门教会我们如何同数据打交道，从中获取有用信息，并得出结论的学科。</strong></p>
-<blockquote>
-<p><strong>统计学定义；</strong><br><strong>统计学是用来收集和分析数据的一门学科和艺术。</strong>《大不列颠百科全书》<br><strong>统计学，具体来说，就是一门关于数据收集、整理、描述和分析的学科。</strong></p>
-</blockquote>
-<p>试验设计是统计学的分支。</p>
-<h3 id="几个统计学概念"><a href="#几个统计学概念" class="headerlink" title="几个统计学概念"></a>几个统计学概念</h3><p>1.总体、总体容量（总体量）<br>2.个体<br>4.样本、样本容量（样本量）<br>5.变量（研究对象的特征或属性）、变量值<br>6.随机变量</p>
-<h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><h4 id="数据的收集与描述"><a href="#数据的收集与描述" class="headerlink" title="数据的收集与描述"></a>数据的收集与描述</h4><h5 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h5><p>1.文献资料<br>2.观测<br>3.试验（自然科学研究，工业，好的试验设计的重要性）<br>4.问卷调查（社会科学，心理学，市场调研）<br>5.互联网（爬虫，电商）<br>6.物联网技术（会员卡，条形码）</p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/%E7%BB%9F%E8%AE%A1%E5%AD%A6/%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86"></p>
-<h4 id="数据的描述性分析"><a href="#数据的描述性分析" class="headerlink" title="数据的描述性分析"></a>数据的描述性分析</h4><p>这里主要介绍一些基本概念，包括算数平均数，加权平均数，几何平均数，调和平均数，极差，四分位差，平均差，方差，标准差，离散系数，峰度等。还复习了下数据的标准化，及是非标志的平均数和标准差。</p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/%E7%BB%9F%E8%AE%A1%E5%AD%A6/%E7%BB%9F%E8%AE%A1%E5%AD%A61.png" alt="数据的描述性分析.png"></p>
-<h4 id="统计抽样推断"><a href="#统计抽样推断" class="headerlink" title="统计抽样推断"></a>统计抽样推断</h4><p>统计抽样推断主要包括参数估计和假设检验。</p>
-<h5 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h5><p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/%E7%BB%9F%E8%AE%A1%E5%AD%A6/%E7%BB%9F%E8%AE%A1%E6%8A%BD%E6%A0%B7%E6%8E%A8%E6%96%AD" alt="统计抽样推断.png"></p>
-<h4 id="假设检验（显著性检验）"><a href="#假设检验（显著性检验）" class="headerlink" title="假设检验（显著性检验）"></a>假设检验（显著性检验）</h4><p>所谓假设检验就是对一个总体参数或总体分布形式的假设，利用样本资料来检验其真或伪的可能性。</p>
-<p>假设检验的过程，可以用法庭的审理来说明。先想像现在法庭上有一名被告，假设该被告是清白的，而检察官必须要提出足够的证据去证明被告的确有罪。 在证明被告有罪前，被告是被假设为清白的。</p>
-<ol>
-<li>假设被告清白的假设，就相当于零假设（null hypothesis）。</li>
-<li>假设被告有罪的假设，则是备择假设（alternative hypothesis）。</li>
-</ol>
-<p>而检察官提出的证据，是否足以确定该被告有罪，则要经过检验。 这样子的检验过程就相当于用T检验或Z检验去检视研究者所搜集到的统计资料。</p>
-<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/%E7%BB%9F%E8%AE%A1%E5%AD%A6/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C" alt="假设检验"><br>…..待续……</p>
-]]></content>
-      <categories>
-        <category>数据分析</category>
-      </categories>
-      <tags>
-        <tag>Data analysis</tag>
-        <tag>硕士期间</tag>
       </tags>
   </entry>
   <entry>
