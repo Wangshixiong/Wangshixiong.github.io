@@ -986,6 +986,37 @@
       </tags>
   </entry>
   <entry>
+    <title>pandas中轴axis的问题理解</title>
+    <url>/2019/03/14/pandas%E4%B8%AD%E8%BD%B4axis%E7%9A%84%E9%97%AE%E9%A2%98%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>在学习删除方法<code>drop</code>时，碰到了，也突然想明白了，轴是什么意思。</p>
+<span id="more"></span>
+
+<p>引入：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame<span class="comment">#导入包</span></span><br><span class="line">obj = Series(np.arange(<span class="number">5</span>),index = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>])<span class="comment">#创建Series  obj</span></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">2</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">new_obj = obj.drop(<span class="string">&#x27;c&#x27;</span>)<span class="comment">#删除&#x27;c&#x27;</span></span><br><span class="line">new_obj</span><br><span class="line">Out[<span class="number">5</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">6</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj.drop([<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])<span class="comment">#删除&#x27;b&#x27;,&#x27;d&#x27;</span></span><br><span class="line">Out[<span class="number">7</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">data = DataFrame(np.arange(<span class="number">25</span>).reshape(<span class="number">5</span>,<span class="number">5</span>),index = [<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>,<span class="string">&#x27;heb&#x27;</span>,<span class="string">&#x27;sjz&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>],columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>,<span class="string">&#x27;four&#x27;</span>,<span class="string">&#x27;five&#x27;</span>])<span class="comment">#创建DataFrame</span></span><br><span class="line">data</span><br><span class="line">Out[<span class="number">9</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">bj     <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop([<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>])<span class="comment">#删除某行</span></span><br><span class="line">Out[<span class="number">10</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop(<span class="string">&#x27;one&#x27;</span>,axis=<span class="number">1</span>)<span class="comment">#删除列</span></span><br><span class="line">Out[<span class="number">11</span>]: </span><br><span class="line">     two  three  four  five</span><br><span class="line">bj     <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br></pre></td></tr></table></figure>
+<p>可已注意到的是，在上方使用<code>drop</code>时，删除列特意指明了<code>axis=1</code>. 而在查看drop的文档时，发现默认参数是<code>axis =0 </code>，这说明：</p>
+<ul>
+<li><code>axis = 0</code>代表的是行。</li>
+<li><code>axis = 1</code>代表的是列。<br>这样想就明白了。但是接着问题来了，</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data</span><br><span class="line">Out[<span class="number">29</span>]: </span><br><span class="line">lie   one  two  three  four  five</span><br><span class="line">city                             </span><br><span class="line">bj      <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj      <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb    <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz    <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh     <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">0</span>)<span class="comment">#求列平均</span></span><br><span class="line">Out[<span class="number">30</span>]: </span><br><span class="line">lie</span><br><span class="line">one      <span class="number">10.0</span></span><br><span class="line">two      <span class="number">11.0</span></span><br><span class="line">three    <span class="number">12.0</span></span><br><span class="line">four     <span class="number">13.0</span></span><br><span class="line">five     <span class="number">14.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">1</span>)<span class="comment">#求行平均</span></span><br><span class="line">Out[<span class="number">31</span>]: </span><br><span class="line">city</span><br><span class="line">bj      <span class="number">2.0</span></span><br><span class="line">tj      <span class="number">7.0</span></span><br><span class="line">heb    <span class="number">12.0</span></span><br><span class="line">sjz    <span class="number">17.0</span></span><br><span class="line">sh     <span class="number">22.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>其实，我是有点蒙的，如果向上面那样理解的话。<br>发现问题了吗？<br>在<code>drop</code>中使用<code>axis=1</code>实际上是删掉了一列，而在<code>mean</code>中实际上是计算的行平均值，而不是列的平均值。<br>蒙了。嗯，看了Stackoverflow中的解释，大概是明白了。现记录如下。</p>
+<p><strong>实际上axis = 1，指的是沿着行求所有列的平均值，代表了横轴，那axis = 0，就是沿着列求所有行的平均值，代表了纵轴。</strong></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-de17a1655283a433.png" alt="示意图"></p>
+<p>那这样的话，<code>drop</code>就是沿着<code>&#39;two&#39;</code>的方向删除对应的轴标签为<code>axis = 1</code>的值。</p>
+<p>又想到了numpy，pandas是以numpy为基础构造的库，因此，它保留了对于axis使用的方式。</p>
+<p>参考：<a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean"><a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean">What does axis in pandas mean?</a></a></p>
+]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>Pandas</tag>
+        <tag>python</tag>
+        <tag>Data analysis</tag>
+        <tag>硕士期间</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>numpy统计函数和布尔型数组</title>
     <url>/2019/03/05/numpy%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0%E5%92%8C%E5%B8%83%E5%B0%94%E5%9E%8B%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h2 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h2><p><strong>可以通过numpy的统计函数对整个数组或者某个轴向的数据进项统计计算。</strong></p>
@@ -1028,37 +1059,6 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [<span class="number">41</span>]: arr = np.random.randn(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">42</span>]: arr</span><br><span class="line">Out[<span class="number">42</span>]:</span><br><span class="line">array([-<span class="number">0.77695399</span>, -<span class="number">1.04211228</span>,  <span class="number">0.85516427</span>, -<span class="number">0.04749936</span>, -<span class="number">1.32314252</span>,</span><br><span class="line">       -<span class="number">0.59968117</span>,  <span class="number">1.93582735</span>,  <span class="number">0.08567928</span>, -<span class="number">1.10820476</span>,  <span class="number">1.2410364</span> ])</span><br><span class="line"></span><br><span class="line">In [<span class="number">43</span>]: arr1 = arr&gt;<span class="number">0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">44</span>]: arr1</span><br><span class="line">Out[<span class="number">44</span>]: array([<span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>,  <span class="literal">True</span>,  <span class="literal">True</span>, <span class="literal">False</span>,  <span class="literal">True</span>], dtype=<span class="built_in">bool</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">45</span>]: arr1.<span class="built_in">any</span>()</span><br><span class="line">Out[<span class="number">45</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">46</span>]: arr1.<span class="built_in">all</span>()</span><br><span class="line">Out[<span class="number">46</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pandas中轴axis的问题理解</title>
-    <url>/2019/03/14/pandas%E4%B8%AD%E8%BD%B4axis%E7%9A%84%E9%97%AE%E9%A2%98%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>在学习删除方法<code>drop</code>时，碰到了，也突然想明白了，轴是什么意思。</p>
-<span id="more"></span>
-
-<p>引入：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame<span class="comment">#导入包</span></span><br><span class="line">obj = Series(np.arange(<span class="number">5</span>),index = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>])<span class="comment">#创建Series  obj</span></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">2</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">new_obj = obj.drop(<span class="string">&#x27;c&#x27;</span>)<span class="comment">#删除&#x27;c&#x27;</span></span><br><span class="line">new_obj</span><br><span class="line">Out[<span class="number">5</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">6</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj.drop([<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])<span class="comment">#删除&#x27;b&#x27;,&#x27;d&#x27;</span></span><br><span class="line">Out[<span class="number">7</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">data = DataFrame(np.arange(<span class="number">25</span>).reshape(<span class="number">5</span>,<span class="number">5</span>),index = [<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>,<span class="string">&#x27;heb&#x27;</span>,<span class="string">&#x27;sjz&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>],columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>,<span class="string">&#x27;four&#x27;</span>,<span class="string">&#x27;five&#x27;</span>])<span class="comment">#创建DataFrame</span></span><br><span class="line">data</span><br><span class="line">Out[<span class="number">9</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">bj     <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop([<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>])<span class="comment">#删除某行</span></span><br><span class="line">Out[<span class="number">10</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop(<span class="string">&#x27;one&#x27;</span>,axis=<span class="number">1</span>)<span class="comment">#删除列</span></span><br><span class="line">Out[<span class="number">11</span>]: </span><br><span class="line">     two  three  four  five</span><br><span class="line">bj     <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br></pre></td></tr></table></figure>
-<p>可已注意到的是，在上方使用<code>drop</code>时，删除列特意指明了<code>axis=1</code>. 而在查看drop的文档时，发现默认参数是<code>axis =0 </code>，这说明：</p>
-<ul>
-<li><code>axis = 0</code>代表的是行。</li>
-<li><code>axis = 1</code>代表的是列。<br>这样想就明白了。但是接着问题来了，</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data</span><br><span class="line">Out[<span class="number">29</span>]: </span><br><span class="line">lie   one  two  three  four  five</span><br><span class="line">city                             </span><br><span class="line">bj      <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj      <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb    <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz    <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh     <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">0</span>)<span class="comment">#求列平均</span></span><br><span class="line">Out[<span class="number">30</span>]: </span><br><span class="line">lie</span><br><span class="line">one      <span class="number">10.0</span></span><br><span class="line">two      <span class="number">11.0</span></span><br><span class="line">three    <span class="number">12.0</span></span><br><span class="line">four     <span class="number">13.0</span></span><br><span class="line">five     <span class="number">14.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">1</span>)<span class="comment">#求行平均</span></span><br><span class="line">Out[<span class="number">31</span>]: </span><br><span class="line">city</span><br><span class="line">bj      <span class="number">2.0</span></span><br><span class="line">tj      <span class="number">7.0</span></span><br><span class="line">heb    <span class="number">12.0</span></span><br><span class="line">sjz    <span class="number">17.0</span></span><br><span class="line">sh     <span class="number">22.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
-<p>其实，我是有点蒙的，如果向上面那样理解的话。<br>发现问题了吗？<br>在<code>drop</code>中使用<code>axis=1</code>实际上是删掉了一列，而在<code>mean</code>中实际上是计算的行平均值，而不是列的平均值。<br>蒙了。嗯，看了Stackoverflow中的解释，大概是明白了。现记录如下。</p>
-<p><strong>实际上axis = 1，指的是沿着行求所有列的平均值，代表了横轴，那axis = 0，就是沿着列求所有行的平均值，代表了纵轴。</strong></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-de17a1655283a433.png" alt="示意图"></p>
-<p>那这样的话，<code>drop</code>就是沿着<code>&#39;two&#39;</code>的方向删除对应的轴标签为<code>axis = 1</code>的值。</p>
-<p>又想到了numpy，pandas是以numpy为基础构造的库，因此，它保留了对于axis使用的方式。</p>
-<p>参考：<a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean"><a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean">What does axis in pandas mean?</a></a></p>
-]]></content>
-      <categories>
-        <category>数据分析</category>
-      </categories>
-      <tags>
-        <tag>Pandas</tag>
-        <tag>python</tag>
-        <tag>Data analysis</tag>
-        <tag>硕士期间</tag>
       </tags>
   </entry>
   <entry>
@@ -1312,32 +1312,6 @@
       </tags>
   </entry>
   <entry>
-    <title>工作的处理方式</title>
-    <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
-<p>做项目，不管是哪个岗位，包括我，现在是运营岗位，与客户对接是最多的。</p>
-<span id="more"></span>
-
-<p>客户在使用我们的产品的时候，<strong>疯狂吐槽我们某一个功能</strong>，这就是风险，比如吐槽你的语义，吐槽你的NLP，这就是风险。<strong>我们需要领导意识到这个风险。</strong></p>
-<p>因为接下来，如果客户与我们合作有二期项目，接下来可能二期的合同还会用到我们的语义。</p>
-<p>而这个时候，一期用户对我们的语义印象极差，二期客户可能就不和我们签语义的合同，公司就会有损失。</p>
-<p>这就是很大的风险。</p>
-<p>我们应该反馈给项目经理，项目经理没有意识到我们就应该<strong>越级反馈</strong>，被领导骂了又怎样。<strong>直到达到应有的效果。</strong></p>
-<p><strong>碰到事儿不能怕事儿，要去解决它！</strong></p>
-</blockquote>
-<h2 id="工作习惯"><a href="#工作习惯" class="headerlink" title="工作习惯"></a>工作习惯</h2><blockquote>
-<p><strong>数据是在你身边的，我们要注意到，要注意数据的价值。</strong>会议上客户说的数据，我们要注意收集，整理！</p>
-<p>这在市场分析的时候，市场的盘子有多大，很有可能会用到。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Job</category>
-      </categories>
-      <tags>
-        <tag>经验</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>拉钩数据职位分析报告</title>
     <url>/2019/03/14/%E6%8B%89%E9%92%A9%E6%95%B0%E6%8D%AE%E8%81%8C%E4%BD%8D%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/</url>
     <content><![CDATA[<p><strong>本篇博客写于研究生期间。</strong></p>
@@ -1496,6 +1470,32 @@ plt.show()
       <tags>
         <tag>Data analysis</tag>
         <tag>硕士期间</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工作的处理方式</title>
+    <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
+<p>做项目，不管是哪个岗位，包括我，现在是运营岗位，与客户对接是最多的。</p>
+<span id="more"></span>
+
+<p>客户在使用我们的产品的时候，<strong>疯狂吐槽我们某一个功能</strong>，这就是风险，比如吐槽你的语义，吐槽你的NLP，这就是风险。<strong>我们需要领导意识到这个风险。</strong></p>
+<p>因为接下来，如果客户与我们合作有二期项目，接下来可能二期的合同还会用到我们的语义。</p>
+<p>而这个时候，一期用户对我们的语义印象极差，二期客户可能就不和我们签语义的合同，公司就会有损失。</p>
+<p>这就是很大的风险。</p>
+<p>我们应该反馈给项目经理，项目经理没有意识到我们就应该<strong>越级反馈</strong>，被领导骂了又怎样。<strong>直到达到应有的效果。</strong></p>
+<p><strong>碰到事儿不能怕事儿，要去解决它！</strong></p>
+</blockquote>
+<h2 id="工作习惯"><a href="#工作习惯" class="headerlink" title="工作习惯"></a>工作习惯</h2><blockquote>
+<p><strong>数据是在你身边的，我们要注意到，要注意数据的价值。</strong>会议上客户说的数据，我们要注意收集，整理！</p>
+<p>这在市场分析的时候，市场的盘子有多大，很有可能会用到。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Job</category>
+      </categories>
+      <tags>
+        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
@@ -1950,6 +1950,8 @@ plt.show()
     <content><![CDATA[<h1 id="语音交互机器人"><a href="#语音交互机器人" class="headerlink" title="语音交互机器人"></a>语音交互机器人</h1><p>语音交互机器人常用于<strong>呼入和呼出</strong>场景，这两种场景，数据流一般都是：</p>
 <p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20220226181035840.png" alt="image-20220226181035840"></p>
 <p>当然也会有IOT场景，会涉及语音唤醒VAD等，这些场景都会涉及到对话管理模块。</p>
+ <span id="more"></span>
+
 <h1 id="指标体系"><a href="#指标体系" class="headerlink" title="指标体系"></a>指标体系</h1><h2 id="ASR"><a href="#ASR" class="headerlink" title="ASR"></a>ASR</h2><p><strong>ASR（Automatic Speech Recognition）</strong>，即自动语音识别，是把声音转换成文字的技术。</p>
 <p>一般它主要有两个指标，<strong>句识别率和字正确率。</strong>但是我们在工作中经常性说的98%这个值，一般都是说字正确率，它忽略了插入错误。</p>
 <p>其实，一般会说三个值。<strong>字错误率，字正确率，字精确率。</strong></p>

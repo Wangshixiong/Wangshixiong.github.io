@@ -214,7 +214,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-02-26 18:02:13 / 修改时间：18:45:13" itemprop="dateCreated datePublished" datetime="2022-02-26T18:02:13+08:00">2022-02-26</time>
+              <time title="创建时间：2022-02-26 18:02:13 / 修改时间：18:49:18" itemprop="dateCreated datePublished" datetime="2022-02-26T18:02:13+08:00">2022-02-26</time>
             </span>
 
           
@@ -266,26 +266,14 @@
           <h1 id="语音交互机器人"><a href="#语音交互机器人" class="headerlink" title="语音交互机器人"></a>语音交互机器人</h1><p>语音交互机器人常用于<strong>呼入和呼出</strong>场景，这两种场景，数据流一般都是：</p>
 <p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20220226181035840.png" alt="image-20220226181035840"></p>
 <p>当然也会有IOT场景，会涉及语音唤醒VAD等，这些场景都会涉及到对话管理模块。</p>
-<h1 id="指标体系"><a href="#指标体系" class="headerlink" title="指标体系"></a>指标体系</h1><h2 id="ASR"><a href="#ASR" class="headerlink" title="ASR"></a>ASR</h2><p><strong>ASR（Automatic Speech Recognition）</strong>，即自动语音识别，是把声音转换成文字的技术。</p>
-<p>一般它主要有两个指标，<strong>句识别率和字正确率。</strong>但是我们在工作中经常性说的98%这个值，一般都是说字正确率，它忽略了插入错误。</p>
-<p>其实，一般会说三个值。<strong>字错误率，字正确率，字精确率。</strong></p>
-<p>我们知道，ASR的转写结果一般有以下四类：</p>
-<blockquote>
-<p> 正确，即正确的字数，<strong>H</strong>；</p>
-<p>错误（替换），即错误的字数，<strong>S</strong>；</p>
-<p>插入，插入的字数，<strong>I</strong>；</p>
-<p>删除（缺失），删除的字数，<strong>D</strong>；</p>
-<p><strong>N为</strong> <strong>（替换 + 删除 + 正确）的字数；</strong></p>
-</blockquote>
-<h3 id="字错误率（CER：Character-Error-Rate）"><a href="#字错误率（CER：Character-Error-Rate）" class="headerlink" title="字错误率（CER：Character Error Rate）"></a>字错误率（CER：Character Error Rate）</h3><p><strong>CER=（S + D + I ） / N = （S + D + I ） / （S + D + C ）</strong></p>
-<p>实际测试时，如果样本量较小，很可能出现错误率大于100%的情况，当然，大样本几乎不可能出现，不然你的模型也太差了。</p>
-<h3 id="字正确率（Word-Correct）"><a href="#字正确率（Word-Correct）" class="headerlink" title="字正确率（Word Correct）"></a>字正确率（Word Correct）</h3><p><strong>W.Corr = C / N</strong></p>
-<p>国内厂商宣传一般，都用这个值，只管正确的，忽略了插入的。</p>
-<h3 id="字准确率-（Word-Accuracy）"><a href="#字准确率-（Word-Accuracy）" class="headerlink" title="字准确率 （Word Accuracy）"></a>字准确率 （Word Accuracy）</h3><p><strong>W.Acc = （C - I）/ N</strong></p>
-<p>但是，实际上，ACC才是能准确反映ASR能力的指标。</p>
-<p><strong>当I=0时，ACC=W.Corr</strong>,</p>
-<p>可以看出来，Acc一般比Corr要小。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/02/26/%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92%E6%8C%87%E6%A0%87%E8%AF%84%E4%BB%B7%E4%BD%93%E7%B3%BB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
