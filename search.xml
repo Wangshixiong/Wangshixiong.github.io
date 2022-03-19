@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>MySQL安装、输入密码闪退、workbench使用</title>
+    <url>/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h1><p>安装就不细说了，网上一搜一大堆，但是教程推荐这个：</p>
+<p><a href="http://t.cn/RXmj4zF">wikihow</a></p>
+<p>网站是wikiHOW，很有意思的网站，比百度经验强大很多。</p>
+<span id="more"></span>
+
+
+
+<h1 id="2、输入密码闪退"><a href="#2、输入密码闪退" class="headerlink" title="2、输入密码闪退"></a>2、输入密码闪退</h1><p>安装完成后，在开始菜单，打开</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223927629.png" alt="image-20211110223927629"></p>
+<p>开始程序</p>
+<p>界面如下：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223939313.png" alt="image-20211110223939313"></p>
+<p>密码</p>
+<p>输入你安装的时候所设置的根密码，回车，本该进入程序，这时，你发现程序闪退。</p>
+<p>这一般是由于服务没有开启。</p>
+<p>如果你是win10 ，就喊一声“你好小娜，打开服务”，win7之类的就在开始菜单搜索服务。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223953144.png" alt="image-20211110223953144"></p>
+<p>服务</p>
+<p>右击启动，或重新启动。</p>
+<p>如果是手动模式，你可以右击属性改为自动。</p>
+<p>再去打开<strong>MySQL Command line client</strong>，输入密码，界面如下，即已正常。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224014054.png" alt="image-20211110224014054"></p>
+<p><strong>MySQL命令窗口</strong></p>
+<h1 id="3、workbench"><a href="#3、workbench" class="headerlink" title="3、workbench"></a>3、workbench</h1><p>首先搜索，workbench，然后在官网下载安装即可。</p>
+<p><a href="https://dev.mysql.com/downloads/workbench/">workbench</a></p>
+<p>这里有一个问题，如下图：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224031337.png" alt="image-20211110224031337"></p>
+<p>workbench</p>
+<p>你必须保证安装之前电脑已安装了二者，如果没有安装，点击二者，转到微软官网，下载相应版本安装即可。这个安装很简单。</p>
+<p>安装后打开，界面如下：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224047608.png" alt="image-20211110224047608"></p>
+<p><strong>欢迎界面</strong></p>
+<p>单击加号创建新的连接，连接新的数据库。单击矩形框中，直接打开服务器，这里需要输入密码，即你的mysql密码。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224109215.png" alt="image-20211110224109215"></p>
+<p><strong>密码</strong></p>
+<p>在这里有一个问题，如果总是出现improper name等信息，那可能跟上方的问题一样，你的MySQL服务没有开启，去开启，然后在输入密码即可。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224125888.png" alt="image-20211110224125888"></p>
+<p><strong>界面</strong></p>
+<p>箭头部分创建数据库，表等等。右侧输入查询指令，关于SQL的声明等。点击黄色闪电执行相应命令。</p>
+<p>当然，在查询之前需要制定数据库：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224144446.png" alt="image-20211110224144446"></p>
+<p><strong>databases</strong></p>
+<p>比如，查看当前所有数据库：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224201022.png" alt="image-20211110224201022"></p>
+<p>数据库</p>
+<p>我的公众号，基本是自己的学习日志，有些小工具。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224216854.png" alt="image-20211110224216854"></p>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2020年我的年终总结</title>
     <url>/2020/12/31/2020%E6%88%91%E7%9A%84%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h1 id="2020年12月31日"><a href="#2020年12月31日" class="headerlink" title="2020年12月31日"></a>2020年12月31日</h1><p>仔细想想，今年好像也没做几件让我印象很深的事情。</p>
@@ -67,61 +122,6 @@
       </categories>
       <tags>
         <tag>生活</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL安装、输入密码闪退、workbench使用</title>
-    <url>/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h1><p>安装就不细说了，网上一搜一大堆，但是教程推荐这个：</p>
-<p><a href="http://t.cn/RXmj4zF">wikihow</a></p>
-<p>网站是wikiHOW，很有意思的网站，比百度经验强大很多。</p>
-<span id="more"></span>
-
-
-
-<h1 id="2、输入密码闪退"><a href="#2、输入密码闪退" class="headerlink" title="2、输入密码闪退"></a>2、输入密码闪退</h1><p>安装完成后，在开始菜单，打开</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223927629.png" alt="image-20211110223927629"></p>
-<p>开始程序</p>
-<p>界面如下：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223939313.png" alt="image-20211110223939313"></p>
-<p>密码</p>
-<p>输入你安装的时候所设置的根密码，回车，本该进入程序，这时，你发现程序闪退。</p>
-<p>这一般是由于服务没有开启。</p>
-<p>如果你是win10 ，就喊一声“你好小娜，打开服务”，win7之类的就在开始菜单搜索服务。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223953144.png" alt="image-20211110223953144"></p>
-<p>服务</p>
-<p>右击启动，或重新启动。</p>
-<p>如果是手动模式，你可以右击属性改为自动。</p>
-<p>再去打开<strong>MySQL Command line client</strong>，输入密码，界面如下，即已正常。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224014054.png" alt="image-20211110224014054"></p>
-<p><strong>MySQL命令窗口</strong></p>
-<h1 id="3、workbench"><a href="#3、workbench" class="headerlink" title="3、workbench"></a>3、workbench</h1><p>首先搜索，workbench，然后在官网下载安装即可。</p>
-<p><a href="https://dev.mysql.com/downloads/workbench/">workbench</a></p>
-<p>这里有一个问题，如下图：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224031337.png" alt="image-20211110224031337"></p>
-<p>workbench</p>
-<p>你必须保证安装之前电脑已安装了二者，如果没有安装，点击二者，转到微软官网，下载相应版本安装即可。这个安装很简单。</p>
-<p>安装后打开，界面如下：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224047608.png" alt="image-20211110224047608"></p>
-<p><strong>欢迎界面</strong></p>
-<p>单击加号创建新的连接，连接新的数据库。单击矩形框中，直接打开服务器，这里需要输入密码，即你的mysql密码。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224109215.png" alt="image-20211110224109215"></p>
-<p><strong>密码</strong></p>
-<p>在这里有一个问题，如果总是出现improper name等信息，那可能跟上方的问题一样，你的MySQL服务没有开启，去开启，然后在输入密码即可。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224125888.png" alt="image-20211110224125888"></p>
-<p><strong>界面</strong></p>
-<p>箭头部分创建数据库，表等等。右侧输入查询指令，关于SQL的声明等。点击黄色闪电执行相应命令。</p>
-<p>当然，在查询之前需要制定数据库：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224144446.png" alt="image-20211110224144446"></p>
-<p><strong>databases</strong></p>
-<p>比如，查看当前所有数据库：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224201022.png" alt="image-20211110224201022"></p>
-<p>数据库</p>
-<p>我的公众号，基本是自己的学习日志，有些小工具。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224216854.png" alt="image-20211110224216854"></p>
-]]></content>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -986,37 +986,6 @@
       </tags>
   </entry>
   <entry>
-    <title>pandas中轴axis的问题理解</title>
-    <url>/2019/03/14/pandas%E4%B8%AD%E8%BD%B4axis%E7%9A%84%E9%97%AE%E9%A2%98%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>在学习删除方法<code>drop</code>时，碰到了，也突然想明白了，轴是什么意思。</p>
-<span id="more"></span>
-
-<p>引入：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame<span class="comment">#导入包</span></span><br><span class="line">obj = Series(np.arange(<span class="number">5</span>),index = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>])<span class="comment">#创建Series  obj</span></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">2</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">new_obj = obj.drop(<span class="string">&#x27;c&#x27;</span>)<span class="comment">#删除&#x27;c&#x27;</span></span><br><span class="line">new_obj</span><br><span class="line">Out[<span class="number">5</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">6</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj.drop([<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])<span class="comment">#删除&#x27;b&#x27;,&#x27;d&#x27;</span></span><br><span class="line">Out[<span class="number">7</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">data = DataFrame(np.arange(<span class="number">25</span>).reshape(<span class="number">5</span>,<span class="number">5</span>),index = [<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>,<span class="string">&#x27;heb&#x27;</span>,<span class="string">&#x27;sjz&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>],columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>,<span class="string">&#x27;four&#x27;</span>,<span class="string">&#x27;five&#x27;</span>])<span class="comment">#创建DataFrame</span></span><br><span class="line">data</span><br><span class="line">Out[<span class="number">9</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">bj     <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop([<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>])<span class="comment">#删除某行</span></span><br><span class="line">Out[<span class="number">10</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop(<span class="string">&#x27;one&#x27;</span>,axis=<span class="number">1</span>)<span class="comment">#删除列</span></span><br><span class="line">Out[<span class="number">11</span>]: </span><br><span class="line">     two  three  four  five</span><br><span class="line">bj     <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br></pre></td></tr></table></figure>
-<p>可已注意到的是，在上方使用<code>drop</code>时，删除列特意指明了<code>axis=1</code>. 而在查看drop的文档时，发现默认参数是<code>axis =0 </code>，这说明：</p>
-<ul>
-<li><code>axis = 0</code>代表的是行。</li>
-<li><code>axis = 1</code>代表的是列。<br>这样想就明白了。但是接着问题来了，</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data</span><br><span class="line">Out[<span class="number">29</span>]: </span><br><span class="line">lie   one  two  three  four  five</span><br><span class="line">city                             </span><br><span class="line">bj      <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj      <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb    <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz    <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh     <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">0</span>)<span class="comment">#求列平均</span></span><br><span class="line">Out[<span class="number">30</span>]: </span><br><span class="line">lie</span><br><span class="line">one      <span class="number">10.0</span></span><br><span class="line">two      <span class="number">11.0</span></span><br><span class="line">three    <span class="number">12.0</span></span><br><span class="line">four     <span class="number">13.0</span></span><br><span class="line">five     <span class="number">14.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">1</span>)<span class="comment">#求行平均</span></span><br><span class="line">Out[<span class="number">31</span>]: </span><br><span class="line">city</span><br><span class="line">bj      <span class="number">2.0</span></span><br><span class="line">tj      <span class="number">7.0</span></span><br><span class="line">heb    <span class="number">12.0</span></span><br><span class="line">sjz    <span class="number">17.0</span></span><br><span class="line">sh     <span class="number">22.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
-<p>其实，我是有点蒙的，如果向上面那样理解的话。<br>发现问题了吗？<br>在<code>drop</code>中使用<code>axis=1</code>实际上是删掉了一列，而在<code>mean</code>中实际上是计算的行平均值，而不是列的平均值。<br>蒙了。嗯，看了Stackoverflow中的解释，大概是明白了。现记录如下。</p>
-<p><strong>实际上axis = 1，指的是沿着行求所有列的平均值，代表了横轴，那axis = 0，就是沿着列求所有行的平均值，代表了纵轴。</strong></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-de17a1655283a433.png" alt="示意图"></p>
-<p>那这样的话，<code>drop</code>就是沿着<code>&#39;two&#39;</code>的方向删除对应的轴标签为<code>axis = 1</code>的值。</p>
-<p>又想到了numpy，pandas是以numpy为基础构造的库，因此，它保留了对于axis使用的方式。</p>
-<p>参考：<a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean"><a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean">What does axis in pandas mean?</a></a></p>
-]]></content>
-      <categories>
-        <category>数据分析</category>
-      </categories>
-      <tags>
-        <tag>Pandas</tag>
-        <tag>python</tag>
-        <tag>Data analysis</tag>
-        <tag>硕士期间</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>numpy统计函数和布尔型数组</title>
     <url>/2019/03/05/numpy%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0%E5%92%8C%E5%B8%83%E5%B0%94%E5%9E%8B%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<h2 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h2><p><strong>可以通过numpy的统计函数对整个数组或者某个轴向的数据进项统计计算。</strong></p>
@@ -1062,49 +1031,34 @@
       </tags>
   </entry>
   <entry>
-    <title>《谁说菜鸟不会数据分析》读书笔记</title>
-    <url>/2021/11/07/%E3%80%8A%E8%B0%81%E8%AF%B4%E8%8F%9C%E9%B8%9F%E4%B8%8D%E4%BC%9A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>花了一段时间学习了下菜鸟读书笔记，最大的感慨是这本书，纯粹是入门级。本书以Excel为主要操作软件，只要稍微有点Excel基础，绝对可以看懂，看完后，觉得对我用处最大的是数据分析的思想，而一些手段，反而是次要的。</p>
+    <title>pandas中轴axis的问题理解</title>
+    <url>/2019/03/14/pandas%E4%B8%AD%E8%BD%B4axis%E7%9A%84%E9%97%AE%E9%A2%98%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>在学习删除方法<code>drop</code>时，碰到了，也突然想明白了，轴是什么意思。</p>
 <span id="more"></span>
 
-
-
-<p>以下是在读的过程中的一些学习总结，不足之处，诸君见谅。</p>
-<h2 id="1-数据分析内容"><a href="#1-数据分析内容" class="headerlink" title="1.数据分析内容"></a>1.数据分析内容</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-117cd864b4606df8.png" alt="img"></p>
-<p>数据分析</p>
-<p>这一部分，主要介绍了什么数据分析，数据分析步骤，以及作为一个合格的数据分析所需要具备的品质。</p>
-<p>总体来说，要进行数据分析，我们首先要知道自己的目的是什么，以及我们所要分析的内容，然后我们需要确定我们采用的数据分析方法，这需要我们知道一些营销或管理模型，从而根据内容确定分析方向。</p>
-<h2 id="2-数据分析方法论"><a href="#2-数据分析方法论" class="headerlink" title="2.数据分析方法论"></a>2.数据分析方法论</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-8b915c7975ecb4bc.png" alt="img"></p>
-<p>数据分析方法论</p>
-<p>以前只是知道这些营销理论或者管理理论，现在才隐约知道该怎样使用他们。实践出真知。</p>
-<h2 id="3-数据收集"><a href="#3-数据收集" class="headerlink" title="3.数据收集"></a>3.数据收集</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a77faea71422aab7.png" alt="img"></p>
-<p>数据收集</p>
-<p>这部分是最重要的部分之一，主要介绍了数据收集的一些方法，重点介绍了调查问卷的正确使用方式，并向我们介绍了表的概念，表与SQL语言练习紧密，因为我们现在多数的数据都存储在关系型数据库中，如MySql等，同时，说了一些Excel的小技巧，以前学习了Excel的很多内容，看完这部分才对怎样运用Excel对数据处理有了大概的认识，及方向。</p>
-<h2 id="4-数据处理"><a href="#4-数据处理" class="headerlink" title="4.数据处理"></a>4.数据处理</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f81d9d44fc784e9b.png" alt="img"></p>
-<h2 id="5-数据清洗"><a href="#5-数据清洗" class="headerlink" title="5.数据清洗"></a>5.数据清洗</h2><p>这部分是最为繁琐的步骤之一，其首先主要介绍了数据处理包括的四大部分内容：数据清洗、数据转化、数据提取、数据计算等。然后说明了清洗时，使用的一些Excel的技巧，其中，重复数据还可通过数据透视表进行辨别去除。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a0020ed9dc65f908.png" alt="img"></p>
-<p>数据加工</p>
-<p>主要还是使用Excel怎么实现数据的加工，及加工所需要做的事情。不得不说一句VLOOUP很神奇。最后多句嘴，建议大家学习并使用Excel2013/2016，其***快速填充功能***，简直强大的无敌。</p>
-<h2 id="6-数据分析工具"><a href="#6-数据分析工具" class="headerlink" title="6.数据分析工具"></a>6.数据分析工具</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-927dd467c9ffbfa6.png" alt="img"></p>
-<p>数据透视表</p>
-<p>数据分工具还有SPSS，SQL等等，因为书主要以Excel为例，因此这部分主要介绍了数据透视表的使用。建议去我要自学网学习曾贤志老师的数据透视表教程，详细而生动。数据透视表可以结合SQL使用，你知道吗？</p>
-<h2 id="7-数据分析方法"><a href="#7-数据分析方法" class="headerlink" title="7.数据分析方法"></a>7.数据分析方法</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f14cca613c2423da.png" alt="img"></p>
-<p>数据分析方法</p>
-<p>这一部分主要介绍了一些比较常见且基础的数据分析方法，如对比分析，分组分析等。以及他们的应用场合。</p>
-<h2 id="8-数据展现"><a href="#8-数据展现" class="headerlink" title="8.数据展现"></a>8.数据展现</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-6ac6a74cc438a1e0.png" alt="img"></p>
-<h2 id="9-数据展现"><a href="#9-数据展现" class="headerlink" title="9.数据展现"></a>9.数据展现</h2><p>此部分主要说明了图表的作用，以及图表的应用场合，和他们的制作方法（在Excel中）。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-4d118010db6ddffb.png" alt="img"></p>
-<p>图表专业化</p>
-<p>此部分主要说明了数据分析图表制作的目的，意义，以及需要注意的事项、小技巧等。</p>
-<h2 id="10-8-数据分析报告"><a href="#10-8-数据分析报告" class="headerlink" title="10.8.数据分析报告"></a>10.8.数据分析报告</h2><p>这是最后一步了，也是相对来说比较重要的一步，因为前面所有的工作，都是为了这一步做准备的，我们的目的是让决策者看懂，为他们提供决策支持，决策依据。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-30bc008b0acbd855.png" alt="img"></p>
-<p>数据分析报告</p>
-<p>此部分的重点在于介绍数据分析报告及其制作原则。最后菜鸟以一个一般性的模板进行了总结分析。</p>
-<p>数据分析学习任重而道远，继续努力。</p>
-<p>以上。</p>
+<p>引入：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame<span class="comment">#导入包</span></span><br><span class="line">obj = Series(np.arange(<span class="number">5</span>),index = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>])<span class="comment">#创建Series  obj</span></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">2</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">new_obj = obj.drop(<span class="string">&#x27;c&#x27;</span>)<span class="comment">#删除&#x27;c&#x27;</span></span><br><span class="line">new_obj</span><br><span class="line">Out[<span class="number">5</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj</span><br><span class="line">Out[<span class="number">6</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">b    <span class="number">1</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">d    <span class="number">3</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">obj.drop([<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;d&#x27;</span>])<span class="comment">#删除&#x27;b&#x27;,&#x27;d&#x27;</span></span><br><span class="line">Out[<span class="number">7</span>]: </span><br><span class="line">a    <span class="number">0</span></span><br><span class="line">c    <span class="number">2</span></span><br><span class="line">e    <span class="number">4</span></span><br><span class="line">dtype: int32</span><br><span class="line"></span><br><span class="line">data = DataFrame(np.arange(<span class="number">25</span>).reshape(<span class="number">5</span>,<span class="number">5</span>),index = [<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>,<span class="string">&#x27;heb&#x27;</span>,<span class="string">&#x27;sjz&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>],columns=[<span class="string">&#x27;one&#x27;</span>,<span class="string">&#x27;two&#x27;</span>,<span class="string">&#x27;three&#x27;</span>,<span class="string">&#x27;four&#x27;</span>,<span class="string">&#x27;five&#x27;</span>])<span class="comment">#创建DataFrame</span></span><br><span class="line">data</span><br><span class="line">Out[<span class="number">9</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">bj     <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop([<span class="string">&#x27;bj&#x27;</span>,<span class="string">&#x27;tj&#x27;</span>])<span class="comment">#删除某行</span></span><br><span class="line">Out[<span class="number">10</span>]: </span><br><span class="line">     one  two  three  four  five</span><br><span class="line">heb   <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.drop(<span class="string">&#x27;one&#x27;</span>,axis=<span class="number">1</span>)<span class="comment">#删除列</span></span><br><span class="line">Out[<span class="number">11</span>]: </span><br><span class="line">     two  three  four  five</span><br><span class="line">bj     <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj     <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh    <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br></pre></td></tr></table></figure>
+<p>可已注意到的是，在上方使用<code>drop</code>时，删除列特意指明了<code>axis=1</code>. 而在查看drop的文档时，发现默认参数是<code>axis =0 </code>，这说明：</p>
+<ul>
+<li><code>axis = 0</code>代表的是行。</li>
+<li><code>axis = 1</code>代表的是列。<br>这样想就明白了。但是接着问题来了，</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data</span><br><span class="line">Out[<span class="number">29</span>]: </span><br><span class="line">lie   one  two  three  four  five</span><br><span class="line">city                             </span><br><span class="line">bj      <span class="number">0</span>    <span class="number">1</span>      <span class="number">2</span>     <span class="number">3</span>     <span class="number">4</span></span><br><span class="line">tj      <span class="number">5</span>    <span class="number">6</span>      <span class="number">7</span>     <span class="number">8</span>     <span class="number">9</span></span><br><span class="line">heb    <span class="number">10</span>   <span class="number">11</span>     <span class="number">12</span>    <span class="number">13</span>    <span class="number">14</span></span><br><span class="line">sjz    <span class="number">15</span>   <span class="number">16</span>     <span class="number">17</span>    <span class="number">18</span>    <span class="number">19</span></span><br><span class="line">sh     <span class="number">20</span>   <span class="number">21</span>     <span class="number">22</span>    <span class="number">23</span>    <span class="number">24</span></span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">0</span>)<span class="comment">#求列平均</span></span><br><span class="line">Out[<span class="number">30</span>]: </span><br><span class="line">lie</span><br><span class="line">one      <span class="number">10.0</span></span><br><span class="line">two      <span class="number">11.0</span></span><br><span class="line">three    <span class="number">12.0</span></span><br><span class="line">four     <span class="number">13.0</span></span><br><span class="line">five     <span class="number">14.0</span></span><br><span class="line">dtype: float64</span><br><span class="line"></span><br><span class="line">data.mean(axis = <span class="number">1</span>)<span class="comment">#求行平均</span></span><br><span class="line">Out[<span class="number">31</span>]: </span><br><span class="line">city</span><br><span class="line">bj      <span class="number">2.0</span></span><br><span class="line">tj      <span class="number">7.0</span></span><br><span class="line">heb    <span class="number">12.0</span></span><br><span class="line">sjz    <span class="number">17.0</span></span><br><span class="line">sh     <span class="number">22.0</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>其实，我是有点蒙的，如果向上面那样理解的话。<br>发现问题了吗？<br>在<code>drop</code>中使用<code>axis=1</code>实际上是删掉了一列，而在<code>mean</code>中实际上是计算的行平均值，而不是列的平均值。<br>蒙了。嗯，看了Stackoverflow中的解释，大概是明白了。现记录如下。</p>
+<p><strong>实际上axis = 1，指的是沿着行求所有列的平均值，代表了横轴，那axis = 0，就是沿着列求所有行的平均值，代表了纵轴。</strong></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-de17a1655283a433.png" alt="示意图"></p>
+<p>那这样的话，<code>drop</code>就是沿着<code>&#39;two&#39;</code>的方向删除对应的轴标签为<code>axis = 1</code>的值。</p>
+<p>又想到了numpy，pandas是以numpy为基础构造的库，因此，它保留了对于axis使用的方式。</p>
+<p>参考：<a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean"><a href="https://stackoverflow.com/questions/22149584/what-does-axis-in-pandas-mean">What does axis in pandas mean?</a></a></p>
 ]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
       <tags>
-        <tag>数据分析</tag>
+        <tag>Pandas</tag>
+        <tag>python</tag>
+        <tag>Data analysis</tag>
+        <tag>硕士期间</tag>
       </tags>
   </entry>
   <entry>
@@ -1184,6 +1138,52 @@
       </tags>
   </entry>
   <entry>
+    <title>《谁说菜鸟不会数据分析》读书笔记</title>
+    <url>/2021/11/07/%E3%80%8A%E8%B0%81%E8%AF%B4%E8%8F%9C%E9%B8%9F%E4%B8%8D%E4%BC%9A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>花了一段时间学习了下菜鸟读书笔记，最大的感慨是这本书，纯粹是入门级。本书以Excel为主要操作软件，只要稍微有点Excel基础，绝对可以看懂，看完后，觉得对我用处最大的是数据分析的思想，而一些手段，反而是次要的。</p>
+<span id="more"></span>
+
+
+
+<p>以下是在读的过程中的一些学习总结，不足之处，诸君见谅。</p>
+<h2 id="1-数据分析内容"><a href="#1-数据分析内容" class="headerlink" title="1.数据分析内容"></a>1.数据分析内容</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-117cd864b4606df8.png" alt="img"></p>
+<p>数据分析</p>
+<p>这一部分，主要介绍了什么数据分析，数据分析步骤，以及作为一个合格的数据分析所需要具备的品质。</p>
+<p>总体来说，要进行数据分析，我们首先要知道自己的目的是什么，以及我们所要分析的内容，然后我们需要确定我们采用的数据分析方法，这需要我们知道一些营销或管理模型，从而根据内容确定分析方向。</p>
+<h2 id="2-数据分析方法论"><a href="#2-数据分析方法论" class="headerlink" title="2.数据分析方法论"></a>2.数据分析方法论</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-8b915c7975ecb4bc.png" alt="img"></p>
+<p>数据分析方法论</p>
+<p>以前只是知道这些营销理论或者管理理论，现在才隐约知道该怎样使用他们。实践出真知。</p>
+<h2 id="3-数据收集"><a href="#3-数据收集" class="headerlink" title="3.数据收集"></a>3.数据收集</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a77faea71422aab7.png" alt="img"></p>
+<p>数据收集</p>
+<p>这部分是最重要的部分之一，主要介绍了数据收集的一些方法，重点介绍了调查问卷的正确使用方式，并向我们介绍了表的概念，表与SQL语言练习紧密，因为我们现在多数的数据都存储在关系型数据库中，如MySql等，同时，说了一些Excel的小技巧，以前学习了Excel的很多内容，看完这部分才对怎样运用Excel对数据处理有了大概的认识，及方向。</p>
+<h2 id="4-数据处理"><a href="#4-数据处理" class="headerlink" title="4.数据处理"></a>4.数据处理</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f81d9d44fc784e9b.png" alt="img"></p>
+<h2 id="5-数据清洗"><a href="#5-数据清洗" class="headerlink" title="5.数据清洗"></a>5.数据清洗</h2><p>这部分是最为繁琐的步骤之一，其首先主要介绍了数据处理包括的四大部分内容：数据清洗、数据转化、数据提取、数据计算等。然后说明了清洗时，使用的一些Excel的技巧，其中，重复数据还可通过数据透视表进行辨别去除。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-a0020ed9dc65f908.png" alt="img"></p>
+<p>数据加工</p>
+<p>主要还是使用Excel怎么实现数据的加工，及加工所需要做的事情。不得不说一句VLOOUP很神奇。最后多句嘴，建议大家学习并使用Excel2013/2016，其***快速填充功能***，简直强大的无敌。</p>
+<h2 id="6-数据分析工具"><a href="#6-数据分析工具" class="headerlink" title="6.数据分析工具"></a>6.数据分析工具</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-927dd467c9ffbfa6.png" alt="img"></p>
+<p>数据透视表</p>
+<p>数据分工具还有SPSS，SQL等等，因为书主要以Excel为例，因此这部分主要介绍了数据透视表的使用。建议去我要自学网学习曾贤志老师的数据透视表教程，详细而生动。数据透视表可以结合SQL使用，你知道吗？</p>
+<h2 id="7-数据分析方法"><a href="#7-数据分析方法" class="headerlink" title="7.数据分析方法"></a>7.数据分析方法</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-f14cca613c2423da.png" alt="img"></p>
+<p>数据分析方法</p>
+<p>这一部分主要介绍了一些比较常见且基础的数据分析方法，如对比分析，分组分析等。以及他们的应用场合。</p>
+<h2 id="8-数据展现"><a href="#8-数据展现" class="headerlink" title="8.数据展现"></a>8.数据展现</h2><p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-6ac6a74cc438a1e0.png" alt="img"></p>
+<h2 id="9-数据展现"><a href="#9-数据展现" class="headerlink" title="9.数据展现"></a>9.数据展现</h2><p>此部分主要说明了图表的作用，以及图表的应用场合，和他们的制作方法（在Excel中）。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-4d118010db6ddffb.png" alt="img"></p>
+<p>图表专业化</p>
+<p>此部分主要说明了数据分析图表制作的目的，意义，以及需要注意的事项、小技巧等。</p>
+<h2 id="10-8-数据分析报告"><a href="#10-8-数据分析报告" class="headerlink" title="10.8.数据分析报告"></a>10.8.数据分析报告</h2><p>这是最后一步了，也是相对来说比较重要的一步，因为前面所有的工作，都是为了这一步做准备的，我们的目的是让决策者看懂，为他们提供决策支持，决策依据。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-30bc008b0acbd855.png" alt="img"></p>
+<p>数据分析报告</p>
+<p>此部分的重点在于介绍数据分析报告及其制作原则。最后菜鸟以一个一般性的模板进行了总结分析。</p>
+<p>数据分析学习任重而道远，继续努力。</p>
+<p>以上。</p>
+]]></content>
+      <tags>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>公司大佬的分享</title>
     <url>/2021/11/10/%E5%85%AC%E5%8F%B8%E5%A4%A7%E4%BD%AC%E7%9A%84%E5%88%86%E4%BA%AB/</url>
     <content><![CDATA[<h1 id="滴滴中台之路"><a href="#滴滴中台之路" class="headerlink" title="滴滴中台之路"></a>滴滴中台之路</h1><p>都是PPT截图，在来自于一位大佬的分享。</p>
@@ -1226,6 +1226,32 @@
 <p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002739529.png" alt="image-20211130002739529"></p>
 <p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002752970.png" alt="image-20211130002752970"></p>
 <p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211130002805379.png" alt="image-20211130002805379"></p>
+]]></content>
+      <categories>
+        <category>Job</category>
+      </categories>
+      <tags>
+        <tag>经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工作的处理方式</title>
+    <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
+<p>做项目，不管是哪个岗位，包括我，现在是运营岗位，与客户对接是最多的。</p>
+<span id="more"></span>
+
+<p>客户在使用我们的产品的时候，<strong>疯狂吐槽我们某一个功能</strong>，这就是风险，比如吐槽你的语义，吐槽你的NLP，这就是风险。<strong>我们需要领导意识到这个风险。</strong></p>
+<p>因为接下来，如果客户与我们合作有二期项目，接下来可能二期的合同还会用到我们的语义。</p>
+<p>而这个时候，一期用户对我们的语义印象极差，二期客户可能就不和我们签语义的合同，公司就会有损失。</p>
+<p>这就是很大的风险。</p>
+<p>我们应该反馈给项目经理，项目经理没有意识到我们就应该<strong>越级反馈</strong>，被领导骂了又怎样。<strong>直到达到应有的效果。</strong></p>
+<p><strong>碰到事儿不能怕事儿，要去解决它！</strong></p>
+</blockquote>
+<h2 id="工作习惯"><a href="#工作习惯" class="headerlink" title="工作习惯"></a>工作习惯</h2><blockquote>
+<p><strong>数据是在你身边的，我们要注意到，要注意数据的价值。</strong>会议上客户说的数据，我们要注意收集，整理！</p>
+<p>这在市场分析的时候，市场的盘子有多大，很有可能会用到。</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>Job</category>
@@ -1309,6 +1335,57 @@
       </categories>
       <tags>
         <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>投资心里历程的记录</title>
+    <url>/2022/03/19/%E6%8A%95%E8%B5%84%E7%9A%84%E5%BF%83%E7%90%86%E5%8F%98%E5%8C%96%E3%80%902022%E5%B9%B43%E6%9C%8819%E6%97%A5%E3%80%91/</url>
+    <content><![CDATA[<p><strong>2022年3月14日-2022年3月18日，真是让我感慨万分。</strong></p>
+<p>基本的理财知识，和从2018年到现在所有的经历都告诉我，<strong>一个品种只要他不会死，它早晚都会回本，盈利</strong>。所以我一直坚持的投资品种都是基金。</p>
+<span id="more"></span>
+
+<p>但是这次，依然让我惊心动魄，甚至轻微焦虑，这次真的好多了，18年，19年的时候，那是真的焦虑。这次还有子弹，还可以继续加仓，学会了控制仓位。</p>
+<p>但是，中丐，依然还是仓位过重了，占到了总体仓位的35%，所以也最终导致了我的轻微焦虑。</p>
+<p>可能大家不知道我再说什么。给大家看看我近一年的投资曲线图吧。</p>
+<p>中丐，净值从最高点，2.6，买到了最低点，0.65，下跌幅度近乎80%，从去年国家开始整治互联网到现在，一直阴跌。所幸开始买的并不多。</p>
+<p>这么说，大概可能只是觉得是个数字，但是对于亲身经历的我来说，真的能吓死个人。幸亏，<strong>我19年经过了华宝油气的教训。</strong>不然我可能真的会焦虑到不行。</p>
+<p><a href="http://whuhan2013.github.io/blog/2015/09/19/markdown-simple-grammar/">markdown语法</a></p>
+<center class="half"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319194913080.png" alt="image-20220319194913080" style="zoom:30%;" /><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319195306370.png" alt="image-20220319195306370" style="zoom:30%;" /></center>
+
+
+
+<p><strong>大家看近一周的净值，再看看日涨幅，基金一天跌11%，你能信？</strong></p>
+<p>你再看看3月16，<strong>基金一天涨了28%，这个你见过吗？</strong>说实话，这是我投资三年以来，第一次见到。</p>
+<p>所以你尽情想象，我这一周的心情的跌宕起伏吧。所以，我才写这个文字，想要记录下来自己的感受。</p>
+<center class="half">
+    <img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319200851169.png" alt="image-20220319200851169" style="zoom:30%;" /><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319200914265.png" alt="image-20220319200914265" style="zoom:30%;" /></center>
+
+<p><strong>再来看看恒生科技</strong>：</p>
+<center class="half"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319201205276.png" alt="image-20220319201205276" style="zoom:30%;" /><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319201215176.png" alt="image-20220319201215176" style="zoom:30%;" />
+</center>
+
+<p>恐怖吗？恐怖吧。好好体会。<strong>连续阴跌，突然大跌，又突然上涨反弹。</strong>我以前一直觉得这种就是电视剧。</p>
+<p>感谢刘鹤总理的讲话。</p>
+<p>也幸亏，没有港股通，不然眼睁睁的看着腾讯的股价从700多，变成400多，三天时间又变成290多。我会焦虑死的。</p>
+<p>从这里也看到，<strong>以后，我还是要坚持ETF投资。</strong>股票的惊心动魄，我真的玩不了。<strong>因为，我知道ETF几乎死不掉。</strong></p>
+<p><strong>以ETF拯救世界的文章仅作纪念。</strong></p>
+<blockquote>
+<p><a href="https://mp.weixin.qq.com/s/KTwHgp-9TZfNPskaBkbJVA">周一条件单的一个小操作</a></p>
+</blockquote>
+<p>再加个也谈钱的吧。</p>
+<blockquote>
+<p><a href="https://mp.weixin.qq.com/s/2v2lLkJZnbuLhWhE-kIgRg">回头看看这一周，大伙感觉如何？</a></p>
+</blockquote>
+<p>还有孟岩</p>
+<blockquote>
+<p><a href="https://docs.qq.com/doc/DRVVpQkNKVXlxWmFX">恐惧</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>理财</tag>
       </tags>
   </entry>
   <entry>
@@ -1470,66 +1547,6 @@ plt.show()
       <tags>
         <tag>Data analysis</tag>
         <tag>硕士期间</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>工作的处理方式</title>
-    <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
-<p>做项目，不管是哪个岗位，包括我，现在是运营岗位，与客户对接是最多的。</p>
-<span id="more"></span>
-
-<p>客户在使用我们的产品的时候，<strong>疯狂吐槽我们某一个功能</strong>，这就是风险，比如吐槽你的语义，吐槽你的NLP，这就是风险。<strong>我们需要领导意识到这个风险。</strong></p>
-<p>因为接下来，如果客户与我们合作有二期项目，接下来可能二期的合同还会用到我们的语义。</p>
-<p>而这个时候，一期用户对我们的语义印象极差，二期客户可能就不和我们签语义的合同，公司就会有损失。</p>
-<p>这就是很大的风险。</p>
-<p>我们应该反馈给项目经理，项目经理没有意识到我们就应该<strong>越级反馈</strong>，被领导骂了又怎样。<strong>直到达到应有的效果。</strong></p>
-<p><strong>碰到事儿不能怕事儿，要去解决它！</strong></p>
-</blockquote>
-<h2 id="工作习惯"><a href="#工作习惯" class="headerlink" title="工作习惯"></a>工作习惯</h2><blockquote>
-<p><strong>数据是在你身边的，我们要注意到，要注意数据的价值。</strong>会议上客户说的数据，我们要注意收集，整理！</p>
-<p>这在市场分析的时候，市场的盘子有多大，很有可能会用到。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Job</category>
-      </categories>
-      <tags>
-        <tag>经验</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>智能座舱</title>
-    <url>/2021/11/17/%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1/</url>
-    <content><![CDATA[<p><strong>汽车智能座舱</strong>是指配备智能化和网联化车载产品的汽车座舱，汽车智能座舱由智能座舱内饰及座舱电子构成。汽车智能座舱通过智能座舱内饰和座舱电子的联动，实现人、路、车的智能交互，是重新定义人车关系的智能车载产品。</p>
-<span id="more"></span>
-
-<p>可以看B站的相关内容：<a href="https://search.bilibili.com/all?keyword=%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1&from_source=webtop_search&spm_id_from=333.999">智能座舱</a></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234124657.png" alt="image-20211117234124657"></p>
-<h3 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h3><ul>
-<li><strong>V2X:</strong>   V2X( Vehicle to Everything)，V2X是支持车辆与周围交通系统进行通信的技术，可实现车与万物互联的技术，包括 Vehicle- to Vehicle(车与车)， vehicle-to<br>infrastructure(车与基础设施)， vehicle-to- network(车与网络)和 vehicle-to- pedestrian(车与人)。</li>
-<li><strong>云计算:</strong>  一种资源交付和使用模式，用户可通过互联网以自助服务的形式获取自身所需要的IT资源。</li>
-<li><strong>SaaS：</strong> Software as a service，软件即服务，位于云架构上层，是一种软件交付模式。SaaS服务商将软件统一部署在自身服务上，客户可根据自己实际需求通过互联网向SaaS服务商采购所需的软件服务。</li>
-<li><strong>Paas:</strong> Platform as a service，平台即服务，位于云架构中间层，是一种将软件开发平台作为服务提供给用户使用的云计算基础设施服务。</li>
-<li><strong>Iaas:</strong> Infrastructure as a service，基础设施即服务，位于云架构底层，把IT基础设施作为一种服务通过网络对外提供，并根据用户对资源的实际使用量或占用量进行计费的一种服务模式。</li>
-<li><strong>智能汽车：</strong>通过搭载自主探测设备，具备单车环境感知能力，能够进行自主决策并安全行驶至目的地的汽车。</li>
-<li><strong>车联网：</strong>涵盖车内网、车际网和车云网，以特定通信协议和数据交互标准，实现车与车、人、路、平台之间信息交换的通信网络。</li>
-<li><strong>5G：</strong>5 th generation mobile networks，第五代移动通信技术，一种具有高数据速率、低延迟、高吞吐量特征的数字蜂窝移动通信技术。</li>
-<li><strong>ADAS:</strong> Advanced Driving Assistant Systen，高级驾驶辅助系统，通过传感器收集环境信息并分析决策，提醒驾驶员潜在危险的主动安全技术。</li>
-<li><strong>环境感知：</strong>通过传感器或自组织网络，对道路、车辆、行人、交通标志等进行检测和识别的技术，目前多用于先进驾驶辅助系统。</li>
-<li><strong>智能决策：</strong>对获取到的信息进行融合、分析判断车辆应该做出的最优决策</li>
-<li><strong>AliOS：</strong>由阿里巴巴发布的面向汽车、loT终端、loT芯片和工业领域的物联网操作系统。</li>
-<li><strong>IOT:</strong> The Internet of Things，物联网，通过各种信息传感器、射频识别技术、全球定位系统、红外感应器、激光扫描器等各种装置与技术，实时采集任何需要监控、连接、互动的物体或过程，采集其声、光、热、电、力学、化学、生物、位置等各种需要的信息，通过各类可能的网络接入，实现物与物、物与人的泛在连接，实现对物品和过程的智能化感知、识别和管理。</li>
-<li><strong>HUD:</strong> Head Up Display，抬头显示器，一种利用光学反射原理将影像和信息投射到玻璃上的装置。</li>
-<li><strong>OBD：</strong>On- borad diagnostics，随车诊断系统，汽车检测仪器访问汽车电脑EC∪的接口</li>
-<li><strong>ECU:</strong> Electronic Control unit，电子控制器单元，是利用各种传感器、总线的数据采集与交换，来判断车辆状态以及司机的意图并通过执行器来操控汽车</li>
-<li><strong>Ⅳl：</strong>in- Vehicle Infotainment，车载信息娱乐系统，是采用车载专用中央处理器，基于车身总线系统和互联网服务，形成的车载综合信息处理系统。</li>
-<li><strong>流媒体后视镜：</strong>可实时观察后方路况的后视镜，通过髙淸的外置后视摄像头对车辆后方环境进行拍摄，并把图像呈现到后视镜上。</li>
-</ul>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234142829.png" alt="image-20211117234142829"></p>
-]]></content>
-      <tags>
-        <tag>学习</tag>
       </tags>
   </entry>
   <entry>
@@ -1759,6 +1776,40 @@ plt.show()
       </categories>
       <tags>
         <tag>理财</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>智能座舱</title>
+    <url>/2021/11/17/%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1/</url>
+    <content><![CDATA[<p><strong>汽车智能座舱</strong>是指配备智能化和网联化车载产品的汽车座舱，汽车智能座舱由智能座舱内饰及座舱电子构成。汽车智能座舱通过智能座舱内饰和座舱电子的联动，实现人、路、车的智能交互，是重新定义人车关系的智能车载产品。</p>
+<span id="more"></span>
+
+<p>可以看B站的相关内容：<a href="https://search.bilibili.com/all?keyword=%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1&from_source=webtop_search&spm_id_from=333.999">智能座舱</a></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234124657.png" alt="image-20211117234124657"></p>
+<h3 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h3><ul>
+<li><strong>V2X:</strong>   V2X( Vehicle to Everything)，V2X是支持车辆与周围交通系统进行通信的技术，可实现车与万物互联的技术，包括 Vehicle- to Vehicle(车与车)， vehicle-to<br>infrastructure(车与基础设施)， vehicle-to- network(车与网络)和 vehicle-to- pedestrian(车与人)。</li>
+<li><strong>云计算:</strong>  一种资源交付和使用模式，用户可通过互联网以自助服务的形式获取自身所需要的IT资源。</li>
+<li><strong>SaaS：</strong> Software as a service，软件即服务，位于云架构上层，是一种软件交付模式。SaaS服务商将软件统一部署在自身服务上，客户可根据自己实际需求通过互联网向SaaS服务商采购所需的软件服务。</li>
+<li><strong>Paas:</strong> Platform as a service，平台即服务，位于云架构中间层，是一种将软件开发平台作为服务提供给用户使用的云计算基础设施服务。</li>
+<li><strong>Iaas:</strong> Infrastructure as a service，基础设施即服务，位于云架构底层，把IT基础设施作为一种服务通过网络对外提供，并根据用户对资源的实际使用量或占用量进行计费的一种服务模式。</li>
+<li><strong>智能汽车：</strong>通过搭载自主探测设备，具备单车环境感知能力，能够进行自主决策并安全行驶至目的地的汽车。</li>
+<li><strong>车联网：</strong>涵盖车内网、车际网和车云网，以特定通信协议和数据交互标准，实现车与车、人、路、平台之间信息交换的通信网络。</li>
+<li><strong>5G：</strong>5 th generation mobile networks，第五代移动通信技术，一种具有高数据速率、低延迟、高吞吐量特征的数字蜂窝移动通信技术。</li>
+<li><strong>ADAS:</strong> Advanced Driving Assistant Systen，高级驾驶辅助系统，通过传感器收集环境信息并分析决策，提醒驾驶员潜在危险的主动安全技术。</li>
+<li><strong>环境感知：</strong>通过传感器或自组织网络，对道路、车辆、行人、交通标志等进行检测和识别的技术，目前多用于先进驾驶辅助系统。</li>
+<li><strong>智能决策：</strong>对获取到的信息进行融合、分析判断车辆应该做出的最优决策</li>
+<li><strong>AliOS：</strong>由阿里巴巴发布的面向汽车、loT终端、loT芯片和工业领域的物联网操作系统。</li>
+<li><strong>IOT:</strong> The Internet of Things，物联网，通过各种信息传感器、射频识别技术、全球定位系统、红外感应器、激光扫描器等各种装置与技术，实时采集任何需要监控、连接、互动的物体或过程，采集其声、光、热、电、力学、化学、生物、位置等各种需要的信息，通过各类可能的网络接入，实现物与物、物与人的泛在连接，实现对物品和过程的智能化感知、识别和管理。</li>
+<li><strong>HUD:</strong> Head Up Display，抬头显示器，一种利用光学反射原理将影像和信息投射到玻璃上的装置。</li>
+<li><strong>OBD：</strong>On- borad diagnostics，随车诊断系统，汽车检测仪器访问汽车电脑EC∪的接口</li>
+<li><strong>ECU:</strong> Electronic Control unit，电子控制器单元，是利用各种传感器、总线的数据采集与交换，来判断车辆状态以及司机的意图并通过执行器来操控汽车</li>
+<li><strong>Ⅳl：</strong>in- Vehicle Infotainment，车载信息娱乐系统，是采用车载专用中央处理器，基于车身总线系统和互联网服务，形成的车载综合信息处理系统。</li>
+<li><strong>流媒体后视镜：</strong>可实时观察后方路况的后视镜，通过髙淸的外置后视摄像头对车辆后方环境进行拍摄，并把图像呈现到后视镜上。</li>
+</ul>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234142829.png" alt="image-20211117234142829"></p>
+]]></content>
+      <tags>
+        <tag>学习</tag>
       </tags>
   </entry>
   <entry>
