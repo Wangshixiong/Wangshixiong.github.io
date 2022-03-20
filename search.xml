@@ -1,61 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>MySQL安装、输入密码闪退、workbench使用</title>
-    <url>/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h1><p>安装就不细说了，网上一搜一大堆，但是教程推荐这个：</p>
-<p><a href="http://t.cn/RXmj4zF">wikihow</a></p>
-<p>网站是wikiHOW，很有意思的网站，比百度经验强大很多。</p>
-<span id="more"></span>
-
-
-
-<h1 id="2、输入密码闪退"><a href="#2、输入密码闪退" class="headerlink" title="2、输入密码闪退"></a>2、输入密码闪退</h1><p>安装完成后，在开始菜单，打开</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223927629.png" alt="image-20211110223927629"></p>
-<p>开始程序</p>
-<p>界面如下：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223939313.png" alt="image-20211110223939313"></p>
-<p>密码</p>
-<p>输入你安装的时候所设置的根密码，回车，本该进入程序，这时，你发现程序闪退。</p>
-<p>这一般是由于服务没有开启。</p>
-<p>如果你是win10 ，就喊一声“你好小娜，打开服务”，win7之类的就在开始菜单搜索服务。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223953144.png" alt="image-20211110223953144"></p>
-<p>服务</p>
-<p>右击启动，或重新启动。</p>
-<p>如果是手动模式，你可以右击属性改为自动。</p>
-<p>再去打开<strong>MySQL Command line client</strong>，输入密码，界面如下，即已正常。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224014054.png" alt="image-20211110224014054"></p>
-<p><strong>MySQL命令窗口</strong></p>
-<h1 id="3、workbench"><a href="#3、workbench" class="headerlink" title="3、workbench"></a>3、workbench</h1><p>首先搜索，workbench，然后在官网下载安装即可。</p>
-<p><a href="https://dev.mysql.com/downloads/workbench/">workbench</a></p>
-<p>这里有一个问题，如下图：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224031337.png" alt="image-20211110224031337"></p>
-<p>workbench</p>
-<p>你必须保证安装之前电脑已安装了二者，如果没有安装，点击二者，转到微软官网，下载相应版本安装即可。这个安装很简单。</p>
-<p>安装后打开，界面如下：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224047608.png" alt="image-20211110224047608"></p>
-<p><strong>欢迎界面</strong></p>
-<p>单击加号创建新的连接，连接新的数据库。单击矩形框中，直接打开服务器，这里需要输入密码，即你的mysql密码。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224109215.png" alt="image-20211110224109215"></p>
-<p><strong>密码</strong></p>
-<p>在这里有一个问题，如果总是出现improper name等信息，那可能跟上方的问题一样，你的MySQL服务没有开启，去开启，然后在输入密码即可。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224125888.png" alt="image-20211110224125888"></p>
-<p><strong>界面</strong></p>
-<p>箭头部分创建数据库，表等等。右侧输入查询指令，关于SQL的声明等。点击黄色闪电执行相应命令。</p>
-<p>当然，在查询之前需要制定数据库：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224144446.png" alt="image-20211110224144446"></p>
-<p><strong>databases</strong></p>
-<p>比如，查看当前所有数据库：</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224201022.png" alt="image-20211110224201022"></p>
-<p>数据库</p>
-<p>我的公众号，基本是自己的学习日志，有些小工具。</p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224216854.png" alt="image-20211110224216854"></p>
-]]></content>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2020年我的年终总结</title>
     <url>/2020/12/31/2020%E6%88%91%E7%9A%84%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h1 id="2020年12月31日"><a href="#2020年12月31日" class="headerlink" title="2020年12月31日"></a>2020年12月31日</h1><p>仔细想想，今年好像也没做几件让我印象很深的事情。</p>
@@ -122,6 +67,61 @@
       </categories>
       <tags>
         <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL安装、输入密码闪退、workbench使用</title>
+    <url>/2021/11/07/MySQL%E5%AE%89%E8%A3%85%E3%80%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E9%97%AA%E9%80%80%E3%80%81workbench%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h1><p>安装就不细说了，网上一搜一大堆，但是教程推荐这个：</p>
+<p><a href="http://t.cn/RXmj4zF">wikihow</a></p>
+<p>网站是wikiHOW，很有意思的网站，比百度经验强大很多。</p>
+<span id="more"></span>
+
+
+
+<h1 id="2、输入密码闪退"><a href="#2、输入密码闪退" class="headerlink" title="2、输入密码闪退"></a>2、输入密码闪退</h1><p>安装完成后，在开始菜单，打开</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223927629.png" alt="image-20211110223927629"></p>
+<p>开始程序</p>
+<p>界面如下：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223939313.png" alt="image-20211110223939313"></p>
+<p>密码</p>
+<p>输入你安装的时候所设置的根密码，回车，本该进入程序，这时，你发现程序闪退。</p>
+<p>这一般是由于服务没有开启。</p>
+<p>如果你是win10 ，就喊一声“你好小娜，打开服务”，win7之类的就在开始菜单搜索服务。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110223953144.png" alt="image-20211110223953144"></p>
+<p>服务</p>
+<p>右击启动，或重新启动。</p>
+<p>如果是手动模式，你可以右击属性改为自动。</p>
+<p>再去打开<strong>MySQL Command line client</strong>，输入密码，界面如下，即已正常。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224014054.png" alt="image-20211110224014054"></p>
+<p><strong>MySQL命令窗口</strong></p>
+<h1 id="3、workbench"><a href="#3、workbench" class="headerlink" title="3、workbench"></a>3、workbench</h1><p>首先搜索，workbench，然后在官网下载安装即可。</p>
+<p><a href="https://dev.mysql.com/downloads/workbench/">workbench</a></p>
+<p>这里有一个问题，如下图：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224031337.png" alt="image-20211110224031337"></p>
+<p>workbench</p>
+<p>你必须保证安装之前电脑已安装了二者，如果没有安装，点击二者，转到微软官网，下载相应版本安装即可。这个安装很简单。</p>
+<p>安装后打开，界面如下：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224047608.png" alt="image-20211110224047608"></p>
+<p><strong>欢迎界面</strong></p>
+<p>单击加号创建新的连接，连接新的数据库。单击矩形框中，直接打开服务器，这里需要输入密码，即你的mysql密码。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224109215.png" alt="image-20211110224109215"></p>
+<p><strong>密码</strong></p>
+<p>在这里有一个问题，如果总是出现improper name等信息，那可能跟上方的问题一样，你的MySQL服务没有开启，去开启，然后在输入密码即可。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224125888.png" alt="image-20211110224125888"></p>
+<p><strong>界面</strong></p>
+<p>箭头部分创建数据库，表等等。右侧输入查询指令，关于SQL的声明等。点击黄色闪电执行相应命令。</p>
+<p>当然，在查询之前需要制定数据库：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224144446.png" alt="image-20211110224144446"></p>
+<p><strong>databases</strong></p>
+<p>比如，查看当前所有数据库：</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224201022.png" alt="image-20211110224201022"></p>
+<p>数据库</p>
+<p>我的公众号，基本是自己的学习日志，有些小工具。</p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224216854.png" alt="image-20211110224216854"></p>
+]]></content>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -799,6 +799,38 @@
       </tags>
   </entry>
   <entry>
+    <title>jieba分词</title>
+    <url>/2021/11/07/jieba%E5%88%86%E8%AF%8D/</url>
+    <content><![CDATA[<p>昨天，做的那个数据分析报告用到了<code>jieba</code>分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..</p>
+<span id="more"></span>
+
+<h1 id="jieba官网简介"><a href="#jieba官网简介" class="headerlink" title="jieba官网简介"></a>jieba官网简介</h1><p>“结巴”中文分词：做最好的 Python 中文分词组件</p>
+<p><code>&quot;Jieba&quot; (Chinese for &quot;to stutter&quot;) Chinese text segmentation: built to be the best Python Chinese word segmentation module.</code></p>
+<p>支持三种分词模式：</p>
+<p>精确模式，试图将句子最精确地切开，适合文本分析；<br>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；<br>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>支持繁体分词</p>
+<p>支持自定义词典</p>
+<p>MIT 授权协议</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
+<h1 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h1><p><code>jieba.cut</code> 方法接受三个输入参数: 需要分词的字符串；cut_all 参数用来控制是否采用全模式；HMM 参数用来控制是否使用 HMM 模型<br><code>jieba.cut_for_search</code> 方法接受两个参数：需要分词的字符串；是否使用 HMM 模型。该方法适合用于搜索引擎构建倒排索引的分词，粒度比较细</p>
+<p>待分词的字符串可以是 unicode 或 UTF-8 字符串、GBK 字符串。注意：不建议直接输入 GBK 字符串，可能无法预料地错误解码成 UTF-8<br><code>jieba.cut </code>以及<code>jieba.cut_for_search</code>返回的结构都是一个可迭代的 generator，可以使用 for 循环来获得分词后得到的每一个词语(unicode)，</p>
+<p>或者用<code>jieba.lcut</code> 以及<code>jieba.lcut_for_search</code>直接返回 list</p>
+<p><code>jieba.Tokenizer(dictionary=DEFAULT_DICT) </code>新建自定义分词器，可用于同时使用不同词典。jieba.dt 为默认分词器，所有全局分词相关函数都是该分词器的映射。</p>
+<h1 id="官网实例"><a href="#官网实例" class="headerlink" title="官网实例"></a>官网实例</h1><p>所以大概明白了生成词云需要的cut方法的具体参数都代表什么。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">True</span>) <span class="comment"># 全模式</span></span><br><span class="line"><span class="built_in">print</span>(str_li)</span><br><span class="line">&lt;generator <span class="built_in">object</span> Tokenizer.cut at <span class="number">0x00000298C3987FC0</span>&gt; <span class="comment"># 可以看到返回了一个生成器。</span></span><br><span class="line"></span><br><span class="line">FullMode = <span class="string">&#x27;Full mode :&#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li) <span class="comment">#全模式（不能解决歧义）</span></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">False</span>) <span class="comment"># 精确模式</span></span><br><span class="line">AccMode = <span class="string">&#x27;AccurateMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"></span><br><span class="line">AccurateMode: 我/来到/北京/清华大学 <span class="comment">#精确模式（适用于文本分析）</span></span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>) <span class="comment">#默认</span></span><br><span class="line">DefMode = <span class="string">&#x27;DefaultMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"></span><br><span class="line">DefaultMode: 我/来到/北京/清华大学 <span class="comment"># 我们可以看到，默认是精确模式</span></span><br><span class="line"></span><br><span class="line">long_sen = jb.cut_for_search(<span class="string">&quot;小明硕士毕业于中国科学院计算所，后在日本京都大学深造&quot;</span>)<span class="comment"># 搜索引擎模式</span></span><br><span class="line">Long = <span class="string">&#x27;search:&#x27;</span>+<span class="string">&#x27;,&#x27;</span>.join(long_sen)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后统一对比一下：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">Full mode :我/来到/北京/清华/清华大学/华大/大学</span><br><span class="line">AccurateMode: 我/来到/北京/清华大学</span><br><span class="line">DefaultMode: 他/来到/了/网易/杭研/大厦</span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>对于基本的词云及词频分析来说已经足够了，词典什么的情感分析，下次研究。</p>
+<p>下面试着对以前…….（long long ago）喜欢的一本小说（极品公子）做个词云分析。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">text = <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\sunshine\Desktop\极品公子.txt&#x27;</span>,encoding = <span class="string">&#x27;utf-8&#x27;</span>).read()</span><br><span class="line">text_f = jb.cut(text)</span><br><span class="line"></span><br><span class="line">text_s = <span class="string">&quot; &quot;</span>.join(text_f)</span><br><span class="line">boy_cloud = WordCloud().generate(text_s)</span><br><span class="line">plt.imshow(boy_cloud)</span><br><span class="line">plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224246094.png" alt="无间道"></p>
+<p>可以发现，毫无疑问，叶无道是主角。</p>
+<p><a href="https://github.com/fxsjy/jieba">jeiba地址</a></p>
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo-next</title>
     <url>/2021/06/06/hexo-next/</url>
     <content><![CDATA[<p><strong>安装–美化–问题集锦</strong></p>
@@ -951,38 +983,6 @@
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jieba分词</title>
-    <url>/2021/11/07/jieba%E5%88%86%E8%AF%8D/</url>
-    <content><![CDATA[<p>昨天，做的那个数据分析报告用到了<code>jieba</code>分词。但是只是借用了别人的部分代码。具体函数代表什么还不太明白。今天去官网研究了下…..</p>
-<span id="more"></span>
-
-<h1 id="jieba官网简介"><a href="#jieba官网简介" class="headerlink" title="jieba官网简介"></a>jieba官网简介</h1><p>“结巴”中文分词：做最好的 Python 中文分词组件</p>
-<p><code>&quot;Jieba&quot; (Chinese for &quot;to stutter&quot;) Chinese text segmentation: built to be the best Python Chinese word segmentation module.</code></p>
-<p>支持三种分词模式：</p>
-<p>精确模式，试图将句子最精确地切开，适合文本分析；<br>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；<br>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。<br>支持繁体分词</p>
-<p>支持自定义词典</p>
-<p>MIT 授权协议</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install jieba</span><br></pre></td></tr></table></figure>
-<h1 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h1><p><code>jieba.cut</code> 方法接受三个输入参数: 需要分词的字符串；cut_all 参数用来控制是否采用全模式；HMM 参数用来控制是否使用 HMM 模型<br><code>jieba.cut_for_search</code> 方法接受两个参数：需要分词的字符串；是否使用 HMM 模型。该方法适合用于搜索引擎构建倒排索引的分词，粒度比较细</p>
-<p>待分词的字符串可以是 unicode 或 UTF-8 字符串、GBK 字符串。注意：不建议直接输入 GBK 字符串，可能无法预料地错误解码成 UTF-8<br><code>jieba.cut </code>以及<code>jieba.cut_for_search</code>返回的结构都是一个可迭代的 generator，可以使用 for 循环来获得分词后得到的每一个词语(unicode)，</p>
-<p>或者用<code>jieba.lcut</code> 以及<code>jieba.lcut_for_search</code>直接返回 list</p>
-<p><code>jieba.Tokenizer(dictionary=DEFAULT_DICT) </code>新建自定义分词器，可用于同时使用不同词典。jieba.dt 为默认分词器，所有全局分词相关函数都是该分词器的映射。</p>
-<h1 id="官网实例"><a href="#官网实例" class="headerlink" title="官网实例"></a>官网实例</h1><p>所以大概明白了生成词云需要的cut方法的具体参数都代表什么。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">True</span>) <span class="comment"># 全模式</span></span><br><span class="line"><span class="built_in">print</span>(str_li)</span><br><span class="line">&lt;generator <span class="built_in">object</span> Tokenizer.cut at <span class="number">0x00000298C3987FC0</span>&gt; <span class="comment"># 可以看到返回了一个生成器。</span></span><br><span class="line"></span><br><span class="line">FullMode = <span class="string">&#x27;Full mode :&#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li) <span class="comment">#全模式（不能解决歧义）</span></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>,cut_all=<span class="literal">False</span>) <span class="comment"># 精确模式</span></span><br><span class="line">AccMode = <span class="string">&#x27;AccurateMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"></span><br><span class="line">AccurateMode: 我/来到/北京/清华大学 <span class="comment">#精确模式（适用于文本分析）</span></span><br><span class="line"></span><br><span class="line">str_li = jb.cut(<span class="string">&quot;我来到北京清华大学&quot;</span>) <span class="comment">#默认</span></span><br><span class="line">DefMode = <span class="string">&#x27;DefaultMode: &#x27;</span> + <span class="string">&#x27;/&#x27;</span>.join(str_li)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"></span><br><span class="line">DefaultMode: 我/来到/北京/清华大学 <span class="comment"># 我们可以看到，默认是精确模式</span></span><br><span class="line"></span><br><span class="line">long_sen = jb.cut_for_search(<span class="string">&quot;小明硕士毕业于中国科学院计算所，后在日本京都大学深造&quot;</span>)<span class="comment"># 搜索引擎模式</span></span><br><span class="line">Long = <span class="string">&#x27;search:&#x27;</span>+<span class="string">&#x27;,&#x27;</span>.join(long_sen)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后统一对比一下：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(FullMode)</span><br><span class="line"><span class="built_in">print</span>(AccMode)</span><br><span class="line"><span class="built_in">print</span>(DefMode)</span><br><span class="line"><span class="built_in">print</span>(Long)</span><br><span class="line"></span><br><span class="line">Full mode :我/来到/北京/清华/清华大学/华大/大学</span><br><span class="line">AccurateMode: 我/来到/北京/清华大学</span><br><span class="line">DefaultMode: 他/来到/了/网易/杭研/大厦</span><br><span class="line">search:小明,硕士,毕业,于,中国,科学,学院,科学院,中国科学院,计算,计算所,，,后,在,日本,京都,大学,日本京都大学,深造</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>对于基本的词云及词频分析来说已经足够了，词典什么的情感分析，下次研究。</p>
-<p>下面试着对以前…….（long long ago）喜欢的一本小说（极品公子）做个词云分析。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba <span class="keyword">as</span> jb</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"></span><br><span class="line">text = <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\sunshine\Desktop\极品公子.txt&#x27;</span>,encoding = <span class="string">&#x27;utf-8&#x27;</span>).read()</span><br><span class="line">text_f = jb.cut(text)</span><br><span class="line"></span><br><span class="line">text_s = <span class="string">&quot; &quot;</span>.join(text_f)</span><br><span class="line">boy_cloud = WordCloud().generate(text_s)</span><br><span class="line">plt.imshow(boy_cloud)</span><br><span class="line">plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211110224246094.png" alt="无间道"></p>
-<p>可以发现，毫无疑问，叶无道是主角。</p>
-<p><a href="https://github.com/fxsjy/jieba">jeiba地址</a></p>
-]]></content>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -1235,32 +1235,6 @@
       </tags>
   </entry>
   <entry>
-    <title>工作的处理方式</title>
-    <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
-<p>做项目，不管是哪个岗位，包括我，现在是运营岗位，与客户对接是最多的。</p>
-<span id="more"></span>
-
-<p>客户在使用我们的产品的时候，<strong>疯狂吐槽我们某一个功能</strong>，这就是风险，比如吐槽你的语义，吐槽你的NLP，这就是风险。<strong>我们需要领导意识到这个风险。</strong></p>
-<p>因为接下来，如果客户与我们合作有二期项目，接下来可能二期的合同还会用到我们的语义。</p>
-<p>而这个时候，一期用户对我们的语义印象极差，二期客户可能就不和我们签语义的合同，公司就会有损失。</p>
-<p>这就是很大的风险。</p>
-<p>我们应该反馈给项目经理，项目经理没有意识到我们就应该<strong>越级反馈</strong>，被领导骂了又怎样。<strong>直到达到应有的效果。</strong></p>
-<p><strong>碰到事儿不能怕事儿，要去解决它！</strong></p>
-</blockquote>
-<h2 id="工作习惯"><a href="#工作习惯" class="headerlink" title="工作习惯"></a>工作习惯</h2><blockquote>
-<p><strong>数据是在你身边的，我们要注意到，要注意数据的价值。</strong>会议上客户说的数据，我们要注意收集，整理！</p>
-<p>这在市场分析的时候，市场的盘子有多大，很有可能会用到。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Job</category>
-      </categories>
-      <tags>
-        <tag>经验</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>工作知识记录</title>
     <url>/2020/03/15/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<h1 id="工作中遇到的概念"><a href="#工作中遇到的概念" class="headerlink" title="工作中遇到的概念"></a>工作中遇到的概念</h1><p>记录一些工作中遇到的名词缩写及概念&amp;硬件知识&amp;软件知识。</p>
@@ -1350,7 +1324,7 @@
 <p>中丐，净值从最高点，2.6，买到了最低点，0.65，下跌幅度近乎80%，从去年国家开始整治互联网到现在，一直阴跌。所幸开始买的并不多。</p>
 <p>这么说，大概可能只是觉得是个数字，但是对于亲身经历的我来说，真的能吓死个人。幸亏，<strong>我19年经过了华宝油气的教训。</strong>不然我可能真的会焦虑到不行。</p>
 <p><a href="http://whuhan2013.github.io/blog/2015/09/19/markdown-simple-grammar/">markdown语法</a></p>
-<center class="half"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319194913080.png" alt="image-20220319194913080" style="zoom:30%;" /><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319195306370.png" alt="image-20220319195306370" style="zoom:30%;" /></center>
+<center class="half"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319194913080.png" alt="image-20220319194913080" style="zoom:20%;" /><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319195306370.png" alt="image-20220319195306370" style="zoom:20%;" /></center>
 
 
 
@@ -1358,11 +1332,13 @@
 <p>你再看看3月16，<strong>基金一天涨了28%，这个你见过吗？</strong>说实话，这是我投资三年以来，第一次见到。</p>
 <p>所以你尽情想象，我这一周的心情的跌宕起伏吧。所以，我才写这个文字，想要记录下来自己的感受。</p>
 <center class="half">
-    <img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319200851169.png" alt="image-20220319200851169" style="zoom:30%;" /><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319200914265.png" alt="image-20220319200914265" style="zoom:30%;" /></center>
+    <img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319200851169.png" alt="image-20220319200851169" style="zoom:20%;" /><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319200914265.png" alt="image-20220319200914265" style="zoom:20%;" /></center>
+
 
 <p><strong>再来看看恒生科技</strong>：</p>
-<center class="half"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319201205276.png" alt="image-20220319201205276" style="zoom:30%;" /><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319201215176.png" alt="image-20220319201215176" style="zoom:30%;" />
+<center class="half"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319201205276.png" alt="image-20220319201205276" style="zoom:20%;" /><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2/hexo/image-20220319201215176.png" alt="image-20220319201215176" style="zoom:20%;" />
 </center>
+
 
 <p>恐怖吗？恐怖吧。好好体会。<strong>连续阴跌，突然大跌，又突然上涨反弹。</strong>我以前一直觉得这种就是电视剧。</p>
 <p>感谢刘鹤总理的讲话。</p>
@@ -1386,6 +1362,32 @@
       </categories>
       <tags>
         <tag>理财</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工作的处理方式</title>
+    <url>/2019/03/16/%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="工作经验"><a href="#工作经验" class="headerlink" title="工作经验"></a>工作经验</h2><blockquote>
+<p>做项目，不管是哪个岗位，包括我，现在是运营岗位，与客户对接是最多的。</p>
+<span id="more"></span>
+
+<p>客户在使用我们的产品的时候，<strong>疯狂吐槽我们某一个功能</strong>，这就是风险，比如吐槽你的语义，吐槽你的NLP，这就是风险。<strong>我们需要领导意识到这个风险。</strong></p>
+<p>因为接下来，如果客户与我们合作有二期项目，接下来可能二期的合同还会用到我们的语义。</p>
+<p>而这个时候，一期用户对我们的语义印象极差，二期客户可能就不和我们签语义的合同，公司就会有损失。</p>
+<p>这就是很大的风险。</p>
+<p>我们应该反馈给项目经理，项目经理没有意识到我们就应该<strong>越级反馈</strong>，被领导骂了又怎样。<strong>直到达到应有的效果。</strong></p>
+<p><strong>碰到事儿不能怕事儿，要去解决它！</strong></p>
+</blockquote>
+<h2 id="工作习惯"><a href="#工作习惯" class="headerlink" title="工作习惯"></a>工作习惯</h2><blockquote>
+<p><strong>数据是在你身边的，我们要注意到，要注意数据的价值。</strong>会议上客户说的数据，我们要注意收集，整理！</p>
+<p>这在市场分析的时候，市场的盘子有多大，很有可能会用到。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Job</category>
+      </categories>
+      <tags>
+        <tag>经验</tag>
       </tags>
   </entry>
   <entry>
@@ -1547,6 +1549,93 @@ plt.show()
       <tags>
         <tag>Data analysis</tag>
         <tag>硕士期间</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>智能座舱</title>
+    <url>/2021/11/17/%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1/</url>
+    <content><![CDATA[<p><strong>汽车智能座舱</strong>是指配备智能化和网联化车载产品的汽车座舱，汽车智能座舱由智能座舱内饰及座舱电子构成。汽车智能座舱通过智能座舱内饰和座舱电子的联动，实现人、路、车的智能交互，是重新定义人车关系的智能车载产品。</p>
+<span id="more"></span>
+
+<p>可以看B站的相关内容：<a href="https://search.bilibili.com/all?keyword=%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1&from_source=webtop_search&spm_id_from=333.999">智能座舱</a></p>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234124657.png" alt="image-20211117234124657"></p>
+<h3 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h3><ul>
+<li><strong>V2X:</strong>   V2X( Vehicle to Everything)，V2X是支持车辆与周围交通系统进行通信的技术，可实现车与万物互联的技术，包括 Vehicle- to Vehicle(车与车)， vehicle-to<br>infrastructure(车与基础设施)， vehicle-to- network(车与网络)和 vehicle-to- pedestrian(车与人)。</li>
+<li><strong>云计算:</strong>  一种资源交付和使用模式，用户可通过互联网以自助服务的形式获取自身所需要的IT资源。</li>
+<li><strong>SaaS：</strong> Software as a service，软件即服务，位于云架构上层，是一种软件交付模式。SaaS服务商将软件统一部署在自身服务上，客户可根据自己实际需求通过互联网向SaaS服务商采购所需的软件服务。</li>
+<li><strong>Paas:</strong> Platform as a service，平台即服务，位于云架构中间层，是一种将软件开发平台作为服务提供给用户使用的云计算基础设施服务。</li>
+<li><strong>Iaas:</strong> Infrastructure as a service，基础设施即服务，位于云架构底层，把IT基础设施作为一种服务通过网络对外提供，并根据用户对资源的实际使用量或占用量进行计费的一种服务模式。</li>
+<li><strong>智能汽车：</strong>通过搭载自主探测设备，具备单车环境感知能力，能够进行自主决策并安全行驶至目的地的汽车。</li>
+<li><strong>车联网：</strong>涵盖车内网、车际网和车云网，以特定通信协议和数据交互标准，实现车与车、人、路、平台之间信息交换的通信网络。</li>
+<li><strong>5G：</strong>5 th generation mobile networks，第五代移动通信技术，一种具有高数据速率、低延迟、高吞吐量特征的数字蜂窝移动通信技术。</li>
+<li><strong>ADAS:</strong> Advanced Driving Assistant Systen，高级驾驶辅助系统，通过传感器收集环境信息并分析决策，提醒驾驶员潜在危险的主动安全技术。</li>
+<li><strong>环境感知：</strong>通过传感器或自组织网络，对道路、车辆、行人、交通标志等进行检测和识别的技术，目前多用于先进驾驶辅助系统。</li>
+<li><strong>智能决策：</strong>对获取到的信息进行融合、分析判断车辆应该做出的最优决策</li>
+<li><strong>AliOS：</strong>由阿里巴巴发布的面向汽车、loT终端、loT芯片和工业领域的物联网操作系统。</li>
+<li><strong>IOT:</strong> The Internet of Things，物联网，通过各种信息传感器、射频识别技术、全球定位系统、红外感应器、激光扫描器等各种装置与技术，实时采集任何需要监控、连接、互动的物体或过程，采集其声、光、热、电、力学、化学、生物、位置等各种需要的信息，通过各类可能的网络接入，实现物与物、物与人的泛在连接，实现对物品和过程的智能化感知、识别和管理。</li>
+<li><strong>HUD:</strong> Head Up Display，抬头显示器，一种利用光学反射原理将影像和信息投射到玻璃上的装置。</li>
+<li><strong>OBD：</strong>On- borad diagnostics，随车诊断系统，汽车检测仪器访问汽车电脑EC∪的接口</li>
+<li><strong>ECU:</strong> Electronic Control unit，电子控制器单元，是利用各种传感器、总线的数据采集与交换，来判断车辆状态以及司机的意图并通过执行器来操控汽车</li>
+<li><strong>Ⅳl：</strong>in- Vehicle Infotainment，车载信息娱乐系统，是采用车载专用中央处理器，基于车身总线系统和互联网服务，形成的车载综合信息处理系统。</li>
+<li><strong>流媒体后视镜：</strong>可实时观察后方路况的后视镜，通过髙淸的外置后视摄像头对车辆后方环境进行拍摄，并把图像呈现到后视镜上。</li>
+</ul>
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234142829.png" alt="image-20211117234142829"></p>
+]]></content>
+      <tags>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用数据讲故事</title>
+    <url>/2021/11/07/%E7%94%A8%E6%95%B0%E6%8D%AE%E8%AE%B2%E6%95%85%E4%BA%8B/</url>
+    <content><![CDATA[<h1 id="讲好一个故事的开始"><a href="#讲好一个故事的开始" class="headerlink" title="讲好一个故事的开始"></a>讲好一个故事的开始</h1><p>我们必须按照以下的顺序进行，这样才能做好数据的分析，讲好一个数据故事。</p>
+<span id="more"></span>
+
+<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-e79001f8cb55c9c0.png" alt="讲好故事的开始"> </p>
+<h2 id="明确问题是什么"><a href="#明确问题是什么" class="headerlink" title="明确问题是什么"></a>明确问题是什么</h2><p>我们做一个汇报、分析、报告等等通常都是为了完成别人的请求，比如<strong>你的客户、老板、利益相关者</strong>。但是，通常，请求者或者要求者在说出他的需求时并不会详细的说明他的需求是什么，也有可能他认为这是你知道的，不需要讲的。因此我们在完成一个需求时，<strong>第一步，必须明确问题是什么。</strong></p>
+<p>比如，老板要求我们给出一些互联网金融行业用户流失前的一些挽留措施。我们就必须知道以下问题：</p>
+<ol>
+<li><p> 流失的定义是什么？用户注销账户？账户资金为0？等等、、</p>
+</li>
+<li><p> 为什么会流失？是产品的问题？销售的问题？运营的问题？定位流失的原因。</p>
+</li>
+<li><p> 我们挽留的目标是什么？留人？还是留住资金？</p>
+</li>
+</ol>
+<p>等等问题、这里只是抛砖引玉。我们实际情况中需要考虑的可能更多，毕竟我还停留在理想阶段。</p>
+<p>其实，概括一下，就是：</p>
+<ul>
+<li><p>  背景信息是什么？</p>
+</li>
+<li><p>  受众和决策这是谁？</p>
+</li>
+<li><p>  有什么数据可以支撑这个案例？受众熟悉这些数据？</p>
+</li>
+<li><p>  有什么风险？什么因素会弱化案例？是否需要主动提出？</p>
+</li>
+</ul>
+<p>等等。。。</p>
+<h2 id="我们要做什么分析"><a href="#我们要做什么分析" class="headerlink" title="我们要做什么分析"></a>我们要做什么分析</h2><p>是探索性分析，还是解释性分析。</p>
+<p><strong>探索性分析</strong>：理解数据并找出其中值得关注或分享给他人的精华。这就像是在找珍珠。</p>
+<p>而<strong>解释性分析</strong>，就不要找珍珠的过程，而是直接把珍珠放到受众面前。但是这里有一个问题，直接展示结果会更高效便捷，可是老板知道你做了什么？但我觉得这不是主要的，因为老板都要的是结果而非过程。</p>
+<h2 id="明确你的对象、内容、方式"><a href="#明确你的对象、内容、方式" class="headerlink" title="明确你的对象、内容、方式"></a>明确你的对象、内容、方式</h2><h3 id="对象是谁"><a href="#对象是谁" class="headerlink" title="对象是谁"></a>对象是谁</h3><p>你要给谁讲这个问题，你要搞明白你的受众是谁？这里最好具体化，因为越具体你和你的受众之间的沟通就会越高效。</p>
+<p>而<strong>细分受众的最好方法之一就是，谁是这个问题的决策者。</strong></p>
+<p>其次，你要给自己一个清晰地定位，明确你在受众心里的位置，这对你将做的事，和你怎样做这件事有很大的影响。你和受众熟不熟悉？在受众心中你是不是专家？</p>
+<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>我们需要受众了解什么或者做什么？这是我们的目标。</p>
+<p>我们应该把这个目标当做一个灯塔，我们在准备的过程中必须时时刻刻瞄着他，记着他。</p>
+<p>如果我们不能简介有效的表达这个目标，我们就应该审视一下前面的步骤，或者说我们应该考虑下是否需要沟通。</p>
+<p>然后，自信的去演讲，去讲这个故事。</p>
+<h3 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h3><p>如何和受众沟通？沟融的方法，会影响到我们信息披露的详细程度和受众消化信息的可控程度。</p>
+<p>比如，我们需要和受众面对面沟通，做现场演示，那么我们此时不需要将所有的细节放在PPT或者展示文件中，因为我们可以在现场更有针对性的对受众的问题进行回答。如果我们不会和受众面对面沟通，我们就需要将详细的信息也就是文档的细节程度提高，因为我们无法对受众的反应进行回应，文档或者邮件在此时就必须回答更多的潜在问题。</p>
+<p>但是，有一个需要注意的 问题，<strong>无论需不需要将细节放在演示中，我们都需要对所有的内容了然于胸。</strong>这就如同我们在讲课程PPT，我的习惯是，如果讲论文，我会将论文的图表数据等放在PPT中，其他不加。因为照本宣科的念，在我看来会分散受众的注意力。<strong>PPT应该是一个提示作用，而不应该是一个演讲稿。</strong></p>
+<h3 id="语气"><a href="#语气" class="headerlink" title="语气"></a>语气</h3><p>这个问题在明确受众是谁的时候，我们就应该考虑好。庆祝成功？鼓励性的？轻松？还是严肃？</p>
+<h3 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h3><p>我们在这里需要考虑什么样的数据可以表达我们的观点？数据才是我们这个故事的支撑性依据。</p>
+<p><strong>最终，我们也要记得，如果是老板，我们要提供的是一个选择题，而不是单项选择题</strong>。</p>
+<p><strong>总而言之，我们在第一步中，需要能做到一句话概括我们这个故事的中心思想，并且可以做到三分钟把故事讲完。</strong></p>
+<p>这样，我们才有获得成功的基础。</p>
+]]></content>
+      <tags>
+        <tag>数据分析</tag>
       </tags>
   </entry>
   <entry>
@@ -1776,93 +1865,6 @@ plt.show()
       </categories>
       <tags>
         <tag>理财</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>智能座舱</title>
-    <url>/2021/11/17/%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1/</url>
-    <content><![CDATA[<p><strong>汽车智能座舱</strong>是指配备智能化和网联化车载产品的汽车座舱，汽车智能座舱由智能座舱内饰及座舱电子构成。汽车智能座舱通过智能座舱内饰和座舱电子的联动，实现人、路、车的智能交互，是重新定义人车关系的智能车载产品。</p>
-<span id="more"></span>
-
-<p>可以看B站的相关内容：<a href="https://search.bilibili.com/all?keyword=%E6%99%BA%E8%83%BD%E5%BA%A7%E8%88%B1&from_source=webtop_search&spm_id_from=333.999">智能座舱</a></p>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234124657.png" alt="image-20211117234124657"></p>
-<h3 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h3><ul>
-<li><strong>V2X:</strong>   V2X( Vehicle to Everything)，V2X是支持车辆与周围交通系统进行通信的技术，可实现车与万物互联的技术，包括 Vehicle- to Vehicle(车与车)， vehicle-to<br>infrastructure(车与基础设施)， vehicle-to- network(车与网络)和 vehicle-to- pedestrian(车与人)。</li>
-<li><strong>云计算:</strong>  一种资源交付和使用模式，用户可通过互联网以自助服务的形式获取自身所需要的IT资源。</li>
-<li><strong>SaaS：</strong> Software as a service，软件即服务，位于云架构上层，是一种软件交付模式。SaaS服务商将软件统一部署在自身服务上，客户可根据自己实际需求通过互联网向SaaS服务商采购所需的软件服务。</li>
-<li><strong>Paas:</strong> Platform as a service，平台即服务，位于云架构中间层，是一种将软件开发平台作为服务提供给用户使用的云计算基础设施服务。</li>
-<li><strong>Iaas:</strong> Infrastructure as a service，基础设施即服务，位于云架构底层，把IT基础设施作为一种服务通过网络对外提供，并根据用户对资源的实际使用量或占用量进行计费的一种服务模式。</li>
-<li><strong>智能汽车：</strong>通过搭载自主探测设备，具备单车环境感知能力，能够进行自主决策并安全行驶至目的地的汽车。</li>
-<li><strong>车联网：</strong>涵盖车内网、车际网和车云网，以特定通信协议和数据交互标准，实现车与车、人、路、平台之间信息交换的通信网络。</li>
-<li><strong>5G：</strong>5 th generation mobile networks，第五代移动通信技术，一种具有高数据速率、低延迟、高吞吐量特征的数字蜂窝移动通信技术。</li>
-<li><strong>ADAS:</strong> Advanced Driving Assistant Systen，高级驾驶辅助系统，通过传感器收集环境信息并分析决策，提醒驾驶员潜在危险的主动安全技术。</li>
-<li><strong>环境感知：</strong>通过传感器或自组织网络，对道路、车辆、行人、交通标志等进行检测和识别的技术，目前多用于先进驾驶辅助系统。</li>
-<li><strong>智能决策：</strong>对获取到的信息进行融合、分析判断车辆应该做出的最优决策</li>
-<li><strong>AliOS：</strong>由阿里巴巴发布的面向汽车、loT终端、loT芯片和工业领域的物联网操作系统。</li>
-<li><strong>IOT:</strong> The Internet of Things，物联网，通过各种信息传感器、射频识别技术、全球定位系统、红外感应器、激光扫描器等各种装置与技术，实时采集任何需要监控、连接、互动的物体或过程，采集其声、光、热、电、力学、化学、生物、位置等各种需要的信息，通过各类可能的网络接入，实现物与物、物与人的泛在连接，实现对物品和过程的智能化感知、识别和管理。</li>
-<li><strong>HUD:</strong> Head Up Display，抬头显示器，一种利用光学反射原理将影像和信息投射到玻璃上的装置。</li>
-<li><strong>OBD：</strong>On- borad diagnostics，随车诊断系统，汽车检测仪器访问汽车电脑EC∪的接口</li>
-<li><strong>ECU:</strong> Electronic Control unit，电子控制器单元，是利用各种传感器、总线的数据采集与交换，来判断车辆状态以及司机的意图并通过执行器来操控汽车</li>
-<li><strong>Ⅳl：</strong>in- Vehicle Infotainment，车载信息娱乐系统，是采用车载专用中央处理器，基于车身总线系统和互联网服务，形成的车载综合信息处理系统。</li>
-<li><strong>流媒体后视镜：</strong>可实时观察后方路况的后视镜，通过髙淸的外置后视摄像头对车辆后方环境进行拍摄，并把图像呈现到后视镜上。</li>
-</ul>
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/image-20211117234142829.png" alt="image-20211117234142829"></p>
-]]></content>
-      <tags>
-        <tag>学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用数据讲故事</title>
-    <url>/2021/11/07/%E7%94%A8%E6%95%B0%E6%8D%AE%E8%AE%B2%E6%95%85%E4%BA%8B/</url>
-    <content><![CDATA[<h1 id="讲好一个故事的开始"><a href="#讲好一个故事的开始" class="headerlink" title="讲好一个故事的开始"></a>讲好一个故事的开始</h1><p>我们必须按照以下的顺序进行，这样才能做好数据的分析，讲好一个数据故事。</p>
-<span id="more"></span>
-
-<p><img src="https://wenhuatengimg.oss-cn-beijing.aliyuncs.com/Blog/2151277-e79001f8cb55c9c0.png" alt="讲好故事的开始"> </p>
-<h2 id="明确问题是什么"><a href="#明确问题是什么" class="headerlink" title="明确问题是什么"></a>明确问题是什么</h2><p>我们做一个汇报、分析、报告等等通常都是为了完成别人的请求，比如<strong>你的客户、老板、利益相关者</strong>。但是，通常，请求者或者要求者在说出他的需求时并不会详细的说明他的需求是什么，也有可能他认为这是你知道的，不需要讲的。因此我们在完成一个需求时，<strong>第一步，必须明确问题是什么。</strong></p>
-<p>比如，老板要求我们给出一些互联网金融行业用户流失前的一些挽留措施。我们就必须知道以下问题：</p>
-<ol>
-<li><p> 流失的定义是什么？用户注销账户？账户资金为0？等等、、</p>
-</li>
-<li><p> 为什么会流失？是产品的问题？销售的问题？运营的问题？定位流失的原因。</p>
-</li>
-<li><p> 我们挽留的目标是什么？留人？还是留住资金？</p>
-</li>
-</ol>
-<p>等等问题、这里只是抛砖引玉。我们实际情况中需要考虑的可能更多，毕竟我还停留在理想阶段。</p>
-<p>其实，概括一下，就是：</p>
-<ul>
-<li><p>  背景信息是什么？</p>
-</li>
-<li><p>  受众和决策这是谁？</p>
-</li>
-<li><p>  有什么数据可以支撑这个案例？受众熟悉这些数据？</p>
-</li>
-<li><p>  有什么风险？什么因素会弱化案例？是否需要主动提出？</p>
-</li>
-</ul>
-<p>等等。。。</p>
-<h2 id="我们要做什么分析"><a href="#我们要做什么分析" class="headerlink" title="我们要做什么分析"></a>我们要做什么分析</h2><p>是探索性分析，还是解释性分析。</p>
-<p><strong>探索性分析</strong>：理解数据并找出其中值得关注或分享给他人的精华。这就像是在找珍珠。</p>
-<p>而<strong>解释性分析</strong>，就不要找珍珠的过程，而是直接把珍珠放到受众面前。但是这里有一个问题，直接展示结果会更高效便捷，可是老板知道你做了什么？但我觉得这不是主要的，因为老板都要的是结果而非过程。</p>
-<h2 id="明确你的对象、内容、方式"><a href="#明确你的对象、内容、方式" class="headerlink" title="明确你的对象、内容、方式"></a>明确你的对象、内容、方式</h2><h3 id="对象是谁"><a href="#对象是谁" class="headerlink" title="对象是谁"></a>对象是谁</h3><p>你要给谁讲这个问题，你要搞明白你的受众是谁？这里最好具体化，因为越具体你和你的受众之间的沟通就会越高效。</p>
-<p>而<strong>细分受众的最好方法之一就是，谁是这个问题的决策者。</strong></p>
-<p>其次，你要给自己一个清晰地定位，明确你在受众心里的位置，这对你将做的事，和你怎样做这件事有很大的影响。你和受众熟不熟悉？在受众心中你是不是专家？</p>
-<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>我们需要受众了解什么或者做什么？这是我们的目标。</p>
-<p>我们应该把这个目标当做一个灯塔，我们在准备的过程中必须时时刻刻瞄着他，记着他。</p>
-<p>如果我们不能简介有效的表达这个目标，我们就应该审视一下前面的步骤，或者说我们应该考虑下是否需要沟通。</p>
-<p>然后，自信的去演讲，去讲这个故事。</p>
-<h3 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h3><p>如何和受众沟通？沟融的方法，会影响到我们信息披露的详细程度和受众消化信息的可控程度。</p>
-<p>比如，我们需要和受众面对面沟通，做现场演示，那么我们此时不需要将所有的细节放在PPT或者展示文件中，因为我们可以在现场更有针对性的对受众的问题进行回答。如果我们不会和受众面对面沟通，我们就需要将详细的信息也就是文档的细节程度提高，因为我们无法对受众的反应进行回应，文档或者邮件在此时就必须回答更多的潜在问题。</p>
-<p>但是，有一个需要注意的 问题，<strong>无论需不需要将细节放在演示中，我们都需要对所有的内容了然于胸。</strong>这就如同我们在讲课程PPT，我的习惯是，如果讲论文，我会将论文的图表数据等放在PPT中，其他不加。因为照本宣科的念，在我看来会分散受众的注意力。<strong>PPT应该是一个提示作用，而不应该是一个演讲稿。</strong></p>
-<h3 id="语气"><a href="#语气" class="headerlink" title="语气"></a>语气</h3><p>这个问题在明确受众是谁的时候，我们就应该考虑好。庆祝成功？鼓励性的？轻松？还是严肃？</p>
-<h3 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h3><p>我们在这里需要考虑什么样的数据可以表达我们的观点？数据才是我们这个故事的支撑性依据。</p>
-<p><strong>最终，我们也要记得，如果是老板，我们要提供的是一个选择题，而不是单项选择题</strong>。</p>
-<p><strong>总而言之，我们在第一步中，需要能做到一句话概括我们这个故事的中心思想，并且可以做到三分钟把故事讲完。</strong></p>
-<p>这样，我们才有获得成功的基础。</p>
-]]></content>
-      <tags>
-        <tag>数据分析</tag>
       </tags>
   </entry>
   <entry>
