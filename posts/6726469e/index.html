@@ -1,0 +1,411 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>不止出行规划！看MCP+高德地图在信贷风控的新应用 | 吏部侍郎</title><meta name="author" content="华子"><meta name="copyright" content="华子"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MCP（Model Context Protocol）模型上下文协议，听起来非常神秘，就像是TCP协议一样。大家应该都听说过他， 尤其是在Manus出来以后。他到底是什么呢？能做什么呢？这里我和大家一起学习一下，我们先从他能做什么开始。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不止出行规划！看MCP+高德地图在信贷风控的新应用">
+<meta property="og:url" content="http://www.wenhuateng.top/posts/6726469e/index.html">
+<meta property="og:site_name" content="吏部侍郎">
+<meta property="og:description" content="MCP（Model Context Protocol）模型上下文协议，听起来非常神秘，就像是TCP协议一样。大家应该都听说过他， 尤其是在Manus出来以后。他到底是什么呢？能做什么呢？这里我和大家一起学习一下，我们先从他能做什么开始。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.wenhuateng.top/img/Happy.png">
+<meta property="article:published_time" content="2025-04-06T02:30:00.000Z">
+<meta property="article:modified_time" content="2025-07-12T10:39:39.029Z">
+<meta property="article:author" content="华子">
+<meta property="article:tag" content="MCP">
+<meta property="article:tag" content="大模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.wenhuateng.top/img/Happy.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "不止出行规划！看MCP+高德地图在信贷风控的新应用",
+  "url": "http://www.wenhuateng.top/posts/6726469e/",
+  "image": "http://www.wenhuateng.top/img/Happy.png",
+  "datePublished": "2025-04-06T02:30:00.000Z",
+  "dateModified": "2025-07-12T10:39:39.029Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "华子",
+      "url": "http://www.wenhuateng.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.svg"><link rel="canonical" href="http://www.wenhuateng.top/posts/6726469e/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":"繁","translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '不止出行规划！看MCP+高德地图在信贷风控的新应用',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">吏部侍郎</span></a><a class="nav-page-title" href="/"><span class="site-name">不止出行规划！看MCP+高德地图在信贷风控的新应用</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">不止出行规划！看MCP+高德地图在信贷风控的新应用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-06T02:30:00.000Z" title="发表于 2025-04-06 10:30:00">2025-04-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-12T10:39:39.029Z" title="更新于 2025-07-12 18:39:39">2025-07-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%9A%E5%8A%A1%E5%BA%94%E7%94%A8/">业务应用</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><p><strong>MCP（Model Context Protocol）模型上下文协议</strong>，听起来非常神秘，就像是TCP协议一样。大家应该都听说过他， 尤其是在Manus出来以后。<br>他到底是什么呢？能做什么呢？<br>这里我和大家一起学习一下，我们先从他能做什么开始。</p>
+<h1 id="1-三个高德地图MCP的场景"><a href="#1-三个高德地图MCP的场景" class="headerlink" title="1. 三个高德地图MCP的场景"></a>1. 三个高德地图MCP的场景</h1><blockquote>
+<p>以下所有场景使用的工具都是<code>Cursor</code>。</p>
+</blockquote>
+<h2 id="1-1-先从玩开始"><a href="#1-1-先从玩开始" class="headerlink" title="1.1 先从玩开始"></a>1.1 先从玩开始</h2><p>现在的大模型LLM一定是从提示词开始的：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">【行程规划需求-<span class="strong">**必须使用高德MCP**</span>，不要基于你自身经验，要依据高德的结果】</span><br><span class="line"><span class="section"># 目的地：北京</span></span><br><span class="line"><span class="section"># 出行人数：2人（夫妻）</span></span><br><span class="line"><span class="section"># 时间范围：4月30日晚抵达 - 5月5日（共5天4晚）</span></span><br><span class="line"><span class="section"># 需求重点：</span></span><br><span class="line"><span class="bullet">-</span> 经典景点覆盖（故宫/长城/颐和园等必游地）</span><br><span class="line"><span class="bullet">-</span> 特色体验推荐（胡同文化/老字号美食/夜景）</span><br><span class="line"><span class="bullet">-</span> 住宿建议（优选王府井/前门等交通便利区域）</span><br><span class="line"><span class="bullet">-</span> 交通方案（机场到市区+景点间通勤）</span><br><span class="line"><span class="bullet">-</span> 人流预警（五一高峰期特别注意事项）</span><br><span class="line"><span class="section"># 附加需求：</span></span><br><span class="line"><span class="bullet">-</span> 适合情侣的浪漫体验推荐</span><br><span class="line"><span class="bullet">-</span> 每日合理步行强度安排</span><br><span class="line"><span class="bullet">-</span> 考虑天气，备选雨天方案</span><br><span class="line"><span class="bullet">-</span> 可考虑1天近郊行程（如古北水镇）</span><br><span class="line"><span class="section"># 给我详细的行程规划，包括交通方式，预计所需时间。</span></span><br></pre></td></tr></table></figure>
+<p>下面是<code>gemini-2.5</code>调用高德MCP服务，获取经纬度信息，和路线、时间规划的执行过程。<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E4%BA%94%E4%B8%80%E5%87%BA%E8%A1%8C%E6%89%A7%E8%A1%8C.png" alt="gemini-2.5调用高德MCP"><br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E8%B0%83%E7%94%A8%E5%8F%8A%E8%BF%94%E5%9B%9E%E5%8F%82%E6%95%B0.png" alt="调用及返回参数"><br>最后，<code>gemini-2.5</code>基于以上的相关信息，结合自己的<strong>对任务拆解的执行步骤</strong>输出了出行计划。<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E6%80%9D%E7%BB%B4%E8%BF%87%E7%A8%8B.png" alt="拆解过程"><br>大家可以看下上图红框的部分：<strong>它检测了自己的执行步骤是否满足我的要求</strong>。<br>最后给大家看成果：<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E5%8C%97%E4%BA%AC5%E5%A4%A9%E8%AE%A1%E5%88%92%E8%A1%A8.gif" alt="北京出行计划"></p>
+<blockquote>
+<p>北京出行计划在线看：<a target="_blank" rel="noopener" href="https://50hwn63pt7.app.yourware.so/">https://50hwn63pt7.app.yourware.so/</a></p>
+</blockquote>
+<p>原始提示词来自于<code>way-to-AGI的成峰老师</code>，我做了一些轻微改动。</p>
+<details>
+  <summary>旅行规划表设计提示词（优化版）</summary>
+
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 旅行规划表设计提示词（优化版）</span></span><br><span class="line"></span><br><span class="line">你是一位优秀的平面设计师和前端开发工程师，具有丰富的旅行信息可视化经验，曾为众多知名旅游平台设计过清晰实用的旅行规划表。现在需要为我创建一个A4纸张大小的旅行规划表，适合打印出来随身携带使用。请使用HTML、CSS和JavaScript代码实现以下要求：</span><br><span class="line"></span><br><span class="line"><span class="section">## 基本要求</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**尺寸与基础结构**</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> 严格符合A4纸尺寸（210mm×297mm），比例为1:1.414</span><br><span class="line"><span class="bullet">*</span> 适合打印的设计，预留适当的打印边距（建议上下左右各10mm）</span><br><span class="line"><span class="bullet">*</span> 采用单页设计，所有重要信息必须在一页内完整呈现</span><br><span class="line"><span class="bullet">*</span> 信息分区清晰，使用网格布局确保整洁有序</span><br><span class="line"><span class="bullet">*</span> 打印友好的配色方案，避免过深的背景色和过小的字体</span><br><span class="line"></span><br><span class="line"><span class="strong">**技术实现**</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> 使用打印友好的CSS设计</span><br><span class="line"><span class="bullet">*</span> 提供专用的打印按钮，优化打印样式</span><br><span class="line"><span class="bullet">*</span> 使用高对比度的配色方案，确保打印后清晰可读</span><br><span class="line"><span class="bullet">*</span> 可选择性地添加虚线辅助剪裁线</span><br><span class="line"><span class="bullet">*</span> 使用Google Fonts或其他CDN加载适合的现代字体</span><br><span class="line"><span class="bullet">*</span> 引用Font Awesome提供图标支持</span><br><span class="line"></span><br><span class="line"><span class="strong">**专业设计技巧**</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> 使用图标和颜色编码区分不同类型的活动（景点、餐饮、交通等）</span><br><span class="line"><span class="bullet">*</span> 为景点和活动设计简洁的时间轴或表格布局</span><br><span class="line"><span class="bullet">*</span> 使用简明的图示代替冗长文字描述</span><br><span class="line"><span class="bullet">*</span> 为重要信息添加视觉强调（如框线、加粗、不同颜色等）</span><br><span class="line"><span class="bullet">*</span> 在设计中融入城市地标元素作为装饰，增强辨识度</span><br><span class="line"></span><br><span class="line"><span class="section">## 设计风格</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**实用为主的旅行工具风格**</span>：以清晰的信息呈现为首要目标</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**专业旅行指南风格**</span>：参考Lonely Planet等专业旅游指南的排版和布局</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**信息图表风格**</span>：将复杂行程转化为直观的图表和时间轴</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**简约现代设计**</span>：干净的线条、充分的留白和清晰的层次结构</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**整洁的表格布局**</span>：使用表格组织景点、活动和时间信息</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**地图元素整合**</span>：在合适位置添加简化的路线或位置示意图</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**打印友好的灰度设计**</span>：即使黑白打印也能保持良好的可读性和美观</span><br><span class="line"></span><br><span class="line"><span class="section">## 内容区块</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span>  <span class="strong">**行程标题区**</span>：</span><br><span class="line"><span class="bullet">    *</span> 目的地名称（主标题，醒目位置）</span><br><span class="line"><span class="bullet">    *</span> 旅行日期和总天数</span><br><span class="line"><span class="bullet">    *</span> 旅行者姓名/团队名称（可选）</span><br><span class="line"><span class="bullet">    *</span> 天气信息摘要</span><br><span class="line"><span class="bullet">2.</span>  <span class="strong">**行程概览区**</span>：</span><br><span class="line"><span class="bullet">    *</span> 按日期分区的行程简表</span><br><span class="line"><span class="bullet">    *</span> 每天主要活动/景点的概览</span><br><span class="line"><span class="bullet">    *</span> 使用图标标识不同类型的活动</span><br><span class="line"><span class="bullet">3.</span>  <span class="strong">**详细时间表区**</span>：</span><br><span class="line"><span class="bullet">    *</span> 以表格或时间轴形式呈现详细行程</span><br><span class="line"><span class="bullet">    *</span> 包含时间、地点、活动描述</span><br><span class="line"><span class="bullet">    *</span> 每个景点的停留时间</span><br><span class="line"><span class="bullet">    *</span> 标注门票价格和必要预订信息</span><br><span class="line"><span class="bullet">    *</span> <span class="strong">**明确要求：在两个不同景点之间，补充交通方式及所需时间**</span></span><br><span class="line"><span class="bullet">4.</span>  <span class="strong">**交通信息区**</span>：</span><br><span class="line"><span class="bullet">    *</span> 主要交通换乘点及方式</span><br><span class="line"><span class="bullet">    *</span> 地铁/公交线路和站点信息</span><br><span class="line"><span class="bullet">    *</span> 预计交通时间</span><br><span class="line"><span class="bullet">    *</span> 使用箭头或连线表示行程路线</span><br><span class="line"><span class="bullet">5.</span>  <span class="strong">**住宿与餐饮区**</span>：</span><br><span class="line"><span class="bullet">    *</span> 酒店/住宿地址和联系方式</span><br><span class="line"><span class="bullet">    *</span> 入住和退房时间</span><br><span class="line"><span class="bullet">    *</span> 推荐餐厅列表（标注特色菜和价格区间）</span><br><span class="line"><span class="bullet">    *</span> 附近便利设施（如超市、药店等）</span><br><span class="line"><span class="bullet">6.</span>  <span class="strong">**实用信息区**</span>：</span><br><span class="line"><span class="bullet">    *</span> 紧急联系电话</span><br><span class="line"><span class="bullet">    *</span> 重要提示和注意事项</span><br><span class="line"><span class="bullet">    *</span> 预算摘要</span><br><span class="line"><span class="bullet">    *</span> 行李清单提醒</span><br><span class="line"></span><br><span class="line"><span class="section">## 示例内容（基于上海一日游）</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**目的地**</span>：上海一日游</span><br><span class="line"></span><br><span class="line"><span class="strong">**日期**</span>：2025年3月30日（星期日）</span><br><span class="line"></span><br><span class="line"><span class="strong">**天气**</span>：阴，13°C/7°C，东风1-3级</span><br><span class="line"></span><br><span class="line"><span class="strong">**时间表**</span>：</span><br><span class="line"></span><br><span class="line">| 时间 | 活动 | 地点 | 详情 |</span><br><span class="line">| --- | --- | --- | --- |</span><br><span class="line">| 09:00-11:00 | 游览豫园 | 福佑路168号 | 门票：40元 |</span><br><span class="line">| 11:00-11:30 | 交通：地铁10号线 | 豫园站 到 老西门站 | 大约30分钟 |</span><br><span class="line">| 11:30-12:30 | 城隍庙午餐 | 城隍庙商圈 | 推荐：南翔小笼包 |</span><br><span class="line">| 12:30-13:30 | 交通：地铁14号线 | 老西门站 到 陆家嘴站 | 大约25分钟 |</span><br><span class="line">| 13:30-15:00 | 参观东方明珠 | 世纪大道1号 | 门票：80元起 |</span><br><span class="line">| 15:00-15:30 | 交通：步行 | 东方明珠 到 陆家嘴金融区 | 大约30分钟 |</span><br><span class="line">| 15:30-17:30 | 漫步陆家嘴 | 陆家嘴金融区 | 免费活动 |</span><br><span class="line">| 17:30-18:30 | 交通：地铁2号线转11号线 | 陆家嘴站 到 迪士尼站 | 大约1小时 |</span><br><span class="line">| 18:30-21:00 | 迪士尼小镇或黄浦江夜游 | 详见备注 | 夜游票：120元 |</span><br><span class="line"></span><br><span class="line"><span class="strong">**交通路线**</span>：</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> 豫园→东方明珠：乘坐地铁14号线（豫园站→陆家嘴站），步行10分钟，约25分钟</span><br><span class="line"><span class="bullet">*</span> 东方明珠→迪士尼：地铁2号线→16号线→11号线，约50分钟</span><br><span class="line"></span><br><span class="line"><span class="strong">**实用提示**</span>：</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> 下载&quot;上海地铁&quot;APP查询路线</span><br><span class="line"><span class="bullet">*</span> 携带雨伞，天气多变</span><br><span class="line"><span class="bullet">*</span> 避开东方明珠12:00-14:00高峰期</span><br><span class="line"><span class="bullet">*</span> 提前充值交通卡或准备移动支付</span><br><span class="line"><span class="bullet">*</span> 城隍庙游客较多，注意保管随身物品</span><br><span class="line"></span><br><span class="line"><span class="strong">**重要电话**</span>：</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> 旅游咨询：021-12301</span><br><span class="line"><span class="bullet">*</span> 紧急求助：110（警察）/120（急救）</span><br><span class="line"></span><br><span class="line">请创建一个既美观又实用的旅行规划表，适合打印在A4纸上随身携带，帮助用户清晰掌握行程安排。</span><br></pre></td></tr></table></figure>
+</details>
+
+<h2 id="1-2-找附近的饭店-咖啡店-奶茶店…"><a href="#1-2-找附近的饭店-咖啡店-奶茶店…" class="headerlink" title="1.2 找附近的饭店&#x2F;咖啡店&#x2F;奶茶店….."></a>1.2 找附近的饭店&#x2F;咖啡店&#x2F;奶茶店…..</h2><p>点子来自于产品黄叔。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">我家在通州耿庄桥北，我有朋友要过来吃饭，请帮我找一个距离我家比较近，评分也相对比较好的饭店，吃烧烤。</span><br></pre></td></tr></table></figure>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E9%A5%AD%E5%BA%97.png" alt="饭店"><br>试想一下，假设这个时候，我再加一个大众点评的MCP服务。<br><strong>是不是就是一个全新的Manus。</strong></p>
+<h2 id="1-3-实际业务场景–以信贷风控环节为例"><a href="#1-3-实际业务场景–以信贷风控环节为例" class="headerlink" title="1.3 实际业务场景–以信贷风控环节为例"></a>1.3 实际业务场景–以信贷风控环节为例</h2><blockquote>
+<p><strong>信用保证保险（信贷）也是类似的场景</strong>。</p>
+</blockquote>
+<p>2023年和2024年，其实陆续做过两个需求。<br><strong>需求内容</strong>：移动端通过高德SDK获取经纬度，海拔等相关信息，上传到后端，然后由后端进行风控预警。当时这个两个需求从需求分析到上线，基本都差不多用了三周时间。<br>但是如果现在用<strong>大模型+MCP+工作流</strong>方案实现，可能一天就能完成了。<br>下面我给大家演示一下，还是从提示词开始：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 任务</span></span><br><span class="line">评估贷款审批风险，综合考虑客户提供的地址信息和定位信息。</span><br><span class="line"><span class="section"># 背景数据</span></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**单位地址**</span>：北京市朝阳区联合大厦13层</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**家庭地址**</span>：北京市通州区荔景园2号楼</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**客户端第一次定位信息**</span>：</span><br><span class="line"><span class="code">    ```json</span></span><br><span class="line"><span class="code">    &#123;</span></span><br><span class="line"><span class="code">      &quot;location&quot;: &#123;</span></span><br><span class="line"><span class="code">        &quot;longitude&quot;: &quot;116.43228604918505&quot;,</span></span><br><span class="line"><span class="code">        &quot;latitude&quot;: &quot;39.9214788108844&quot;,</span></span><br><span class="line"><span class="code">        &quot;altitude&quot;: &quot;40.29402104765177&quot;,</span></span><br><span class="line"><span class="code">        &quot;levelAccuracy&quot;: &quot;34.41631&quot;,</span></span><br><span class="line"><span class="code">        &quot;verticalAccuracy&quot;: &quot;0.0&quot;</span></span><br><span class="line"><span class="code">      &#125;</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"><span class="code">    </span></span><br><span class="line"><span class="code">* **客户端第二次定位信息**：</span></span><br><span class="line"><span class="code">    ```json</span></span><br><span class="line"><span class="code">    &#123;</span></span><br><span class="line"><span class="code">      &quot;location&quot;: &#123;</span></span><br><span class="line"><span class="code">        &quot;longitude&quot;: &quot;116.43228604918505&quot;,</span></span><br><span class="line"><span class="code">        &quot;latitude&quot;: &quot;39.9214788108844&quot;,</span></span><br><span class="line"><span class="code">        &quot;altitude&quot;: &quot;40.29402104765177&quot;,</span></span><br><span class="line"><span class="code">        &quot;levelAccuracy&quot;: &quot;34.41631&quot;,</span></span><br><span class="line"><span class="code">        &quot;verticalAccuracy&quot;: &quot;0.0&quot;</span></span><br><span class="line"><span class="code">      &#125;</span></span><br><span class="line"><span class="code">    &#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="需求内容"><a href="#需求内容" class="headerlink" title="需求内容"></a>需求内容</h1><ol>
+<li><strong>地址距离评估</strong>：<ul>
+<li>计算并返回单位地址的经纬度 (<code>unitLng</code>, <code>unitLat</code>)。</li>
+<li>计算并返回家庭地址的经纬度 (<code>homeLng</code>, <code>homeLat</code>)。</li>
+<li>判断单位地址和家庭地址之间的距离是否在 50km 以内 (<code>isWithin50km</code>)。</li>
+</ul>
+</li>
+<li><strong>定位距离评估</strong>：<ul>
+<li>计算当前核保定位地址与单位地址的距离 (<code>unitDistance</code>)。</li>
+<li>计算当前核保定位地址与家庭地址的距离 (<code>homeDistance</code>)。</li>
+</ul>
+</li>
+<li><strong>定位一致性评估</strong>：<ul>
+<li>判断客户端第一次和第二次上报的定位信息是否一致 (<code>isConsistent</code>)。</li>
+</ul>
+</li>
+</ol>
+<h1 id="输出格式要求"><a href="#输出格式要求" class="headerlink" title="输出格式要求"></a>输出格式要求</h1><p>严格按照 JSON 格式输出结果。</p>
+<h1 id="输出格式示例"><a href="#输出格式示例" class="headerlink" title="输出格式示例"></a>输出格式示例</h1><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;unitLng&quot;</span><span class="punctuation">:</span> <span class="number">116.4074</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;unitLat&quot;</span><span class="punctuation">:</span> <span class="number">39.9042</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;homeLng&quot;</span><span class="punctuation">:</span> <span class="number">121.4737</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;homeLat&quot;</span><span class="punctuation">:</span> <span class="number">31.2304</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;isWithin50km&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;unitDistance&quot;</span><span class="punctuation">:</span> <span class="number">15.3</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;homeDistance&quot;</span><span class="punctuation">:</span> <span class="number">42.8</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;isConsistent&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line">​```</span><br></pre></td></tr></table></figure>
+
+<p>看模型实现过程：<br> <img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E4%BF%A1%E8%B4%B7%E5%AE%A1%E6%89%B9%E8%B0%83%E7%94%A8MCP.png" alt="信贷风控调用MCP"><br> <img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E9%A3%8E%E6%8E%A7%E8%BF%94%E5%9B%9Ejson.png" alt="风控返回json"></p>
+<p> 在这里，大家想一下，假设<strong>coze或者dify等工作流平台支持MCP</strong>，我们是不是通过拖拉拽，基本上就可以完成这个需求。<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="信贷风控未来可改造方向-grok制作"><br>​&#96;&#96;&#96;mermaid<br>graph LR<br>    A[信贷审批系统定时调用] –&gt; B[触发工作流]<br>    C –&gt;|根据结果| D[自动给出风险提示]<br>    C –&gt;|根据结果| E[不给出风险提示]</p>
+<pre><code>subgraph &quot;coze/dify 工作流&quot;
+    B1[提交地址信息等原始数据] --&gt; B2[LLM 调用高德地图 MCP 服务]
+    B2 --&gt; B3[LLM 输出整理好的 JSON 格式结果]
+    B3 --&gt; B4[HTTP 请求]
+    B4 --&gt;|成功| B5[成功结束]
+    B4 --&gt;|不成功| B6[定时再次重试]
+    B6 --&gt; B5
+end
+
+B --&gt; B1
+B5 --&gt; C
+
+%% 样式美化
+classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+classDef workflow fill:#e6f3ff,stroke:#0066cc,stroke-width:2px;
+classDef system fill:#fff3e6,stroke:#ff6600,stroke-width:2px;
+classDef success fill:#e6ffe6,stroke:#00cc00,stroke-width:2px;
+classDef retry fill:#fff0f0,stroke:#cc0000,stroke-width:2px;
+
+class A,B,C system;
+class B1,B2,B3,B4,B5 workflow;
+class B6 retry;
+class D,E success;
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># 2. 以上场景的提前准备工作</span><br><span class="line">## 2.1MCP协议的作用</span><br><span class="line">那么MCP协议到底是什么呢。其实我理解看来，就是类似于改变了一个模式。</span><br><span class="line">原来的对接模式是这样子的：</span><br><span class="line">![不使用MCP协议](https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E4%B8%8D%E4%BD%BF%E7%94%A8MCP%E5%8D%8F%E8%AE%AE.png)</span><br><span class="line">大家其实能看出来，使用成本很高。</span><br><span class="line">​```mermaid</span><br><span class="line">graph LR</span><br><span class="line">    subgraph &quot;传统模式 (优化后)&quot;</span><br><span class="line">        direction LR</span><br><span class="line">        LLM1&#123;&#123;大语言模型A&#125;&#125;</span><br><span class="line">        LLM2&#123;&#123;大语言模型B&#125;&#125;</span><br><span class="line">        LLM3&#123;&#123;大语言模型C&#125;&#125;</span><br><span class="line"></span><br><span class="line">        DS1[&lt;span style=&#x27;font-size:18px; margin-right: 5px;&#x27;&gt;💾&lt;/span&gt; 数据源1]</span><br><span class="line">        DS2[&lt;span style=&#x27;font-size:18px; margin-right: 5px;&#x27;&gt;💾&lt;/span&gt; 数据源2]</span><br><span class="line">        DS3[&lt;span style=&#x27;font-size:18px; margin-right: 5px;&#x27;&gt;💾&lt;/span&gt; 数据源3]</span><br><span class="line"></span><br><span class="line">        %% LLM 到 DS 的连接线 (共 9 条)</span><br><span class="line">        LLM1 -- &quot;专用接口 1&quot; --&gt; DS1</span><br><span class="line">        LLM1 -- &quot;专用接口 2&quot; --&gt; DS2</span><br><span class="line">        LLM1 -- &quot;专用接口 3&quot; --&gt; DS3</span><br><span class="line">        LLM2 -- &quot;专用接口 4&quot; --&gt; DS1</span><br><span class="line">        LLM2 -- &quot;专用接口 5&quot; --&gt; DS2</span><br><span class="line">        LLM2 -- &quot;专用接口 6&quot; --&gt; DS3</span><br><span class="line">        LLM3 -- &quot;专用接口 7&quot; --&gt; DS1</span><br><span class="line">        LLM3 -- &quot;专用接口 8&quot; --&gt; DS2</span><br><span class="line">        LLM3 -- &quot;专用接口 9&quot; --&gt; DS3</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    %% 注释节点定义</span><br><span class="line">    note1[&lt;div style=&#x27;padding:5px;&#x27;&gt;&lt;strong&gt;问题痛点:&lt;/strong&gt;&lt;br&gt;- 重复开发、标准不一&lt;br&gt;- 维护成本高昂&lt;br&gt;- 系统集成复杂&lt;br&gt;- 数据格式混乱&lt;/div&gt;]</span><br><span class="line"></span><br><span class="line">    %% --- 使用不可见连接线将 note1 定位到右侧 ---</span><br><span class="line">    %% 将 note1 连接到右侧的 DS2 (或其他右侧节点)</span><br><span class="line">    %% 使用 ~~~ 或 --- 作为连接符</span><br><span class="line">    DS2 ~~~ note1</span><br><span class="line"></span><br><span class="line">    %% --- 样式定义 ---</span><br><span class="line"></span><br><span class="line">    %% 节点样式</span><br><span class="line">    classDef llmStyle fill:#E3F2FD,stroke:#64B5F6,stroke-width:1px,color:#1E88E5,font-weight:bold,border-radius:8px</span><br><span class="line">    classDef dsStyle fill:#E0F2F1,stroke:#4DB6AC,stroke-width:1px,color:#00796B,border-radius:8px</span><br><span class="line">    classDef noteStyle fill:#FAFAFA,stroke:#BDBDBD,stroke-width:1px,color:#616161,border-radius:4px</span><br><span class="line"></span><br><span class="line">    %% 应用样式</span><br><span class="line">    class LLM1,LLM2,LLM3 llmStyle</span><br><span class="line">    class DS1,DS2,DS3 dsStyle</span><br><span class="line">    class note1 noteStyle</span><br><span class="line"></span><br><span class="line">    %% 主要连接线样式 (LLM &lt;-&gt; DS)</span><br><span class="line">    %% linkStyle 0,1,2,3,4,5,6,7,8 stroke:#B0BEC5,stroke-width:1px,color:#78909C,font-size:10px</span><br><span class="line">    %% 或者使用 default 设置所有，再单独覆盖不可见链接</span><br><span class="line">    linkStyle default stroke:#B0BEC5,stroke-width:1px,color:#78909C,font-size:10px</span><br><span class="line"></span><br><span class="line">    %% 设置用于定位的隐藏连接线样式 (第 10 条线，索引为 9)</span><br><span class="line">    linkStyle 9 stroke-width:0px</span><br></pre></td></tr></table></figure>
+
+<p>而如果使用MCP协议就会变成这样，是不是可以极大地降低使用成本。<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E4%BD%BF%E7%94%A8MCP%E5%8D%8F%E8%AE%AE.png" alt="使用MCP协议"><br>在我的理解来说，<strong>MCP协议就好像一个中间服务，它定义了LLM和数据源或者说各种工具的交互方式</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">    subgraph &quot;MCP协议模式 (优化后)&quot;</span><br><span class="line">        direction LR</span><br><span class="line">        %% LLM Nodes</span><br><span class="line">        LLMA&#123;&#123;大语言模型A&#125;&#125;</span><br><span class="line">        LLMB&#123;&#123;大语言模型B&#125;&#125;</span><br><span class="line">        LLMC&#123;&#123;大语言模型C&#125;&#125;</span><br><span class="line"></span><br><span class="line">        %% MCP Node (Central Hub) - Using Hexagon shape and distinct style</span><br><span class="line">        MCP&#123;&#123;&lt;span style=&#x27;font-size:14px; font-weight:bold;&#x27;&gt;MCP&lt;/span&gt;&lt;br&gt;统一协议层&#125;&#125;</span><br><span class="line"></span><br><span class="line">        %% Data Source Nodes</span><br><span class="line">        DS1A[&lt;span style=&#x27;font-size:18px; margin-right: 5px;&#x27;&gt;💾&lt;/span&gt; 数据源1]</span><br><span class="line">        DS2A[&lt;span style=&#x27;font-size:18px; margin-right: 5px;&#x27;&gt;💾&lt;/span&gt; 数据源2]</span><br><span class="line">        DS3A[&lt;span style=&#x27;font-size:18px; margin-right: 5px;&#x27;&gt;💾&lt;/span&gt; 数据源3]</span><br><span class="line"></span><br><span class="line">        %% Connections</span><br><span class="line">        LLMA -- &quot;MCP协议&quot; --&gt; MCP</span><br><span class="line">        LLMB -- &quot;MCP协议&quot; --&gt; MCP</span><br><span class="line">        LLMC -- &quot;MCP协议&quot; --&gt; MCP</span><br><span class="line"></span><br><span class="line">        MCP -- &quot;标准接口&quot; --&gt; DS1A</span><br><span class="line">        MCP -- &quot;标准接口&quot; --&gt; DS2A</span><br><span class="line">        MCP -- &quot;标准接口&quot; --&gt; DS3A</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    %% Note Node Definition</span><br><span class="line">    note2[&lt;div style=&#x27;padding:5px;&#x27;&gt;&lt;strong&gt;优势特点:&lt;/strong&gt;&lt;br&gt;- 统一标准、一次开发&lt;br&gt;- 即插即用、维护简单&lt;br&gt;- 数据格式统一&lt;/div&gt;]</span><br><span class="line"></span><br><span class="line">    %% --- Invisible link to position the note to the right ---</span><br><span class="line">    %% Connect note2 to a right-side element like DS2A</span><br><span class="line">    DS2A ~~~ note2</span><br><span class="line"></span><br><span class="line">    %% --- Style Definitions ---</span><br><span class="line"></span><br><span class="line">    %% Node Styles (Consistent with previous diagram + new MCP style)</span><br><span class="line">    classDef llmStyle fill:#E3F2FD,stroke:#64B5F6,stroke-width:1px,color:#1E88E5,font-weight:bold,border-radius:8px</span><br><span class="line">    classDef dsStyle fill:#E0F2F1,stroke:#4DB6AC,stroke-width:1px,color:#00796B,border-radius:8px</span><br><span class="line">    classDef mcpStyle fill:#FFF3E0,stroke:#FFB74D,stroke-width:1.5px,color:#E65100,font-weight:bold,border-radius:10px %% Distinct style for MCP</span><br><span class="line">    classDef noteStyle fill:#FAFAFA,stroke:#BDBDBD,stroke-width:1px,color:#616161,border-radius:4px</span><br><span class="line"></span><br><span class="line">    %% Apply Styles to Nodes</span><br><span class="line">    class LLMA,LLMB,LLMC llmStyle</span><br><span class="line">    class MCP mcpStyle</span><br><span class="line">    class DS1A,DS2A,DS3A dsStyle</span><br><span class="line">    class note2 noteStyle</span><br><span class="line"></span><br><span class="line">    %% Default Link Style (Consistent with previous diagram)</span><br><span class="line">    linkStyle default stroke:#B0BEC5,stroke-width:1px,color:#78909C,font-size:10px</span><br><span class="line"></span><br><span class="line">    %% Invisible Link Style (Index 6: 3 LLM-&gt;MCP + 3 MCP-&gt;DS = 6 links before this one)</span><br><span class="line">    linkStyle 6 stroke-width:0px</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2MCP协议的简要说明"><a href="#2-2MCP协议的简要说明" class="headerlink" title="2.2MCP协议的简要说明"></a>2.2MCP协议的简要说明</h2><p>现在MCP服务其实分为两种：</p>
+<blockquote>
+<ul>
+<li><strong>Stdio</strong>：主要用在本地服务上，操作你本地的软件或者本地的文件，比如 Blender 。</li>
+<li><strong>SSE</strong> ：SSE（Server-Sent Events，服务器发送事件），主要用在远程服务上，这个服务本身就有在线的 API，比如我们刚刚试的高德地图的MCP服务。</li>
+</ul>
+</blockquote>
+<h2 id="2-3-高德地图的MCP获取"><a href="#2-3-高德地图的MCP获取" class="headerlink" title="2.3 高德地图的MCP获取"></a>2.3 高德地图的MCP获取</h2><p>这里参考成峰老师的步骤：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://waytoagi.feishu.cn/wiki/FEgvwGO9giVp72kWEsxckE1Qnte">https://waytoagi.feishu.cn/wiki/FEgvwGO9giVp72kWEsxckE1Qnte</a></p>
+</blockquote>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E9%AB%98%E5%BE%B7%E6%B3%A8%E5%86%8C.png" alt="高德注册"><br>主要是登录高德地图开放平台（<code>https://console.amap.com/dev/key/app</code>），创建APIkey。<br>添加key时，最重要的是一定要选择<strong>web服务</strong>，其他都是任意写。<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E6%B7%BB%E5%8A%A0key.png" alt="web服务"><br>个人使用的话，少量的是免费的，理论上应该够我们实验了。</p>
+<h2 id="2-4-Cursor的配置流程"><a href="#2-4-Cursor的配置流程" class="headerlink" title="2.4 Cursor的配置流程"></a>2.4 Cursor的配置流程</h2><p>依图操作即可。<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/cursorMCP%E9%85%8D%E7%BD%AE.png" alt="Cursor的MCP配置"><br>点击<code>Add new global MCP server</code>后，会打开<code>mcp.json</code>文件。输入以下代码（记得将你的key替换一下）：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>    <span class="attr">&quot;mcpServers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span>        </span><br><span class="line">        <span class="attr">&quot;amap-amap-sse&quot;</span><span class="punctuation">:</span> </span><br><span class="line">        <span class="punctuation">&#123;</span> </span><br><span class="line">        <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span><span class="string">&quot;https://mcp.amap.com/sse?key=这里这里！！！粘贴您在高德官网上申请的key&quot;</span>      </span><br><span class="line">        <span class="punctuation">&#125;</span>    </span><br><span class="line">     <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>我们是SSE方式，所以需要配置一个url。<br>接下来，我们就可以开始实验了。<br>如果你已经过了试用期，且不是会员，那么我们可以使用<code>gimini2.5</code>进行实验。用我最开始给大家演示的案例即可。</p>
+<h1 id="3-不同平台对比"><a href="#3-不同平台对比" class="headerlink" title="3. 不同平台对比"></a>3. 不同平台对比</h1><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>Cursor</th>
+<th>Cherry studio</th>
+<th>windsurf</th>
+<th>Chatwise</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>免费版本是否可用</td>
+<td>可用</td>
+<td>可用</td>
+<td>不可用</td>
+<td>不可用</td>
+</tr>
+<tr>
+<td>配置是否方便</td>
+<td>方便</td>
+<td>方便</td>
+<td>未测试</td>
+<td>未测试</td>
+</tr>
+<tr>
+<td>使用是否稳定</td>
+<td>稳定</td>
+<td>1.1.17版本不稳定</td>
+<td>未测试</td>
+<td>未测试</td>
+</tr>
+</tbody></table>
+<h2 id="3-1Cherry配置过程的一些坑"><a href="#3-1Cherry配置过程的一些坑" class="headerlink" title="3.1Cherry配置过程的一些坑"></a>3.1Cherry配置过程的一些坑</h2><p>配置方便排序：<br><code>Cherry studio &gt;  Cursor</code><br>但是我配置的时候，<br><code>Cherry studio</code>花费的时间比<code>Cursor</code>多三倍。<br>主要原因是，1.1.17版本的Cherry有问题，环境配置非常麻烦。<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E7%BA%A2%E8%89%B2%E5%8F%B9%E5%8F%B7.png" alt="红色叹号"><br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/bun%E7%8E%AF%E5%A2%83.png" alt="bun环境"><br>尤其是这个bun环境。多次莫名原因失败，虽然最后成功了，但是也不知道怎么成功的，苦笑.jpg。所以这里不知道有什么经验可以介绍给大家。<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/bun.png" alt="bun"></p>
+<blockquote>
+<p><code>Cherry studio</code>官方配置说明：<a target="_blank" rel="noopener" href="https://docs.cherry-ai.com/advanced-basic/mcp">https://docs.cherry-ai.com/advanced-basic/mcp</a></p>
+</blockquote>
+<p>失败多次的主要原因可能和<code>Cherry studio</code>官方配置说明中的：</p>
+<blockquote>
+<p>Cherry Studio 目前只使用内置的 uv 和 bun，不会复用系统中已经安装的 uv 和 bun。</p>
+</blockquote>
+<p>有关系。最后我是使用了它下方说明中的，将系统中的exe文件复制到对应</p>
+<blockquote>
+<p>Windows:<code> C:\Users\用户名\.cherrystudio\bin</code></p>
+</blockquote>
+<p>才成功的。最新已经更新到了1.1.18版本，不知道这个配置问题是否依然存在。</p>
+<p>配置成功后，我们在对话框设置好以下两个内容就可以开始使用了：<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8.png" alt="选择支持函数调用的LLM（扳手图标）"><br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/cherry.png" alt="启用MCP服务"><br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E7%A4%BA%E4%BE%8B%E7%BB%93%E6%9E%9C.png" alt="示例结果"></p>
+<h2 id="3-2-SSE连接断开问题"><a href="#3-2-SSE连接断开问题" class="headerlink" title="3.2 SSE连接断开问题"></a>3.2 SSE连接断开问题</h2><p><strong><code>Cherry studio</code>断开的表现：</strong><br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/cherry%E7%9A%84sse%E8%BF%9E%E6%8E%A5%E6%96%AD%E4%BA%86.png" alt="SSE断开"><br>这个时候，我们需要点击开关，关掉，然后<strong>重新连接</strong>。<br><strong><code>Cursor</code>断开的表现：</strong><br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/MCP/%E9%AB%98%E5%BE%B7%E9%87%8D%E6%96%B0%E8%BF%9E%E6%8E%A5.png" alt="要是有一段时间未使用，MCP服务就会断掉"></p>
+<p>这里我考虑，这个<strong>MCP的远程SSE连接</strong>，可能是个<strong>长链接</strong>，服务端为了保证高效，会做一些类似心跳检测的东西，如果长时间没有使用，就会主动断掉服务（尤其是cherry studio，经常被关）。<br>从官网还有我目前接触的情况来看，<strong>MCP目前貌似还不支持随用随关的短连接模式</strong>。</p>
+<p>还有个问题就是不知道为什么<code>gimini-2.5-pro-exp-0325</code>在cherry studio不能用，但是在Cursor可以使用。我估计也跟客户端是有关系的。</p>
+<p>参考：</p>
+<blockquote>
+<ul>
+<li><em>逗哥，<a target="_blank" rel="noopener" href="https://mcp.so/zh">https://mcp.so/zh</a></em></li>
+<li><em>waytoagi，成峰老师。</em></li>
+<li><em>AI产品黄叔</em></li>
+</ul>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://www.wenhuateng.top">华子</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://www.wenhuateng.top/posts/6726469e/">http://www.wenhuateng.top/posts/6726469e/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://www.wenhuateng.top" target="_blank">吏部侍郎</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MCP/">MCP</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a></div><div class="post-share"><div class="social-share" data-image="/img/Happy.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/41bc2162/" title="保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/image-20250712174240062.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！</div></div><div class="info-2"><div class="info-item-1">前两天一直在探索MCP，主要研究了高德地图的MCP和腾讯Edgeone Pages，探索了生活中的应用，比如旅行规划，探索了秘书给老板安排出行规划，但是没有研究如何在实际业务场景落地。今天我们以保险行业展业，客户关系维护为例，使用MCP生成个性化生日祝福。 1.保险代理人给客户发送生日祝福1.1 先看效果客户信息为：姓氏：吴，性别：男，大车司机，哈尔滨人，生日2025年4月14日。保险代理人：客户经理，吏部侍郎。   https://mcp.edgeone.site/share/63t_ujhnRv3QUOl4PoKKT  客户信息为：姓氏：吴，性别：男，大学教授，秦皇岛，生日2025年4月14日。保险代理人：客户经理，吏部侍郎。   https://mcp.edgeone.site/share/v785GV86NOVUgB1YZDg5P  客户信息为：姓氏：王，性别：女，银行职员，石家庄人，生日2025年4月14日。保险代理人：客户经理，吏部侍郎。   https://mcp.edgeone.site/share/h0rDw3wSmfBorcdsY_9Jn  还是有动画的，但是...</div></div></div></a><a class="pagination-related" href="/posts/41bc2162/" title="保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！</div></div><div class="info-2"><div class="info-item-1">需求背景：保后管理部，会每天人工统计及整理C-M1数据，入账及回盘相关的数据，最后汇总整理相关话术，发送到微信群。于是咨询我能不能使用Deepseek等大模型实现。前两天，我正在用大模型，于是肯定的回复，是可以的。今天又在开源平台dify上实验了下，也顺利成功。 这里我以一个考勤小助手为例，给大家演示一下搭建步骤。 首先，本文主要用的工具如下：  Dify(一个开源的Agent编排平台)企业微信LLM：Deepseek-V3-0324  1. 新建应用+安装企微通知工具1.1新建空白应用&amp;实现逻辑梳理打开https://dify.ai/zh，选择开始使用。进行注册和登录。创建空白应用—选择工作流。首先思考下整体会用到哪些节点。  我们是考勤小助手，因此肯定会用到考勤相关的规章制度，需要一个知识库。 还需要一个LLM节点来进行格式整理。 需要一个企微的通知节点。  1.2 安装企微通知工具选择添加节点——工具。搜索企微通知工具，输入wecom。最后进行安装。安装完成以后，记得刷新下页面，不然找不到这个企微通知工具。 2. 搭建考勤小助手因为在这里我演示的是一个考勤小助手，因...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/75c20f19/" title="试了高德+Edgeone Pages 的 MCP 组合拳后，我画出了这份详细的数据流图解"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/EdgeonePage/Snipaste_2025-07-11_23-50-14.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-11</div><div class="info-item-2">试了高德+Edgeone Pages 的 MCP 组合拳后，我画出了这份详细的数据流图解</div></div><div class="info-2"><div class="info-item-1">最近在探索MCP相关的服务生态，然后就发现了腾讯所发布的这个Edgeone Pages。让我感觉自己开了挂。使用的过程中又对MCP的数据流研究了下。 1. 从Edgeone Pages的案例开始1.1 案例演示哈，大家都知道，我前两天在第一次学习MCP的时候做了一个案例，使用高德地图的MCP服务只做了一个旅游的行程规划。步骤是这样的：这个中间需要我自己手工介入很多步，但是现在，我可以直接将两个提示词进行合并，借助高德MCP和腾讯的Edgeone Pages服务就可以一步直接得到一个已经部署好的可以公开访问的网页链接。感觉各种方面，Agent起风了。为我的老板出差生成行程规划，并且一键部署网页。 # 任务：生成老板北京-上海当日高铁往返行程的HTML代码，使用高德MCP服务和EdgeonePage服务。## 扮演角色你是一位**精通信息可视化和前端开发的行政助理/差旅规划专家**，并能**对接和利用MCP（出行相关服务）**获取实时或预测数据。## 核心目标为我的老板创建一份北京⇌上海当日高铁往返行程单的**HTML代码**。这段代码渲染后需呈现为一个**极简、视觉清晰、重点突出*...</div></div></div></a><a class="pagination-related" href="/posts/41bc2162/" title="保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/image-20250712174240062.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-12</div><div class="info-item-2">保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！</div></div><div class="info-2"><div class="info-item-1">前两天一直在探索MCP，主要研究了高德地图的MCP和腾讯Edgeone Pages，探索了生活中的应用，比如旅行规划，探索了秘书给老板安排出行规划，但是没有研究如何在实际业务场景落地。今天我们以保险行业展业，客户关系维护为例，使用MCP生成个性化生日祝福。 1.保险代理人给客户发送生日祝福1.1 先看效果客户信息为：姓氏：吴，性别：男，大车司机，哈尔滨人，生日2025年4月14日。保险代理人：客户经理，吏部侍郎。   https://mcp.edgeone.site/share/63t_ujhnRv3QUOl4PoKKT  客户信息为：姓氏：吴，性别：男，大学教授，秦皇岛，生日2025年4月14日。保险代理人：客户经理，吏部侍郎。   https://mcp.edgeone.site/share/v785GV86NOVUgB1YZDg5P  客户信息为：姓氏：王，性别：女，银行职员，石家庄人，生日2025年4月14日。保险代理人：客户经理，吏部侍郎。   https://mcp.edgeone.site/share/h0rDw3wSmfBorcdsY_9Jn  还是有动画的，但是...</div></div></div></a><a class="pagination-related" href="/posts/a8573b07/" title="字节「扣子空间」如何赋能一线保险业务？一个活动策划案例带来的启示"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/20250712130010103.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-27</div><div class="info-item-2">字节「扣子空间」如何赋能一线保险业务？一个活动策划案例带来的启示</div></div><div class="info-2"><div class="info-item-1">关注AI领域动态的，可能知道字节跳动新发布了扣子空间这个产品的beta版本。 这个跟原来的扣子工作流是个完全不一样的产品，扣子的工作流还需要我们人为拖拉拽，先人工再智能，但是扣子空间不需要了，我们只需要提需求就可以了。 我最近一直在探索使用MCP服务，扣子空间也是支持MCP服务的，以下是现在官方所支持的MCP服务。接下来，我们还是从一个案例的演示，给大家抛砖引玉。   起源今年春节过完，Deepseek带来了一阵大模型热，当时公司呢，让我做了一个关于大模型在保险公司内的应用培训。当时我演示了一个案例：大模型可以用来生成活动策划方案。因为是演示，所以我的提示词很简单： **目标**：六一儿童节即将到来，我需要组织一场活动，来宣传我们公司代理的保险产品，最好可以直接当场签约，但是我不希望参加活动的人不开心。**背景**：我是一个保险代理人，我们公司代理了各种保险产品，六一儿童节，我想主推和孩子有关的相关保险产品，但是其他年龄产品的我也想推。**活动时间**：计划六一当天。**活动预算**：10万元。**活动预计参与人数**：50个家庭。**活动人员**：我司当前已育有孩子的家庭，孩子...</div></div></div></a><a class="pagination-related" href="/posts/58184c34/" title="当产品经理开始AI编程(二)：从一次失败的重构中领悟的AI协作之道"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/20250712131403872.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-11</div><div class="info-item-2">当产品经理开始AI编程(二)：从一次失败的重构中领悟的AI协作之道</div></div><div class="info-2"><div class="info-item-1">因为最开始的提示词插件版本在小屏上展示很不友好，所以起了重构UI的心思。&#x20;**我以为这只是一个简单的UI美化任务，最多一两天就能搞定。没想到，这个‘小念头’却把我拖入了一场持续2周的重构深渊&#x20;**。&#x20;大家应该还记得我们第一版的UI提示词展示的时候，非常大，占位置，因为他是一个卡片的形式。&#x20;大家也可以看下 当产品经理开始AI编程：一个提示词插件的诞生记与我的AI协作心得 回忆下。   从头铁硬改到灵魂拷问第一回合：AI大力出奇迹？结果BUG遍地 比如Deepseek设计的一版：&#x20;   当然Gemini也设计过很多版本。但是实际执行时，我会发现，Trae改出来的UI， **会导致大量的功能性BUG，甚至页面都打不开&#x20;**。&#x20;这个时候，我感觉到了不对，我只是重构了下UI或者说CSS，怎么会导致功能不可用呢？而且我已经在提示词里面加了最小化修改等等的要求。 第二回合：问题在AI，还是在我？难道是我没有找到Trae的正确打开方式吗？&#x20;所以这个时候，我就开始让Gemini开启了DeepResearch模式，来研究...</div></div></div></a><a class="pagination-related" href="/posts/daac02c6/" title="当产品经理拿起AI“代码笔”：一个提示词插件的诞生记与我的AI协作心得"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/20250712130513585.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-27</div><div class="info-item-2">当产品经理拿起AI“代码笔”：一个提示词插件的诞生记与我的AI协作心得</div></div><div class="info-2"><div class="info-item-1">消失差不多快三周了，去干什么了呢。去搞AI编程了。就纯粹的迷上了AI编程的成就感。 起因是，看到自己关注的一个博主@云舒，发了一篇公众号文章，讲述他的AI编程过程，他做了一个提示词管理的插件出来，我也就突然想，我之前一直做的都是使用大模型做一个网页，让他最多也就是使用html画一个产品的原型出来，实际其实并没有尝试过AI编程做一个东西出来。 作为一个立志要懂业务和技术的AI产品来说，这怎么能行呢。我需要知道AI编程能做什么，能不能做出来，只看别人写的是不够的。  纸上得来终觉浅，绝知此事要躬行。  因此说干就干，从6月9号开始，到6月22号结束，工作日每天晚上干3个小时，周末了就多干一会，终于也搞了一个提示词浏览器插件出来。  核心功能：  提示词的增删改查。 大模型对话网站输入框快速唤醒提示词搜索框。 云端同步。  本次开发使用的AI：  Trae（80%的工作），量大管饱还便宜，最主要支持国内付款（PS：600次，我现在只剩40次，走了太多弯路）。 Gemini（18%的工作），写需求，联合Trae一起排查解决问题。 Deepseek（2%的工作），搞了几个页面设计。  目前...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/Happy.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">华子</div><div class="author-info-description">一个懂业务的AI产品经理</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Wangshixiong" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/wechat.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #07c160;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%89%E4%B8%AA%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BEMCP%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">1. 三个高德地图MCP的场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%85%88%E4%BB%8E%E7%8E%A9%E5%BC%80%E5%A7%8B"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 先从玩开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%89%BE%E9%99%84%E8%BF%91%E7%9A%84%E9%A5%AD%E5%BA%97-%E5%92%96%E5%95%A1%E5%BA%97-%E5%A5%B6%E8%8C%B6%E5%BA%97%E2%80%A6"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 找附近的饭店&#x2F;咖啡店&#x2F;奶茶店…..</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%AE%9E%E9%99%85%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E2%80%93%E4%BB%A5%E4%BF%A1%E8%B4%B7%E9%A3%8E%E6%8E%A7%E7%8E%AF%E8%8A%82%E4%B8%BA%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 实际业务场景–以信贷风控环节为例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%86%85%E5%AE%B9"><span class="toc-number">2.</span> <span class="toc-text">需求内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E8%A6%81%E6%B1%82"><span class="toc-number">3.</span> <span class="toc-text">输出格式要求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text">输出格式示例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2MCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-number">4.1.</span> <span class="toc-text">2.2MCP协议的简要说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E7%9A%84MCP%E8%8E%B7%E5%8F%96"><span class="toc-number">4.2.</span> <span class="toc-text">2.3 高德地图的MCP获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-Cursor%E7%9A%84%E9%85%8D%E7%BD%AE%E6%B5%81%E7%A8%8B"><span class="toc-number">4.3.</span> <span class="toc-text">2.4 Cursor的配置流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%B8%8D%E5%90%8C%E5%B9%B3%E5%8F%B0%E5%AF%B9%E6%AF%94"><span class="toc-number">5.</span> <span class="toc-text">3. 不同平台对比</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1Cherry%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91"><span class="toc-number">5.1.</span> <span class="toc-text">3.1Cherry配置过程的一些坑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-SSE%E8%BF%9E%E6%8E%A5%E6%96%AD%E5%BC%80%E9%97%AE%E9%A2%98"><span class="toc-number">5.2.</span> <span class="toc-text">3.2 SSE连接断开问题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/58184c34/" title="当产品经理开始AI编程(二)：从一次失败的重构中领悟的AI协作之道"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/20250712131403872.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="当产品经理开始AI编程(二)：从一次失败的重构中领悟的AI协作之道"/></a><div class="content"><a class="title" href="/posts/58184c34/" title="当产品经理开始AI编程(二)：从一次失败的重构中领悟的AI协作之道">当产品经理开始AI编程(二)：从一次失败的重构中领悟的AI协作之道</a><time datetime="2025-07-11T15:42:35.000Z" title="发表于 2025-07-11 23:42:35">2025-07-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/daac02c6/" title="当产品经理拿起AI“代码笔”：一个提示词插件的诞生记与我的AI协作心得"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/20250712130513585.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="当产品经理拿起AI“代码笔”：一个提示词插件的诞生记与我的AI协作心得"/></a><div class="content"><a class="title" href="/posts/daac02c6/" title="当产品经理拿起AI“代码笔”：一个提示词插件的诞生记与我的AI协作心得">当产品经理拿起AI“代码笔”：一个提示词插件的诞生记与我的AI协作心得</a><time datetime="2025-06-27T02:42:35.000Z" title="发表于 2025-06-27 10:42:35">2025-06-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/75c20f19/" title="试了高德+Edgeone Pages 的 MCP 组合拳后，我画出了这份详细的数据流图解"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/EdgeonePage/Snipaste_2025-07-11_23-50-14.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="试了高德+Edgeone Pages 的 MCP 组合拳后，我画出了这份详细的数据流图解"/></a><div class="content"><a class="title" href="/posts/75c20f19/" title="试了高德+Edgeone Pages 的 MCP 组合拳后，我画出了这份详细的数据流图解">试了高德+Edgeone Pages 的 MCP 组合拳后，我画出了这份详细的数据流图解</a><time datetime="2025-05-11T15:42:35.000Z" title="发表于 2025-05-11 23:42:35">2025-05-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/a8573b07/" title="字节「扣子空间」如何赋能一线保险业务？一个活动策划案例带来的启示"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/20250712130010103.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="字节「扣子空间」如何赋能一线保险业务？一个活动策划案例带来的启示"/></a><div class="content"><a class="title" href="/posts/a8573b07/" title="字节「扣子空间」如何赋能一线保险业务？一个活动策划案例带来的启示">字节「扣子空间」如何赋能一线保险业务？一个活动策划案例带来的启示</a><time datetime="2025-04-27T02:42:35.000Z" title="发表于 2025-04-27 10:42:35">2025-04-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/41bc2162/" title="保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/image-20250712174240062.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！"/></a><div class="content"><a class="title" href="/posts/41bc2162/" title="保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！">保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！</a><time datetime="2025-04-12T09:40:02.000Z" title="发表于 2025-04-12 17:40:02">2025-04-12</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2025 By 华子</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">2</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'WxBDBLPoSvMihNTnoWJXROpq-gzGzoHsz',
+      appKey: 'n6Y96eiGJ8wAGJfv9t4uOEfd',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
