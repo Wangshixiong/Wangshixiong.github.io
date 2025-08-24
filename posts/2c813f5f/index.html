@@ -1,0 +1,413 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>保姆级教程：手把手教你用Dify实现完美多轮对话（附Chatflow和提示词） | 吏部侍郎</title><meta name="author" content="华子"><meta name="copyright" content="华子"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在这篇文章里，我想和大家分享一下我是如何一步步建立一个问答助手Demo的经历。过程中遇到了一些挑战，但同时也找到了解决办法，希望能给正在尝试类似项目的朋友们带来一点帮助和启发。  关键词：Dify 智能助手 记忆 多轮问答  1. 初版Demo创建应用首先，我们打开Dify，选择创建空白应用，随意取一个名字，创建一个chatflow。  创建应用后，打开界面如下，则直接就是  开始—–&gt;大模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="保姆级教程：手把手教你用Dify实现完美多轮对话（附Chatflow和提示词）">
+<meta property="og:url" content="http://www.wenhuateng.top/posts/2c813f5f/index.html">
+<meta property="og:site_name" content="吏部侍郎">
+<meta property="og:description" content="在这篇文章里，我想和大家分享一下我是如何一步步建立一个问答助手Demo的经历。过程中遇到了一些挑战，但同时也找到了解决办法，希望能给正在尝试类似项目的朋友们带来一点帮助和启发。  关键词：Dify 智能助手 记忆 多轮问答  1. 初版Demo创建应用首先，我们打开Dify，选择创建空白应用，随意取一个名字，创建一个chatflow。  创建应用后，打开界面如下，则直接就是  开始—–&gt;大模">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE4.jpeg">
+<meta property="article:published_time" content="2025-08-08T17:10:08.000Z">
+<meta property="article:modified_time" content="2025-08-08T17:09:50.986Z">
+<meta property="article:author" content="华子">
+<meta property="article:tag" content="Agent">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE4.jpeg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "保姆级教程：手把手教你用Dify实现完美多轮对话（附Chatflow和提示词）",
+  "url": "http://www.wenhuateng.top/posts/2c813f5f/",
+  "image": "https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE4.jpeg",
+  "datePublished": "2025-08-08T17:10:08.000Z",
+  "dateModified": "2025-08-08T17:09:50.986Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "华子",
+      "url": "http://www.wenhuateng.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.svg"><link rel="canonical" href="http://www.wenhuateng.top/posts/2c813f5f/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":"繁","translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '保姆级教程：手把手教你用Dify实现完美多轮对话（附Chatflow和提示词）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">吏部侍郎</span></a><a class="nav-page-title" href="/"><span class="site-name">保姆级教程：手把手教你用Dify实现完美多轮对话（附Chatflow和提示词）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">保姆级教程：手把手教你用Dify实现完美多轮对话（附Chatflow和提示词）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-08-08T17:10:08.000Z" title="发表于 2025-08-09 01:10:08">2025-08-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-08T17:09:50.986Z" title="更新于 2025-08-09 01:09:50">2025-08-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/LLM/">LLM</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><p>在这篇文章里，我想和大家分享一下我是如何一步步建立一个问答助手Demo的经历。过程中遇到了一些挑战，但同时也找到了解决办法，希望能给正在尝试类似项目的朋友们带来一点帮助和启发。</p>
+<blockquote>
+<p>关键词：Dify 智能助手 记忆 多轮问答</p>
+</blockquote>
+<h1 id="1-初版Demo"><a href="#1-初版Demo" class="headerlink" title="1. 初版Demo"></a>1. 初版Demo</h1><h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><p>首先，我们打开Dify，选择<strong>创建空白应用</strong>，随意取一个名字，创建一个<strong>chatflow</strong>。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754619149077-d8fdbb4e-9588-4c73-9618-285601b1b981.png" alt="创建应用"></p>
+<p>创建应用后，打开界面如下，则直接就是</p>
+<blockquote>
+<p>开始—–&gt;大模型——&gt;直接回复。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754619351306-2ef9f859-c907-4729-880d-bd5cd867aa48.png" alt="简单样例"></p>
+</blockquote>
+<p>按照常规思路，很显现，现在需要一个知识库，比如用于回答公司内部的政策。所以我们需要加一个知识库节点。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754619385630-603682fc-846f-494e-8ad0-46db792693e6.png" alt="知识库"></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754619416963-acb97813-31b1-497f-9564-b559f9be8129.png" alt="最初版本"></p>
+<p>ok，现在按照顺序，明显我们需要开始准备知识库了。</p>
+<h2 id="知识库的简单说明"><a href="#知识库的简单说明" class="headerlink" title="知识库的简单说明"></a>知识库的简单说明</h2><p>_<strong>一个问答助手，能不能准确的回复用户的问题，主要在于3个方面</strong>_：</p>
+<ol>
+<li>知识库是不是构建的相对比较好，比如分块逻辑，块大小，检索逻辑等等。</li>
+<li>LLM节点的提示词写的是不是足够好，足够稳定。</li>
+<li>是不是很好的能理解用户的问题。</li>
+</ol>
+<p><strong><font style="color:rgb(68, 68, 68);">首先，构建知识库的时候，不要寄希望于丢几个 PDF 给嵌入模型，就可以有很好的效果</font></strong><font style="color:rgb(68, 68, 68);">。</font></p>
+<p>比如我有一个PDF文件，我先实验了一下直接导入行不行，选择知识库—新建知识库—选择上传文件。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754619693997-677937a8-1327-42aa-a3df-f6fadae6aadd.png" alt="知识库"></p>
+<p>这里，我就不详述实验过程了，我实验了通用分段，父子分段，试验了QA，但是发现效果不太好。我认为可能是PDF文件格式的问题。所以最后，我决定先对PDF进行加工，将它改成了markdown格式的文件。</p>
+<p>当然，针对于这种咨询性的知识库，其实应该仔细实验一下QA，效果估计不错，但是我是做demo（其实算是正式应用），这里因为我自己实验不同问题，相对来说回答的不错，我就没有深入搞一下QA。</p>
+<p>当然知识库的建立那又是一个非常重要的专题，我们今天的主题是问答助手，所以在知识库这里就不太多赘述了。</p>
+<p>最终还是使用父子分段，#做父块，##做子块标识（<strong>这里大家可别把分段标识符固定成标点符号了，其实文字也是可以的，比如“第”第几章。。</strong>）</p>
+<p>好了，上提示词：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 角色</span></span><br><span class="line">你是一个专业、严谨的人力资源（HR）智能助手，现在是2025年。</span><br><span class="line"></span><br><span class="line"><span class="section"># 任务</span></span><br><span class="line">你的唯一任务是根据下面[知识库检索结果]中提供的信息，来回答用户的[提问]。</span><br><span class="line"></span><br><span class="line"><span class="section"># 核心规则</span></span><br><span class="line"><span class="bullet">1.</span> <span class="strong">**绝对忠诚**</span>：你必须，且只能使用[知识库检索结果]中的内容来组织你的回答。严禁使用任何外部知识或进行任何形式的推理、猜测。</span><br><span class="line"><span class="bullet">2.</span> <span class="strong">**内容为王**</span>：如果[知识库检索结果]中明确包含了答案，请直接、清晰地进行回答。</span><br><span class="line"><span class="bullet">3.</span> <span class="strong">**知之为知之**</span>：如果[知识库检索结果]中的信息不足以或完全不能回答用户的[提问]，你<span class="strong">**绝不允许**</span>编造答案。你必须明确告知用户，你无法在现有的制度文件中找到相关信息。</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**[知识库检索结果]**</span>:</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们就可以开始测试了。</p>
+<h2 id="增加问题分类器"><a href="#增加问题分类器" class="headerlink" title="增加问题分类器"></a>增加问题分类器</h2><p>上面只是解决了考勤问题，下面我们增加一个一个分支用于回答用户的其他问题，比如福利，比如补充医疗的理赔。</p>
+<p>这一步的操作比较简单，就不详细说了。</p>
+<p>这个时候，chatflow 就变成这个样子了：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754635835859-93cada4d-f680-4cbe-a09a-8a6bf7839530.png" alt="问题分类节点"></p>
+<h1 id="2-正式版本"><a href="#2-正式版本" class="headerlink" title="2. 正式版本"></a>2. 正式版本</h1><p>因为本质上，我们现在做的这个问答助手，还是一个 chat，所以他是需要记忆的。要用明白记忆，我们就得先明白这个记忆是如何运行的。</p>
+<h2 id="Dify-中记忆工具的运行机制探索"><a href="#Dify-中记忆工具的运行机制探索" class="headerlink" title="Dify 中记忆工具的运行机制探索"></a>Dify 中记忆工具的运行机制探索</h2><p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754636344404-5bb2764f-3bdf-4000-95d4-07db7eed316b.png" alt="记忆功能"></p>
+<h3 id="关闭记忆"><a href="#关闭记忆" class="headerlink" title="关闭记忆"></a>关闭记忆</h3><p>依次输入</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1+1</span><br><span class="line">1+2</span><br><span class="line">1+3</span><br><span class="line">1+4</span><br><span class="line">1+5</span><br></pre></td></tr></table></figure>
+
+<p>看下模型请求：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754636869717-bc86162e-d59b-4427-b078-aa4ae6551e3a.png" alt="请求内容"></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;model_mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;chat&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;prompts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;system&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;使用以下上下文作为你所学习的知识，放在&lt;context&gt;&lt;/context&gt; XML标签内。\n&lt;context&gt;\n&#123;&#123;#context#&#125;&#125;\n&lt;/context&gt;\n当回答用户时：\n如果你不知道，就说你不知道。如果你不确定时不知道，寻求澄清。\n避免提及你从上下文中获取的信息。\n并根据用户问题的语言进行回答。&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;用户问题：1+4&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;usage&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;prompt_tokens&quot;</span><span class="punctuation">:</span> <span class="number">213</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prompt_unit_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prompt_price_unit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prompt_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_tokens&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_unit_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_price_unit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;total_tokens&quot;</span><span class="punctuation">:</span> <span class="number">218</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;total_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;currency&quot;</span><span class="punctuation">:</span> <span class="string">&quot;USD&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;latency&quot;</span><span class="punctuation">:</span> <span class="number">0.33365140948444605</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;finish_reason&quot;</span><span class="punctuation">:</span> <span class="string">&quot;stop&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;model_provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;langgenius/openai_api_compatible/openai_api_compatible&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;model_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;deepseek-v3&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，每次只保留了最新的请求的问题。</p>
+<h3 id="打开记忆"><a href="#打开记忆" class="headerlink" title="打开记忆"></a>打开记忆</h3><p>我们先打开记忆，不打开记忆窗口。</p>
+<p>然后我们依次输入</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">1+1</span><br><span class="line">1+2</span><br><span class="line">1+3</span><br><span class="line">1+4</span><br><span class="line">1+5</span><br></pre></td></tr></table></figure>
+
+<p>然后看下模型的请求：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754636467209-609397bf-98fe-48d8-9fed-5c12fb66f778.png" alt="请求内容"></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;model_mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;chat&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;prompts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;system&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;使用以下上下文作为你所学习的知识，放在&lt;context&gt;&lt;/context&gt; XML标签内。\n&lt;context&gt;\n&#123;&#123;#context#&#125;&#125;\n&lt;/context&gt;\n当回答用户时：\n如果你不知道，就说你不知道。如果你不确定时不知道，寻求澄清。\n避免提及你从上下文中获取的信息。\n并根据用户问题的语言进行回答。&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;用户问题：1+5&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1+1&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1 + 1 = 2&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1+2&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1 + 2 = 3&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1+3&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1 + 3 = 4&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1+4&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1 + 4 = 5&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1+5&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;usage&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;prompt_tokens&quot;</span><span class="punctuation">:</span> <span class="number">213</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prompt_unit_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prompt_price_unit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prompt_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_tokens&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_unit_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_price_unit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;total_tokens&quot;</span><span class="punctuation">:</span> <span class="number">218</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;total_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;currency&quot;</span><span class="punctuation">:</span> <span class="string">&quot;USD&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;latency&quot;</span><span class="punctuation">:</span> <span class="number">0.4152184668928385</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;finish_reason&quot;</span><span class="punctuation">:</span> <span class="string">&quot;stop&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;model_provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;langgenius/openai_api_compatible/openai_api_compatible&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;model_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;deepseek-v3&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到他将每次的 <code>user</code> 和模型回答 <code>assistant</code> 都记录下来了。最上面和最下面的 user 是用户的本次输入。</p>
+<h3 id="打开记忆窗口"><a href="#打开记忆窗口" class="headerlink" title="打开记忆窗口"></a>打开记忆窗口</h3><p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754637130620-b5e9a76c-0958-48f3-8185-82603976d387.png" alt="打开记忆"></p>
+<p>现在我们打开记忆窗口，继续输入上面的内容：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>+<span class="number">1</span></span><br><span class="line"><span class="number">1</span>+<span class="number">2</span></span><br><span class="line"><span class="number">1</span>+<span class="number">3</span></span><br><span class="line"><span class="number">1</span>+<span class="number">4</span></span><br><span class="line"><span class="number">1</span>+<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<p>我们接着看请求参数：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;model_mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;chat&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;prompts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;system&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;使用以下上下文作为你所学习的知识，放在&lt;context&gt;&lt;/context&gt; XML标签内。\n&lt;context&gt;\n&#123;&#123;#context#&#125;&#125;\n&lt;/context&gt;\n当回答用户时：\n如果你不知道，就说你不知道。如果你不确定时不知道，寻求澄清。\n避免提及你从上下文中获取的信息。\n并根据用户问题的语言进行回答。&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;用户问题：1+5&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1+4&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;assistant&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1 + 4 = 5&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1+5\n\n[]&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;usage&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;prompt_tokens&quot;</span><span class="punctuation">:</span> <span class="number">213</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prompt_unit_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prompt_price_unit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;prompt_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_tokens&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_unit_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_price_unit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;completion_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;total_tokens&quot;</span><span class="punctuation">:</span> <span class="number">218</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;total_price&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;currency&quot;</span><span class="punctuation">:</span> <span class="string">&quot;USD&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;latency&quot;</span><span class="punctuation">:</span> <span class="number">0.389557683840394</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;finish_reason&quot;</span><span class="punctuation">:</span> <span class="string">&quot;stop&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;model_provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;langgenius/openai_api_compatible/openai_api_compatible&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;model_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;deepseek-v3&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，他只保留了最新一次和上一次的 user 问题。</p>
+<h3 id="记忆功能总结"><a href="#记忆功能总结" class="headerlink" title="记忆功能总结"></a>记忆功能总结</h3><table>
+<thead>
+<tr>
+<th><strong>记忆设置</strong></th>
+<th><strong>发送给模型的内容</strong></th>
+<th><strong>效果</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关闭记忆</td>
+<td>仅当前的用户输入</td>
+<td>无上下文，一问一答，完全独立</td>
+</tr>
+<tr>
+<td>开启记忆（无窗口）</td>
+<td>完整的对话历史</td>
+<td>拥有全部上下文，能进行连贯的多轮对话</td>
+</tr>
+<tr>
+<td>开启记忆（有窗口）</td>
+<td>最近的几轮对话历史</td>
+<td>拥有有限的上下文，只“记得”最近的对话</td>
+</tr>
+</tbody></table>
+<h2 id="开始实验方案"><a href="#开始实验方案" class="headerlink" title="开始实验方案"></a>开始实验方案</h2><p>为了得到比较好的效果，我准备了以下几个方案：</p>
+<ol>
+<li>打开问题分类节点的 记忆。</li>
+<li>打开 LLM 节点的 记忆。</li>
+<li>新增一个 query 改写节点，打开 记忆。</li>
+</ol>
+<p>前面 2 个方案，没什么稀奇的，第 3 个方案，是我在研究前两个方案时，思索的一个方案。</p>
+<h2 id="方案实验"><a href="#方案实验" class="headerlink" title="方案实验"></a>方案实验</h2><p>前两个方案在测试时，都碰到了以下问题，会在第三次对话的时候，污染用户的问题。</p>
+<p>只打开 LLM 节点，不打开问题分类节点的记忆，会导致分类错误。</p>
+<p>比如：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754639535785-054ec897-512a-406f-9054-21a2dc01ddd9.png" alt="分类错误"></p>
+<p>或者会出现知识库内容检索的不精确（因为指代消解等等各种原因）：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754640296263-a7cf8461-be09-4d63-bab7-9cf8e72cf0fe.png" alt="query不准确"></p>
+<p>最终造成回复的不准确，甚至无法回复。</p>
+<p>而且，还有一个问题，就是，虽然我们打开了问题分类的记忆，而且请求时，也将所有的历史聊天记录发给了模型，<strong>但是有时还是会出现分类错误的情况</strong>：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754647450350-c2e01a49-8654-4133-8b1a-5e5cdbc49aa0.png" alt="问题分类记忆打开"></p>
+<p>因此，我们需要一个问题 query 的改写节点。</p>
+<p><strong>用它来尽可能提高问题分类的正确性，并且实现知识库的精确检索</strong>。</p>
+<h2 id="query-改写节点"><a href="#query-改写节点" class="headerlink" title="query 改写节点"></a>query 改写节点</h2><p>这样的话，我们的 chatflow 就变成了这样子。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754648110379-d80b51ee-31eb-4bfa-a7ca-14ca8fa53b7b.png" alt="query改写节点"></p>
+<p>改写节点的提示词如下：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 角色与任务</span></span><br><span class="line">你是一个专用于智能客服系统的“用户问题改写专家”。</span><br><span class="line"></span><br><span class="line">你的核心任务是：结合上下文对话，将用户当前提出的、可能模糊或有依赖的问题，改写成一个信息完整、意图明确、无需上下文即可独立理解的标准问题。</span><br><span class="line"></span><br><span class="line"><span class="section"># 工作原则</span></span><br><span class="line"><span class="bullet">1.</span>  <span class="strong">**联系上下文补全信息**</span>：分析对话历史，弄清用户问题中“它”、“我的”、“那个”等代词的具体指代，并补全问题中被省略的主语或宾语。</span><br><span class="line"><span class="bullet">2.</span>  <span class="strong">**判断是否需要改写**</span>：如果用户原问题本身已经是一个完整的标准问题，则无需改写，直接输出原问题。</span><br><span class="line"><span class="bullet">3.</span>  <span class="strong">**忠于用户字面意图**</span>：这是最重要的原则。你的任务是让问题变得信息完整，而不是改变用户的提问焦点。</span><br><span class="line"><span class="bullet">    *</span> <span class="strong">**例如**</span>：如果用户问的是关于“一般情况”的问题，就绝不能将其改写为针对“他当前个案”的问题。</span><br><span class="line"></span><br><span class="line"><span class="section"># 输出要求</span></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**格式唯一**</span>：最终输出的内容，必须且只能是改写后或无需改写的“标准问题”文本。</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**绝对禁止**</span>：禁止输出任何解释、说明、注释、理由或任何形式的对话。</span><br><span class="line"></span><br><span class="line"><span class="section"># 示例</span></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="strong">**示例 1: (指代消解)**</span></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**对话历史**</span>: &quot;你好，我想了解一下你们的‘长乐安康’重疾险。&quot;</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**用户当前问题**</span>: &quot;它的等待期是多久？&quot;</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**你的输出**</span>:</span><br><span class="line"><span class="section">    “长乐安康”重疾险的等待期是多久？</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"><span class="strong">**示例 2: (省略补全)**</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**对话历史**</span>: &quot;给孩子投保补充医疗保险，理赔时需要哪些申请资料？&quot;</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**用户当前问题**</span>: &quot;如果是我自己呢？&quot;</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**你的输出**</span>:  </span><br><span class="line"><span class="section">  我给自己投保的补充医疗保险，理赔时需要哪些申请资料？</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**示例 3: (忠于字面意图)**</span></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**对话历史**</span>: &quot;我上周五提交的理赔申请，现在什么进度了？&quot;</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**用户当前问题**</span>: &quot;一般要审核多久？&quot;</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**你的输出**</span>:</span><br><span class="line"><span class="section">  理赔申请的审核一般需要多久？</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+<p>这次，我直接关掉了问题分类节点和其他节点大模型的记忆。只打开了 query 改写节点的记忆。</p>
+<p>在测试的时候，又发现了新的问题，每次问 3 个问题以上的时候，这个节点改写后的问题，总是会包含知识库的检索结果（当然，中间我多次换过模型，没想明白为什么会出现这个问题）。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754648258333-6c1ae666-7b62-4db0-8c54-b2cb45e3bfee.png" alt="污染展示"></p>
+<p>虽然说，在测试的时候，回复的问题只出现了几次不正确的情况，但是我还是很担心，因为历史请求中的assistant 的回答，会污染在这个 query 改写节点新生成的 query。直接导致知识库检索出现问题，最终回答错误。</p>
+<p>所以我就在想，我应该怎么解决这个问题。</p>
+<h3 id="提示词问题"><a href="#提示词问题" class="headerlink" title="提示词问题"></a>提示词问题</h3><p>首先我怀疑的就是提示词导致的问题。</p>
+<p>所以我将模型换成了 <code>Gemini1.5flash</code>，然后还将提示词更换成了下面的：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 角色与任务</span></span><br><span class="line">你是一个专用于智能客服系统的“用户问题改写专家”。</span><br><span class="line"></span><br><span class="line">你的核心任务是：结合上下文对话，将用户当前提出的、可能模糊或有依赖的问题，改写成一个信息完整、意图明确、无需上下文即可独立理解的标准问题。</span><br><span class="line"></span><br><span class="line"><span class="section"># 工作原则</span></span><br><span class="line"><span class="bullet">1.</span>  <span class="strong">**联系上下文补全信息**</span>：分析对话历史，弄清用户问题中“它”、“我的”、“那个”等代词的具体指代，并补全问题中被省略的主语或宾语。</span><br><span class="line"><span class="bullet">2.</span>  <span class="strong">**判断是否需要改写**</span>：如果用户原问题本身已经是一个完整的标准问题，则无需改写，直接输出原问题。</span><br><span class="line"><span class="bullet">3.</span>  <span class="strong">**忠于用户字面意图**</span>：这是最重要的原则。你的任务是让问题变得信息完整，而不是改变用户的提问焦点。</span><br><span class="line"><span class="bullet">    *</span> <span class="strong">**例如**</span>：如果用户问的是关于“一般情况”的问题，就绝不能将其改写为针对“他当前个案”的问题。</span><br><span class="line"><span class="bullet">4.</span> 只关注对话历史中的&quot;role&quot;: &quot;user&quot;，即用户说的话，忽略模型回复内容。</span><br><span class="line"></span><br><span class="line"><span class="section"># 输出要求</span></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**格式唯一**</span>：最终输出的内容，必须且只能是改写后或无需改写的“标准问题”文本。</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**绝对禁止**</span>：禁止输出任何解释、说明、注释、理由或任何形式的对话。</span><br></pre></td></tr></table></figure>
+
+<p>但是我发现，还是会有问题，还是出现了模型回复内容：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754664922781-4775fb61-5cc7-4679-af34-1d5f6901618a.png" alt="query被污染了"></p>
+<p>但是我实在是没有理解为什么在 query 改写节点，会出现整合加工这个节点的模型输出结果。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754665140639-6e3f347f-7526-4d04-a97d-86b5229fdb5a.png" alt="query被污染"></p>
+<p>很明显，query 节点的回复，被污染了。</p>
+<p>但是上面这个原因，我还没研究明白。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>经过仔细阅读官方文档，我找到了一个解决方案，使用会话变量。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754665788448-2448a2a0-e59d-472d-bde8-2c0ae9b2ae81.png" alt="会话变量"></p>
+<p>所以，我先增加了一个会话变量 chat_history 用于保存用户的问题。</p>
+<p>然后在节点中增加了一个变量赋值。因为我们需要使用用户问题，所以在这里选择了<strong>追加</strong>。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754665961129-1522f430-7d58-4469-b850-8201e78bcf74.png" alt="变量赋值配置"></p>
+<p>所以，最终我们的 chatflow 就变成了下面的样子：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754666069845-5b82c0ba-9c78-4f94-9c33-e038d38ba5e0.png" alt="新增变量赋值节点"></p>
+<p>当然那，现在还不够健壮，因为用户可能重复性的输入同一个问题，或者让模型重新回答。</p>
+<p>我们开始测试，大家可以看到，用户问题被很好的保留了。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754666431487-84c9c9ef-b0b5-4c2b-b2c3-41c833ea49fd.png" alt="用户问题保存演示"></p>
+<h2 id="最终方案"><a href="#最终方案" class="headerlink" title="最终方案"></a>最终方案</h2><p>为了增加健壮性，我们还需要增加一个代码判断节点，用于判断用户的问题是不是和上一次一样，如果一样，就没必要在 chat_history 中新增了。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754668477350-57da6b00-f965-4722-a238-e6a5920d6055.png" alt="最终chatflow"></p>
+<p>最终的 query 改写提示词：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"> # 核心任务</span><br><span class="line"></span><br><span class="line">你是一个“用户问题改写”模型。你的任务是参考用户历史提问，将用户当前问题改写成一个无需上下文、可独立理解的标准问题。</span><br><span class="line"></span><br><span class="line"> # 工作流程与规则</span><br><span class="line"></span><br><span class="line">输入分析：</span><br><span class="line">用户历史提问：用户在此之前所有说过的话。</span><br><span class="line">用户当前问题：用户最新一句的提问。</span><br><span class="line">改写规则：</span><br><span class="line">补全信息：利用“用户历史提问”作为上下文，补全“当前问题”中省略或指代不明的信息（如主语、宾语、“它”、“那个”等）。</span><br><span class="line">忠于原意：严格遵循用户的字面意图，仅做信息补全，不改变或猜测用户的提问焦点。（例如：问“一般情况”，就不能改写为“我的情况”）。</span><br><span class="line">无需改写则照搬：若“当前问题”本身已是标准问题，直接输出原文，不做任何修改。</span><br><span class="line">输出要求：</span><br><span class="line">唯一格式：输出内容只能是最终的标准问题文本。</span><br><span class="line">严禁额外内容：禁止输出任何形式的解释、注释、理由或对话。</span><br><span class="line"></span><br><span class="line"><span class="section"># 示例</span></span><br><span class="line"></span><br><span class="line">示例 1: (补全指代)</span><br><span class="line">用户历史提问: &quot;你好，我想了解一下你们的‘长乐安康’重疾险。&quot;</span><br><span class="line">用户当前问题: &quot;它的等待期是多久？&quot;</span><br><span class="line">你的输出:</span><br><span class="line">“长乐安康”重疾险的等待期是多久？</span><br><span class="line"></span><br><span class="line">示例 2: (补全主体)</span><br><span class="line">用户历史提问: &quot;给孩子投保补充医疗保险，理赔时需要哪些申请资料？&quot;</span><br><span class="line">用户当前问题: &quot;如果是我自己呢？&quot;</span><br><span class="line">你的输出:</span><br><span class="line">我给自己投保的补充医疗保险，理赔时需要哪些申请资料？</span><br><span class="line"></span><br><span class="line">示例 3: (忠于原意)</span><br><span class="line">用户历史提问: &quot;我上周五提交的理赔申请，现在什么进度了？&quot;</span><br><span class="line">用户当前问题: &quot;一般要审核多久？&quot;</span><br><span class="line">你的输出:</span><br><span class="line">理赔申请的审核一般需要多久？</span><br><span class="line"></span><br><span class="line">待处理信息：</span><br><span class="line">用户历史提问:&#123;&#123;#context#&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>我给大家大概演示一下效果，这是我连续问了 4 个问题，<code> chat_history</code> 的记录：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754668531538-3766aa77-8ac3-41de-b0d8-436e31cfaef3.png" alt="用户问题保存"></p>
+<p>这是 query 改写的内容：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754668631289-2d007b81-e9c4-4c07-93da-9bac83c1203c.png" alt="query改写效果"></p>
+<p>看起来效果还不错。</p>
+<p>然后我们再验证下，用户问题的保存：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1754668746202-8d304b43-0552-4e96-838d-d5ab239f6e8a.png" alt="不重复保留相同的用户问题"></p>
+<p>我连续问了两遍相同的问题，但是 chat_history 只保留了一遍，还可以哈。</p>
+<blockquote>
+<p><strong>其实沿着这个思路，继续往下，我们就可以做到在工作流中，实现 context 的保存。<br>保留完整的 context，模型获取到完整的信息，才能更好的为我们服务</strong>。</p>
+</blockquote>
+<p>这块后面继续研究。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://www.wenhuateng.top">华子</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://www.wenhuateng.top/posts/2c813f5f/">http://www.wenhuateng.top/posts/2c813f5f/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://www.wenhuateng.top" target="_blank">吏部侍郎</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Agent/">Agent</a></div><div class="post-share"><div class="social-share" data-image="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE4.jpeg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/d280b05a/" title="我用AI开发Dify工具，意外发现一个“邪修”法门：让它自己对答案"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">我用AI开发Dify工具，意外发现一个“邪修”法门：让它自己对答案</div></div><div class="info-2"><div class="info-item-1">1. 引子最近在做了一个邮件通知的小助手，这个dify工作流非常非常的简单，如下图所示，一个Agent的mcp查询节点，一个格式转换节点，一个邮件发送节点。  但是碰到了一个问题，就是受限于内部模型的能力，在react模式下调用mcp服务进行查询时，如果查询的数据量一旦超过10条，直接就会缺失非常多的数据。 但是如果使用其他模型，则不会出现这种问题。 所以最初，是想着下一个版本的优化，将Agent查询节点修改为http请求。又要有个但是，出现的问题是，不知道是什么原因，在内部使用这个http请求节点的时候，永远都是网络不通，而其实服务器和这个查询服务的地址是特意开通了的，使用代码访问就完全没问题。 所以最后的的方案就是继续让开发同志搞一个查询工具出来（因为之前碰到过邮件插件不好使的时候，开发同学也是这么干的）。 但是我感觉这事儿，根源还是得让运维同志解决。哈哈。 当然，这个点，也是我们今天这个事儿的起源。 后来开发同学实在是有点忙，而我呢，又着急用，所以就让开发同学给我个案例（邮件的那个）我看看复杂不，能用AI干不，我一看，这不是Python嘛，还就一个文件，AI应该比较擅长啊。...</div></div></div></a><a class="pagination-related" href="/posts/ab99b4f4/" title="保险产品推荐"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">保险产品推荐</div></div><div class="info-2"><div class="info-item-1">最近业务提了一个保险产品推荐的需求。但是其实业务并不知道如何让AI来做，也不知道AI能做到什么程度。 只是简单地在需求里面写了有车无房推荐车险，已婚未育，推荐xx医疗险。 和业务反复聊了好几轮，其实他们也不知道自己想要什么。 迫于无奈，只能基于自己对医疗险的简单理解，做了一个小小的demo出来引导他们的思路。 Demo实现Demo的实现，主要是基于Dify。 知识库准备虽然仅仅是个demo，开始的时候还是希望业务提供一些产品的条款，但是反复拉扯多次，没有拿到，也可能是因为代理业务刚刚开始，没有也是正常。 最后很无奈，只能自己搞一些假数据出来。  就使用父子分段的方式，将假数据，直接导入了知识库。 工作流搭建这个demo工作流建立的背景主要有以下几点：  这个产品推荐的Agent后续计划主要面向的是公司的销售人员或者说代理人。 暂不考虑直接面向客户，所以相对来说，不需要考虑太多业务上的风险，因为代理人可以进行人为筛选或者说复核。 因为是Demo，所以没必要投入太多时间。   通过上图可以看到，这个Demo工作流总共有两个LLM节点，一个知识库检索节点。他的整体运行逻辑如下： 信息收...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/a8573b07/" title="字节「扣子空间」如何赋能一线保险业务？一个活动策划案例带来的启示"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/20250712130010103.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-27</div><div class="info-item-2">字节「扣子空间」如何赋能一线保险业务？一个活动策划案例带来的启示</div></div><div class="info-2"><div class="info-item-1">关注AI领域动态的，可能知道字节跳动新发布了扣子空间这个产品的beta版本。 这个跟原来的扣子工作流是个完全不一样的产品，扣子的工作流还需要我们人为拖拉拽，先人工再智能，但是扣子空间不需要了，我们只需要提需求就可以了。 我最近一直在探索使用MCP服务，扣子空间也是支持MCP服务的，以下是现在官方所支持的MCP服务。接下来，我们还是从一个案例的演示，给大家抛砖引玉。   起源今年春节过完，Deepseek带来了一阵大模型热，当时公司呢，让我做了一个关于大模型在保险公司内的应用培训。当时我演示了一个案例：大模型可以用来生成活动策划方案。因为是演示，所以我的提示词很简单： **目标**：六一儿童节即将到来，我需要组织一场活动，来宣传我们公司代理的保险产品，最好可以直接当场签约，但是我不希望参加活动的人不开心。**背景**：我是一个保险代理人，我们公司代理了各种保险产品，六一儿童节，我想主推和孩子有关的相关保险产品，但是其他年龄产品的我也想推。**活动时间**：计划六一当天。**活动预算**：10万元。**活动预计参与人数**：50个家庭。**活动人员**：我司当前已育有孩子的家庭，孩子...</div></div></div></a><a class="pagination-related" href="/posts/41bc2162/" title="保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-04</div><div class="info-item-2">保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！</div></div><div class="info-2"><div class="info-item-1">需求背景：保后管理部，会每天人工统计及整理C-M1数据，入账及回盘相关的数据，最后汇总整理相关话术，发送到微信群。于是咨询我能不能使用Deepseek等大模型实现。前两天，我正在用大模型，于是肯定的回复，是可以的。今天又在开源平台dify上实验了下，也顺利成功。 这里我以一个考勤小助手为例，给大家演示一下搭建步骤。 首先，本文主要用的工具如下：  Dify(一个开源的Agent编排平台)企业微信LLM：Deepseek-V3-0324  1. 新建应用+安装企微通知工具1.1新建空白应用&amp;实现逻辑梳理打开https://dify.ai/zh，选择开始使用。进行注册和登录。创建空白应用—选择工作流。首先思考下整体会用到哪些节点。  我们是考勤小助手，因此肯定会用到考勤相关的规章制度，需要一个知识库。 还需要一个LLM节点来进行格式整理。 需要一个企微的通知节点。  1.2 安装企微通知工具选择添加节点——工具。搜索企微通知工具，输入wecom。最后进行安装。安装完成以后，记得刷新下页面，不然找不到这个企微通知工具。 2. 搭建考勤小助手因为在这里我演示的是一个考勤小助手，因...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/Happy.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">华子</div><div class="author-info-description">一个懂业务的AI产品经理</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Wangshixiong" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/wechat.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #07c160;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%88%9D%E7%89%88Demo"><span class="toc-number">1.</span> <span class="toc-text">1. 初版Demo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">创建应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E5%BA%93%E7%9A%84%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.</span> <span class="toc-text">知识库的简单说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E9%97%AE%E9%A2%98%E5%88%86%E7%B1%BB%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">增加问题分类器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%AD%A3%E5%BC%8F%E7%89%88%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">2. 正式版本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dify-%E4%B8%AD%E8%AE%B0%E5%BF%86%E5%B7%A5%E5%85%B7%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%B4%A2"><span class="toc-number">2.1.</span> <span class="toc-text">Dify 中记忆工具的运行机制探索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E8%AE%B0%E5%BF%86"><span class="toc-number">2.1.1.</span> <span class="toc-text">关闭记忆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E8%AE%B0%E5%BF%86"><span class="toc-number">2.1.2.</span> <span class="toc-text">打开记忆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E8%AE%B0%E5%BF%86%E7%AA%97%E5%8F%A3"><span class="toc-number">2.1.3.</span> <span class="toc-text">打开记忆窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%B0%E5%BF%86%E5%8A%9F%E8%83%BD%E6%80%BB%E7%BB%93"><span class="toc-number">2.1.4.</span> <span class="toc-text">记忆功能总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%AE%9E%E9%AA%8C%E6%96%B9%E6%A1%88"><span class="toc-number">2.2.</span> <span class="toc-text">开始实验方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E5%AE%9E%E9%AA%8C"><span class="toc-number">2.3.</span> <span class="toc-text">方案实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#query-%E6%94%B9%E5%86%99%E8%8A%82%E7%82%B9"><span class="toc-number">2.4.</span> <span class="toc-text">query 改写节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E8%AF%8D%E9%97%AE%E9%A2%98"><span class="toc-number">2.4.1.</span> <span class="toc-text">提示词问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">2.4.2.</span> <span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E6%96%B9%E6%A1%88"><span class="toc-number">2.5.</span> <span class="toc-text">最终方案</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/d280b05a/" title="我用AI开发Dify工具，意外发现一个“邪修”法门：让它自己对答案"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我用AI开发Dify工具，意外发现一个“邪修”法门：让它自己对答案"/></a><div class="content"><a class="title" href="/posts/d280b05a/" title="我用AI开发Dify工具，意外发现一个“邪修”法门：让它自己对答案">我用AI开发Dify工具，意外发现一个“邪修”法门：让它自己对答案</a><time datetime="2025-08-23T01:01:43.000Z" title="发表于 2025-08-23 09:01:43">2025-08-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2c813f5f/" title="保姆级教程：手把手教你用Dify实现完美多轮对话（附Chatflow和提示词）"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE4.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="保姆级教程：手把手教你用Dify实现完美多轮对话（附Chatflow和提示词）"/></a><div class="content"><a class="title" href="/posts/2c813f5f/" title="保姆级教程：手把手教你用Dify实现完美多轮对话（附Chatflow和提示词）">保姆级教程：手把手教你用Dify实现完美多轮对话（附Chatflow和提示词）</a><time datetime="2025-08-08T17:10:08.000Z" title="发表于 2025-08-09 01:10:08">2025-08-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/ab99b4f4/" title="保险产品推荐">保险产品推荐</a><time datetime="2025-08-05T14:10:32.000Z" title="发表于 2025-08-05 22:10:32">2025-08-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2302d3f7/" title="“如果不是AI，我肯定搞不定”：我用Vercel重构个人博客，顺手实现了“图片一键搬家”"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E2%80%9C%E5%A6%82%E6%9E%9C%E4%B8%8D%E6%98%AFAI%EF%BC%8C%E6%88%91%E8%82%AF%E5%AE%9A%E6%90%9E%E4%B8%8D%E5%AE%9A%E2%80%9D%EF%BC%9A%E6%88%91%E7%94%A8Vercel%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%8C%E9%A1%BA%E6%89%8B%E5%AE%9E%E7%8E%B0%E4%BA%86%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%80%E9%94%AE%E6%90%AC%E5%AE%B6%E2%80%9D.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="“如果不是AI，我肯定搞不定”：我用Vercel重构个人博客，顺手实现了“图片一键搬家”"/></a><div class="content"><a class="title" href="/posts/2302d3f7/" title="“如果不是AI，我肯定搞不定”：我用Vercel重构个人博客，顺手实现了“图片一键搬家”">“如果不是AI，我肯定搞不定”：我用Vercel重构个人博客，顺手实现了“图片一键搬家”</a><time datetime="2025-07-26T15:10:08.000Z" title="发表于 2025-07-26 23:10:08">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/58184c34/" title="当产品经理开始AI编程(二)：从一次失败的重构中领悟的AI协作之道"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/20250712131403872.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="当产品经理开始AI编程(二)：从一次失败的重构中领悟的AI协作之道"/></a><div class="content"><a class="title" href="/posts/58184c34/" title="当产品经理开始AI编程(二)：从一次失败的重构中领悟的AI协作之道">当产品经理开始AI编程(二)：从一次失败的重构中领悟的AI协作之道</a><time datetime="2025-07-11T15:42:35.000Z" title="发表于 2025-07-11 23:42:35">2025-07-11</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2025 By 华子</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">2</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'WxBDBLPoSvMihNTnoWJXROpq-gzGzoHsz',
+      appKey: 'n6Y96eiGJ8wAGJfv9t4uOEfd',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
