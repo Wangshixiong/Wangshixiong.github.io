@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！ | 吏部侍郎</title><meta name="author" content="华子"><meta name="copyright" content="华子"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="如果你想在使用dify知识库的实现下面的图文混排效果，那你非常有必要读一下这篇文章。  我发现，目前实现这样的图文混排效果应该是有两种方案： 使用图床或者直接将word文件导入知识库。 大家用知识库多的话，或者大模型多的话，可能都知道大模型其实非常擅长理解markdown文件，图床就是markdown中的图像在网络上存储的位置。 而word导入知识库以后，word中的图片会被dify的知识库解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！">
+<meta property="og:url" content="https://www.wenhuateng.top/posts/db1bad86/index.html">
+<meta property="og:site_name" content="吏部侍郎">
+<meta property="og:description" content="如果你想在使用dify知识库的实现下面的图文混排效果，那你非常有必要读一下这篇文章。  我发现，目前实现这样的图文混排效果应该是有两种方案： 使用图床或者直接将word文件导入知识库。 大家用知识库多的话，或者大模型多的话，可能都知道大模型其实非常擅长理解markdown文件，图床就是markdown中的图像在网络上存储的位置。 而word导入知识库以后，word中的图片会被dify的知识库解析">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE1.jpg">
+<meta property="article:published_time" content="2025-11-15T16:46:40.000Z">
+<meta property="article:modified_time" content="2025-11-15T16:51:36.253Z">
+<meta property="article:author" content="华子">
+<meta property="article:tag" content="Dify">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE1.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！",
+  "url": "https://www.wenhuateng.top/posts/db1bad86/",
+  "image": "https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE1.jpg",
+  "datePublished": "2025-11-15T16:46:40.000Z",
+  "dateModified": "2025-11-15T16:51:36.253Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "华子",
+      "url": "https://www.wenhuateng.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.svg"><link rel="canonical" href="https://www.wenhuateng.top/posts/db1bad86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":"繁","translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/Happy.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">吏部侍郎</span></a><a class="nav-page-title" href="/"><span class="site-name">Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-15T16:46:40.000Z" title="发表于 2025-11-16 00:46:40">2025-11-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-15T16:51:36.253Z" title="更新于 2025-11-16 00:51:36">2025-11-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Dify/">Dify</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE1.jpg" alt="Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！"></p>
+<p>如果你想在使用<code>dify</code>知识库的实现下面的<strong>图文混排</strong>效果，那你非常有必要读一下这篇文章。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%9B%BE%E6%96%87%E6%B7%B7%E6%8E%92.png" alt="图文混排"></p>
+<p>我发现，目前实现这样的图文混排效果应该是有两种方案：</p>
+<p><strong>使用图床或者直接将word文件导入知识库</strong>。</p>
+<p>大家用知识库多的话，或者大模型多的话，可能都知道大模型其实非常擅长理解markdown文件，图床就是markdown中的图像在网络上存储的位置。</p>
+<p>而word导入知识库以后，word中的图片会被<code>dify</code>的知识库解析，然后存储到<code>dify</code>所在的服务器。</p>
+<p>上面的这两种方案，其实本质上的原理，都是<strong>使用的<code>dify</code>的前端是支持markdown渲染</strong>的。因此，markdown的图片渲染也是支持的。</p>
+<p>下面实验的<code>dify</code>版本是1.9.2，win11环境，docker启动。</p>
+<h2 id="markdown图床"><a href="#markdown图床" class="headerlink" title="markdown图床"></a>markdown图床</h2><p>使用markdown图床的方式，实现知识库答案的图文混排。</p>
+<p>前几天，我们怕了E大很多的文章，这里我们就以E大的文章为例。</p>
+<p>如果大家看了之前的文章的话：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/xAkWj1k-lc4pvP-upxU23A">从被 Trae 气到崩溃，到用 Gemini 一次跑通，终于爬下了孟岩和E大的全部理财干货</a></p>
+<p>可能看到了我爬取得markdown文档图片是在本地电脑上存储的，在markdown中的引用方式如下：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/markdown%E5%91%BD%E5%90%8D.png" alt="markdown命名"></p>
+<p>所以我们首先要将它上传到一个图床，这里我实验吗，所以直接用的自己的阿里云oss。</p>
+<p>如果大家在公司内部使用的话，可能需要自建一个图床，因此<strong>相对来说图床的方案会有服务器，所以成本会高一些</strong>。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E9%98%BF%E9%87%8C%E4%BA%91oss%E5%9B%BE%E5%BA%8A%E5%9C%B0%E5%9D%80.png" alt="阿里云oss图床地址"></p>
+<p>接下来我们开始建立知识库：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%AF%BC%E5%85%A5%E7%9F%A5%E8%AF%86%E5%BA%93.png" alt="导入知识库"></p>
+<p>选择分块逻辑：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%88%86%E5%9D%97.png" alt="分块"></p>
+<p>这里大家可以看到我在markdown文本中，将每个主题相同的大块使用##这种二级标题符号进行了隔离，所以我们在<code>dify</code>知识库建立的时候，分隔符可以选择##。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%88%86%E5%9D%97%E9%80%BB%E8%BE%91%E5%92%8C%E9%A2%84%E8%A7%88.png" alt="分块逻辑和预览"></p>
+<p>这里大家需要特别注意一点，就是你的<strong>分块长度不能太短，不然可能会导致图片的URL地址被截断</strong>，直接导致后续知识库的输出就无法输出完整地URL，当然，也就没办法实现图文混排了。</p>
+<p>下面我们做一下召回测试，大家可以看到是可以召回图片的：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%8F%AC%E5%9B%9E%E6%B5%8B%E8%AF%95.png" alt="召回测试"></p>
+<p>这里我开始其实是碰到了一个问题的，就是图片无法加载，只显示了图片链接，后来看浏览器控制台，发现图片访问<code>403forbidden</code>了。</p>
+<p>我就抓紧回忆了下，我在阿里云<code>oss</code>的bucket里面开启了白名单 <code>Referer</code>，没有将本地的<code>http://localhost/</code>加入白名单，后来改掉以后就正常了。</p>
+<p>ok，下面我们开始测试，配置一个简单地chatflow：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/markdown%E5%9B%BE%E6%96%87%E6%B7%B7%E6%8E%92%E6%B5%8B%E8%AF%95.png" alt="markdown图文混排测试"></p>
+<p>提示词很简单是：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section">### 角色</span></span><br><span class="line">你是一个严谨、专业的问答助手。你的唯一任务是基于下面提供的“知识库检索结果”来回答“用户问题”。</span><br><span class="line"></span><br><span class="line"><span class="section">### 核心规则</span></span><br><span class="line"><span class="bullet">1.</span>  <span class="strong">**内容来源**</span>：你的回答必须<span class="strong">**严格且完全**</span>基于“知识库检索结果”中的信息。</span><br><span class="line"><span class="bullet">2.</span>  <span class="strong">**禁止编造**</span>：严禁使用任何“知识库检索结果”之外的信息。如果“知识库检索结果”为空，或内容与“用户问题”完全无关，你<span class="strong">**必须**</span>直接回答：“抱歉，我没有找到相关信息。”</span><br><span class="line"><span class="bullet">3.</span>  <span class="strong">**图片处理（关键指令）**</span>：</span><br><span class="line"><span class="bullet">    *</span> <span class="strong">**检测**</span>：在生成回答前，必须检查“知识库检索结果”的文本中是否包含图片链接（如 <span class="code">`http://.../img.jpg`</span> 或 <span class="code">`https://.../image.png`</span>）。</span><br><span class="line"><span class="bullet">    *</span> <span class="strong">**嵌入**</span>：如果检测到图片链接，你<span class="strong">**必须**</span>在回答中，将该图片以 Markdown 格式 (<span class="code">`![图片描述](图片链接)`</span>) 插入到最相关的文本段落旁边，实现图文并茂的效果。</span><br><span class="line"><span class="bullet">    *</span> <span class="strong">**格式**</span>：确保图片始终以 <span class="code">`![alt text](url)`</span> 的 Markdown 格式返回。</span><br><span class="line"><span class="bullet">4.</span>  <span class="strong">**结构化输出（新要求）**</span>：</span><br><span class="line"><span class="bullet">    *</span> <span class="strong">**条理**</span>：回答应条理清晰，尽可能使用有序列表（1., 2., 3.）或无序列表（-）来组织步骤或多个要点。</span><br><span class="line"><span class="section">    * <span class="strong">**高亮**</span>：对回答中的关键概念、术语、重要数据或结论性句子，使用<span class="strong">**加粗**</span>进行重点标记。</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**知识库检索结果**</span>：&#123;&#123;#context#&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果如下，非常完美：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/md%E5%9B%BE%E5%BA%8A%E7%9F%A5%E8%AF%86%E5%BA%93%E5%9B%9E%E7%AD%94.png" alt="md图床知识库回答"></p>
+<p>这是llm的答案结构：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;根据提供的知识库检索结果，**网格1.0的主要缺点**是：\n\n- **在一波强势上涨中，盈利不足**。例如，在2015年底到2016年底的一波接近**80%的暴涨**中，网格1.0的每一格投入只赚了**5%～8%**。虽然所有投入都赚钱且后续下跌都躲过了，但这种策略会导致投资者在看到品种价格大幅上涨（如从0.4涨到0.8）后，对自己在最低位买入却仅赚取微小利润就卖出的操作感到**极度不满意**。\n\n![示例图片](https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/bc64276f1281652a7cdcc43127337501.png)\n\n![示例图片](https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/e98459d58447196c2f9a919eab54ba73.png)\n\n**核心问题**是网格1.0无法充分捕获大趋势行情中的利润，因此在强势单边上涨市场中表现不佳。这也促使了网格2.0版本的开发，通过子策略组合来优化这一问题.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="总结一下Markdown-图床"><a href="#总结一下Markdown-图床" class="headerlink" title="总结一下Markdown + 图床"></a>总结一下Markdown + 图床</h3><p><strong>核心收益</strong>是：</p>
+<ul>
+<li><strong>灵活性高</strong>：知识库源文件（Markdown）和图片资源（图床）是分离的，未来无论迁移到哪个系统，都非常方便。</li>
+<li><strong>方便管理</strong>：图片资源集中在图床（如 OSS）管理，查找、替换都很方便。</li>
+</ul>
+<p>但是<strong>缺点</strong>也很明显：</p>
+<ul>
+<li><strong>成本</strong>：需要额外的图床服务器或对象存储服务费用。</li>
+<li><strong>运维</strong>：需要处理图床的访问权限、白名单（就像我遇到的 Referer 问题），甚至要多维护一个系统。</li>
+</ul>
+<h2 id="word混排方案"><a href="#word混排方案" class="headerlink" title="word混排方案"></a>word混排方案</h2><p>word混排方案和md图床方案的差别就是，知识库我们上传的是word。</p>
+<p>word知识库上传时，我们选择分隔符是\n\n，我这里将md格式导出为word以后，特意在每个章节中间加了两个分隔符。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/word%E4%B8%A4%E4%B8%AA%E6%8D%A2%E8%A1%8C%E7%AC%A6.png" alt="word两个换行符"></p>
+<p>大家可以看到预览时，这里也有一个相对的文件地址：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%9B%BE%E7%89%87%E7%9B%B8%E5%AF%B9%E5%9C%B0%E5%9D%80.png" alt="图片相对地址"></p>
+<p>大家可以看到，图片也可以被渲染出来：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/word%E5%9B%BE%E7%89%87%E5%8F%AC%E5%9B%9E%E6%B5%8B%E8%AF%95.png" alt="word图片召回测试"></p>
+<p>那这个图片是在哪里存储呢？看这个地址，我就知道他一定在本地，那到底在哪里呢。</p>
+<p>我们问问<code>Trae</code>（或者任何一个AI 的IDE或者<code>Claude code</code>），让他来看看代码，帮我们找找答案。</p>
+<p>下面这个提示词时经过Trae优化的。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">针对在本地使用Docker启动的Dify系统中，当向知识库上传Word文档后，文档中包含的图片文件的存储位置及知识库引用方式进行深入分析。请详细说明以下内容：</span><br><span class="line">1) 图片文件在Docker容器内及宿主机上的具体存储路径结构；</span><br><span class="line">2) 系统内部对图片资源的引用机制，包括但不限于数据库记录方式、URL生成规则及访问权限控制；</span><br><span class="line">3) 图片资源在知识库检索和展示过程中的调用流程；</span><br><span class="line">4) 相关配置文件中与图片存储相关的关键参数说明。请提供具体的路径示例、引用格式样例及必要的技术细节，以清晰展示Dify系统处理Word文档中图片资源的完整机制。</span><br></pre></td></tr></table></figure>
+
+<p>Trae的答案：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/word%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E5%9C%B0%E5%9D%80.png" alt="word图片存储地址"></p>
+<p>我们去目录下看看，果然是：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E6%9E%9C%E7%84%B6%E6%98%AF%E5%9B%BE%E7%89%87.png" alt="果然是图片"></p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B1%95%E7%A4%BA%E8%BF%87%E7%A8%8B.png" alt="展示过程"></p>
+<p>那其他格式的文档会进行存储吗？</p>
+<p>我们也问问，这是trae分析代码的答案，看来是不会了。只有word。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E6%9B%BF%E4%BB%96%E6%A0%BC%E5%BC%8F%E6%96%87%E6%A1%A3%E4%BC%9A%E8%A7%A3%E6%9E%90%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E5%90%97.png" alt="替他格式文档会解析图片存储吗"></p>
+<p>ok我们将<code>chatflow</code>中的知识库切换为word的知识库。试一下。</p>
+<p>很棒，也成功了：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/word%E5%9B%BE%E6%96%87%E6%B7%B7%E6%8E%92%E6%B5%8B%E8%AF%95.png" alt="word图文混排测试"></p>
+<p>这是LLM的答案：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;text&quot;</span><span class="punctuation">:</span> <span class="string">&quot;根据知识库检索结果，网格2.0的“留利润”子策略做法如下：\n\n**核心思想**：在每一次网格卖出操作中，将**利润部分留下**。由于这部分是0成本，因此可以无限期持有，不受市场短期波动影响，并有望获得长期收益。\n\n**具体做法（基础版本）**：\n1.  以初始价格（例如1元）买入一定金额（例如10000元）的品种，获得相应份额（例如10000份）。\n2.  当价格上涨至网格卖出点位（例如1.05元）时，执行卖出操作。\n3.  卖出时，**仅卖出收回本金所需的部分份额**，将利润对应的份额留下。\n    *   **举例说明**：1元买入10000元（10000份），在1.05元卖出时，卖出价值10000元的9524份，剩下的476份（即5%的利润）**永不卖出**，或仅在品种达到极度高估时才考虑卖出。\n    *   ![图片描述](/files/cad2594f-0da5-4148-ae78-cf2d3a36bbcc/file-preview?timestamp=1763220469&amp;nonce=f54aabad39232554bb59e5ff659ecab4&amp;sign=Dlu1LYRKokOj7BZkBFZaK4B2APHi9-2P9wQqAyptRbg=)\n\n**策略的进化（高级版本）**：\n你还可以选择**留下多于利润的本金**，实现更强的长期持仓效果。\n*   **举例说明（留双份利润）**：同样在1.05元卖出时，不仅可以留下5%的利润，还可以额外留下5%的本金。即卖出9048份（价值9500元），将500元利润与500元本金对应的份额留下，这部分**长期持有**或极度高估时再卖。\n*   ![图片描述](/files/93dd7685-c395-4cc6-998b-7ea399bab9cf/file-preview?timestamp=1763220469&amp;nonce=e4df11f32e6adea3dfc29990c695962b&amp;sign=U7x_KDEHYvBUK0IxjjPu_xr7KzRREucTINJVMYu7sE4=)\n\n**策略优势**：\n这种方法利用了**金融心理学**中的“心理账户”概念，将利润部分视为“免费得到”的资产，有助于**减少情绪化交易**，并能够享受到指数型品种**长期上涨**带来的收益。&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="word方案总结"><a href="#word方案总结" class="headerlink" title="word方案总结"></a>word方案总结</h3><p>所以word方案总结下来，就是成本短期相对低一些，不需要单独的图床服务器，图片存储在 <code>dify</code> 的 Docker 卷中，开箱即用。</p>
+<p>但是基本上无法迁移，而且图片还无法管理，因为图片都是完全的系统生成的名字。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>所以，到底怎么选择呢，一张表给大家总结下：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Markdown + 图床方案</th>
+<th>Word 导入方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>部署成本</strong></td>
+<td><strong>中</strong>（需要额外图床服务）</td>
+<td><strong>低</strong>（无额外服务）</td>
+</tr>
+<tr>
+<td><strong>操作便捷性</strong></td>
+<td><strong>中</strong>（需要上传图片到图床）</td>
+<td><strong>高</strong>（写完 Word 直接上传）</td>
+</tr>
+<tr>
+<td><strong>长期管理</strong></td>
+<td><strong>高</strong>（图片资源独立，易于维护）</td>
+<td><strong>低</strong>（图片存储黑盒，不易管理）</td>
+</tr>
+<tr>
+<td><strong>数据迁移性</strong></td>
+<td><strong>高</strong>（标准 Markdown，通用性强）</td>
+<td><strong>极低</strong>（图片链接与系统强绑定）</td>
+</tr>
+<tr>
+<td><strong>推荐场景</strong></td>
+<td>公司生产环境、长期项目、多人协作</td>
+<td>个人实验、快速原型、临时项目</td>
+</tr>
+</tbody></table>
+<p>这样看起来，大家是不是立刻知道如何选择了，所以：</p>
+<ul>
+<li><strong>想快速验证、不在乎以后？</strong> 那就用 Word 方案，省时省力。</li>
+<li><strong>但凡是公司用，考虑长期维护？</strong> 那图床这个服务器和服务运维的投入，我认为是绕不过去的坎。</li>
+</ul>
+<p>希望这个对比能帮你省下纠结的时间。</p>
+<p>以上，谢谢大家看我的文章，如果对大家有用的话，请大家一键三连！！！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.wenhuateng.top">华子</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.wenhuateng.top/posts/db1bad86/">https://www.wenhuateng.top/posts/db1bad86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.wenhuateng.top" target="_blank">吏部侍郎</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Dify/">Dify</a></div><div class="post-share"><div class="social-share" data-image="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE1.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/8d43a227/" title="从被 Trae 气到崩溃，到用 Gemini 一次跑通，终于爬下了孟岩和E大的全部理财干货"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E7%A7%91%E6%8A%80%E4%BA%A7%E5%93%81%E5%AE%A3%E4%BC%A0%E6%B5%B7%E6%8A%A5%EF%BC%8C%E6%AF%94%E4%BE%8B2.35_1%EF%BC%8C%E5%86%99%E5%AE%9E%E9%A3%8E%E6%A0%BC3D%E6%B8%B2%E6%9F%93%EF%BC%8C%E6%95%B4%E4%BD%93%E7%BB%9F%E4%B8%80%E7%9A%84%E6%B7%B1%E8%93%9D%E8%89%B2%E5%88%B0%E6%B5%85%E8%93%9D%E8%89%B2%E7%BB%86....png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">从被 Trae 气到崩溃，到用 Gemini 一次跑通，终于爬下了孟岩和E大的全部理财干货</div></div><div class="info-2"><div class="info-item-1"> 一直以来我都非常的喜欢孟岩和E大，所以特想把他们在网上的发言都收集起来，以便于自己学习。还想着后续也做一个知识库，随时随地学习他们的理财理念。 但是我之前一直目标瞄在了他们的微博上，但是我这个技术水平，爬取微博，每次最多1000多条微博，就GG了。 后来，突然想，其实孟岩最新的有知有行上面的理财教程和E大合集本身就是精华啊，我为什么不收集一下。 所以我就打开了有知有行的官网:  https://youzhiyouxing.cn/materials  在这里，必须感慨下，孟岩实在是太好了，他其实允许所有人读，免登录，直接阅读，后来在写爬虫的过程中，还发现他实际上是一个静态网站。 孟岩太酷了。 爬虫已经开源了：  https://github.com/Wangshixiong/youzhiyouxing  欢迎大家使用，但是请大家一定一定注意频率，避免对服务器造成压力，在此感谢孟岩老师。 现在主要是记录下爬虫的开发过程。 最终的成果展示：   起源其实我从网上找到了别人整理的有知有行中E大的发言，但是他是一个pdf文件，而且非常的没有条理，没有目录，没有标题，因为我后续是计划做知识...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/f3860a0a/" title="Dify官方没给的“触发器”，我用一个Webhook异步技巧“曲线救国”了"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/Dify%E5%AE%98%E6%96%B9%E6%B2%A1%E7%BB%99%E7%9A%84%E2%80%9C%E8%A7%A6%E5%8F%91%E5%99%A8%E2%80%9D%EF%BC%8C%E6%88%91%E7%94%A8%E4%B8%80%E4%B8%AAWebhook%E5%BC%82%E6%AD%A5%E6%8A%80%E5%B7%A7%E2%80%9C%E6%9B%B2%E7%BA%BF%E6%95%91%E5%9B%BD%E2%80%9D%E4%BA%86.jpeg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-26</div><div class="info-item-2">Dify官方没给的“触发器”，我用一个Webhook异步技巧“曲线救国”了</div></div><div class="info-2"><div class="info-item-1"> 不知道大家怎么落地大模型的。我现在完全都是从小事出发，因为搞业务，业务难搞。所以先把自己解放出来。 就比如，我比较烦一件事情，每次流程要求，需求评审之前必须发需求评审邮件，我挺烦这件事情，虽然那内容不复杂，但是每次都要自己写，从需求管理平台里面复制名字，链接，还要写评审时间，按照格式填充邮件模板，然后找抄送人发送人。 我就寻思让大模型给我干了。但是大模型又不知道我是什么需求，每次我给他打出来，那还不是很复杂吗。没必要啊。 所以就有了今天这个事儿。 我就用Dify搞了一下。 当然，自己解放出来就有更多时间思考业务，就比如这次这个事儿，完全可以复用用在很多其他场景，比如我要到时间了自动给客户发送一个个性的生日祝福，每次开发个http请求，调用官方api多麻烦啊。 dify又没有触发器，那还能咋整，我们自己想办法呗。 还有个点就是，我是真服了。网上那么多教程啊，文档啊，那都是给懂技术的老师写的，像我们这种，那是真难啊，要是没了AI，我想搞成这个事儿那是不可能的。 不多说废话了，我们开始哈。 这个文章有点长，我想记录下这个插件的使用方式，配置项是怎么用的，一个方式方便自己记录，另一个是...</div></div></div></a><a class="pagination-related" href="/posts/7e3d8aea/" title="在Dify工作流里，我为什么“剥夺”了大模型调用工具的能力？"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%9C%A8Dify%E5%B7%A5%E4%BD%9C%E6%B5%81%E9%87%8C%EF%BC%8C%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9C%E5%89%A5%E5%A4%BA%E2%80%9D%E4%BA%86%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%B0%83%E7%94%A8%E5%B7%A5%E5%85%B7%E7%9A%84%E8%83%BD%E5%8A%9B%EF%BC%9F--%E5%B0%81%E9%9D%A22.jpeg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-29</div><div class="info-item-2">在Dify工作流里，我为什么“剥夺”了大模型调用工具的能力？</div></div><div class="info-2"><div class="info-item-1"> 在生产环境用 Dify，我们最头疼的就是大模型的不确定性。 让 Agent 节点自己调用工具，结果总会有点飘。 今天分享一个能让工作流更稳定、更可控的小技巧： 就是我们可以将MCP中的工具作为工具节点直接插入dify的工作流中。 不知道大家有没有注意到我上一篇文章的一个使用方式：  这里我直接将腾讯的Edgeone-Pages当做一个工具节点了。大家可以看到它是一个工具，这个实际上是我从dify的插件市场下载的一个工具插件，最主要是这玩意儿必须要申请APIkey.而且它输出的text不是url，还需要我从json中提取，所以我加了一个模板转换节点。 虽然他的apikey申请起来并不是特别费劲。 但是大家如果之前在其他地方用过腾讯这个网页部署的mcp服务的话，应该是知道，他是不需要key的。  所以，比如我们可以直接登录modelscope（魔塔社区），开通一下这个服务。 魔塔社区EdgeOne Pages · MCP  然后配置到你的dify里面：  接下来，我们就可以直接再工作流里面把MCP中的工具，直接当做工具引用了。  大家看下效果：  当然，这只是非常简短的一个案例。 ...</div></div></div></a><a class="pagination-related" href="/posts/41bc2162/" title="保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-04-04</div><div class="info-item-2">保险代理人必备技能？一键生成走心又专业的客户生日祝福网页！</div></div><div class="info-2"><div class="info-item-1">需求背景：保后管理部，会每天人工统计及整理C-M1数据，入账及回盘相关的数据，最后汇总整理相关话术，发送到微信群。于是咨询我能不能使用Deepseek等大模型实现。前两天，我正在用大模型，于是肯定的回复，是可以的。今天又在开源平台dify上实验了下，也顺利成功。 这里我以一个考勤小助手为例，给大家演示一下搭建步骤。 首先，本文主要用的工具如下：  Dify(一个开源的Agent编排平台)企业微信LLM：Deepseek-V3-0324  1. 新建应用+安装企微通知工具1.1新建空白应用&amp;实现逻辑梳理打开https://dify.ai/zh，选择开始使用。进行注册和登录。创建空白应用—选择工作流。首先思考下整体会用到哪些节点。  我们是考勤小助手，因此肯定会用到考勤相关的规章制度，需要一个知识库。 还需要一个LLM节点来进行格式整理。 需要一个企微的通知节点。  1.2 安装企微通知工具选择添加节点——工具。搜索企微通知工具，输入wecom。最后进行安装。安装完成以后，记得刷新下页面，不然找不到这个企微通知工具。 2. 搭建考勤小助手因为在这里我演示的是一个考勤小助手，因...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/Happy.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">华子</div><div class="author-info-description">一个懂业务的AI产品经理</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Wangshixiong" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/wechat.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #07c160;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown%E5%9B%BE%E5%BA%8A"><span class="toc-number">1.</span> <span class="toc-text">markdown图床</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8BMarkdown-%E5%9B%BE%E5%BA%8A"><span class="toc-number">1.1.</span> <span class="toc-text">总结一下Markdown + 图床</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#word%E6%B7%B7%E6%8E%92%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">word混排方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#word%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93"><span class="toc-number">2.1.</span> <span class="toc-text">word方案总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">3.</span> <span class="toc-text">最后</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/db1bad86/" title="Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！"/></a><div class="content"><a class="title" href="/posts/db1bad86/" title="Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！">Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！</a><time datetime="2025-11-15T16:46:40.000Z" title="发表于 2025-11-16 00:46:40">2025-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/8d43a227/" title="从被 Trae 气到崩溃，到用 Gemini 一次跑通，终于爬下了孟岩和E大的全部理财干货"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E7%A7%91%E6%8A%80%E4%BA%A7%E5%93%81%E5%AE%A3%E4%BC%A0%E6%B5%B7%E6%8A%A5%EF%BC%8C%E6%AF%94%E4%BE%8B2.35_1%EF%BC%8C%E5%86%99%E5%AE%9E%E9%A3%8E%E6%A0%BC3D%E6%B8%B2%E6%9F%93%EF%BC%8C%E6%95%B4%E4%BD%93%E7%BB%9F%E4%B8%80%E7%9A%84%E6%B7%B1%E8%93%9D%E8%89%B2%E5%88%B0%E6%B5%85%E8%93%9D%E8%89%B2%E7%BB%86....png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从被 Trae 气到崩溃，到用 Gemini 一次跑通，终于爬下了孟岩和E大的全部理财干货"/></a><div class="content"><a class="title" href="/posts/8d43a227/" title="从被 Trae 气到崩溃，到用 Gemini 一次跑通，终于爬下了孟岩和E大的全部理财干货">从被 Trae 气到崩溃，到用 Gemini 一次跑通，终于爬下了孟岩和E大的全部理财干货</a><time datetime="2025-11-09T05:53:46.000Z" title="发表于 2025-11-09 13:53:46">2025-11-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7e3d8aea/" title="在Dify工作流里，我为什么“剥夺”了大模型调用工具的能力？"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%9C%A8Dify%E5%B7%A5%E4%BD%9C%E6%B5%81%E9%87%8C%EF%BC%8C%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9C%E5%89%A5%E5%A4%BA%E2%80%9D%E4%BA%86%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%B0%83%E7%94%A8%E5%B7%A5%E5%85%B7%E7%9A%84%E8%83%BD%E5%8A%9B%EF%BC%9F--%E5%B0%81%E9%9D%A22.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Dify工作流里，我为什么“剥夺”了大模型调用工具的能力？"/></a><div class="content"><a class="title" href="/posts/7e3d8aea/" title="在Dify工作流里，我为什么“剥夺”了大模型调用工具的能力？">在Dify工作流里，我为什么“剥夺”了大模型调用工具的能力？</a><time datetime="2025-10-29T15:54:14.000Z" title="发表于 2025-10-29 23:54:14">2025-10-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/f3860a0a/" title="Dify官方没给的“触发器”，我用一个Webhook异步技巧“曲线救国”了"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/Dify%E5%AE%98%E6%96%B9%E6%B2%A1%E7%BB%99%E7%9A%84%E2%80%9C%E8%A7%A6%E5%8F%91%E5%99%A8%E2%80%9D%EF%BC%8C%E6%88%91%E7%94%A8%E4%B8%80%E4%B8%AAWebhook%E5%BC%82%E6%AD%A5%E6%8A%80%E5%B7%A7%E2%80%9C%E6%9B%B2%E7%BA%BF%E6%95%91%E5%9B%BD%E2%80%9D%E4%BA%86.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dify官方没给的“触发器”，我用一个Webhook异步技巧“曲线救国”了"/></a><div class="content"><a class="title" href="/posts/f3860a0a/" title="Dify官方没给的“触发器”，我用一个Webhook异步技巧“曲线救国”了">Dify官方没给的“触发器”，我用一个Webhook异步技巧“曲线救国”了</a><time datetime="2025-10-26T08:18:14.000Z" title="发表于 2025-10-26 16:18:14">2025-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/28dde3d3/" title="醒醒！AI编程工具压根不是给程序员的，而是给每一个想“偷懒”的你"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E9%86%92%E9%86%92%EF%BC%81AI%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7%E5%8E%8B%E6%A0%B9%E4%B8%8D%E6%98%AF%E7%BB%99%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%EF%BC%8C%E8%80%8C%E6%98%AF%E7%BB%99%E6%AF%8F%E4%B8%80%E4%B8%AA%E6%83%B3%E2%80%9C%E5%81%B7%E6%87%92%E2%80%9D%E7%9A%84%E4%BD%A0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="醒醒！AI编程工具压根不是给程序员的，而是给每一个想“偷懒”的你"/></a><div class="content"><a class="title" href="/posts/28dde3d3/" title="醒醒！AI编程工具压根不是给程序员的，而是给每一个想“偷懒”的你">醒醒！AI编程工具压根不是给程序员的，而是给每一个想“偷懒”的你</a><time datetime="2025-10-17T13:53:27.000Z" title="发表于 2025-10-17 21:53:27">2025-10-17</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 华子</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">2</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'WxBDBLPoSvMihNTnoWJXROpq-gzGzoHsz',
+      appKey: 'n6Y96eiGJ8wAGJfv9t4uOEfd',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
