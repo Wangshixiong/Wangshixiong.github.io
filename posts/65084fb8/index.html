@@ -1,0 +1,461 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Claude Code斜杠命令进阶：从自动化提交到智能分支管理 | 吏部侍郎</title><meta name="author" content="华子"><meta name="copyright" content="华子"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言在使用 Claude Code 的过程中，我发现了一个非常实用的斜杠命令：&#x2F;git-commit。这个命令实现了从简单的自动化提交到智能分支管理的完整演进过程。本文将记录这个命令从最初版本到现在的完整演变历程。  版本1.0：基础自动化提交需求背景最初的需求很简单：每次写完代码后，都要手动执行一系列 git 操作：  git add . git status 查看变更 git diff --c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code斜杠命令进阶：从自动化提交到智能分支管理">
+<meta property="og:url" content="https://www.wenhuateng.top/posts/65084fb8/index.html">
+<meta property="og:site_name" content="吏部侍郎">
+<meta property="og:description" content="前言在使用 Claude Code 的过程中，我发现了一个非常实用的斜杠命令：&#x2F;git-commit。这个命令实现了从简单的自动化提交到智能分支管理的完整演进过程。本文将记录这个命令从最初版本到现在的完整演变历程。  版本1.0：基础自动化提交需求背景最初的需求很简单：每次写完代码后，都要手动执行一系列 git 操作：  git add . git status 查看变更 git diff --c">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.unsplash.com/photo-1617791160505-6f00504e3519">
+<meta property="article:published_time" content="2026-01-03T04:30:45.000Z">
+<meta property="article:modified_time" content="2026-01-03T04:30:45.606Z">
+<meta property="article:author" content="华子">
+<meta property="article:tag" content="Claude Code">
+<meta property="article:tag" content="斜杠命令">
+<meta property="article:tag" content="Git自动化">
+<meta property="article:tag" content="工作流优化">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1617791160505-6f00504e3519"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Claude Code斜杠命令进阶：从自动化提交到智能分支管理",
+  "url": "https://www.wenhuateng.top/posts/65084fb8/",
+  "image": "https://images.unsplash.com/photo-1617791160505-6f00504e3519",
+  "datePublished": "2026-01-03T04:30:45.000Z",
+  "dateModified": "2026-01-03T04:30:45.606Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "华子",
+      "url": "https://www.wenhuateng.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.svg"><link rel="canonical" href="https://www.wenhuateng.top/posts/65084fb8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":"繁","translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Claude Code斜杠命令进阶：从自动化提交到智能分支管理',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/Happy.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">吏部侍郎</span></a><a class="nav-page-title" href="/"><span class="site-name">Claude Code斜杠命令进阶：从自动化提交到智能分支管理</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Claude Code斜杠命令进阶：从自动化提交到智能分支管理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-01-03T04:30:45.000Z" title="发表于 2026-01-03 12:30:45">2026-01-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-03T04:30:45.606Z" title="更新于 2026-01-03 12:30:45">2026-01-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AI%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">AI效率工具</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在使用 Claude Code 的过程中，我发现了一个非常实用的斜杠命令：<code>/git-commit</code>。这个命令实现了从简单的自动化提交到智能分支管理的完整演进过程。本文将记录这个命令从最初版本到现在的完整演变历程。</p>
+<hr>
+<h2 id="版本1-0：基础自动化提交"><a href="#版本1-0：基础自动化提交" class="headerlink" title="版本1.0：基础自动化提交"></a>版本1.0：基础自动化提交</h2><h3 id="需求背景"><a href="#需求背景" class="headerlink" title="需求背景"></a>需求背景</h3><p>最初的需求很简单：每次写完代码后，都要手动执行一系列 git 操作：</p>
+<ol>
+<li><code>git add .</code></li>
+<li><code>git status</code> 查看变更</li>
+<li><code>git diff --cached</code> 查看具体修改内容</li>
+<li>手动思考写什么 commit message</li>
+<li><code>git commit -m &quot;xxx&quot;</code></li>
+</ol>
+<p>这个过程虽然简单，但重复执行非常繁琐。</p>
+<h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><p>创建了第一个版本的 <code>/.claude/commands/git-commit.md</code>：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">description: &quot;【全自动】一键执行 git add . 并自动生成信息提交&quot;</span><br><span class="line">argument-hint: &quot;[可选：指定提交意图或关键词]&quot;</span><br><span class="line"><span class="section">allowed-tools: Bash(git add:<span class="emphasis">*), Bash(git diff:*</span>), Bash(git status:<span class="emphasis">*), Bash(git commit:*</span>)</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line">正在执行全量暂存操作...</span><br><span class="line">!<span class="code">`git add .`</span></span><br><span class="line"></span><br><span class="line">获取当前暂存区状态...</span><br><span class="line">!<span class="code">`git status`</span></span><br><span class="line"></span><br><span class="line">读取变更内容以生成日志...</span><br><span class="line">!<span class="code">`git diff --cached`</span></span><br><span class="line"></span><br><span class="line">你是一个高效的自动化构建助手。请根据变更内容生成符合 Conventional Commits 格式的中文提交信息。</span><br></pre></td></tr></table></figure>
+
+<h3 id="功能特点"><a href="#功能特点" class="headerlink" title="功能特点"></a>功能特点</h3><ul>
+<li>✅ 自动执行 <code>git add .</code></li>
+<li>✅ 自动分析代码变更</li>
+<li>✅ 生成符合规范的 commit message（feat&#x2F;fix&#x2F;docs 等）</li>
+<li>✅ 支持手动指定提交意图参数</li>
+</ul>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 自动生成提交信息</span></span><br><span class="line">/git-commit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定提交意图</span></span><br><span class="line">/git-commit 优化用户认证逻辑</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="版本2-0：分支检测与条件推送"><a href="#版本2-0：分支检测与条件推送" class="headerlink" title="版本2.0：分支检测与条件推送"></a>版本2.0：分支检测与条件推送</h2><h3 id="新需求"><a href="#新需求" class="headerlink" title="新需求"></a>新需求</h3><p>在实际使用中，我创建了本地分支 <code>local-minote</code> 用于跟踪不希望推送到远程的文件（如个人笔记 minote&#x2F;）。这时遇到了问题：</p>
+<ul>
+<li><code>local-minote</code> 分支的提交不应该推送到远程</li>
+<li><code>main</code> 分支的提交需要推送</li>
+</ul>
+<h3 id="实现方案-1"><a href="#实现方案-1" class="headerlink" title="实现方案"></a>实现方案</h3><p>在版本1.0的基础上添加了分支检测和条件推送逻辑：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="section">allowed-tools: Bash(git add:<span class="emphasis">*), Bash(git diff:*</span>), Bash(git status:<span class="emphasis">*), Bash(git commit:*</span>), Bash(git branch:<span class="emphasis">*), Bash(git push:*</span>)</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line">获取当前分支信息...</span><br><span class="line">!<span class="code">`git branch --show-current`</span></span><br><span class="line"></span><br><span class="line"><span class="section"># ... 省略前面的逻辑 ...</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">3.</span>  <span class="strong">**条件推送**</span>：</span><br><span class="line"><span class="bullet">    *</span> 从 <span class="code">`git branch --show-current`</span> 的输出获取当前分支名称。</span><br><span class="line"><span class="bullet">    *</span> <span class="strong">**如果当前分支是 `main`**</span>：执行 <span class="code">`git push`</span> 推送到远程仓库。</span><br><span class="line"><span class="bullet">    *</span> <span class="strong">**如果当前分支不是 `main`**</span>：跳过推送，只保留本地提交。</span><br></pre></td></tr></table></figure>
+
+<h3 id="功能特点-1"><a href="#功能特点-1" class="headerlink" title="功能特点"></a>功能特点</h3><ul>
+<li>✅ 自动检测当前分支</li>
+<li>✅ <code>main</code> 分支：commit + push</li>
+<li>✅ 其他分支：只 commit，不推送</li>
+</ul>
+<h3 id="使用效果"><a href="#使用效果" class="headerlink" title="使用效果"></a>使用效果</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在 main 分支</span></span><br><span class="line">/git-commit</span><br><span class="line"><span class="comment"># → git add . → git commit → git push ✅</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在 local-minote 分支</span></span><br><span class="line">/git-commit</span><br><span class="line"><span class="comment"># → git add . → git commit（不推送）✅</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="版本3-0：智能文件检测与双分支同步（当前版本）"><a href="#版本3-0：智能文件检测与双分支同步（当前版本）" class="headerlink" title="版本3.0：智能文件检测与双分支同步（当前版本）"></a>版本3.0：智能文件检测与双分支同步（当前版本）</h2><h3 id="新需求-1"><a href="#新需求-1" class="headerlink" title="新需求"></a>新需求</h3><p>使用版本2.0一段时间后，又发现了新的问题：</p>
+<p>虽然 <code>local-minote</code> 分支不会推送，但实际工作流程是：</p>
+<ol>
+<li>一直在 <code>main</code> 分支工作</li>
+<li>偶尔会修改 <code>minote/</code> 文件夹（个人笔记）</li>
+<li>修改 <code>minote/</code> 后，需要手动切换到 <code>local-minote</code> 分支提交</li>
+<li>再切回 <code>main</code> 分支提交其他内容</li>
+</ol>
+<p>这个流程依然繁琐。</p>
+<h3 id="期望的工作流程"><a href="#期望的工作流程" class="headerlink" title="期望的工作流程"></a>期望的工作流程</h3><p><strong>核心需求</strong>：自动检测 <code>minote/</code> 是否有变更，智能决定处理方式。</p>
+<h4 id="场景1：minote-没有变更"><a href="#场景1：minote-没有变更" class="headerlink" title="场景1：minote/ 没有变更"></a>场景1：<code>minote/</code> 没有变更</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">保持当前分支不变</span><br><span class="line">↓</span><br><span class="line">git add .</span><br><span class="line">↓</span><br><span class="line">生成提交信息</span><br><span class="line">↓</span><br><span class="line">git commit</span><br><span class="line">↓</span><br><span class="line">如果当前是 main → git push ✅</span><br><span class="line">如果当前是 local-minote → 不推送 🚫</span><br></pre></td></tr></table></figure>
+
+<h4 id="场景2：minote-有变更"><a href="#场景2：minote-有变更" class="headerlink" title="场景2：minote/ 有变更"></a>场景2：<code>minote/</code> 有变更</h4><p><strong>如果在 <code>main</code> 分支</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">切换到 local-minote 分支</span><br><span class="line">↓</span><br><span class="line">git add . + commit（包含 minote/）</span><br><span class="line">↓</span><br><span class="line">切换回 main 分支</span><br><span class="line">↓</span><br><span class="line">git add . + commit + push（不包含 minote/）</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果在 <code>local-minote</code> 分支</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add . + commit（包含 minote/）</span><br><span class="line">↓</span><br><span class="line">切换到 main 分支</span><br><span class="line">↓</span><br><span class="line">git add . + commit + push（不包含 minote/）</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现方案-2"><a href="#实现方案-2" class="headerlink" title="实现方案"></a>实现方案</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="section">allowed-tools: Bash(git add:<span class="emphasis">*), Bash(git diff:*</span>), Bash(git status:<span class="emphasis">*), Bash(git commit:*</span>), Bash(git branch:<span class="emphasis">*), Bash(git push:*</span>), Bash(git checkout:<span class="emphasis">*)</span></span></span><br><span class="line"><span class="emphasis"><span class="section">---</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">## 🤖 任务指令</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">### 前置检测：检查 minote/ 是否有变更</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">从 `git status` 的输出中检查 `minote/` 目录是否包含未暂存的变更。</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">### 逻辑分支 A：minote/ <span class="strong">**有变更**</span></span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">#### 如果当前在 `main` 分支：</span></span></span><br><span class="line"><span class="emphasis"><span class="section">1. <span class="strong">**切换到 local-minote 分支**</span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">   - `git checkout local-minote`</span></span></span><br><span class="line"><span class="emphasis"><span class="section">2. <span class="strong">**执行全量暂存**</span> → `git add .`</span></span></span><br><span class="line"><span class="emphasis"><span class="section">3. <span class="strong">**读取变更内容**</span> → `git diff --cached`</span></span></span><br><span class="line"><span class="emphasis"><span class="section">4. <span class="strong">**生成提交信息**</span>并执行提交</span></span></span><br><span class="line"><span class="emphasis"><span class="section">5. <span class="strong">**切换回 main 分支**</span> → `git checkout main`</span></span></span><br><span class="line"><span class="emphasis"><span class="section">6. <span class="strong">**在 main 分支重复执行**</span></span></span></span><br><span class="line"><span class="emphasis"><span class="section">   - `git add .`</span></span></span><br><span class="line"><span class="emphasis"><span class="section">   - `git diff --cached`</span></span></span><br><span class="line"><span class="emphasis"><span class="section">   - <span class="strong">**生成提交信息**</span>（不包含 minote/ 的变更）</span></span></span><br><span class="line"><span class="emphasis"><span class="section">   - `git commit -m &quot;你的提交信息&quot;`</span></span></span><br><span class="line"><span class="emphasis"><span class="section">7. <span class="strong">**推送到远程**</span> → `git push`</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section"># ... 省略其他分支的逻辑 ...</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="关键技术点"><a href="#关键技术点" class="headerlink" title="关键技术点"></a>关键技术点</h3><p>**1. 不同分支的 <code>.gitignore</code>**：</p>
+<ul>
+<li><strong>main 分支</strong>：<code>.gitignore</code> 包含 <code>minote/</code></li>
+<li><strong>local-minote 分支</strong>：<code>.gitignore</code> 不包含 <code>minote/</code></li>
+</ul>
+<p>这样切换分支时，<code>.gitignore</code> 会自动切换，<code>minote/</code> 的变更只在 <code>local-minote</code> 分支被跟踪。</p>
+<p><strong>2. 文件变更检测</strong>：</p>
+<p>通过 <code>git status</code> 输出判断 <code>minote/</code> 是否有变更：</p>
+<ul>
+<li>有变更 → 触发双分支处理流程</li>
+<li>无变更 → 单分支正常处理</li>
+</ul>
+<p><strong>3. 分支隔离配置</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置 local-minote 分支不推送</span></span><br><span class="line">git config branch.local-minote.pushRemote no_push</span><br></pre></td></tr></table></figure>
+
+<h3 id="功能特点-2"><a href="#功能特点-2" class="headerlink" title="功能特点"></a>功能特点</h3><ul>
+<li>✅ 自动检测 <code>minote/</code> 变更</li>
+<li>✅ 智能切换分支处理</li>
+<li>✅ <code>minote/</code> 变更永远只在 <code>local-minote</code> 分支（本地备份，不推送）</li>
+<li>✅ 其他文件变更提交到 <code>main</code> 并推送</li>
+<li>✅ 最终停留在 <code>main</code> 分支</li>
+</ul>
+<h3 id="使用效果-1"><a href="#使用效果-1" class="headerlink" title="使用效果"></a>使用效果</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一直在 main 分支工作</span></span><br><span class="line"><span class="comment"># 情况1：只修改了代码文件</span></span><br><span class="line">/git-commit</span><br><span class="line"><span class="comment"># → git add . → git commit → git push ✅</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 情况2：修改了代码 + minote/ 笔记</span></span><br><span class="line">/git-commit</span><br><span class="line"><span class="comment"># → 检测到 minote/ 有变更</span></span><br><span class="line"><span class="comment"># → 切换到 local-minote → commit（包含 minote/）</span></span><br><span class="line"><span class="comment"># → 切换回 main → commit + push（不包含 minote/）</span></span><br><span class="line"><span class="comment"># → 最终停留在 main 分支 ✅</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="技术总结"><a href="#技术总结" class="headerlink" title="技术总结"></a>技术总结</h2><h3 id="版本对比"><a href="#版本对比" class="headerlink" title="版本对比"></a>版本对比</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>版本1.0</th>
+<th>版本2.0</th>
+<th>版本3.0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自动 add</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>生成提交信息</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>自动 commit</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>分支检测</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>条件推送</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>文件变更检测</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>自动切换分支</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>双分支同步</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+</tbody></table>
+<h3 id="核心技术点"><a href="#核心技术点" class="headerlink" title="核心技术点"></a>核心技术点</h3><p><strong>1. Slash Command 的 <code>allowed-tools</code> 配置</strong></p>
+<p>每次功能迭代都需要添加新的工具权限：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 版本1.0</span></span><br><span class="line"><span class="attr">allowed-tools:</span> <span class="string">Bash(git</span> <span class="string">add:*),</span> <span class="string">Bash(git</span> <span class="string">diff:*),</span> <span class="string">Bash(git</span> <span class="string">status:*),</span> <span class="string">Bash(git</span> <span class="string">commit:*)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 版本2.0</span></span><br><span class="line"><span class="attr">allowed-tools:</span> <span class="string">...,</span> <span class="string">Bash(git</span> <span class="string">branch:*),</span> <span class="string">Bash(git</span> <span class="string">push:*)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 版本3.0</span></span><br><span class="line"><span class="attr">allowed-tools:</span> <span class="string">...,</span> <span class="string">Bash(git</span> <span class="string">checkout:*)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>2. Git 工作流与分支策略</strong></p>
+<ul>
+<li>利用 <code>.gitignore</code> 的版本控制特性实现不同分支的文件跟踪策略</li>
+<li>通过 <code>git config</code> 配置分支级别的推送行为</li>
+<li>结合 Slash Command 的自动化能力实现智能工作流</li>
+</ul>
+<p><strong>3. 渐进式功能演进</strong></p>
+<p>从简单的自动化到智能决策，每次迭代都基于实际需求，逐步完善功能。</p>
+<hr>
+<h2 id="后续优化方向"><a href="#后续优化方向" class="headerlink" title="后续优化方向"></a>后续优化方向</h2><h3 id="可能的改进"><a href="#可能的改进" class="headerlink" title="可能的改进"></a>可能的改进</h3><ol>
+<li><p><strong>更智能的提交信息生成</strong></p>
+<ul>
+<li>结合变更的文件路径生成更准确的 commit message</li>
+<li>支持自定义提交信息模板</li>
+</ul>
+</li>
+<li><p><strong>更灵活的配置</strong></p>
+<ul>
+<li>支持配置多个本地备份分支</li>
+<li>支持配置不同的文件匹配规则</li>
+</ul>
+</li>
+<li><p><strong>交互式确认</strong></p>
+<ul>
+<li>在执行分支切换前提示用户确认</li>
+<li>显示将要提交的内容摘要</li>
+</ul>
+</li>
+<li><p><strong>错误处理</strong></p>
+<ul>
+<li>处理分支切换失败的情况</li>
+<li>处理合并冲突的情况</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>从最简单的自动化提交，到智能的多分支管理，<code>/git-commit</code> 命令的演进过程展示了如何通过持续优化来提升开发效率。</p>
+<p><strong>核心思路</strong>：</p>
+<ul>
+<li>识别重复性操作</li>
+<li>逐步自动化</li>
+<li>根据实际需求迭代优化</li>
+</ul>
+<p>这个命令不仅节省了大量时间，更重要的是建立了一套可靠的工作流程，让代码管理变得轻松而规范。</p>
+<hr>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.anthropic.com/claude-code">Claude Code 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.conventionalcommits.org/">Conventional Commits 规范</a></li>
+<li>Git 分支管理最佳实践</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.wenhuateng.top">华子</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.wenhuateng.top/posts/65084fb8/">https://www.wenhuateng.top/posts/65084fb8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.wenhuateng.top" target="_blank">吏部侍郎</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Claude-Code/">Claude Code</a><a class="post-meta__tags" href="/tags/%E6%96%9C%E6%9D%A0%E5%91%BD%E4%BB%A4/">斜杠命令</a><a class="post-meta__tags" href="/tags/Git%E8%87%AA%E5%8A%A8%E5%8C%96/">Git自动化</a><a class="post-meta__tags" href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%BC%98%E5%8C%96/">工作流优化</a></div><div class="post-share"><div class="social-share" data-image="https://images.unsplash.com/photo-1617791160505-6f00504e3519" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/1b26e8ea/" title="我只是想留住一个投资人的思考，结果学会了如何让 AI 替我干脏活"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/image-20260107002859783.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">我只是想留住一个投资人的思考，结果学会了如何让 AI 替我干脏活</div></div><div class="info-2"><div class="info-item-1"> 我非常喜欢一位投资人的投资风格和分享的投资理念，老粉如果注意过的话，我之前其实提到过一次。最近他不在微博说话了，因为被迫要收取投顾费，所以他转到了且慢基金社区的同路人小组去发言。 我就想着记录下他的投资理念，方便未来哪天，大佬身退了，我也能学个5成的水平。  在开始正文之前，我想要警告各位： 本文不需要太高的技术水平，如果有兴趣，应该可以在几个小时到一天内复现。 我们不会的，AI会的，让他教我们。 使用国内版本的Trae，可以完成。 另外，本文不构成任何投资建议。  https://www.trae.cn/  我不会的，AI会所以我就问Gemini：   这里为什么会问Obsidian呢，是因为我最近在将我自己所有的知识体系向这里转移。 很明显，看来我需要写一个网络爬虫才能实现我的诉求了。我真正意识到的问题不是“我不会写代码”，而是“我之前问错了问题”。 我已经自己写过爬取静态网页，就是请求一次，所有内容都展示的网页。 但是很明显，且慢的网页不是的，他是动态的，因为有很多内容都需要点击查看全文、查看更多，甚至会跳转到一个新的网页。   所以，我紧接着问了Gemini一个问题： ...</div></div></div></a><a class="pagination-related" href="/posts/edc61d96/" title="我画了十几张图，终于把GPT识字这件事，从头到尾讲透了"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">我画了十几张图，终于把GPT识字这件事，从头到尾讲透了</div></div><div class="info-2"><div class="info-item-1">很多文章在讲 tokenizer 的时候，往往从「词」「子词」直接开始，但如果你真的想理解 GPT 这类模型是怎么”看懂文字”的，我们可能要从头了解。需要强调的是，本文将要拆解的底层原理，不仅是GPT的魔法，同样也是驱动千问、豆包、DeepSeek、Kimi等所有顶尖大模型的共通基石。 这篇文章，我想完整记录：  文本是如何一步一步，从”电信号”，变成模型输入的一串整数 ID，又如何在模型输出后，被还原成人类能读懂的文字。   为什么不能只用字节？——从0-256开始的BPE之路在任何语言模型、任何 tokenizer 出现之前，有一个不可绕过的事实：  计算机并不认识”字符”，只认识电压的高低。  这些电压状态，在逻辑上被抽象为 0 和 1（bit）。 但需要强调的是：  语言模型并不会直接处理 bit 级别的数据。  因为 bit 太底层、太长，而且不同编码方式会导致完全不同的 bit 序列。 真正进入 tokenizer 之前，所有文本都会先经过UTF-8 编码：  例如，我爱中国 china在 UTF-8 编码下，在计算机中存储运算的时候，其实是以一串字节序列进行的（字节...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/Happy.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">华子</div><div class="author-info-description">一个懂业务的AI产品经理</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Wangshixiong" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/wechat.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #07c160;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC1-0%EF%BC%9A%E5%9F%BA%E7%A1%80%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8F%90%E4%BA%A4"><span class="toc-number">2.</span> <span class="toc-text">版本1.0：基础自动化提交</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E8%83%8C%E6%99%AF"><span class="toc-number">2.1.</span> <span class="toc-text">需求背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88"><span class="toc-number">2.2.</span> <span class="toc-text">实现方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E7%89%B9%E7%82%B9"><span class="toc-number">2.3.</span> <span class="toc-text">功能特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">使用方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC2-0%EF%BC%9A%E5%88%86%E6%94%AF%E6%A3%80%E6%B5%8B%E4%B8%8E%E6%9D%A1%E4%BB%B6%E6%8E%A8%E9%80%81"><span class="toc-number">3.</span> <span class="toc-text">版本2.0：分支检测与条件推送</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E9%9C%80%E6%B1%82"><span class="toc-number">3.1.</span> <span class="toc-text">新需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88-1"><span class="toc-number">3.2.</span> <span class="toc-text">实现方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E7%89%B9%E7%82%B9-1"><span class="toc-number">3.3.</span> <span class="toc-text">功能特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%88%E6%9E%9C"><span class="toc-number">3.4.</span> <span class="toc-text">使用效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC3-0%EF%BC%9A%E6%99%BA%E8%83%BD%E6%96%87%E4%BB%B6%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%8F%8C%E5%88%86%E6%94%AF%E5%90%8C%E6%AD%A5%EF%BC%88%E5%BD%93%E5%89%8D%E7%89%88%E6%9C%AC%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">版本3.0：智能文件检测与双分支同步（当前版本）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E9%9C%80%E6%B1%82-1"><span class="toc-number">4.1.</span> <span class="toc-text">新需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%9F%E6%9C%9B%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">4.2.</span> <span class="toc-text">期望的工作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF1%EF%BC%9Aminote-%E6%B2%A1%E6%9C%89%E5%8F%98%E6%9B%B4"><span class="toc-number">4.2.1.</span> <span class="toc-text">场景1：minote&#x2F; 没有变更</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF2%EF%BC%9Aminote-%E6%9C%89%E5%8F%98%E6%9B%B4"><span class="toc-number">4.2.2.</span> <span class="toc-text">场景2：minote&#x2F; 有变更</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88-2"><span class="toc-number">4.3.</span> <span class="toc-text">实现方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%E7%82%B9"><span class="toc-number">4.4.</span> <span class="toc-text">关键技术点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E7%89%B9%E7%82%B9-2"><span class="toc-number">4.5.</span> <span class="toc-text">功能特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%88%E6%9E%9C-1"><span class="toc-number">4.6.</span> <span class="toc-text">使用效果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">技术总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94"><span class="toc-number">5.1.</span> <span class="toc-text">版本对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E7%82%B9"><span class="toc-number">5.2.</span> <span class="toc-text">核心技术点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E4%BC%98%E5%8C%96%E6%96%B9%E5%90%91"><span class="toc-number">6.</span> <span class="toc-text">后续优化方向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="toc-number">6.1.</span> <span class="toc-text">可能的改进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">7.</span> <span class="toc-text">结语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%BA%90"><span class="toc-number">8.</span> <span class="toc-text">参考资源</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/1b26e8ea/" title="我只是想留住一个投资人的思考，结果学会了如何让 AI 替我干脏活"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/image-20260107002859783.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我只是想留住一个投资人的思考，结果学会了如何让 AI 替我干脏活"/></a><div class="content"><a class="title" href="/posts/1b26e8ea/" title="我只是想留住一个投资人的思考，结果学会了如何让 AI 替我干脏活">我只是想留住一个投资人的思考，结果学会了如何让 AI 替我干脏活</a><time datetime="2026-01-06T13:56:00.000Z" title="发表于 2026-01-06 21:56:00">2026-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/65084fb8/" title="Claude Code斜杠命令进阶：从自动化提交到智能分支管理"><img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Claude Code斜杠命令进阶：从自动化提交到智能分支管理"/></a><div class="content"><a class="title" href="/posts/65084fb8/" title="Claude Code斜杠命令进阶：从自动化提交到智能分支管理">Claude Code斜杠命令进阶：从自动化提交到智能分支管理</a><time datetime="2026-01-03T04:30:45.000Z" title="发表于 2026-01-03 12:30:45">2026-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/edc61d96/" title="我画了十几张图，终于把GPT识字这件事，从头到尾讲透了"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我画了十几张图，终于把GPT识字这件事，从头到尾讲透了"/></a><div class="content"><a class="title" href="/posts/edc61d96/" title="我画了十几张图，终于把GPT识字这件事，从头到尾讲透了">我画了十几张图，终于把GPT识字这件事，从头到尾讲透了</a><time datetime="2026-01-03T03:54:59.000Z" title="发表于 2026-01-03 11:54:59">2026-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/8bcaf6c/" title="最高效的学习其实是“不学习”？Gemini 3.0 揭示了AI时代的“拿来主义”"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/file-20251123235350767.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="最高效的学习其实是“不学习”？Gemini 3.0 揭示了AI时代的“拿来主义”"/></a><div class="content"><a class="title" href="/posts/8bcaf6c/" title="最高效的学习其实是“不学习”？Gemini 3.0 揭示了AI时代的“拿来主义”">最高效的学习其实是“不学习”？Gemini 3.0 揭示了AI时代的“拿来主义”</a><time datetime="2025-11-23T16:46:40.000Z" title="发表于 2025-11-24 00:46:40">2025-11-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/db1bad86/" title="Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！"/></a><div class="content"><a class="title" href="/posts/db1bad86/" title="Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！">Dify知识库图文混排到底应该怎么做，两种主流方案，一次讲清！</a><time datetime="2025-11-15T16:46:40.000Z" title="发表于 2025-11-16 00:46:40">2025-11-16</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 华子</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">2</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'WxBDBLPoSvMihNTnoWJXROpq-gzGzoHsz',
+      appKey: 'n6Y96eiGJ8wAGJfv9t4uOEfd',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
