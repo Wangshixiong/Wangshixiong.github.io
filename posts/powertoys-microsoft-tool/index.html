@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>装了这款微软官方&quot;外挂&quot;，我卸载了电脑里乱七八糟的10个付费软件 | 吏部侍郎</title><meta name="author" content="华子"><meta name="copyright" content="华子"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. PowerToys 简介起因是，我在 Windows 上删除某个文件或者文件夹的时候，经常被提示占用。  然后我又不知道被谁占用，想删除除了重启别无他法。 我就寻思，我烦够了，要不我问问 Gemini。然后他就告诉了我这个神器。  我就去官网看了下，看的过程，内心不断地惊呼，😱。太牛了吧。  PowerToys 官方文档   大家可以粗略看一眼。太 6 了。 比如 hosts 管理，我以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="装了这款微软官方&quot;外挂&quot;，我卸载了电脑里乱七八糟的10个付费软件">
+<meta property="og:url" content="https://www.wenhuateng.top/posts/powertoys-microsoft-tool/index.html">
+<meta property="og:site_name" content="吏部侍郎">
+<meta property="og:description" content="1. PowerToys 简介起因是，我在 Windows 上删除某个文件或者文件夹的时候，经常被提示占用。  然后我又不知道被谁占用，想删除除了重启别无他法。 我就寻思，我烦够了，要不我问问 Gemini。然后他就告诉了我这个神器。  我就去官网看了下，看的过程，内心不断地惊呼，😱。太牛了吧。  PowerToys 官方文档   大家可以粗略看一眼。太 6 了。 比如 hosts 管理，我以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2Powertoys.webp">
+<meta property="article:published_time" content="2026-02-15T06:30:00.000Z">
+<meta property="article:modified_time" content="2026-02-15T06:15:40.069Z">
+<meta property="article:author" content="华子">
+<meta property="article:tag" content="Windows工具">
+<meta property="article:tag" content="PowerToys">
+<meta property="article:tag" content="效率提升">
+<meta property="article:tag" content="开源软件">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2Powertoys.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "装了这款微软官方\"外挂\"，我卸载了电脑里乱七八糟的10个付费软件",
+  "url": "https://www.wenhuateng.top/posts/powertoys-microsoft-tool/",
+  "image": "https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2Powertoys.webp",
+  "datePublished": "2026-02-15T06:30:00.000Z",
+  "dateModified": "2026-02-15T06:15:40.069Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "华子",
+      "url": "https://www.wenhuateng.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.svg"><link rel="canonical" href="https://www.wenhuateng.top/posts/powertoys-microsoft-tool/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":"繁","translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '装了这款微软官方"外挂"，我卸载了电脑里乱七八糟的10个付费软件',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/images/Happy.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">吏部侍郎</span></a><a class="nav-page-title" href="/"><span class="site-name">装了这款微软官方&quot;外挂&quot;，我卸载了电脑里乱七八糟的10个付费软件</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">装了这款微软官方&quot;外挂&quot;，我卸载了电脑里乱七八糟的10个付费软件</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-15T06:30:00.000Z" title="发表于 2026-02-15 14:30:00">2026-02-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-15T06:15:40.069Z" title="更新于 2026-02-15 14:15:40">2026-02-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/">工具推荐</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/">技术教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2Powertoys.webp"></p>
+<h2 id="1-PowerToys-简介"><a href="#1-PowerToys-简介" class="headerlink" title="1. PowerToys 简介"></a>1. PowerToys 简介</h2><p>起因是，我在 Windows 上删除某个文件或者文件夹的时候，经常被提示占用。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/2.webp" alt="被占用"></p>
+<p>然后我又不知道被谁占用，想删除除了重启别无他法。</p>
+<p>我就寻思，我烦够了，要不我问问 Gemini。然后他就告诉了我这个神器。</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/1.webp" alt="PowerToys"></p>
+<p>我就去官网看了下，看的过程，内心不断地惊呼，😱。太牛了吧。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/powertoys/">PowerToys 官方文档</a></p>
+</blockquote>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/PowerToys%E7%A5%9E%E5%99%A81.webp" alt="PowerToys神器1"><br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/PowerToys%E7%A5%9E%E5%99%A82.webp" alt="PowerToys神器2"><br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/PowerToys%E7%A5%9E%E5%99%A83.webp" alt="PowerToys神器3"></p>
+<p>大家可以粗略看一眼。太 6 了。</p>
+<p>比如 hosts 管理，我以前还需要下载一个软件 <code>SwitchHosts</code>；比如 OCR，比如那个灯开关，我以前还需要专门下载一个日出日落的工具；比如命令面板，我还下载个 <code>uTools</code>；还有那个高级粘贴……</p>
+<p>太牛了，炸裂。最关键这玩意儿开源的。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/microsoft/PowerToys">PowerToys GitHub 仓库</a></p>
+</blockquote>
+<p>你说微软，为啥不搞到原生系统里面呢？</p>
+<p>比如，查看谁占用了这个文件：</p>
+<p><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/PowerToys%E7%A5%9E%E5%99%A84.webp" alt="神器4--再也不用重启了"></p>
+<hr>
+<h2 id="2-所有功能"><a href="#2-所有功能" class="headerlink" title="2. 所有功能"></a>2. 所有功能</h2><table>
+<thead>
+<tr>
+<th>功能名称 (中&#x2F;英)</th>
+<th>技术定义 (Technical Definition)</th>
+<th>普通人&#x2F;办公族的”救命”场景 (Lifesaver Scenario)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Advanced Paste<br>(高级粘贴)</td>
+<td>AI 驱动的剪贴板转换工具。利用本地&#x2F;云端大模型将剪贴板内容转换为 JSON、Markdown 等格式，或进行翻译、总结。支持从图像&#x2F;音频转码。</td>
+<td>产品经理&#x2F;开发福音：复制一堆乱糟糟的 Log 或代码，直接粘贴为格式完美的 JSON；或者把一段文字直接粘贴为”高情商”回复邮件。</td>
+</tr>
+<tr>
+<td>Workspaces<br>(工作区)</td>
+<td>应用程序布局快照管理器。捕获当前桌面所有打开的应用程序及其位置，支持一键（或快捷键）恢复整个工作环境。</td>
+<td>开会&#x2F;演示神器：上一秒还在摸鱼看 B 站，下一秒老板来了，一键切换到”全套专业工作流”（Outlook + PPT + 数据大屏），无缝衔接。</td>
+</tr>
+<tr>
+<td>CursorWrap<br>(光标环绕)</td>
+<td>多显示器光标瞬移工具。允许鼠标光标穿过屏幕边缘直接到达另一侧边缘（如从最右屏右边缘穿梭至最左屏左边缘）。</td>
+<td>带鱼屏&#x2F;多屏用户救星：鼠标滑了半个世纪才从左屏滑到右屏？现在直接从左边”穿墙”就到右边了，手腕不再酸痛。</td>
+</tr>
+<tr>
+<td>ZoomIt<br>(屏幕缩放演示)</td>
+<td>屏幕实时缩放与标注工具。原 Sysinternals 经典工具，集成后支持屏幕局部放大、实时画笔标注、倒计时功能。</td>
+<td>远程会议&#x2F;网课必备：给开发讲需求时，直接把原本只有蚂蚁大小的 UI 细节放大到全屏，并用红笔圈出来：”看到这个像素偏移了吗？”</td>
+</tr>
+<tr>
+<td>PowerToys Run<br>(快速启动&#x2F;命令面板)</td>
+<td>高级应用启动器与命令中心。替代 Win+R 和开始菜单，支持模糊搜索应用、文件、执行系统命令、单位换算及调用插件。</td>
+<td>键盘流效率核心：不用动鼠标，Alt+空格，输入”200 usd to cny”直接看汇率，或者输入”sleep”直接休眠电脑。</td>
+</tr>
+<tr>
+<td>Text Extractor<br>(文本提取)</td>
+<td>屏幕区域 OCR 识别工具。基于 Windows OCR 库，像截图一样框选屏幕任意区域，识别并提取其中的文本到剪贴板。</td>
+<td>文档处理救命药：遇到不能复制的 PDF、百度文库、或者报错弹窗的图片，直接框选提取文字，告别手打。</td>
+</tr>
+<tr>
+<td>FancyZones<br>(窗口布局)</td>
+<td>高级窗口平铺管理器。允许创建复杂的自定义网格布局，按住 Shift 键将窗口拖入预设区域自动调整大小和位置。</td>
+<td>大屏用户刚需：将一块 34 寸带鱼屏切分成”左边文档、中间代码、右边微信”的完美比例，窗口不再乱飞。</td>
+</tr>
+<tr>
+<td>Always On Top<br>(始终置顶)</td>
+<td>窗口置顶工具。通过快捷键 (Win+Ctrl+T) 强制将当前活动窗口固定在所有其他窗口的最上层。</td>
+<td>单屏办公神器：一边开着计算器&#x2F;Excel 参考数据，一边写文档，再也不用频繁 Alt+Tab 切换窗口了。</td>
+</tr>
+<tr>
+<td>Mouse Without Borders<br>(无界鼠标)</td>
+<td>软件 KVM 切换器。允许一套键鼠跨局域网控制多达 4 台不同的 Windows 电脑，并支持跨设备剪贴板复制粘贴。</td>
+<td>双机党福利：台式机跑模型，笔记本写文档，鼠标直接从笔记本屏幕滑到台式机屏幕上操作，仿佛它们是一台电脑。</td>
+</tr>
+<tr>
+<td>File Locksmith<br>(文件解锁)</td>
+<td>文件占用进程查询器。右键菜单集成工具，查询哪个进程正在占用特定的文件或文件夹，并支持强制结束该进程。</td>
+<td>强迫症治愈：删文件夹时提示”文件即将在另一个程序中打开”，用它一查，原来是死掉的 Word 后台在作祟，直接杀掉进程删除。</td>
+</tr>
+<tr>
+<td>Peek<br>(快速预览)</td>
+<td>文件快速预览工具。模仿 macOS 的”空格键预览”功能，在文件资源管理器中选中文件按下快捷键（默认 Ctrl+Space）即可预览内容。</td>
+<td>找素材救星：在一堆命名混乱的图片或 PSD 文件中，不用一个个双击打开（加载半天），按空格就能快速扫视确认。</td>
+</tr>
+<tr>
+<td>PowerRename<br>(批量重命名)</td>
+<td>高级批量重命名工具。支持正则表达式、搜索替换、大小写转换，并提供重命名后的实时预览。</td>
+<td>整理狂魔：下载的一堆美剧文件名全是乱码和广告？用正则一键清洗成”S01E01.mp4”这种整齐格式。</td>
+</tr>
+<tr>
+<td>Awake<br>(唤醒)</td>
+<td>系统防休眠工具。在托盘区一键设置，强制电脑保持唤醒状态，无需更改 Windows 复杂的电源计划设置。</td>
+<td>挂机下载&#x2F;跑数专用：即使去吃午饭锁屏了，后台的模型训练或超大文件下载也不会因为电脑自动休眠而中断。</td>
+</tr>
+<tr>
+<td>Image Resizer<br>(图像大小调整)</td>
+<td>右键批量改图工具。在文件资源管理器右键菜单中添加”调整图片大小”，支持预设尺寸和压缩质量。</td>
+<td>发报告&#x2F;传网盘：手机拍的照片每张 5MB，发邮件超大？右键一键压缩成”中等尺寸”，瞬间几十张图处理完毕。</td>
+</tr>
+<tr>
+<td>Keyboard Manager<br>(键盘管理器)</td>
+<td>键位重映射工具。重新定义键盘按键功能或操作系统级别的快捷键组合。</td>
+<td>防误触&#x2F;手感优化：把那个极其容易误触的 <code>Caps Lock</code> 键映射成无功能的键，或者改成 <code>Ctrl</code> 键来提高写代码效率。</td>
+</tr>
+<tr>
+<td>Color Picker<br>(取色器)</td>
+<td>系统级屏幕取色工具。快捷键 (Win+Shift+C) 呼出，吸取屏幕任意位置的颜色，自动生成 HEX、RGB、CMYK 代码。</td>
+<td>前端&#x2F;设计协作：看到网页或 PPT 上一个好看的颜色，直接吸取复制色号，不用截图再丢进 PS 里吸色。</td>
+</tr>
+<tr>
+<td>Crop And Lock<br>(裁剪并锁定)</td>
+<td>窗口局部裁剪与画中画工具。将某个窗口的特定区域裁剪出来，并生成一个始终置顶的”画中画”缩略图（支持实时交互）。</td>
+<td>摸鱼&#x2F;监控：只把股市行情的 K 线图或者是监控画面的一个小角落裁剪出来放在屏幕角落，既不占地又能实时盯着。</td>
+</tr>
+<tr>
+<td>Environment Variables<br>(环境变量)</td>
+<td>环境变量编辑器。提供图形化界面来管理 Windows 环境变量，无需深入系统高级设置。</td>
+<td>开发环境配置：配置 Java 或 Python 环境路径时，不用在一行极小的文本框里痛苦地找分号了，列表式管理清晰明了。</td>
+</tr>
+<tr>
+<td>File Explorer Add-ons<br>(资源管理器加载项)</td>
+<td>文件预览增强插件。让资源管理器支持 SVG, Markdown (.md), PDF, G-code 等文件的预览窗格和缩略图显示。</td>
+<td>代码&#x2F;设计查看：不用打开 IDE，直接在文件夹里就能预览 Markdown 文档的渲染效果或 SVG 矢量图的内容。</td>
+</tr>
+<tr>
+<td>Hosts File Editor<br>(Hosts 编辑器)</td>
+<td>Hosts 文件管理工具。提供简单的 GUI 界面编辑 hosts 文件，自动处理管理员权限和备份。</td>
+<td>内网开发&#x2F;屏蔽广告：快速把本地测试域名指回 127.0.0.1，或者快速屏蔽某个导致软件弹窗的域名，不用去 C 盘深处找文件。</td>
+</tr>
+<tr>
+<td>Mouse Utilities<br>(鼠标工具箱)</td>
+<td>鼠标增强集合。包含”查找鼠标”（晃动鼠标屏幕变暗并聚光灯高亮）、”鼠标高亮”（点击有波纹）等。</td>
+<td>多屏找不到鼠标：看着三个屏幕发呆”我鼠标哪去了？”，猛晃两下鼠标，聚光灯直接告诉你它在哪里。</td>
+</tr>
+<tr>
+<td>Screen Ruler<br>(屏幕标尺)</td>
+<td>屏幕像素测量工具。测量屏幕上任意元素的像素距离，自动吸附边缘。</td>
+<td>UI 验收&#x2F;前端开发：也是直接量一下设计稿或者是网页元素的间距是不是真的有 20px，不用截图去量。</td>
+</tr>
+<tr>
+<td>Shortcut Guide<br>(快捷键指南)</td>
+<td>快捷键提示浮层。按住 Win 键显示当前桌面状态下可用的 Windows 快捷键全屏覆盖层。</td>
+<td>新手引导：忘了分屏是 Win+左 还是 Win+右？按住 Win 键看一眼提示，马上变身快捷键达人。</td>
+</tr>
+<tr>
+<td>Registry Preview<br>(注册表预览)</td>
+<td>.reg 文件可视化预览工具。查看 .reg 文件内容而不直接导入，以树状图形式展示修改项。</td>
+<td>系统维护安全：网上下载的注册表优化脚本，先预览一眼它到底要改哪里，防止那是病毒或者恶意破坏脚本。</td>
+</tr>
+</tbody></table>
+<p>比如，我在随便举个例子，强大的批量重命名：<br><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/PowerToys%E7%A5%9E%E5%99%A8-%E9%87%8D%E5%91%BD%E5%90%8D.webp" alt="重命名"></p>
+<p>我也刚刚接触，还不特别熟，如果有大家感兴趣的功能，请大家试用啊。</p>
+<p>这次又感慨一次，AI在专业上回答的不一定是对的，但是它知识的广度，一定是比我们大的，比我们知道的多。<br>如果不知道如何解决某个痛点，就去问问AI吧。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.wenhuateng.top">华子</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.wenhuateng.top/posts/powertoys-microsoft-tool/">https://www.wenhuateng.top/posts/powertoys-microsoft-tool/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.wenhuateng.top" target="_blank">吏部侍郎</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Windows%E5%B7%A5%E5%85%B7/">Windows工具</a><a class="post-meta__tags" href="/tags/PowerToys/">PowerToys</a><a class="post-meta__tags" href="/tags/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87/">效率提升</a><a class="post-meta__tags" href="/tags/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6/">开源软件</a></div><div class="post-share"><div class="social-share" data-image="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2Powertoys.webp" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/gemini-voyager/" title="Gemini Voyager：让Gemini变好用的最后一块拼图"><img class="cover" src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2gemini.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Gemini Voyager：让Gemini变好用的最后一块拼图</div></div><div class="info-2"><div class="info-item-1"> 1. 为什么写这个大家可能会想：Gemini 已经够强了，还需要什么插件？我想说不是的。 先说结论：原生 Gemini 是个顶级模型，但它现在的网页端体验，离”好用的生产力工具”还差得远。 你有没有遇到过这种崩溃瞬间：  长对话聊到后面，滚轮滚到手酸也找不到刚才那段代码在哪。 想引用 AI 的一句话反驳，得复制、粘贴、手动打个 &gt;，烦得想摔键盘。 好不容易调教好的 Prompt，下次换个新对话又要重新打一遍。 网页上聊透了方案，回到 VS Code 里还得像教小学生一样重新给 AI 喂背景。  写到这里你可能会想：忍忍不就过去了？没关系，我以前也忍。直到我发现了 Gemini Voyager。 它不只是修补丁，它是直接给 Gemini 的工作流”升舱”。  2. 长对话的”解药”：时间轴与引用在原生界面里，长对话就是灾难。你就像在一个没有路标的迷宫里，上上下下，找不着北。 Voyager 给出的解法极其直观：右侧时间轴。 它就像视频的进度条，或者书的目录：  每一个点，就是一次对话。 鼠标放上去，能偷看（预览）内容。 点一下，瞬间瞬移过去。 长按，还能加星（插眼），标记高...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/images/Happy.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">华子</div><div class="author-info-description">一个懂业务的AI产品经理</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">59</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Wangshixiong" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/wechat.jpg" target="_blank" title="微信"><i class="fab fa-weixin" style="color: #07c160;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-PowerToys-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">1. PowerToys 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%89%80%E6%9C%89%E5%8A%9F%E8%83%BD"><span class="toc-number">2.</span> <span class="toc-text">2. 所有功能</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/powertoys-microsoft-tool/" title="装了这款微软官方&quot;外挂&quot;，我卸载了电脑里乱七八糟的10个付费软件"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2Powertoys.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="装了这款微软官方&quot;外挂&quot;，我卸载了电脑里乱七八糟的10个付费软件"/></a><div class="content"><a class="title" href="/posts/powertoys-microsoft-tool/" title="装了这款微软官方&quot;外挂&quot;，我卸载了电脑里乱七八糟的10个付费软件">装了这款微软官方&quot;外挂&quot;，我卸载了电脑里乱七八糟的10个付费软件</a><time datetime="2026-02-15T06:30:00.000Z" title="发表于 2026-02-15 14:30:00">2026-02-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/gemini-voyager/" title="Gemini Voyager：让Gemini变好用的最后一块拼图"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2gemini.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Gemini Voyager：让Gemini变好用的最后一块拼图"/></a><div class="content"><a class="title" href="/posts/gemini-voyager/" title="Gemini Voyager：让Gemini变好用的最后一块拼图">Gemini Voyager：让Gemini变好用的最后一块拼图</a><time datetime="2026-02-14T15:55:00.000Z" title="发表于 2026-02-14 23:55:00">2026-02-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ai-red-envelope-cover/" title="春节别再花冤枉钱买封面了！用AI做专属红包，还能顺手赚个过年费（附保姆级教程）"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="春节别再花冤枉钱买封面了！用AI做专属红包，还能顺手赚个过年费（附保姆级教程）"/></a><div class="content"><a class="title" href="/posts/ai-red-envelope-cover/" title="春节别再花冤枉钱买封面了！用AI做专属红包，还能顺手赚个过年费（附保姆级教程）">春节别再花冤枉钱买封面了！用AI做专属红包，还能顺手赚个过年费（附保姆级教程）</a><time datetime="2026-02-11T12:00:00.000Z" title="发表于 2026-02-11 20:00:00">2026-02-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/obsidian-personal-assistant/" title="让AI记住你，而非每次都重新认识—我的Obsidian个人助理改造实录"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/微信公众号/微信公众号封面.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="让AI记住你，而非每次都重新认识—我的Obsidian个人助理改造实录"/></a><div class="content"><a class="title" href="/posts/obsidian-personal-assistant/" title="让AI记住你，而非每次都重新认识—我的Obsidian个人助理改造实录">让AI记住你，而非每次都重新认识—我的Obsidian个人助理改造实录</a><time datetime="2026-02-03T08:00:00.000Z" title="发表于 2026-02-03 16:00:00">2026-02-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/periodic-table-tool/" title="花了半天时间，将元素周期表搞成了一个&quot;可教学&quot;的小工具"><img src="https://wenhua-image.oss-cn-beijing.aliyuncs.com/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/%E5%B0%81%E9%9D%A2%E5%9B%BE2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="花了半天时间，将元素周期表搞成了一个&quot;可教学&quot;的小工具"/></a><div class="content"><a class="title" href="/posts/periodic-table-tool/" title="花了半天时间，将元素周期表搞成了一个&quot;可教学&quot;的小工具">花了半天时间，将元素周期表搞成了一个&quot;可教学&quot;的小工具</a><time datetime="2026-01-31T12:00:00.000Z" title="发表于 2026-01-31 20:00:00">2026-01-31</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 华子</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">2</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'WxBDBLPoSvMihNTnoWJXROpq-gzGzoHsz',
+      appKey: 'n6Y96eiGJ8wAGJfv9t4uOEfd',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
